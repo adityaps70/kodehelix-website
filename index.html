@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Kodehelix · Websites, web apps &amp; AI that bring in business</title>
+<meta name="description" content="Kodehelix designs and builds fast, mobile-first websites, web apps and AI tools for businesses across India and abroad. Websites from ₹10,000. Call or WhatsApp +91 70070 64653.">
+<meta name="theme-color" content="#0B0D12">
+<link rel="canonical" href="https://kodehelix.in/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kodehelix.in/">
+<meta property="og:title" content="Kodehelix · Websites that bring in business">
+<meta property="og:description" content="Fast, mobile-first websites, web apps and AI tools. Every button leads to a call, a WhatsApp or a booking.">
+<meta property="og:image" content="https://kodehelix.in/assets/brand/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="assets/brand/kodehelix-icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Kodehelix","url":"https://kodehelix.in","logo":"https://kodehelix.in/assets/brand/icon-512.png","telephone":"+91-7007064653","email":"hello@kodehelix.com","address":{"@type":"PostalAddress","addressLocality":"Lucknow","addressCountry":"IN"},"areaServed":["IN","Worldwide"],"description":"Websites, web apps and AI tools for businesses."}</script>
+<style>
+:root{
+  --ink:#0B0D12;--ink2:#151925;--ink3:#1F2433;--line:#E3E1D9;--line-d:#262B3B;
+  --paper:#F5F4EF;--white:#fff;--mute:#5F6371;--mute-d:#8F95A6;
+  --blue:#3B5BFF;--blue2:#8FA3FF;--cyan:#22C3EE;--soft:#E7EBFF;
+  --f:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--fd:"Inter Tight","Inter",system-ui,sans-serif;
+  --w:1200px;--g:clamp(16px,4vw,40px);--r:18px;--ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--f);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 var(--g)}
+h1,h2,h3{font-family:var(--fd);letter-spacing:-.035em;line-height:1.02;font-weight:800;text-wrap:balance}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--cyan)}
+.lede{font-size:clamp(16px,1.4vw,18.5px);color:var(--mute);max-width:58ch}
+.sec{padding:clamp(72px,10vw,128px) 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:clamp(36px,5vw,56px)}
+.sec-head h2{font-size:clamp(34px,5vw,58px);margin-top:14px;max-width:16ch}
+.sec-head h2 em{font-style:normal;color:var(--blue)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 24px;border-radius:999px;font-weight:600;font-size:15.5px;white-space:nowrap;transition:transform .4s var(--ease),background .25s,color .25s,border-color .25s;border:1px solid transparent;cursor:pointer}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:#2C49E6}
+.btn-wa{background:#25D366;color:#06210F}
+.btn-wa:hover{background:#3BE077}
+.btn-ghost{border-color:var(--line-d);color:#fff}
+.btn-ghost:hover{border-color:var(--blue2);color:var(--blue2)}
+.btn-line{border-color:var(--line);background:#fff}
+.btn-line:hover{border-color:var(--ink)}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(11,13,18,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-color:var(--line-d)}
+.nav-in{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.nav .logo img{height:34px;width:auto}
+.nav-links{display:flex;gap:4px}
+.nav-links a{color:#C9CDD8;font-size:14.5px;font-weight:500;padding:8px 14px;border-radius:999px;transition:background .2s,color .2s}
+.nav-links a:hover{background:var(--ink3);color:#fff}
+.nav .btn{height:42px;padding:0 18px;font-size:14.5px}
+.burger{display:none;width:44px;height:44px;border:0;background:none;cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:6px}
+.burger i{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s}
+.burger[aria-expanded=true] i:first-child{transform:translateY(4px) rotate(45deg)}
+.burger[aria-expanded=true] i:last-child{transform:translateY(-4px) rotate(-45deg)}
+.mmenu{display:none;background:var(--ink);border-top:1px solid var(--line-d);padding:12px var(--g) 24px}
+.mmenu a{display:block;color:#fff;font-family:var(--fd);font-weight:700;font-size:26px;letter-spacing:-.02em;padding:12px 0;border-bottom:1px solid var(--line-d)}
+.mmenu .btn{margin-top:18px;width:100%;justify-content:center}
+.mmenu.open{display:block}
+@media(max-width:900px){.nav-links,.nav .nav-cta{display:none}.burger{display:flex}}
+
+/* hero */
+.hero{background:var(--ink);color:#fff;position:relative;overflow:hidden;padding:clamp(130px,16vw,180px) 0 0}
+.hero::before{content:"";position:absolute;width:900px;height:900px;right:-300px;top:-380px;border-radius:50%;background:radial-gradient(circle,rgba(59,91,255,.45),rgba(59,91,255,0) 62%);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(180deg,#000 0%,transparent 75%);-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 75%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 10px;border-radius:999px;background:var(--ink2);border:1px solid var(--line-d);font-size:13.5px;color:#C9CDD8}
+.pill b{display:inline-block;width:8px;height:8px;border-radius:50%;background:#2BD67B;box-shadow:0 0 0 4px rgba(43,214,123,.18)}
+.hero h1{font-size:clamp(44px,8.4vw,104px);margin-top:26px;max-width:12ch}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--blue2),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lede{color:#A9AFBE;margin-top:24px;max-width:52ch}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.hero-meta{display:flex;gap:28px;flex-wrap:wrap;margin-top:28px;color:var(--mute-d);font-size:14px}
+.hero-meta span{display:inline-flex;align-items:center;gap:8px}
+.hero-meta svg{width:16px;height:16px;color:var(--cyan)}
+.showcase{position:relative;margin-top:clamp(56px,7vw,84px);height:clamp(300px,44vw,560px)}
+.device-d{position:absolute;left:50%;transform:translateX(-50%);bottom:-40px;width:min(980px,92%);border-radius:14px 14px 0 0;overflow:hidden;background:#fff;border:1px solid var(--line-d);box-shadow:0 -20px 80px -20px rgba(59,91,255,.35)}
+.device-d .bar{height:30px;background:#EEF0F3;display:flex;align-items:center;gap:6px;padding:0 12px}
+.device-d .bar i{width:9px;height:9px;border-radius:50%;background:#CDD1D8}
+.device-d .bar span{margin-left:14px;font-size:11px;color:#7A808C;background:#fff;border-radius:6px;padding:2px 12px}
+.device-d .slides{position:relative;aspect-ratio:16/10}
+.device-d .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transition:opacity .9s ease}
+.device-d .slides img.on{opacity:1}
+.phone{position:absolute;bottom:-20px;width:clamp(120px,15vw,200px);border-radius:28px;padding:6px;background:#0A0A0C;border:1px solid #2A2D36;box-shadow:0 30px 60px -20px rgba(0,0,0,.7);z-index:2}
+.phone img{border-radius:22px;aspect-ratio:9/19.5;object-fit:cover;object-position:top;width:100%}
+.phone.p1{left:max(2%,calc(50% - 600px));transform:rotate(-6deg)}
+.phone.p2{right:max(2%,calc(50% - 600px));transform:rotate(6deg)}
+@media(max-width:700px){.phone{display:none}.device-d{width:94%}}
+
+/* brands */
+.brands{background:#fff;border-bottom:1px solid var(--line)}
+.brands .wrap{display:flex;align-items:center;gap:clamp(18px,4vw,48px);padding-top:34px;padding-bottom:34px;flex-wrap:wrap;justify-content:center}
+.brands .lbl{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);width:100%;text-align:center;margin-bottom:4px}
+.brands img{height:40px;width:auto;object-fit:contain;transition:transform .3s}
+.brands img:hover{transform:scale(1.06)}
+.brands .dk{background:#1C1A12;border-radius:10px;padding:6px 10px;display:flex}
+.brands .dk img{height:30px}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.svc article{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px 24px;display:flex;flex-direction:column;transition:transform .5s var(--ease),border-color .3s}
+.svc article:hover{transform:translateY(-6px);border-color:#C9CEDD}
+.svc .ic{width:48px;height:48px;border-radius:14px;background:var(--ink);display:grid;place-items:center;color:#fff}
+.svc .ic svg{width:24px;height:24px}
+.svc h3{font-size:22px;margin-top:28px}
+.svc p{color:var(--mute);font-size:15px;margin-top:10px}
+.svc ul{list-style:none;margin-top:auto;padding-top:20px;border-top:1px solid var(--line);margin-top:22px}
+.svc li{font-size:14px;padding:5px 0;display:flex;gap:10px}
+.svc li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue);margin-top:9px;flex:none}
+@media(max-width:1000px){.svc{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.svc{grid-template-columns:1fr}}
+
+/* work */
+.work{background:var(--ink);color:#fff}
+.work .lede{color:#A9AFBE}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.filters button{background:var(--ink2);border:1px solid var(--line-d);color:#C9CDD8;padding:9px 16px;border-radius:999px;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+.filters button:hover{border-color:var(--blue2)}
+.filters button[aria-pressed=true]{background:#fff;color:var(--ink);border-color:#fff}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{background:var(--ink2);border:1px solid var(--line-d);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:transform .5s var(--ease),border-color .3s}
+.card:hover{transform:translateY(-6px);border-color:#3A4160}
+.card.hide{display:none}
+.card .vis{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--c,#222)}
+.card .vis .d{position:absolute;left:6%;top:9%;width:78%;border-radius:10px 10px 0 0;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#fff;transition:transform .8s var(--ease)}
+.card .vis .d img{aspect-ratio:16/10;object-fit:cover;object-position:top;width:100%}
+.card .vis .m{position:absolute;right:5%;bottom:-8%;width:24%;border-radius:18px;padding:4px;background:#0A0A0C;border:1px solid #2A2D36;transition:transform .8s var(--ease)}
+.card .vis .m img{border-radius:14px;aspect-ratio:9/19.5;object-fit:cover;object-position:top;width:100%}
+.card:hover .vis .d{transform:translateY(-6px) scale(1.015)}
+.card:hover .vis .m{transform:translateY(-14px)}
+.card .b{padding:24px 26px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card .top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.card .tag{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue2)}
+.card .st{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:#13261C;color:#5BE39A;border:1px solid #1F4430}
+.card h3{font-size:28px}
+.card p{color:#A9AFBE;font-size:15px}
+.card .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.card .chips span{font-size:12.5px;padding:4px 10px;border-radius:999px;border:1px solid var(--line-d);color:#C9CDD8}
+.card .lnk{margin-top:auto;padding-top:12px;display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14.5px;color:#fff;align-self:flex-start}
+.card .lnk svg{width:16px;height:16px;transition:transform .3s var(--ease)}
+.card .lnk:hover svg{transform:translate(3px,-3px)}
+.card .lnk.off{color:var(--mute-d);font-weight:500}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.step{border-top:2px solid var(--ink);padding-top:22px}
+.step .n{font-family:var(--fd);font-weight:800;font-size:48px;letter-spacing:-.05em;color:var(--blue);line-height:1}
+.step h3{font-size:22px;margin-top:14px}
+.step p{color:var(--mute);font-size:15px;margin-top:8px}
+.step .t{display:inline-block;margin-top:14px;font-size:13px;font-weight:600;background:#fff;border:1px solid var(--line);padding:5px 12px;border-radius:999px}
+.incl{margin-top:48px;background:var(--ink);color:#fff;border-radius:24px;padding:clamp(28px,4vw,44px);display:grid;grid-template-columns:280px 1fr;gap:32px;align-items:center}
+.incl h3{font-size:28px}
+.incl ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:14px 24px}
+.incl li{display:flex;gap:10px;font-size:15px;color:#D5D9E3}
+.incl li svg{width:18px;height:18px;color:var(--cyan);flex:none;margin-top:3px}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}.incl{grid-template-columns:1fr}.incl ul{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}.incl ul{grid-template-columns:1fr}}
+
+/* pricing */
+.cur{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px}
+.cur button{border:0;background:none;padding:8px 18px;border-radius:999px;font-weight:600;font-size:14px;cursor:pointer;color:var(--mute)}
+.cur button[aria-pressed=true]{background:var(--ink);color:#fff}
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px 26px;display:flex;flex-direction:column;position:relative}
+.plan.hot{background:var(--ink);color:#fff;border-color:var(--ink)}
+.plan .badge{position:absolute;top:-13px;left:26px;background:var(--blue);color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+.plan h3{font-size:24px}
+.plan .for{color:var(--mute);font-size:14.5px;margin-top:6px;min-height:46px}
+.plan.hot .for{color:#A9AFBE}
+.plan .from{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-top:22px}
+.plan.hot .from{color:var(--mute-d)}
+.plan .price{font-family:var(--fd);font-weight:800;font-size:42px;letter-spacing:-.045em;line-height:1.1}
+.plan ul{list-style:none;margin-top:20px;padding-top:18px;border-top:1px solid var(--line);flex:1}
+.plan.hot ul{border-color:var(--line-d)}
+.plan li{font-size:14.5px;padding:6px 0;display:flex;gap:10px}
+.plan li svg{width:17px;height:17px;color:var(--blue);flex:none;margin-top:3px}
+.plan.hot li svg{color:var(--cyan)}
+.plan .time{font-size:13.5px;font-weight:600;color:var(--mute);margin:18px 0}
+.plan.hot .time{color:var(--mute-d)}
+.plan .btn{justify-content:center}
+.note{font-size:13.5px;color:var(--mute);margin-top:22px}
+.care{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:16px;margin-top:20px}
+.care .c{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px}
+.care .c.dk{background:var(--soft);border-color:#CDD5FF}
+.care h3{font-size:20px}
+.care .price{font-family:var(--fd);font-weight:800;font-size:30px;letter-spacing:-.04em;margin-top:6px}
+.care .price small{font-size:14px;font-weight:600;color:var(--mute);letter-spacing:0}
+.care ul{list-style:none;margin-top:12px}
+.care li{font-size:14px;padding:4px 0;display:flex;gap:9px;color:#33363F}
+.care li::before{content:"✓";color:var(--blue);font-weight:700}
+@media(max-width:1000px){.plans{grid-template-columns:1fr 1fr}.care{grid-template-columns:1fr}}
+@media(max-width:560px){.plans{grid-template-columns:1fr}}
+
+/* faq */
+.faq{display:grid;grid-template-columns:1fr 1.5fr;gap:clamp(32px,6vw,80px)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;font-weight:600;font-size:17.5px;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:16px;font-size:28px;font-weight:300;color:var(--blue);transition:transform .3s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--mute);padding:0 0 22px;max-width:62ch}
+@media(max-width:860px){.faq{grid-template-columns:1fr}}
+
+/* contact */
+.contact{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;width:800px;height:800px;left:-300px;bottom:-500px;border-radius:50%;background:radial-gradient(circle,rgba(34,195,238,.25),rgba(34,195,238,0) 62%)}
+.contact .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px)}
+.contact h2{font-size:clamp(40px,6vw,76px)}
+.contact h2 em{font-style:normal;color:var(--blue2)}
+.contact .lede{color:#A9AFBE;margin-top:20px}
+.reach{margin-top:32px;display:grid;gap:12px}
+.reach a{display:flex;align-items:center;gap:16px;padding:18px 20px;border-radius:16px;background:var(--ink2);border:1px solid var(--line-d);transition:border-color .3s}
+.reach a:hover{border-color:var(--blue2)}
+.reach .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--ink3);flex:none}
+.reach .ic svg{width:20px;height:20px}
+.reach small{display:block;color:var(--mute-d);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.reach b{font-size:17px;font-weight:600}
+form{background:#fff;color:var(--ink);border-radius:24px;padding:clamp(24px,3vw,36px);display:grid;gap:16px;align-content:start}
+form h3{font-size:24px}
+form p.s{color:var(--mute);font-size:14.5px;margin-top:-8px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:grid;gap:6px;font-size:13.5px;font-weight:600}
+input,select,textarea{width:100%;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:13px 14px;font-size:15.5px;transition:border-color .2s,background .2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);background:#fff}
+textarea{min-height:110px;resize:vertical}
+form .btn{justify-content:center;width:100%}
+.fine{font-size:12.5px;color:var(--mute);text-align:center}
+@media(max-width:900px){.contact .wrap{grid-template-columns:1fr}}
+@media(max-width:480px){.f2{grid-template-columns:1fr}}
+
+/* footer */
+footer{background:var(--ink);color:#A9AFBE;border-top:1px solid var(--line-d);padding:40px 0 calc(40px + env(safe-area-inset-bottom))}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:14px}
+footer img{height:30px;width:auto}
+footer nav{display:flex;gap:20px;flex-wrap:wrap}
+footer nav a:hover{color:#fff}
+
+/* floating whatsapp */
+.fab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.45);transition:transform .3s var(--ease)}
+.fab:hover{transform:scale(1.08)}
+.fab svg{width:30px;height:30px;color:#fff}
+
+/* reveal */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--d,0)*90ms)}
+.js .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}.js .rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 1 1 6.98 3.86Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.71-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.24-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.65 4.2 3.71.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top" aria-label="Kodehelix home"><img src="assets/brand/kodehelix-logo-horizontal-white.svg" alt="Kodehelix" width="168" height="34"></a>
+    <nav class="nav-links" aria-label="Main"><a href="#services">Services</a><a href="#work">Work</a><a href="#process">Process</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
+    <a class="btn btn-blue nav-cta" href="#contact">Start a project</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><i></i><i></i></button>
+  </div>
+  <div class="mmenu" id="mmenu"><a href="#services">Services</a><a href="#work">Work</a><a href="#process">Process</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a class="btn btn-blue" href="#contact">Start a project</a></div>
+</header>
+
+<main>
+<section class="hero" id="top">
+  <div class="wrap">
+    <span class="pill rv"><b></b>Taking new projects this month</span>
+    <h1 class="rv" style="--d:1">Websites that bring in <em>business.</em></h1>
+    <p class="lede rv" style="--d:2">We design and build fast, mobile-first websites, web apps and AI tools for businesses across India and abroad, where every button leads to a call, a WhatsApp or a booking.</p>
+    <div class="hero-cta rv" style="--d:3">
+      <a class="btn btn-blue" href="#contact">Get a free homepage design <svg><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-ghost" href="#work">See our work</a>
+    </div>
+    <div class="hero-meta rv" style="--d:4">
+      <span><svg><use href="#i-check"/></svg>Websites from ₹10,000</span>
+      <span><svg><use href="#i-check"/></svg>Fixed quotes, no surprises</span>
+      <span><svg><use href="#i-check"/></svg>See the design before you commit</span>
+    </div>
+  </div>
+  <div class="showcase rv" style="--d:3" aria-hidden="true">
+    <div class="phone p1"><img src="assets/work/cloudtrails-m.jpg" alt="" loading="lazy"></div>
+    <div class="device-d"><div class="bar"><i></i><i></i><i></i><span id="url">verifyu.in</span></div>
+      <div class="slides" id="slides">
+        <img class="on" src="assets/work/verifyu-d.jpg" data-u="verifyu.in" alt="">
+        <img src="assets/work/willmar-d.jpg" data-u="willmar solutions" alt="" loading="lazy">
+        <img src="assets/work/seanshore-d.jpg" data-u="seanshore.in" alt="" loading="lazy">
+        <img src="assets/work/lashimti-d.jpg" data-u="la shimti" alt="" loading="lazy">
+        <img src="assets/work/marinetanks-d.jpg" data-u="marinetanks.in" alt="" loading="lazy">
+      </div>
+    </div>
+    <div class="phone p2"><img src="assets/work/infamous-m.jpg" alt="" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="brands" aria-label="Brands we've built for">
+  <div class="wrap">
+    <div class="lbl">Brands we've built for</div>
+    <img src="assets/logos/verifyu-color.png" alt="VerifyU" loading="lazy">
+    <img src="assets/logos/seanshore-color.png" alt="Sea N Shore" style="height:34px" loading="lazy">
+    <img src="assets/logos/marinetanks-color.png" alt="Marine Tanks" style="height:24px" loading="lazy">
+    <img src="assets/logos/willmar-logo.png" alt="Willmar Solutions" style="height:30px" loading="lazy">
+    <span class="dk"><img src="assets/logos/cloudtrails-color.png" alt="Cloud Trails" loading="lazy"></span>
+    <img src="assets/logos/infamous-color.png" alt="inFAMOUS Gaming Cafe" loading="lazy">
+    <img src="assets/logos/lashimti-mark.png" alt="La Shimti" loading="lazy">
+    <img src="assets/logos/snsit-color.png" alt="Sea N Shore IT Solutions" loading="lazy">
+  </div>
+</section>
+
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">What we do</span><h2 class="rv">One team, from first call to <em>launch and after.</em></h2></div>
+      <p class="lede rv">No templates bought off a shelf and no handing your project to a stranger. You get a site that looks premium, loads fast on a phone and makes it easy for customers to reach you.</p>
+    </div>
+    <div class="svc">
+      <article class="rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8"/></svg></div><h3>Business websites</h3><p>For shops, clinics, cafés, hotels, consultants and companies.</p><ul><li>Custom design, no templates</li><li>WhatsApp, call &amp; map buttons</li><li>Enquiry and booking forms</li><li>Google-ready SEO</li></ul></article>
+      <article class="rv" style="--d:1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="19" cy="18" r="2"/></svg></div><h3>Web apps &amp; platforms</h3><p>Portals, networks, job boards, learning platforms and SaaS.</p><ul><li>Logins, profiles, dashboards</li><li>Payments &amp; subscriptions</li><li>Admin panels</li><li>Cloud hosting</li></ul></article>
+      <article class="rv" style="--d:2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></div><h3>App design</h3><p>Android and iPhone app experiences, prototypes and launch sites.</p><ul><li>UX flows &amp; UI screens</li><li>Clickable prototypes</li><li>Onboarding that converts</li><li>App launch websites</li></ul></article>
+      <article class="rv" style="--d:3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"/><circle cx="12" cy="12" r="3.5"/></svg></div><h3>AI &amp; automation</h3><p>AI that answers customers, follows up leads and saves hours.</p><ul><li>AI chat on site &amp; WhatsApp</li><li>AI voice calling agents</li><li>Q&amp;A that cites your content</li><li>Workflow automation</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec work" id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Selected work</span><h2 class="rv">Real sites, <em style="color:var(--blue2)">real businesses.</em></h2></div>
+      <p class="lede rv">Every screenshot here is the live site or app, not a mock-up.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="biz" aria-pressed="false">Business websites</button>
+      <button type="button" data-f="platform" aria-pressed="false">Platforms &amp; apps</button>
+      <button type="button" data-f="maritime" aria-pressed="false">Maritime</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">How we work</span><h2 class="rv">Simple process. <em>No surprises.</em></h2></div>
+      <p class="lede rv">You see progress every week on a live preview link, and you approve the design before the full build starts.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv"><div class="n">01</div><h3>Discover</h3><p>A free 30-minute call about your business, customers and goals. A fixed quote within 24 hours.</p><span class="t">Day 1</span></div>
+      <div class="step rv" style="--d:1"><div class="n">02</div><h3>Design</h3><p>We design your homepage first. You approve the look before a single page is built.</p><span class="t">Days 2–4</span></div>
+      <div class="step rv" style="--d:2"><div class="n">03</div><h3>Build</h3><p>Mobile-first, fast and SEO-ready. Check progress any day on your preview link.</p><span class="t">1–4 weeks</span></div>
+      <div class="step rv" style="--d:3"><div class="n">04</div><h3>Launch &amp; grow</h3><p>Domain, Google Business Profile and analytics connected. We train you and stay on call.</p><span class="t">Ongoing</span></div>
+    </div>
+    <div class="incl rv">
+      <h3>Every website we build includes</h3>
+      <ul>
+        <li><svg><use href="#i-check"/></svg>Design for phones first</li><li><svg><use href="#i-check"/></svg>WhatsApp &amp; call buttons</li><li><svg><use href="#i-check"/></svg>Enquiry or booking form</li>
+        <li><svg><use href="#i-check"/></svg>On-page SEO basics</li><li><svg><use href="#i-check"/></svg>Google Analytics</li><li><svg><use href="#i-check"/></svg>SSL &amp; speed tuning</li>
+        <li><svg><use href="#i-check"/></svg>Google Maps &amp; directions</li><li><svg><use href="#i-check"/></svg>Training to edit content</li><li><svg><use href="#i-check"/></svg>30 days of free support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="pricing" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Pricing</span><h2 class="rv">Clear prices. <em>Fixed quotes.</em></h2></div>
+      <div class="cur" role="group" aria-label="Currency"><button type="button" data-c="inr" aria-pressed="true">₹ INR</button><button type="button" data-c="usd" aria-pressed="false">$ USD</button></div>
+    </div>
+    <div class="plans">
+      <div class="plan rv"><h3>Launch</h3><p class="for">For new businesses that need to be found online.</p><div class="from">Starting at</div><div class="price" data-inr="₹10,000" data-usd="$499">₹10,000</div>
+        <ul><li><svg><use href="#i-check"/></svg>1–5 pages, custom design</li><li><svg><use href="#i-check"/></svg>WhatsApp, call &amp; map buttons</li><li><svg><use href="#i-check"/></svg>Enquiry form to email / WhatsApp</li><li><svg><use href="#i-check"/></svg>Basic SEO &amp; Google Analytics</li><li><svg><use href="#i-check"/></svg>2 rounds of changes</li></ul>
+        <div class="time">Ready in 7–10 days</div><a class="btn btn-line" href="#contact" data-plan="Launch">Choose Launch</a></div>
+      <div class="plan hot rv" style="--d:1"><span class="badge">Most popular</span><h3>Business</h3><p class="for">For growing businesses that want more enquiries.</p><div class="from">Starting at</div><div class="price" data-inr="₹39,999" data-usd="$1,499">₹39,999</div>
+        <ul><li><svg><use href="#i-check"/></svg>8–15 pages, premium design &amp; motion</li><li><svg><use href="#i-check"/></svg>Admin panel to edit content</li><li><svg><use href="#i-check"/></svg>Booking or enquiry flows</li><li><svg><use href="#i-check"/></svg>SEO + Google Business Profile</li><li><svg><use href="#i-check"/></svg>3 rounds of changes</li></ul>
+        <div class="time">Ready in 3–4 weeks</div><a class="btn btn-blue" href="#contact" data-plan="Business">Choose Business</a></div>
+      <div class="plan rv" style="--d:2"><h3>Commerce</h3><p class="for">For selling products or taking bookings online.</p><div class="from">Starting at</div><div class="price" data-inr="₹89,999" data-usd="$3,499">₹89,999</div>
+        <ul><li><svg><use href="#i-check"/></svg>Online store or booking system</li><li><svg><use href="#i-check"/></svg>Razorpay, Cashfree or Stripe</li><li><svg><use href="#i-check"/></svg>Up to 100 products / services</li><li><svg><use href="#i-check"/></svg>Order alerts on email &amp; WhatsApp</li><li><svg><use href="#i-check"/></svg>Coupons &amp; admin dashboard</li></ul>
+        <div class="time">Ready in 4–6 weeks</div><a class="btn btn-line" href="#contact" data-plan="Commerce">Choose Commerce</a></div>
+      <div class="plan rv" style="--d:3"><h3>Platform &amp; AI</h3><p class="for">For portals, SaaS products and AI tools.</p><div class="from">Starting at</div><div class="price" data-inr="₹2,49,999" data-usd="$7,999">₹2,49,999</div>
+        <ul><li><svg><use href="#i-check"/></svg>User logins, profiles, dashboards</li><li><svg><use href="#i-check"/></svg>Subscriptions &amp; payments</li><li><svg><use href="#i-check"/></svg>AI agents, chat &amp; automation</li><li><svg><use href="#i-check"/></svg>Cloud hosting setup</li><li><svg><use href="#i-check"/></svg>Billed by milestone</li></ul>
+        <div class="time">Scoped after a discovery call</div><a class="btn btn-line" href="#contact" data-plan="Platform & AI">Talk to us</a></div>
+    </div>
+    <div class="care">
+      <div class="c rv"><h3>Care</h3><div class="price" data-inr="₹5,000" data-usd="$79">₹5,000</div><small style="color:var(--mute);font-size:13px">per month</small><ul><li>Hosting management</li><li>Daily backups &amp; updates</li><li>Uptime monitoring</li><li>2 small edits a month</li></ul></div>
+      <div class="c rv" style="--d:1"><h3>Growth</h3><div class="price" data-inr="₹10,000" data-usd="$199">₹10,000</div><small style="color:var(--mute);font-size:13px">per month</small><ul><li>Everything in Care</li><li>6 edits a month</li><li>Monthly SEO &amp; Google posts</li><li>Monthly performance report</li></ul></div>
+      <div class="c dk rv" style="--d:2"><h3>Already have a website?</h3><p style="color:#2D3778;margin-top:8px;font-size:15px">Ask for a free website audit. We'll send a short report on what's costing you enquiries: speed, mobile layout, Google visibility and calls to action.</p><a class="btn btn-blue" style="margin-top:18px" href="https://wa.me/917007064653?text=Hi%20Kodehelix%2C%20I%27d%20like%20a%20free%20audit%20of%20my%20website%3A%20" target="_blank" rel="noopener">Get a free audit <svg><use href="#i-arrow"/></svg></a></div>
+    </div>
+    <p class="note">Prices exclude GST (18%, India) and third-party costs such as domain, hosting, paid plugins and payment-gateway fees. 50% to start, 50% before launch.</p>
+  </div>
+</section>
+
+<section class="sec" id="faq" style="padding-top:0">
+  <div class="wrap faq">
+    <div><span class="eyebrow">FAQ</span><h2 class="rv" style="font-size:clamp(34px,5vw,58px);margin-top:14px">Questions people ask us.</h2></div>
+    <div>
+      <details><summary>How long does a website take?</summary><p>A Launch site is ready in 7–10 days, a Business site in 3–4 weeks and a store or booking site in 4–6 weeks. Web apps and platforms are planned in milestones after a discovery call.</p></details>
+      <details><summary>Do I see the design before paying for everything?</summary><p>Yes. We design your homepage first. You approve the look before we build the rest, so there are no surprises.</p></details>
+      <details><summary>Can I edit the website myself later?</summary><p>Yes. Business and Commerce sites come with an admin panel, and every project includes a short training session. If you'd rather not, our Care plan covers edits for you.</p></details>
+      <details><summary>Do you handle domain, hosting and email?</summary><p>We set them up in your name, so you always own them. Domain and hosting are billed at cost by the provider; we don't mark them up.</p></details>
+      <details><summary>Will my website show up on Google?</summary><p>Every site is built with on-page SEO basics, fast loading and Google Analytics. Business sites also include a Google Business Profile setup, which helps most for local searches.</p></details>
+      <details><summary>Do you work with clients outside India?</summary><p>Yes. We've built for a client in Singapore and work with businesses worldwide. International pricing is in US dollars.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow" style="color:var(--blue2)">Contact</span>
+      <h2 class="rv" style="margin-top:14px">Let's build <em>yours.</em></h2>
+      <p class="lede rv">Tell us about your business on a free 30-minute call. You'll get a fixed quote within 24 hours and a homepage design before you commit to the full build.</p>
+      <div class="reach">
+        <a href="https://wa.me/917007064653?text=Hi%20Kodehelix%2C%20I%27d%20like%20a%20website%20for%20my%20business." target="_blank" rel="noopener"><span class="ic" style="color:#25D366"><svg><use href="#i-wa"/></svg></span><span><small>WhatsApp</small><b>+91 70070 64653</b></span></a>
+        <a href="tel:+917007064653"><span class="ic" style="color:var(--blue2)"><svg><use href="#i-phone"/></svg></span><span><small>Call</small><b>+91 70070 64653</b></span></a>
+        <a href="mailto:hello@kodehelix.com"><span class="ic" style="color:var(--cyan)"><svg><use href="#i-mail"/></svg></span><span><small>Email</small><b>hello@kodehelix.com</b></span></a>
+      </div>
+    </div>
+    <form id="enq" novalidate>
+      <h3>Get a free homepage design</h3>
+      <p class="s">Fill this in and it opens WhatsApp with your message ready to send.</p>
+      <div class="f2"><label>Your name<input name="name" required autocomplete="name"></label><label>Business name<input name="biz" required autocomplete="organization"></label></div>
+      <div class="f2"><label>City<input name="city" autocomplete="address-level2"></label>
+        <label>What do you need?<select name="plan"><option>Launch website</option><option>Business website</option><option>Online store / bookings</option><option>Platform or AI tool</option><option>Redesign my current site</option><option>Not sure yet</option></select></label></div>
+      <label>Current website (if any)<input name="site" inputmode="url" placeholder="www.example.com"></label>
+      <label>Anything else?<textarea name="msg" placeholder="What does your business do? What should the website achieve?"></textarea></label>
+      <button class="btn btn-wa" type="submit"><svg><use href="#i-wa"/></svg>Send on WhatsApp</button>
+      <p class="fine">We reply within a few hours, Monday to Saturday.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/brand/kodehelix-logo-horizontal-white.svg" alt="Kodehelix" width="148" height="30">
+    <nav aria-label="Footer"><a href="#services">Services</a><a href="#work">Work</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a></nav>
+    <span>© <span id="yr">2026</span> Kodehelix · Lucknow, India</span>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/917007064653?text=Hi%20Kodehelix%2C%20I%27d%20like%20a%20website%20for%20my%20business." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg><use href="#i-wa"/></svg></a>
+
+<script>
+document.documentElement.classList.add('js');
+const WORK=[
+ {n:"VerifyU",tag:"Safety-tech · App + website",f:["platform"],c:"#250C40",img:"verifyu",st:"Live",url:"https://verifyu.in/",u:"verifyu.in",
+  d:"In an emergency, a responder can scan a registered person's face to reach their emergency details and the people they trust. We designed the app experience and built the website that turns visitors into registrations.",chips:["App UX/UI","Website","Brand system","Motion"]},
+ {n:"Sea N Shore",tag:"Maritime · Platform",f:["platform","maritime"],c:"#062A30",img:"seanshore",st:"Live",url:"https://seanshore.in/",u:"seanshore.in",
+  d:"A professional network for seafarers and shore staff: jobs with a match score, a Maritime Passport, courses with certificates, events, a feed, messaging and verified company pages.",chips:["Product design","Web platform","Payments","AWS"]},
+ {n:"Marine Tanks",tag:"Media + AI · News platform",f:["platform","maritime"],c:"#0A1638",img:"marinetanks",st:"Live",url:"https://marinetanks.in/",u:"marinetanks.in",
+  d:"A maritime newsroom with a regulatory feed that refreshes every four hours, a magazine, podcasts and an AI that answers questions with citations to its own reporting.",chips:["News platform","AI Q&A","Automation","SEO"]},
+ {n:"Willmar Solutions",tag:"Consultancy · Singapore",f:["biz","maritime"],c:"#0B1E44",img:"willmar",st:"Client preview",url:"https://adityaps70.github.io/willmar-solutions-website/",u:"Preview",
+  d:"A 12-page corporate website, and the logo, for a Singapore marine consultancy: six service pages, team, projects and an enquiry form.",chips:["Logo","Multi-page site","Enquiry form"]},
+ {n:"Cloud Trails",tag:"Travel · Shillong",f:["biz"],c:"#1C1A12",img:"cloudtrails",st:"Live",url:"https://cloudtrails.in/",u:"cloudtrails.in",
+  d:"Scooty and Royal Enfield rentals, day tours and a six-day expedition in Meghalaya, with a clear rate card and WhatsApp-first booking.",chips:["Website","Booking flow","WhatsApp","Local SEO"]},
+ {n:"inFAMOUS Gaming Cafe",tag:"Entertainment · Lucknow",f:["biz"],c:"#0F140A",img:"infamous",st:"Live",url:"https://adityaps70.github.io/INFAMOUSGAMINGCAFE/",u:"Visit site",
+  d:"PC, PlayStation, VR, simulators and more under one roof. A bold, mobile-first site with a session picker, rates and one-tap WhatsApp, call and directions.",chips:["Website","Mobile-first","WhatsApp booking"]},
+ {n:"La Shimti",tag:"Hospitality · Shillong",f:["biz"],c:"#2A1C0E",img:"lashimti",st:"Built",url:"",u:"",
+  d:"A calm, editorial website for a boutique hotel: room cards with rates, a seasonal guide and a booking form that sends the guest's dates straight to WhatsApp.",chips:["Website","Brand-led design","WhatsApp booking"]},
+ {n:"Sea N Shore IT Solutions",tag:"IT services · Company site",f:["biz"],c:"#0A1230",img:"snsit",st:"Live",url:"https://adityaps70.github.io/snsit-website/",u:"Visit site",
+  d:"A company website that sells with proof: a work showcase built from real phone screenshots, services, process, FAQ and a WhatsApp enquiry form.",chips:["Website","Work showcase","Motion"]}
+];
+const grid=document.getElementById('grid');
+grid.innerHTML=WORK.map((w,i)=>`<article class="card rv" style="--d:${i%2}" data-f="${w.f.join(' ')}">
+ <div class="vis" style="--c:${w.c}"><div class="d"><img src="assets/work/${w.img}-d.jpg" alt="${w.n} website on desktop" loading="lazy"></div><div class="m"><img src="assets/work/${w.img}-m.jpg" alt="${w.n} website on mobile" loading="lazy"></div></div>
+ <div class="b"><div class="top"><span class="tag">${w.tag}</span><span class="st">${w.st}</span></div><h3>${w.n}</h3><p>${w.d}</p>
+ <div class="chips">${w.chips.map(c=>`<span>${c}</span>`).join('')}</div>
+ ${w.url?`<a class="lnk" href="${w.url}" target="_blank" rel="noopener">${w.u}<svg><use href="#i-arrow"/></svg></a>`:`<span class="lnk off">Hotel website · design &amp; build</span>`}</div></article>`).join('');
+document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.filters button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  const f=b.dataset.f; document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hide',f!=='all'&&!c.dataset.f.split(' ').includes(f)));
+}));
+// reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// nav
+const nav=document.getElementById('nav');const onS=()=>nav.classList.toggle('solid',scrollY>20);onS();addEventListener('scroll',onS,{passive:true});
+const bg=document.getElementById('burger'),mm=document.getElementById('mmenu');
+bg.addEventListener('click',()=>{const o=bg.getAttribute('aria-expanded')==='true';bg.setAttribute('aria-expanded',!o);mm.classList.toggle('open',!o);nav.classList.add('solid')});
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{bg.setAttribute('aria-expanded','false');mm.classList.remove('open')}));
+// hero slides
+const sl=[...document.querySelectorAll('#slides img')],url=document.getElementById('url');let si=0;
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(()=>{sl[si].classList.remove('on');si=(si+1)%sl.length;sl[si].classList.add('on');url.textContent=sl[si].dataset.u},3200);
+// currency
+document.querySelectorAll('.cur button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.cur button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  document.querySelectorAll('[data-inr]').forEach(p=>p.textContent=p.dataset[b.dataset.c]);
+}));
+// plan buttons preselect
+const map={"Launch":"Launch website","Business":"Business website","Commerce":"Online store / bookings","Platform & AI":"Platform or AI tool"};
+document.querySelectorAll('[data-plan]').forEach(a=>a.addEventListener('click',()=>{document.querySelector('[name=plan]').value=map[a.dataset.plan]}));
+// form -> whatsapp
+document.getElementById('enq').addEventListener('submit',e=>{
+  e.preventDefault();const f=e.target;
+  if(!f.name.value.trim()||!f.biz.value.trim()){(f.name.value.trim()?f.biz:f.name).focus();return}
+  const t=`Hi Kodehelix! I'm ${f.name.value.trim()} from ${f.biz.value.trim()}${f.city.value.trim()?' ('+f.city.value.trim()+')':''}.\nI need: ${f.plan.value}${f.site.value.trim()?'\nCurrent site: '+f.site.value.trim():''}${f.msg.value.trim()?'\n'+f.msg.value.trim():''}`;
+  window.open('https://wa.me/917007064653?text='+encodeURIComponent(t),'_blank','noopener');
+});
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
