@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Comet · submit button · Kodehelix UI</title>
+<link rel="stylesheet" href="comet.css">
+<style>
+  body{margin:0;min-height:100vh;display:grid;place-items:center;gap:28px;background:#0b0d12;color:#c9cdd8;font:16px/1.5 "Inter",system-ui,sans-serif;
+    background-image:radial-gradient(700px 500px at 80% -10%,rgba(59,91,255,.35),transparent 60%)}
+  .wrap{display:grid;justify-items:center;gap:22px;padding:24px;text-align:center}
+  small{opacity:.7}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <button class="comet" data-comet data-label="Submit" data-done="Sent"></button>
+    <small>Click the button. The comet laps while it sends, then bursts into a check.</small>
+  </div>
+  <script src="comet.js"></script>
+  <script>
+    // Replace send() with your real request; the comet keeps looping until it resolves.
+    Comet.mount(document.querySelector('[data-comet]'), {
+      send: () => new Promise(r => setTimeout(r, 1800))
+    });
+  </script>
+</body>
+</html>
