@@ -1,0 +1,72 @@
+/* Stack — toast notifications that stack like a deck and fan out on hover.
+   Kodehelix UI · kodehelix.in · Licence: see LICENSE.txt */
+:root {
+  --stack-width: 372px;        /* toast width on desktop */
+  --stack-offset: 24px;        /* distance from the bottom-right corner */
+  --stack-radius: 16px;
+  --stack-surface: #171b28;    /* toast background (top) */
+  --stack-surface-2: #131722;  /* toast background (bottom) */
+  --stack-line: #262b3b;
+  --stack-text: #edeff5;
+  --stack-muted: #8f95a6;
+  --stack-ring: #8fa3ff;       /* focus ring */
+  --stack-success: #19c37d;
+  --stack-info: #8fa3ff;
+  --stack-warning: #ffb020;
+  --stack-error: #ff5a6e;
+  --stack-font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.stack {
+  position: fixed; right: var(--stack-offset); bottom: var(--stack-offset); z-index: 1100;
+  width: min(var(--stack-width), calc(100vw - 2 * var(--stack-offset))); height: 0;
+  font: 14px/1.45 var(--stack-font); outline: none; -webkit-tap-highlight-color: transparent;
+}
+.stack__list { position: relative; height: 100%; margin: 0; padding: 0; list-style: none; }
+.stack__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+
+.stack__toast {
+  --t: var(--stack-info);
+  position: absolute; left: 0; right: 0; bottom: 0; box-sizing: border-box;
+  border-radius: var(--stack-radius); transform-origin: 50% 100%; will-change: transform, opacity;
+  background: linear-gradient(180deg, var(--stack-surface), var(--stack-surface-2));
+  box-shadow: inset 0 0 0 1px var(--stack-line), inset 0 1px 0 rgba(255, 255, 255, .06),
+    0 1px 2px rgba(0, 0, 0, .4), 0 20px 44px -18px rgba(0, 0, 0, .85);
+  color: var(--stack-muted); touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab; opacity: 0;
+}
+.stack__toast.is-dragging { cursor: grabbing; }
+.stack__toast--success { --t: var(--stack-success); }
+.stack__toast--warning { --t: var(--stack-warning); }
+.stack__toast--error { --t: var(--stack-error); }
+.stack__toast::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(180px 110px at 0 0, color-mix(in srgb, var(--t) 15%, transparent), transparent 72%);
+}
+.stack__inner { position: relative; display: grid; grid-template-columns: 36px 1fr 32px; gap: 12px; align-items: start; padding: 14px 12px 14px 14px; }
+.stack__shade { position: absolute; inset: 0; border-radius: inherit; background: #07090e; opacity: 0; pointer-events: none; }
+
+.stack__icon {
+  display: grid; place-items: center; width: 36px; height: 36px; border-radius: 11px; color: var(--t);
+  background: color-mix(in srgb, var(--t) 13%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--t) 28%, transparent), 0 6px 18px -8px color-mix(in srgb, var(--t) 70%, transparent);
+}
+.stack__icon svg, .stack__close svg { fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.stack__icon svg { width: 21px; height: 21px; }
+.stack__copy { min-width: 0; padding-top: 1px; }
+.stack__title { margin: 0; color: var(--stack-text); font-size: 14.5px; font-weight: 600; letter-spacing: -.005em; }
+.stack__body { margin: 2px 0 0; font-size: 13.5px; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+
+.stack__close {
+  position: relative; display: grid; place-items: center; width: 32px; height: 32px; margin-top: 2px; padding: 0;
+  border: 0; border-radius: 50%; background: transparent; color: var(--stack-muted); cursor: pointer;
+}
+.stack__close:hover { color: var(--stack-text); background: rgba(255, 255, 255, .05); }
+.stack__close:focus-visible { outline: 2px solid var(--stack-ring); outline-offset: 2px; }
+.stack__close > svg:last-child { width: 16px; height: 16px; }
+.stack__ring { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+.stack__ring circle { stroke: rgba(255, 255, 255, .07); stroke-width: 1.5; }
+.stack__ring .stack__time { stroke: var(--t); stroke-dasharray: 1; opacity: .85; }
+
+@media (max-width: 520px) {
+  .stack { left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); width: auto; }
+}
