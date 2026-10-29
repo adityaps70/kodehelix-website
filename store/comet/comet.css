@@ -1,0 +1,61 @@
+/* Comet — a submit button where a comet circles the border while it sends.
+   Kodehelix UI · kodehelix.in · Licence: see LICENSE.txt */
+:root {
+  --comet-bg: #12151f;
+  --comet-ink: #f5f7ff;
+  --comet-line: #2a3042;
+  --comet-a: #8fa3ff;        /* trail start */
+  --comet-b: #22c3ee;        /* trail end */
+  --comet-done: #19c37d;     /* success fill */
+  --comet-radius: 22px;
+}
+
+.comet {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 260px;
+  height: 76px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--comet-radius);
+  background: var(--comet-bg);
+  color: var(--comet-ink);
+  font: 600 22px/1 "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: .01em;
+  cursor: pointer;
+  isolation: isolate;
+  box-shadow: 0 0 0 1.5px var(--comet-line) inset, 0 18px 40px -18px rgba(34, 195, 238, .45);
+  -webkit-tap-highlight-color: transparent;
+  overflow: visible;
+}
+.comet:focus-visible { outline: 3px solid var(--comet-a); outline-offset: 4px; }
+
+.comet__fill {
+  position: absolute; inset: 0; border-radius: inherit; z-index: -1;
+  background: var(--comet-done); transform: scale(0); opacity: 0;
+}
+.comet__label { display: inline-flex; gap: 0; pointer-events: none; }
+.comet__label span { display: inline-block; white-space: pre; will-change: transform, opacity; }
+.comet__done {
+  position: absolute; display: inline-flex; align-items: center; gap: 10px;
+  opacity: 0; pointer-events: none;
+}
+.comet__done svg { width: 28px; height: 28px; }
+.comet__done path { fill: none; stroke: currentColor; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+
+.comet__ring { position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); overflow: visible; pointer-events: none; }
+.comet__ring rect { fill: none; stroke-width: 3.5; stroke-linecap: round; filter: drop-shadow(0 0 6px var(--comet-b)); }
+.comet__orb {
+  position: absolute; left: 0; top: 0; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%;
+  background: #fff; opacity: 0; pointer-events: none;
+  box-shadow: 0 0 0 4px rgba(34, 195, 238, .35), 0 0 22px 6px var(--comet-b), 0 0 50px 14px rgba(143, 163, 255, .55);
+}
+.comet__spark {
+  position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; margin: -3px 0 0 -3px;
+  border-radius: 50%; background: var(--comet-b); opacity: 0; pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .comet__orb, .comet__spark { display: none; }
+}
