@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bloom · morphing modal · Kodehelix UI</title>
+<link rel="stylesheet" href="bloom.css">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{min-height:100vh;display:grid;place-items:center;padding:24px 16px;background:#0b0d12;color:#c9cdd8;
+    font:15px/1.5 "Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    background-image:radial-gradient(640px 460px at 50% 8%,rgba(59,91,255,.26),transparent 65%),radial-gradient(520px 380px at 85% 100%,rgba(34,195,238,.12),transparent 70%)}
+  .wrap{display:grid;justify-items:center;gap:22px;width:100%}
+  .team{width:min(540px,100%);padding:clamp(20px,4vw,28px);border-radius:22px;background:#151925 linear-gradient(180deg,rgba(255,255,255,.03),transparent 120px);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 0 1px #262b3b,0 30px 70px -30px rgba(0,0,0,.8)}
+  .team__head{display:flex;align-items:center;gap:14px}
+  .mark{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:13px;color:#fff;background:linear-gradient(140deg,#3b5bff,#22c3ee);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+  .mark svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  h1{margin:0;color:#edeff5;font-size:18px;font-weight:650;letter-spacing:-.01em;line-height:1.3}
+  .team__head p{margin:2px 0 0;color:#8f95a6;font-size:13.5px;font-variant-numeric:tabular-nums}
+  .seats{height:6px;margin:20px 0 6px;border-radius:6px;background:#1f2433;overflow:hidden}
+  .seats span{display:block;width:60%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#3b5bff,#22c3ee)}
+  .members{list-style:none;margin:14px 0 0;padding:0}
+  .members li{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid #20253360}
+  .members li+li{border-top:1px solid #222736}
+  .av{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;color:#fff;font-size:12.5px;font-weight:650;letter-spacing:.02em;background:var(--g)}
+  .who{min-width:0;flex:1}
+  .who b{display:block;color:#edeff5;font-weight:600;font-size:14.5px}
+  .who small{display:block;color:#8f95a6;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .role{flex:none;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:600;color:#c9cdd8;background:#1f2433;box-shadow:inset 0 0 0 1px #2c3244}
+  .role--owner{color:#b9c6ff;background:rgba(59,91,255,.14);box-shadow:inset 0 0 0 1px rgba(143,163,255,.3)}
+  .team__foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;padding-top:18px;border-top:1px solid #222736}
+  .team__foot p{margin:0;color:#8f95a6;font-size:13.5px}
+  .cta{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px 0 14px;border:0;border-radius:12px;color:#fff;cursor:pointer;
+    font:600 14.5px/1 "Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;white-space:nowrap;
+    background:linear-gradient(120deg,#3b5bff,#22c3ee);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 12px 28px -12px rgba(59,91,255,.95)}
+  .cta svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  .cta:hover{filter:brightness(1.08)}
+  .cta:focus-visible{outline:2px solid #8fa3ff;outline-offset:3px}
+  .hint{margin:0;max-width:440px;text-align:center;color:#8f95a6;font-size:13.5px}
+  .capture .hint{display:none}
+  @media (max-width:420px){.team__foot p{font-size:12.5px}.cta{padding:0 14px 0 12px}}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="team" aria-labelledby="team-title">
+      <header class="team__head">
+        <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5 20 8v8l-8 4.5L4 16V8z"/><path d="M4 8l8 4.5L20 8M12 12.5V20.5"/></svg></span>
+        <div><h1 id="team-title">Lumen Studio</h1><p>Workspace members · 6 of 10 seats</p></div>
+      </header>
+      <div class="seats" role="img" aria-label="6 of 10 seats used"><span></span></div>
+      <ul class="members">
+        <li><span class="av" style="--g:linear-gradient(140deg,#3b5bff,#8fa3ff)" aria-hidden="true">AR</span><span class="who"><b>Ana Ruiz</b><small>ana@lumen.studio</small></span><span class="role role--owner">Owner</span></li>
+        <li><span class="av" style="--g:linear-gradient(140deg,#0e9f6e,#22c3ee)" aria-hidden="true">DM</span><span class="who"><b>Dev Malhotra</b><small>dev@lumen.studio</small></span><span class="role">Admin</span></li>
+        <li><span class="av" style="--g:linear-gradient(140deg,#c2410c,#ffb020)" aria-hidden="true">SO</span><span class="who"><b>Sam Okafor</b><small>sam@lumen.studio</small></span><span class="role">Editor</span></li>
+      </ul>
+      <footer class="team__foot">
+        <p>+3 more members</p>
+        <button type="button" class="cta" data-bloom="#invite"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="8" r="3.5"/><path d="M3.5 19.5c.8-3.4 3.4-5.5 6.5-5.5s5.7 2.1 6.5 5.5M18.5 8v6M15.5 11h6"/></svg>Invite teammates</button>
+      </footer>
+    </section>
+    <p class="hint">Click “Invite teammates”. Press Esc, click outside or use Cancel to fold it back into the button.</p>
+  </main>
+
+  <div class="bloom" id="invite" hidden>
+    <div class="bloom__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="8" r="3.5"/><path d="M3.5 19.5c.8-3.4 3.4-5.5 6.5-5.5s5.7 2.1 6.5 5.5"/><path d="M18.5 8v6M15.5 11h6"/></svg></div>
+    <h2 class="bloom__title">Invite teammates</h2>
+    <p class="bloom__text">We’ll email them a link to join Lumen Studio. Invites expire after 7 days.</p>
+    <form id="invite-form">
+      <label class="bloom__field">Email address<input type="email" name="email" placeholder="name@company.com" autocomplete="off" required></label>
+      <div class="bloom__actions">
+        <button type="button" class="bloom-btn" data-bloom-close>Cancel</button>
+        <button type="submit" class="bloom-btn bloom-btn--primary"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4 10.5 13.5M20 4l-6 16-3.5-6.5L4 10z"/></svg>Send invite</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="bloom.js"></script>
+  <script>
+    if (/[?&]capture=1/.test(location.search)) document.documentElement.classList.add('capture');
+    const trigger = document.querySelector('[data-bloom]');
+    const invite = Bloom.mount(trigger);          // already auto-mounted; returns the same controller
+    const form = document.getElementById('invite-form');
+    form.addEventListener('submit', e => { e.preventDefault(); invite.close(); });
+    trigger.addEventListener('bloom:close', () => form.reset());
+
+    // Auto-play for the store preview: open, hold ~1.6 s, close, repeat every 4 s.
+    window.khDemo = function () {
+      const input = form.elements.email, timers = [];
+      let stopped = false;
+      const at = (ms, fn) => timers.push(setTimeout(() => { if (!stopped) fn(); }, ms));
+      (function cycle() {
+        timers.length = 0;
+        at(300, invite.open);
+        [...'maya@lumen.studio'].forEach((c, i) => at(980 + i * 36, () => { input.value += c; }));
+        at(2600, invite.close);
+        at(4000, cycle);
+      })();
+      const stop = e => {
+        if (!e.isTrusted) return;
+        stopped = true; timers.forEach(clearTimeout);
+        removeEventListener('pointerdown', stop, true); removeEventListener('keydown', stop, true);
+      };
+      addEventListener('pointerdown', stop, true); addEventListener('keydown', stop, true);
+    };
+  </script>
+</body>
+</html>
