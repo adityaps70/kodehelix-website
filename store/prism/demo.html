@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prism · 3D tilt card · Kodehelix UI</title>
+<link rel="stylesheet" href="prism.css">
+<style>
+  html,body{margin:0}
+  body{min-height:100vh;display:grid;place-items:center;background:#0b0d12;color:#c9cdd8;overflow-x:hidden;
+    font:16px/1.5 "Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    background-image:radial-gradient(60vmax 45vmax at 50% 38%,rgba(59,91,255,.22),transparent 62%),
+      radial-gradient(40vmax 30vmax at 72% 78%,rgba(34,195,238,.12),transparent 60%)}
+  .stage{display:grid;justify-items:center;gap:clamp(18px,3.5vh,30px);padding:clamp(24px,5vh,48px) 16px;width:100%;box-sizing:border-box}
+  .hint{margin:0;font-size:13.5px;color:#8f95a6;text-align:center;max-width:34ch}
+  .capture .hint{display:none}
+  .fit{width:min(340px,100%)}
+  .fit .prism{width:100%}
+  @media (max-height:640px){.stage{transform:scale(.86)}}
+</style>
+</head>
+<body>
+  <main class="stage">
+    <div class="fit">
+    <div class="prism" data-prism data-prism-max="14">
+      <article class="prism__card" aria-label="Creator profile: Nova Reyes">
+        <div class="prism__row" data-depth="22">
+          <span class="prism__pill">Open to work</span>
+          <span class="prism__chip">PRO</span>
+        </div>
+
+        <div class="prism__head">
+          <span class="prism__ring" data-depth="26" aria-hidden="true"></span>
+          <span class="prism__avatar" data-depth="56">
+            <svg viewBox="0 0 96 96" role="img" aria-label="Nova Reyes monogram">
+              <defs>
+                <linearGradient id="pm-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#25306a"/><stop offset="1" stop-color="#0d111c"/></linearGradient>
+                <radialGradient id="pm-a" cx=".3" cy=".28" r=".55"><stop offset="0" stop-color="#3b5bff" stop-opacity=".95"/><stop offset="1" stop-color="#3b5bff" stop-opacity="0"/></radialGradient>
+                <radialGradient id="pm-b" cx=".74" cy=".76" r=".5"><stop offset="0" stop-color="#22c3ee" stop-opacity=".8"/><stop offset="1" stop-color="#22c3ee" stop-opacity="0"/></radialGradient>
+                <linearGradient id="pm-n" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#bfe9ff"/></linearGradient>
+              </defs>
+              <rect width="96" height="96" fill="url(#pm-bg)"/>
+              <rect width="96" height="96" fill="url(#pm-a)"/>
+              <rect width="96" height="96" fill="url(#pm-b)"/>
+              <circle cx="48" cy="48" r="30" fill="none" stroke="#8fa3ff" stroke-opacity=".22" stroke-width="1.5"/>
+              <path d="M18 70 78 26" stroke="#ffffff" stroke-opacity=".08" stroke-width="10" stroke-linecap="round"/>
+              <path d="M34 64V33l28 31V33" fill="none" stroke="url(#pm-n)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="69" cy="27" r="4" fill="#22c3ee"/>
+            </svg>
+          </span>
+          <span class="prism__badge" data-depth="88" title="Verified">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 12.5l3.6 3.6L17.5 8.5"/></svg>
+            <span class="prism__sr">Verified creator</span>
+          </span>
+        </div>
+
+        <h2 class="prism__name" data-depth="44">Nova Reyes</h2>
+        <p class="prism__role" data-depth="32">@novareyes · Motion &amp; 3D designer</p>
+
+        <ul class="prism__stats" data-depth="36">
+          <li><b data-count="48200">48.2K</b><span>Followers</span></li>
+          <li><b data-count="316">316</b><span>Projects</span></li>
+          <li><b data-count="1240000">1.2M</b><span>Likes</span></li>
+        </ul>
+
+        <button class="prism__follow" type="button" data-prism-follow data-on="Following" data-depth="52">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path class="p-plus" d="M12 5.5v13M5.5 12h13"/>
+            <path class="p-check" d="M5.5 12.5l4.2 4.2L18.5 8"/>
+          </svg>
+          <span>Follow</span>
+        </button>
+      </article>
+    </div>
+    </div>
+    <p class="hint">Move your pointer over the card, or drag on a phone. Tab to Follow and it leans in.</p>
+  </main>
+
+  <script src="prism.js"></script>
+  <script>
+    if (/[?&]capture=1/.test(location.search)) document.documentElement.classList.add('capture');
+    // Demo only: present the card a little larger on roomy screens.
+    const fit = document.querySelector('.fit');
+    const size = () => { fit.style.zoom = Math.min(1.3, Math.max(1, Math.min(innerWidth * 0.6 / 340, (innerHeight - 150) / 450))).toFixed(3); };
+    size(); addEventListener('resize', size);
+
+    // Auto-play: a virtual pointer traces a smooth figure-eight. Real pointers take over.
+    window.khDemo = function () {
+      const root = document.querySelector('.prism'), card = Prism.mount(root);
+      let user = false, idleTimer = 0, t0 = performance.now();
+      root.addEventListener('pointerenter', () => { user = true; clearTimeout(idleTimer); });
+      root.addEventListener('pointerdown', () => { user = true; clearTimeout(idleTimer); });
+      root.addEventListener('pointerleave', () => { idleTimer = setTimeout(() => { user = false; t0 = performance.now(); }, 1600); });
+      const T = 4.4; // seconds per loop
+      (function loop(now) {
+        if (!user) {
+          const t = (now - t0) / 1000, th = (t / T) * Math.PI * 2, amp = Math.min(1, t / 0.6);
+          card.tilt(Math.sin(th) * 0.9 * amp, Math.sin(th * 2) * 0.62 * amp);
+        }
+        requestAnimationFrame(loop);
+      })(t0);
+    };
+  </script>
+</body>
+</html>
