@@ -60,6 +60,15 @@ a{color:inherit;text-decoration:none}
 .what p{color:var(--mute);font-size:15px}
 footer{border-top:1px solid var(--line);padding-block:28px;color:var(--mute);font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+.feature{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:22px;align-items:stretch;margin:34px 0 8px;background:var(--ink2);border:1px solid var(--line);border-radius:24px;overflow:hidden}
+.feature iframe{display:block;width:100%;height:100%;min-height:340px;border:0;background:#0b0d12}
+.feature .fi{padding:26px 26px 26px 4px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.feature .fi small{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.feature h2{font-family:var(--fd);font-size:34px;letter-spacing:-.03em;line-height:1.05}
+.feature p{color:#C9CDD8}
+.feature .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:6px}
+.feature .row b{font-family:var(--fd);font-size:28px;margin-right:6px}
+@media (max-width:820px){.feature{grid-template-columns:1fr}.feature .fi{padding:0 22px 22px}}
 :focus-visible{outline:2px solid var(--blue2);outline-offset:3px}
 @media (max-width:640px){.bar nav{display:none}}
 </style>
@@ -75,6 +84,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   <h1>Animated UI for <em>client sites.</em></h1>
   <p>Components and dashboard templates in plain HTML, CSS and JavaScript. No framework, no account. Open the folder, change what you like, ship it.</p>
   <div class="ticks"><span>Unlimited client projects</span><span>Free updates</span><span>Instant download</span><span>Zero dependencies</span></div>
+  <div id="featured"></div>
   <div class="filters" role="group" aria-label="Filter">
     <button class="chip" data-f="all" aria-pressed="true">Everything</button>
     <button class="chip" data-f="component" aria-pressed="false">Components</button>
@@ -99,18 +109,25 @@ function render(){
   const g=document.getElementById("grid");
   if(!list.length){g.innerHTML='<div class="empty">New items land here every day. Follow <a href="https://www.instagram.com/kodehelix.in/">@kodehelix.in</a> to catch them.</div>';return}
   g.innerHTML=list.map(p=>`<article class="card">
-    <a class="cover" href="${esc(p.demo)}" aria-label="Open the ${esc(p.name)} demo">
+    <a class="cover" href="${esc(p.demo)}" aria-label="See ${esc(p.name)}">
       ${p.video?`<video src="${esc(p.video)}" poster="${esc(p.cover)}" muted loop playsinline preload="none"></video>`:`<img src="${esc(p.cover)}" alt="" loading="lazy">`}
       <span class="badge ${p.isNew?'new':''}">${p.isNew?'New':esc(p.type)}</span></a>
     <div class="meta"><h3>${esc(p.name)}</h3><p>${esc(p.tagline)}</p>
       <div class="specs"><span>${esc(p.type)}</span><span>${esc(p.size)}</span><span>${esc(p.deps)}</span></div>
       <div class="buy"><span class="price"><b>$${esc(p.price)}</b>${p.was?`<s>$${esc(p.was)}</s>`:''}<small>≈ ₹${Math.round(p.price*85).toLocaleString('en-IN')}</small></span>
-        <span class="acts"><a class="btn ghost" href="${esc(p.demo)}">Demo</a><a class="btn" href="${esc(p.buy)}" target="_blank" rel="noopener">Buy</a></span></div>
+        <span class="acts"><a class="btn ghost" href="${esc(p.demo)}">Details</a><a class="btn" href="${esc(p.buy)}" ${p.gumroad?'data-gumroad-overlay-checkout="true"':'target="_blank" rel="noopener"'}>Buy</a></span></div>
     </div></article>`).join("");
   g.querySelectorAll(".card").forEach(c=>{const v=c.querySelector("video");if(!v)return;c.addEventListener("mouseenter",()=>v.play().catch(()=>{}));c.addEventListener("mouseleave",()=>v.pause());});
 }
+function featured(){
+  const p=items[0]; if(!p) return;
+  document.getElementById("featured").innerHTML=`<div class="feature"><iframe src="/store/${esc(p.slug)}/demo.html" title="${esc(p.name)} live demo" loading="lazy"></iframe>
+    <div class="fi"><small>New today · try it live</small><h2>${esc(p.name)}</h2><p>${esc(p.tagline)}</p>
+    <div class="row"><b>$${esc(p.price)}</b>${p.was?`<s style="color:var(--mute)">$${esc(p.was)}</s>`:''}</div>
+    <div class="row"><a class="btn" href="${esc(p.buy)}" ${p.gumroad?'data-gumroad-overlay-checkout="true"':'target="_blank" rel="noopener"'}>Buy now</a><a class="btn ghost" href="${esc(p.demo)}">See details</a></div></div></div>`;
+}
 document.querySelectorAll("[data-f]").forEach(b=>b.addEventListener("click",()=>{f=b.dataset.f;document.querySelectorAll("[data-f]").forEach(x=>x.setAttribute("aria-pressed",x===b));render();}));
-fetch("products.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{items=d.sort((a,b)=>String(b.added).localeCompare(String(a.added)));render();})
+fetch("products.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{items=d.sort((a,b)=>String(b.added).localeCompare(String(a.added)));featured();render();if(items.some(p=>p.gumroad)){const sc=document.createElement("script");sc.src="https://gumroad.com/js/gumroad.js";document.head.appendChild(sc);}})
   .catch(()=>{document.getElementById("grid").innerHTML='<div class="empty">Couldn\'t load the products. Refresh the page.</div>'});
 </script>
 </body>

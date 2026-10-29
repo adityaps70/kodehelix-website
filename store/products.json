@@ -2,7 +2,7 @@
   {
     "slug": "comet",
     "name": "Comet",
-    "tagline": "A submit button where a comet laps the border while it sends, then bursts into a check.",
+    "tagline": "A submit button where a glowing comet laps the border while your form sends, then bursts into a green check.",
     "type": "component",
     "size": "12 KB",
     "deps": "0 deps",
@@ -13,6 +13,7 @@
     "demo": "/store/comet/",
     "cover": "/store/comet/cover.jpg",
     "video": "/store/comet/preview.mp4",
-    "buy": "https://wa.me/917007064653?text=Hi%20Kodehelix%2C%20I%27d%20like%20to%20buy%20the%20Comet%20submit%20button%20(%243)"
+    "buy": "https://wa.me/917007064653?text=Hi%20Kodehelix%2C%20I'd%20like%20to%20buy%20Comet%20(%243)%20from%20your%20UI%20store",
+    "gumroad": false
   }
 ]
