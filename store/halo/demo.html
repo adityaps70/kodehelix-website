@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Halo · password field · Kodehelix UI</title>
+<link rel="stylesheet" href="halo.css">
+<style>
+  *{box-sizing:border-box}
+  html{background:#0b0d12}
+  body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0b0d12;color:#c9cdd8;
+    font:16px/1.5 "Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden;
+    background-image:radial-gradient(60vmax 45vmax at 18% -8%,rgba(59,91,255,.30),transparent 62%),radial-gradient(50vmax 40vmax at 100% 108%,rgba(34,195,238,.16),transparent 60%)}
+  .wrap{width:100%;display:grid;justify-items:center;gap:20px;padding:clamp(16px,4vw,32px) 16px}
+  .card{width:min(440px,100%);padding:clamp(22px,5vw,32px);border-radius:24px;
+    background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.01) 40%),#151925;
+    box-shadow:inset 0 0 0 1px #262b3b,inset 0 1px 0 rgba(255,255,255,.06),0 40px 80px -40px rgba(0,0,0,.9),0 0 0 1px rgba(0,0,0,.3)}
+  .badge{display:inline-flex;align-items:center;gap:8px;margin:0 0 14px;color:#8fa3ff;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+  .badge svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  h1{margin:0 0 6px;color:#edeff5;font-size:clamp(20px,4.6vw,23px);line-height:1.2;font-weight:650;letter-spacing:-.01em}
+  .sub{margin:0 0 22px;color:#8f95a6;font-size:14px}
+  .go{margin-top:24px;width:100%;height:50px;border:0;border-radius:14px;font:600 15px/1 "Inter",ui-sans-serif,system-ui,sans-serif;color:#edeff5;cursor:not-allowed;
+    background:#1f2433;box-shadow:inset 0 0 0 1px #262b3b;opacity:.7;transition:opacity .3s,box-shadow .3s,background-color .3s}
+  .go.on{cursor:pointer;opacity:1;background:linear-gradient(90deg,#3b5bff,#22c3ee);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 12px 28px -12px rgba(34,195,238,.7)}
+  .go:focus-visible{outline:2px solid #8fa3ff;outline-offset:3px}
+  .hint{margin:0;max-width:440px;text-align:center;color:#8f95a6;font-size:13.5px}
+  .capture .hint{display:none}
+  @media (max-height:600px){.wrap{padding:10px 16px;gap:12px}.card{padding-top:22px;padding-bottom:22px}.sub{margin-bottom:18px}.go{margin-top:20px}}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <form class="card" onsubmit="event.preventDefault()">
+      <p class="badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>Step 2 of 3</p>
+      <h1>Secure your account</h1>
+      <p class="sub">Pick a password you don't use anywhere else.</p>
+      <div data-halo data-label="Create password"><input name="password"></div>
+      <button class="go" type="submit" aria-disabled="true">Create account</button>
+    </form>
+    <p class="hint">Type a password and watch the halo fill. Tap the eye to peek at it.</p>
+  </main>
+  <script src="halo.js"></script>
+  <script>
+    if (/[?&]capture=1/.test(location.search)) document.documentElement.classList.add('capture');
+    const host = document.querySelector('[data-halo]'), go = document.querySelector('.go');
+    host.addEventListener('halo:change', e => {
+      const ok = e.detail.score === 4;
+      go.classList.toggle('on', ok); go.setAttribute('aria-disabled', !ok);
+    });
+
+    // Auto-play: types a password letter by letter so the halo fills, then clears and repeats.
+    // Stops for good the moment a real person touches or types.
+    window.khDemo = function () {
+      const h = Halo.mount(host), pw = 'k0deHelix#26', timers = [];
+      let off = false;
+      const at = (ms, fn) => timers.push(setTimeout(() => { if (!off) fn(); }, ms));
+      const stop = e => { if (e.isTrusted && !off) { off = true; timers.forEach(clearTimeout); } };
+      ['pointerdown', 'keydown'].forEach(t => addEventListener(t, stop, true));
+      (function cycle() {
+        let t = 250;
+        at(t, () => h.reveal(true)); t += 350;
+        for (let i = 1; i <= pw.length; i++) { at(t, () => h.set(pw.slice(0, i))); t += i === 4 ? 520 : 95; }
+        t += 1450; at(t, () => h.reveal(false)); t += 420;
+        for (let i = pw.length - 1; i >= 0; i--) { at(t, () => h.set(pw.slice(0, i))); t += 34; }
+        at(t + 480, cycle);
+      })();
+    };
+  </script>
+</body>
+</html>

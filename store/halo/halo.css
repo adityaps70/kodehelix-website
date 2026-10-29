@@ -1,0 +1,78 @@
+/* Halo — a password field whose lock sits inside a ring that fills as the password gets stronger.
+   Kodehelix UI · kodehelix.in · Licence: see LICENSE.txt */
+:root {
+  --halo-surface: #151925;
+  --halo-field: #1F2433;      /* input background */
+  --halo-line: #262B3B;
+  --halo-track: #2F3548;      /* empty ring segments */
+  --halo-text: #EDEFF5;
+  --halo-soft: #C9CDD8;
+  --halo-muted: #8F95A6;
+  --halo-focus: #8FA3FF;
+  --halo-danger: #FF5A6E;     /* "Too weak" */
+  --halo-warning: #FFB020;    /* "Okay" */
+  --halo-good: #8FA3FF;       /* "Good" */
+  --halo-success: #19C37D;    /* "Strong" */
+  --halo-radius: 16px;
+  --halo-font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.halo { --halo-c: var(--halo-muted); width: 100%; max-width: 420px; font-family: var(--halo-font); color: var(--halo-text); -webkit-tap-highlight-color: transparent; }
+.halo *, .halo *::before { box-sizing: border-box; }
+
+.halo__field {
+  position: relative; display: flex; align-items: center; gap: 12px;
+  height: 72px; padding: 0 9px 0 13px; border-radius: var(--halo-radius);
+  background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,0) 60%), var(--halo-field);
+  box-shadow: inset 0 0 0 1px var(--halo-line), inset 0 1px 0 rgba(255,255,255,.05), 0 14px 32px -18px rgba(0,0,0,.75);
+  transition: box-shadow .3s ease;
+}
+.halo__field:focus-within { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--halo-focus) 70%, transparent), 0 0 0 4px color-mix(in srgb, var(--halo-focus) 16%, transparent), 0 14px 32px -18px rgba(0,0,0,.75); }
+.halo.is-strong .halo__field { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--halo-success) 55%, transparent), 0 0 0 4px color-mix(in srgb, var(--halo-success) 13%, transparent), 0 16px 38px -16px color-mix(in srgb, var(--halo-success) 45%, transparent); }
+
+.halo__ring { flex: none; width: 50px; height: 50px; display: grid; place-items: center; border-radius: 50%; background: radial-gradient(closest-side, rgba(255,255,255,.05), transparent); }
+.halo__ring svg { width: 50px; height: 50px; overflow: visible; }
+:where(.halo svg *) { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+.halo__track { stroke: var(--halo-track); stroke-width: 3.5; }
+.halo__seg { stroke: var(--halo-c); stroke-width: 3.5; filter: drop-shadow(0 0 2.5px color-mix(in srgb, var(--halo-c) 70%, transparent)); }
+.halo__glow { stroke: var(--halo-success); opacity: 0; }
+.halo__lock { color: var(--halo-soft); stroke-width: 1.75; transition: color .35s ease; }
+.halo__body { fill: var(--halo-success); fill-opacity: 0; }
+.halo.is-strong .halo__lock { color: var(--halo-success); }
+
+.halo__box { position: relative; flex: 1; min-width: 0; height: 100%; }
+.halo__input {
+  display: block; width: 100%; height: 100%; margin: 0; padding: 22px 0 4px; border: 0; outline: 0; background: transparent;
+  color: var(--halo-text); caret-color: var(--halo-focus); font: 500 17px/1.2 var(--halo-font); letter-spacing: .02em;
+}
+.halo__input[type="password"] { letter-spacing: .16em; }
+.halo__input::-ms-reveal { display: none; }
+.halo__label {
+  position: absolute; left: 0; top: 50%; transform: translateY(-50%); transform-origin: 0 50%;
+  font: 500 16px/1 var(--halo-font); color: var(--halo-muted); white-space: nowrap; pointer-events: none; transition: color .25s ease;
+}
+.halo.is-focus .halo__label { color: var(--halo-focus); }
+
+.halo__eye {
+  flex: none; width: 42px; height: 42px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 12px;
+  background: transparent; color: var(--halo-muted); cursor: pointer; transition: color .2s, background-color .2s;
+}
+.halo__eye:hover { color: var(--halo-text); background: rgba(255,255,255,.05); }
+.halo__eye:focus-visible { outline: 2px solid var(--halo-focus); outline-offset: 1px; color: var(--halo-text); }
+.halo__eye svg { width: 22px; height: 22px; stroke-width: 1.75; }
+
+.halo__meter { display: flex; justify-content: space-between; align-items: center; margin: 16px 4px 14px; }
+.halo__k { color: var(--halo-muted); font-size: 11.5px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; }
+.halo__word { display: inline-block; color: var(--halo-c); font-size: 14px; font-weight: 650; }
+
+.halo__rules { list-style: none; margin: 0; padding: 0 4px; display: grid; grid-template-columns: 1fr 1fr; gap: 11px 14px; }
+.halo__rule { display: flex; align-items: center; gap: 9px; min-width: 0; color: var(--halo-muted); font-size: 13.5px; line-height: 1.25; transition: color .3s ease; }
+.halo__rule.is-met { color: var(--halo-soft); }
+.halo__rule svg { flex: none; width: 20px; height: 20px; overflow: visible; }
+.halo__dot { stroke: var(--halo-track); stroke-width: 1.75; }
+.halo__ok { stroke: var(--halo-success); fill: color-mix(in srgb, var(--halo-success) 16%, transparent); stroke-width: 1.75; opacity: 0; }
+.halo__check { stroke: var(--halo-success); stroke-width: 2; stroke-dasharray: 11; stroke-dashoffset: 11; }
+.halo__sr { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (max-width: 340px) { .halo__rules { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .halo__glow { display: none; } .halo__seg { filter: none; } }
