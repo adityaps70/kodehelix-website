@@ -1,0 +1,100 @@
+/* Glide — a tab bar whose highlight stretches like a rubber band.
+   Kodehelix UI · kodehelix.in · Licence: see LICENSE.txt */
+:root {
+  --glide-bg: #151925;          /* bar + panel surface */
+  --glide-bg-2: #1f2433;
+  --glide-line: #262b3b;
+  --glide-text: #edeff5;
+  --glide-muted: #8f95a6;
+  --glide-soft: #c9cdd8;
+  --glide-pill-a: #4c6bff;      /* pill gradient */
+  --glide-pill-b: #3553f5;
+  --glide-glow: #22c3ee;        /* leading-edge energy */
+  --glide-focus: #8fa3ff;
+  --glide-radius: 16px;
+  --glide-tab-h: 46px;
+}
+
+.glide {
+  container: glide / inline-size;
+  width: 100%;
+  font: 500 14px/1.4 "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--glide-text);
+}
+
+.glide__bar {
+  position: relative;
+  display: flex;
+  gap: 2px;
+  padding: 5px;
+  border-radius: calc(var(--glide-radius) + 5px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .035), rgba(255, 255, 255, 0)), var(--glide-bg);
+  box-shadow: inset 0 0 0 1px var(--glide-line), inset 0 1px 0 rgba(255, 255, 255, .05), 0 16px 40px -20px rgba(0, 0, 0, .8);
+  isolation: isolate;
+}
+
+.glide__pill {
+  position: absolute; z-index: 0; left: 0; top: 5px; bottom: 5px; width: 0;
+  border-radius: var(--glide-radius);
+  background: linear-gradient(180deg, var(--glide-pill-a), var(--glide-pill-b));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .28), inset 0 -1px 0 rgba(0, 0, 40, .25),
+    0 8px 22px -8px rgba(59, 91, 255, .9), 0 0 0 1px rgba(143, 163, 255, .25);
+  transform-origin: 50% 50%;
+  will-change: transform, width;
+  pointer-events: none;
+}
+/* leading-edge energy, brighter the more the band stretches */
+.glide__pill::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  background: radial-gradient(55% 140% at var(--glide-x, 100%) 50%, var(--glide-glow), transparent 72%);
+  opacity: calc(var(--glide-s, 0) * 1.8);
+  mix-blend-mode: screen;
+}
+.glide__pill::after {
+  content: ""; position: absolute; left: 22%; right: 22%; bottom: -1px; height: 2px; border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--glide-glow), transparent);
+  filter: blur(.5px); opacity: .9;
+}
+
+.glide__tab {
+  position: relative; z-index: 1;
+  flex: 1 1 0;
+  min-width: 0;
+  height: var(--glide-tab-h);
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 0 14px;
+  border: 0; border-radius: var(--glide-radius);
+  background: transparent;
+  color: var(--glide-muted);
+  font: inherit; font-weight: 600; letter-spacing: .005em;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color .2s ease;
+}
+.glide__tab:hover { color: var(--glide-soft); }
+.glide__tab[aria-selected="true"] { color: #fff; }
+.glide__tab:focus-visible { outline: 2px solid var(--glide-focus); outline-offset: 2px; }
+.glide__tab svg {
+  flex: none; width: 20px; height: 20px;
+  fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+}
+.glide__label { overflow: hidden; text-overflow: ellipsis; }
+
+.glide__panels {
+  display: grid;
+  margin-top: 12px;
+  border-radius: calc(var(--glide-radius) + 6px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .03), rgba(255, 255, 255, 0) 40%), var(--glide-bg);
+  box-shadow: inset 0 0 0 1px var(--glide-line), 0 30px 60px -30px rgba(0, 0, 0, .85);
+  overflow: hidden;
+}
+.glide__panel { grid-area: 1 / 1; min-width: 0; padding: clamp(14px, 3.5cqi, 22px); outline: none; }
+.glide__panel:focus-visible { box-shadow: inset 0 0 0 2px var(--glide-focus); border-radius: inherit; }
+
+/* narrow: icons only (names stay available to screen readers) */
+@container glide (max-width: 560px) {
+  .glide__tab { padding: 0; }
+  .glide__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .glide__tab svg { width: 22px; height: 22px; }
+}

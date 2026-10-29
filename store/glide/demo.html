@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Glide · tab bar · Kodehelix UI</title>
+<link rel="stylesheet" href="glide.css">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{min-height:100vh;display:grid;place-items:center;background:#0b0d12;color:#c9cdd8;overflow-x:hidden;
+    font:14px/1.5 "Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums;
+    background-image:radial-gradient(700px 420px at 50% 30%,rgba(59,91,255,.26),transparent 65%),radial-gradient(520px 360px at 80% 85%,rgba(34,195,238,.10),transparent 70%)}
+  .wrap{width:min(760px,100%);padding:clamp(16px,4vw,28px);display:grid;gap:16px}
+  .hint{margin:0;text-align:center;font-size:13.5px;color:#8f95a6}
+  .capture .hint{display:none}
+
+  /* demo content */
+  .hd{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+  .hd h2{margin:0;font-size:15px;font-weight:650;color:#edeff5;letter-spacing:-.005em}
+  .chip{font-size:12px;font-weight:600;color:#8fa3ff;padding:3px 10px;border-radius:999px;background:rgba(59,91,255,.14);box-shadow:inset 0 0 0 1px rgba(143,163,255,.2);white-space:nowrap}
+  .tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:12px}
+  .tile{padding:12px;border-radius:14px;background:#1f2433;box-shadow:inset 0 0 0 1px #262b3b,inset 0 1px 0 rgba(255,255,255,.04)}
+  .tile small{display:block;font-size:12px;color:#8f95a6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tile b{display:block;font-size:clamp(16px,3.4vw,20px);color:#edeff5;font-weight:650;letter-spacing:-.01em}
+  .up{font-size:12px;font-weight:600;color:#19c37d}.dn{font-size:12px;font-weight:600;color:#ff5a6e}
+  .spark{display:block;width:100%;height:84px;border-radius:14px;background:#1f2433;box-shadow:inset 0 0 0 1px #262b3b}
+  .bars{display:flex;align-items:flex-end;gap:clamp(6px,2vw,14px);height:150px;padding:14px 14px 0;border-radius:14px;background:#1f2433;box-shadow:inset 0 0 0 1px #262b3b}
+  .bars div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;height:100%;min-width:0}
+  .bars i{display:block;width:100%;max-width:34px;border-radius:7px 7px 3px 3px;background:linear-gradient(180deg,#22c3ee,#3b5bff);box-shadow:0 6px 16px -6px rgba(59,91,255,.8)}
+  .bars div:not(.pk) i{background:linear-gradient(180deg,#3a4466,#2a3149);box-shadow:none}
+  .bars span{font-size:11px;color:#8f95a6;padding-bottom:8px}
+  .kv{display:flex;gap:18px;margin-top:12px;font-size:12px;color:#8f95a6}.kv b{color:#edeff5;font-weight:600}
+  .rows{display:grid;gap:10px}
+  .row{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:11px 12px;border-radius:14px;background:#1f2433;box-shadow:inset 0 0 0 1px #262b3b}
+  .row .nm{color:#edeff5;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .row .sb{font-size:12px;color:#8f95a6}
+  .dot{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#8fa3ff;background:rgba(59,91,255,.14)}
+  .dot svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  .prog{height:5px;border-radius:3px;background:#262b3b;margin-top:6px;overflow:hidden}.prog i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,#3b5bff,#22c3ee)}
+  .pct{font-size:13px;font-weight:600;color:#c9cdd8}
+  .team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .team .row{grid-template-columns:auto 1fr}
+  .av{position:relative;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;color:#fff;background:linear-gradient(135deg,#3b5bff,#22c3ee)}
+  .av::after{content:"";position:absolute;right:-1px;bottom:-1px;width:10px;height:10px;border-radius:50%;background:#19c37d;box-shadow:0 0 0 2px #1f2433}
+  .av.off::after{background:#8f95a6}.av.aw::after{background:#ffb020}
+  .set .row{grid-template-columns:1fr auto}
+  .sw{appearance:none;-webkit-appearance:none;margin:0;width:42px;height:24px;border-radius:12px;background:#2a3042;position:relative;cursor:pointer;transition:background .2s;flex:none}
+  .sw::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#c9cdd8;transition:transform .2s cubic-bezier(.3,1.4,.5,1)}
+  .sw:checked{background:#3b5bff}.sw:checked::after{transform:translateX(18px);background:#fff}
+  .sw:focus-visible{outline:2px solid #8fa3ff;outline-offset:2px}
+  @media (max-width:430px){.team{grid-template-columns:1fr}.team .row:nth-child(n+4){display:none}.kv span:nth-child(3){display:none}}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="glide" data-glide data-glide-manual>
+      <div class="glide__bar" aria-label="Workspace">
+        <button class="glide__tab" aria-selected="true"><svg viewBox="0 0 24 24"><path d="M4 11l8-6.5 8 6.5"/><path d="M6 9.5v10h12v-10"/><path d="M10 19.5v-5h4v5"/></svg><span class="glide__label">Overview</span></button>
+        <button class="glide__tab"><svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M7 16v-4"/><path d="M12 16V7"/><path d="M17 16v-7"/></svg><span class="glide__label">Analytics</span></button>
+        <button class="glide__tab"><svg viewBox="0 0 24 24"><path d="M3.5 7.5a2 2 0 0 1 2-2h3.6l2 2h7.4a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/><path d="M3.5 10.5h17"/></svg><span class="glide__label">Projects</span></button>
+        <button class="glide__tab"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="16.5" cy="9.5" r="2.5"/><path d="M16 14.2a4.5 4.5 0 0 1 4.5 4.8"/></svg><span class="glide__label">Team</span></button>
+        <button class="glide__tab"><svg viewBox="0 0 24 24"><path d="M4 7h9"/><path d="M17 7h3"/><circle cx="15" cy="7" r="2"/><path d="M4 17h3"/><path d="M11 17h9"/><circle cx="9" cy="17" r="2"/></svg><span class="glide__label">Settings</span></button>
+      </div>
+      <div class="glide__panels">
+        <section class="glide__panel">
+          <div class="hd"><h2>This month</h2><span class="chip">Last 30 days</span></div>
+          <div class="tiles">
+            <div class="tile"><small>Revenue</small><b>$48.2k</b><span class="up">+12.4%</span></div>
+            <div class="tile"><small>Active users</small><b>2,841</b><span class="up">+8.1%</span></div>
+            <div class="tile"><small>Churn</small><b>1.9%</b><span class="dn">+0.3%</span></div>
+          </div>
+          <svg class="spark" viewBox="0 0 600 84" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b5bff" stop-opacity=".45"/><stop offset="1" stop-color="#3b5bff" stop-opacity="0"/></linearGradient>
+            <linearGradient id="sl" x1="0" x2="1"><stop offset="0" stop-color="#3b5bff"/><stop offset="1" stop-color="#22c3ee"/></linearGradient></defs>
+            <path d="M0 64 C40 60 70 50 110 54 S180 36 230 42 S310 58 350 40 S430 22 470 30 S560 14 600 12 V84 H0Z" fill="url(#sg)"/>
+            <path d="M0 64 C40 60 70 50 110 54 S180 36 230 42 S310 58 350 40 S430 22 470 30 S560 14 600 12" fill="none" stroke="url(#sl)" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+          </svg>
+        </section>
+        <section class="glide__panel">
+          <div class="hd"><h2>Visitors this week</h2><span class="chip">+18% vs last</span></div>
+          <div class="bars" aria-label="Visitors per day, peak on Thursday" role="img">
+            <div><i style="height:42%"></i><span>Mon</span></div><div><i style="height:58%"></i><span>Tue</span></div>
+            <div><i style="height:50%"></i><span>Wed</span></div><div class="pk"><i style="height:86%"></i><span>Thu</span></div>
+            <div><i style="height:66%"></i><span>Fri</span></div><div><i style="height:34%"></i><span>Sat</span></div>
+            <div><i style="height:28%"></i><span>Sun</span></div>
+          </div>
+          <div class="kv"><span>Visits <b>18,420</b></span><span>Avg. time <b>3m 12s</b></span><span>Bounce <b>31%</b></span></div>
+        </section>
+        <section class="glide__panel">
+          <div class="hd"><h2>Active projects</h2><span class="chip">3 in progress</span></div>
+          <div class="rows">
+            <div class="row"><span class="dot"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="14" rx="2"/><path d="M3.5 9h17"/></svg></span><div><div class="nm">Website revamp</div><div class="prog"><i style="width:72%"></i></div></div><span class="pct">72%</span></div>
+            <div class="row"><span class="dot"><svg viewBox="0 0 24 24"><rect x="7" y="3.5" width="10" height="17" rx="2"/><path d="M11 17.5h2"/></svg></span><div><div class="nm">Mobile app v2</div><div class="prog"><i style="width:45%"></i></div></div><span class="pct">45%</span></div>
+            <div class="row"><span class="dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5"/><path d="M12 8v4l2.5 2"/></svg></span><div><div class="nm">Brand guidelines</div><div class="prog"><i style="width:90%"></i></div></div><span class="pct">90%</span></div>
+          </div>
+        </section>
+        <section class="glide__panel">
+          <div class="hd"><h2>Team</h2><span class="chip">6 members</span></div>
+          <div class="team">
+            <div class="row"><span class="av">AR</span><div><div class="nm">Ana Ruiz</div><div class="sb">Product lead</div></div></div>
+            <div class="row"><span class="av aw" style="background:linear-gradient(135deg,#8fa3ff,#3b5bff)">KM</span><div><div class="nm">Kabir Mehta</div><div class="sb">Engineer</div></div></div>
+            <div class="row"><span class="av" style="background:linear-gradient(135deg,#22c3ee,#19c37d)">LT</span><div><div class="nm">Lena Torres</div><div class="sb">Designer</div></div></div>
+            <div class="row"><span class="av off" style="background:linear-gradient(135deg,#ffb020,#ff5a6e)">JO</span><div><div class="nm">James Okafor</div><div class="sb">Marketing</div></div></div>
+          </div>
+        </section>
+        <section class="glide__panel set">
+          <div class="hd"><h2>Preferences</h2><span class="chip">Saved</span></div>
+          <div class="rows">
+            <label class="row"><div><div class="nm">Weekly digest</div><div class="sb">A summary every Monday</div></div><input class="sw" type="checkbox" role="switch" checked></label>
+            <label class="row"><div><div class="nm">Two-factor sign-in</div><div class="sb">Ask for a code on new devices</div></div><input class="sw" type="checkbox" role="switch" checked></label>
+            <label class="row"><div><div class="nm">Public profile</div><div class="sb">Visible to people outside your team</div></div><input class="sw" type="checkbox" role="switch"></label>
+          </div>
+        </section>
+      </div>
+    </div>
+    <p class="hint">Pick a tab, or use the arrow keys. Jump far to see the band stretch.</p>
+  </main>
+  <script src="glide.js"></script>
+  <script>
+    if (/[?&]capture=1/.test(location.search)) document.documentElement.classList.add('capture');
+    var tabs = Glide.mount(document.querySelector('[data-glide]'));
+    // auto-play for previews; stops as soon as a real person interacts
+    window.khDemo = function () {
+      var seq = [2, 3, 1, 4, 0], n = 0, timer = 0;
+      var stop = function (e) { if (e.isTrusted) { clearTimeout(timer); timer = -1; } };
+      addEventListener('pointerdown', stop, true); addEventListener('keydown', stop, true);
+      (function loop(delay) { timer = setTimeout(function () { if (timer < 0) return; tabs.select(seq[n++ % seq.length]); loop(1600); }, delay); })(400);
+    };
+  </script>
+</body>
+</html>
