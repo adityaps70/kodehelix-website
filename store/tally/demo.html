@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tally · pricing table · Kodehelix UI</title>
+<link rel="stylesheet" href="tally.css">
+<style>
+  html,body{margin:0}
+  body{min-height:100vh;display:grid;place-items:center;background:#0b0d12;color:#c9cdd8;overflow-x:hidden;
+    font:16px/1.5 "Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    background-image:radial-gradient(70vmax 40vmax at 50% 0%,rgba(59,91,255,.24),transparent 62%),
+      radial-gradient(45vmax 30vmax at 50% 105%,rgba(34,195,238,.1),transparent 60%)}
+  .stage{display:grid;justify-items:center;gap:22px;padding:clamp(28px,5vh,52px) 16px clamp(20px,4vh,40px);width:100%;box-sizing:border-box}
+  .hint{margin:0;font-size:13.5px;color:#8f95a6;text-align:center}
+  .capture .hint{display:none}
+</style>
+</head>
+<body>
+  <main class="stage">
+    <section class="tally" data-tally aria-labelledby="tally-title">
+      <header class="tally__head">
+        <p class="tally__eyebrow">Pricing</p>
+        <h2 class="tally__title" id="tally-title">Plans that grow with your product</h2>
+        <p class="tally__sub">Start with a 14-day free trial. No card needed, cancel anytime.</p>
+        <div class="tally__billing">
+          <button class="tally__switch" type="button" role="switch" aria-checked="false" aria-label="Yearly billing" data-tally-toggle>
+            <span class="tally__thumb" aria-hidden="true"></span>
+            <span class="tally__opt" data-tally-opt="monthly">Monthly</span>
+            <span class="tally__opt" data-tally-opt="yearly">Yearly</span>
+          </button>
+          <span class="tally__save" data-tally-save>Save 20%</span>
+        </div>
+      </header>
+
+      <div class="tally__plans">
+        <article class="tally__plan">
+          <div class="tally__top">
+            <span class="tally__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.2 6.3 6.3 2.2-6.3 2.2L12 20.5l-2.2-6.3L3.5 12l6.3-2.2z"/></svg></span>
+            <h3 class="tally__name">Starter</h3>
+          </div>
+          <p class="tally__desc">For solo makers shipping their first product.</p>
+          <div class="tally__price" data-monthly="12" data-yearly="115"></div>
+          <p class="tally__note" data-monthly="Billed monthly" data-yearly="$9.58/mo, billed yearly"></p>
+          <button class="tally__cta" type="button">Start free trial</button>
+          <ul class="tally__list">
+            <li>3 projects</li>
+            <li>10 GB storage</li>
+            <li>Basic analytics</li>
+            <li>Email support</li>
+            <li>Community access</li>
+          </ul>
+        </article>
+
+        <article class="tally__plan tally__plan--featured">
+          <span class="tally__flag">Most popular</span>
+          <div class="tally__top">
+            <span class="tally__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3 5.5 13.5H12L11 21l7.5-10.5H12z"/></svg></span>
+            <h3 class="tally__name">Pro</h3>
+          </div>
+          <p class="tally__desc">For growing products that need room to scale.</p>
+          <div class="tally__price" data-monthly="29" data-yearly="278"></div>
+          <p class="tally__note" data-monthly="Billed monthly" data-yearly="$23.17/mo, billed yearly"></p>
+          <button class="tally__cta" type="button">Get Pro</button>
+          <ul class="tally__list">
+            <li><span><strong>Unlimited</strong> projects</span></li>
+            <li>100 GB storage</li>
+            <li>Advanced analytics</li>
+            <li>Custom domains</li>
+            <li>Priority support</li>
+          </ul>
+        </article>
+
+        <article class="tally__plan">
+          <div class="tally__top">
+            <span class="tally__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2"/><circle cx="16.8" cy="9.8" r="2.5"/><path d="M3.5 19c.8-3.1 2.9-4.7 5.5-4.7s4.7 1.6 5.5 4.7M15.2 14.4c2.5-.3 4.5 1.1 5.3 4"/></svg></span>
+            <h3 class="tally__name">Team</h3>
+          </div>
+          <p class="tally__desc">For teams who build and ship together.</p>
+          <div class="tally__price" data-monthly="79" data-yearly="758"></div>
+          <p class="tally__note" data-monthly="Billed monthly" data-yearly="$63.17/mo, billed yearly"></p>
+          <button class="tally__cta" type="button">Start with Team</button>
+          <ul class="tally__list">
+            <li>Everything in Pro</li>
+            <li>10 seats included</li>
+            <li>SSO and audit log</li>
+            <li>Shared workspaces</li>
+            <li>Dedicated manager</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+    <p class="hint">Flip Monthly / Yearly and watch every price roll.</p>
+  </main>
+
+  <script src="tally.js"></script>
+  <script>
+    const capture = /[?&]capture=1/.test(location.search);
+    if (capture) document.documentElement.classList.add('capture');
+
+    // Demo only: scale the whole stage down when the window is too small to show it all.
+    const stage = document.querySelector('.stage');
+    function fit() {
+      stage.style.zoom = 1; stage.style.width = '';
+      const vw = innerWidth, vh = innerHeight;
+      if (vw < 560) return;               // phones: plans stack and the page scrolls
+      const w = Math.max(vw, 760);
+      stage.style.width = w + 'px';
+      const z = Math.min(1, vw / w, vh / stage.offsetHeight);
+      stage.style.zoom = z.toFixed(3);
+      if (z === 1) stage.style.width = '';
+    }
+    Tally.mount(document.querySelector('.tally')); // mount first so fit() measures the real height
+    fit(); addEventListener('resize', fit);
+
+    // Auto-play: flip Monthly / Yearly every 3 s. Real clicks keep working.
+    window.khDemo = function () {
+      const t = Tally.mount(document.querySelector('.tally'));
+      let paused = false;
+      document.querySelector('.tally__billing').addEventListener('pointerdown', () => { paused = true; });
+      setTimeout(function flip() {
+        if (!paused) t.set(!t.yearly);
+        setTimeout(flip, 3000);
+      }, 1000);
+    };
+  </script>
+</body>
+</html>
