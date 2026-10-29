@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "comet",
+    "name": "Comet",
+    "tagline": "A submit button where a comet laps the border while it sends, then bursts into a check.",
+    "type": "component",
+    "size": "12 KB",
+    "deps": "0 deps",
+    "price": 3,
+    "was": 5,
+    "added": "2026-10-29",
+    "isNew": true,
+    "demo": "/store/comet/",
+    "cover": "/store/comet/cover.jpg",
+    "video": "/store/comet/preview.mp4",
+    "buy": "https://wa.me/917007064653?text=Hi%20Kodehelix%2C%20I%27d%20like%20to%20buy%20the%20Comet%20submit%20button%20(%243)"
+  }
+]

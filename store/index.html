@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Kodehelix UI · Animated components &amp; dashboards in HTML, CSS, JS</title>
+<meta name="description" content="Animated UI components and dashboard templates in plain HTML, CSS and JavaScript. No framework, no account. Buy once, use in unlimited client projects.">
+<meta name="theme-color" content="#0B0D12">
+<link rel="canonical" href="https://kodehelix.in/store/">
+<meta property="og:title" content="Kodehelix UI · Animated components & dashboards">
+<meta property="og:description" content="Plain HTML, CSS & JS. Open the folder, change what you like, ship it.">
+<meta property="og:image" content="https://kodehelix.in/assets/brand/og.png">
+<link rel="icon" type="image/svg+xml" href="/assets/brand/kodehelix-icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Store: dark shelf of product cards (live cover + specs + price), filters on top. */
+:root{--ink:#0B0D12;--ink2:#151925;--ink3:#1F2433;--line:#262B3B;--mute:#8F95A6;--fg:#EDEFF5;--blue:#3B5BFF;--blue2:#8FA3FF;--cyan:#22C3EE;--good:#19c37d;
+  --f:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--fd:"Inter Tight","Inter",system-ui,sans-serif;--g:clamp(16px,4vw,40px)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--f);background:var(--ink);color:var(--fg);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(var(--g),env(safe-area-inset-left,0px));padding-right:max(var(--g),env(safe-area-inset-right,0px))}
+.bar{position:sticky;top:0;z-index:20;background:rgba(11,13,18,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.bar img{height:28px}
+.bar nav{display:flex;gap:22px;font-size:14px;color:var(--mute)}
+.bar nav a:hover,.bar nav a.on{color:var(--fg)}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:11px 20px;font-weight:600;font-size:14px;background:var(--blue);color:#fff;border:0;cursor:pointer}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--fg)}
+.hero{padding-block:72px 40px;background:radial-gradient(800px 500px at 85% -10%,rgba(59,91,255,.4),transparent 60%)}
+.hero h1{font-family:var(--fd);font-weight:800;letter-spacing:-.04em;line-height:1;font-size:clamp(40px,7vw,76px);max-width:14ch;text-wrap:balance}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--blue2),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{margin-top:18px;color:#C9CDD8;font-size:18px;max-width:56ch}
+.ticks{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;font-size:14px;color:var(--mute)}
+.ticks span::before{content:"✓ ";color:var(--good);font-weight:700}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 22px}
+.chip{border:1px solid var(--line);background:var(--ink2);color:var(--fg);border-radius:999px;padding:8px 16px;font-size:14px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--ink);border-color:var(--fg)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;padding-bottom:80px}
+.card{background:var(--ink2);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--blue2);transform:translateY(-2px)}
+.cover{position:relative;aspect-ratio:4/5;background:#07080c;overflow:hidden}
+.cover img,.cover video{width:100%;height:100%;object-fit:cover;display:block}
+.badge{position:absolute;top:12px;left:12px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(11,13,18,.8);border:1px solid var(--line);border-radius:999px;padding:5px 10px}
+.badge.new{background:var(--blue);border-color:var(--blue)}
+.meta{padding:16px 18px 18px;display:grid;gap:10px}
+.meta h3{font-family:var(--fd);font-size:22px;letter-spacing:-.02em}
+.meta p{color:#C9CDD8;font-size:14.5px}
+.specs{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
+.buy{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:4px}
+.price b{font-size:22px;font-family:var(--fd)}
+.price s{color:var(--mute);margin-left:6px;font-size:14px}
+.price small{display:block;color:var(--mute);font-size:12px}
+.acts{display:flex;gap:8px}
+.empty{padding:40px;border:1px dashed var(--line);border-radius:20px;color:var(--mute);text-align:center}
+.what{border-top:1px solid var(--line);padding-block:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px}
+.what h4{font-family:var(--fd);font-size:20px;margin-bottom:6px}
+.what p{color:var(--mute);font-size:15px}
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--mute);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+:focus-visible{outline:2px solid var(--blue2);outline-offset:3px}
+@media (max-width:640px){.bar nav{display:none}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a href="/" aria-label="Kodehelix home"><img src="/assets/brand/kodehelix-logo-horizontal-white.svg" alt="Kodehelix"></a>
+  <nav><a href="/">Websites</a><a href="/store/" class="on">UI Store</a><a href="/#contact">Contact</a></nav>
+  <a class="btn" href="https://wa.me/917007064653?text=Hi%20Kodehelix%2C%20I%27m%20interested%20in%20your%20UI%20store" target="_blank" rel="noopener">WhatsApp</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <h1>Animated UI for <em>client sites.</em></h1>
+  <p>Components and dashboard templates in plain HTML, CSS and JavaScript. No framework, no account. Open the folder, change what you like, ship it.</p>
+  <div class="ticks"><span>Unlimited client projects</span><span>Free updates</span><span>Instant download</span><span>Zero dependencies</span></div>
+  <div class="filters" role="group" aria-label="Filter">
+    <button class="chip" data-f="all" aria-pressed="true">Everything</button>
+    <button class="chip" data-f="component" aria-pressed="false">Components</button>
+    <button class="chip" data-f="dashboard" aria-pressed="false">Dashboards</button>
+  </div>
+  <div class="grid" id="grid"><div class="empty">Loading the shelf…</div></div>
+</div></section>
+
+<section class="wrap what">
+  <div><h4>What you get</h4><p>A small folder: HTML, CSS, JS, a README and a demo page. Read the source, change the colours with CSS variables, drop it into any site.</p></div>
+  <div><h4>Licence</h4><p>Use it in unlimited personal and client projects. Just don't resell the files as they are.</p></div>
+  <div><h4>Need it built into your site?</h4><p>We do that too. WhatsApp +91 70070 64653 and we'll plug it into your website.</p></div>
+</section>
+
+<footer><div class="wrap"><span>© Kodehelix · Lucknow, India</span><span><a href="/">kodehelix.in</a> · <a href="https://www.instagram.com/kodehelix.in/" target="_blank" rel="noopener">Instagram</a></span></div></footer>
+
+<script>
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let items=[], f="all";
+function render(){
+  const list=items.filter(p=>f==="all"||p.type===f);
+  const g=document.getElementById("grid");
+  if(!list.length){g.innerHTML='<div class="empty">New items land here every day. Follow <a href="https://www.instagram.com/kodehelix.in/">@kodehelix.in</a> to catch them.</div>';return}
+  g.innerHTML=list.map(p=>`<article class="card">
+    <a class="cover" href="${esc(p.demo)}" aria-label="Open the ${esc(p.name)} demo">
+      ${p.video?`<video src="${esc(p.video)}" poster="${esc(p.cover)}" muted loop playsinline preload="none"></video>`:`<img src="${esc(p.cover)}" alt="" loading="lazy">`}
+      <span class="badge ${p.isNew?'new':''}">${p.isNew?'New':esc(p.type)}</span></a>
+    <div class="meta"><h3>${esc(p.name)}</h3><p>${esc(p.tagline)}</p>
+      <div class="specs"><span>${esc(p.type)}</span><span>${esc(p.size)}</span><span>${esc(p.deps)}</span></div>
+      <div class="buy"><span class="price"><b>$${esc(p.price)}</b>${p.was?`<s>$${esc(p.was)}</s>`:''}<small>≈ ₹${Math.round(p.price*85).toLocaleString('en-IN')}</small></span>
+        <span class="acts"><a class="btn ghost" href="${esc(p.demo)}">Demo</a><a class="btn" href="${esc(p.buy)}" target="_blank" rel="noopener">Buy</a></span></div>
+    </div></article>`).join("");
+  g.querySelectorAll(".card").forEach(c=>{const v=c.querySelector("video");if(!v)return;c.addEventListener("mouseenter",()=>v.play().catch(()=>{}));c.addEventListener("mouseleave",()=>v.pause());});
+}
+document.querySelectorAll("[data-f]").forEach(b=>b.addEventListener("click",()=>{f=b.dataset.f;document.querySelectorAll("[data-f]").forEach(x=>x.setAttribute("aria-pressed",x===b));render();}));
+fetch("products.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{items=d.sort((a,b)=>String(b.added).localeCompare(String(a.added)));render();})
+  .catch(()=>{document.getElementById("grid").innerHTML='<div class="empty">Couldn\'t load the products. Refresh the page.</div>'});
+</script>
+</body>
+</html>
