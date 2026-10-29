@@ -121,7 +121,7 @@ function render(){
 }
 function featured(){
   const p=items[0]; if(!p) return;
-  document.getElementById("featured").innerHTML=`<div class="feature"><iframe src="/store/${esc(p.slug)}/demo.html" title="${esc(p.name)} live demo" loading="lazy"></iframe>
+  document.getElementById("featured").innerHTML=`<div class="feature"><iframe style="min-height:${Math.min(620,Math.max(340,+p.demoHeight||420))}px" src="/store/${esc(p.slug)}/demo.html" title="${esc(p.name)} live demo" loading="lazy"></iframe>
     <div class="fi"><small>New today · try it live</small><h2>${esc(p.name)}</h2><p>${esc(p.tagline)}</p>
     <div class="row"><b>$${esc(p.price)}</b>${p.was?`<s style="color:var(--mute)">$${esc(p.was)}</s>`:''}</div>
     <div class="row"><a class="btn" href="${esc(p.buy)}" ${p.gumroad?'data-gumroad-overlay-checkout="true"':'target="_blank" rel="noopener"'}>Buy now</a><a class="btn ghost" href="${esc(p.demo)}">See details</a></div></div></div>`;
