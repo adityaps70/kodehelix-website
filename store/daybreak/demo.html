@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daybreak · theme toggle · Kodehelix UI</title>
+<link rel="stylesheet" href="daybreak.css">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{min-height:100vh;display:grid;place-items:center;background:#0b0d12;color:#c9cdd8;
+    font:16px/1.5 "Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    background-image:radial-gradient(640px 460px at 50% 38%,rgba(59,91,255,.30),transparent 65%),radial-gradient(520px 380px at 72% 70%,rgba(34,195,238,.12),transparent 70%);
+    overflow-x:hidden}
+  .wrap{display:grid;justify-items:center;gap:clamp(14px,3vh,22px);padding:16px;width:100%}
+  /* the demo card follows the switch: data-theme flips instantly, --daybreak (0 → 1) cross-fades */
+  .card{--p:var(--daybreak,0);
+    --bg:color-mix(in srgb,#151925 calc(var(--p)*100%),#ffffff);
+    --q:clamp(0,(var(--p) - .4)*5,1);
+    --tx:color-mix(in srgb,#edeff5 calc(var(--q)*100%),#141824);
+    --mu:color-mix(in srgb,#8f95a6 calc(var(--q)*100%),#6b7184);
+    --ln:color-mix(in srgb,#262b3b calc(var(--p)*100%),#e7e9f0);
+    --s2:color-mix(in srgb,#1f2433 calc(var(--p)*100%),#f2f4f9);
+    width:min(380px,100%);padding:clamp(18px,4vw,24px);border-radius:22px;background:var(--bg);color:var(--tx);
+    box-shadow:0 0 0 1px var(--ln),0 1px 0 rgba(255,255,255,.06) inset,0 30px 70px -30px rgba(10,20,80,.75),0 10px 24px -14px rgba(0,0,0,.6)}
+  .head{display:flex;gap:12px;align-items:center}
+  .ico{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:#3b5bff;background:color-mix(in srgb,#3b5bff 14%,var(--bg));box-shadow:0 0 0 1px color-mix(in srgb,#3b5bff 22%,transparent) inset}
+  .ico svg{width:22px;height:22px}
+  h1{margin:0;font-size:16px;line-height:1.25;font-weight:650;letter-spacing:-.01em}
+  .head p{margin:2px 0 0;font-size:13px;color:var(--mu)}
+  .row{display:flex;align-items:center;justify-content:center;gap:clamp(10px,3vw,16px);margin:22px 0 20px}
+  .lab{font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--mu);min-width:38px;text-align:center}
+  .card[data-theme=light] .lab--day,.card[data-theme=dark] .lab--night{color:var(--tx)}
+  .pre{display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:center;padding:12px;border-radius:14px;background:var(--s2);box-shadow:0 0 0 1px var(--ln) inset}
+  .av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#3b5bff,#22c3ee)}
+  .ln{height:8px;border-radius:4px;background:var(--ln)}
+  .ln+.ln{width:62%;margin-top:7px}
+  .st{font-size:12px;font-weight:600;color:var(--mu);display:flex;gap:6px;align-items:center;white-space:nowrap}
+  .st i{width:7px;height:7px;border-radius:50%;background:#19c37d;box-shadow:0 0 0 3px color-mix(in srgb,#19c37d 22%,transparent)}
+  .hint{margin:0;font-size:13.5px;color:#8f95a6;text-align:center}
+  .capture .hint{display:none}
+  @media (min-width:560px) and (min-height:560px){.wrap{transform:scale(1.22)}}
+  @media (min-width:700px) and (min-height:700px){.wrap{transform:scale(1.36)}}
+  @media (max-width:360px){.lab{display:none}}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card" id="card" data-theme="light" aria-labelledby="t">
+      <div class="head">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 3v1.5M12 19.5V21M3 12h1.5M19.5 12H21M5.6 5.6l1.1 1.1M17.3 17.3l1.1 1.1M5.6 18.4l1.1-1.1M17.3 6.7l1.1-1.1"/></svg></span>
+        <div><h1 id="t">Appearance</h1><p>Choose how your workspace looks.</p></div>
+      </div>
+      <div class="row">
+        <span class="lab lab--day" aria-hidden="true">Day</span>
+        <button data-daybreak data-daybreak-manual aria-label="Dark mode"></button>
+        <span class="lab lab--night" aria-hidden="true">Night</span>
+      </div>
+      <div class="pre" aria-hidden="true">
+        <span class="av"></span>
+        <span><span class="ln" style="display:block"></span><span class="ln" style="display:block"></span></span>
+        <span class="st"><i></i><span id="mode">Light theme</span></span>
+      </div>
+    </section>
+    <p class="hint">Click the switch or press Space. The card follows the theme.</p>
+  </main>
+  <script src="daybreak.js"></script>
+  <script>
+    if (/[?&]capture=1/.test(location.search)) document.documentElement.classList.add('capture');
+    var card = document.getElementById('card');
+    var sw = Daybreak.mount(document.querySelector('[data-daybreak]'), { target: card, attr: 'data-theme' });
+    card.addEventListener('daybreak:change', function (e) {
+      document.getElementById('mode').textContent = e.detail.dark ? 'Dark theme' : 'Light theme';
+    });
+    // auto-play for previews: flips every 3 s, stops as soon as a real person interacts
+    window.khDemo = function () {
+      var timer = 0, stop = function (e) { if (e.isTrusted) { clearTimeout(timer); timer = -1; } };
+      addEventListener('pointerdown', stop, true); addEventListener('keydown', stop, true);
+      (function loop(delay) { timer = setTimeout(function () { if (timer < 0) return; sw.toggle(); loop(3000); }, delay); })(450);
+    };
+  </script>
+</body>
+</html>

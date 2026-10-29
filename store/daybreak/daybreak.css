@@ -1,0 +1,115 @@
+/* Daybreak — a tactile light/dark switch where the sun sets into a starry night.
+   Kodehelix UI · kodehelix.in · Licence: see LICENSE.txt */
+:root {
+  --daybreak-w: 188px;
+  --daybreak-h: 80px;
+  --daybreak-pad: 8px;
+  --daybreak-day-top: #4fa9ff;
+  --daybreak-day-mid: #8ccdff;
+  --daybreak-day-low: #ffd6a0;       /* warm horizon */
+  --daybreak-night-top: #060a20;
+  --daybreak-night-mid: #121947;
+  --daybreak-night-low: #2a2f72;
+  --daybreak-sun-a: #fff6c9;
+  --daybreak-sun-b: #ffd25a;
+  --daybreak-sun-c: #ffa22b;
+  --daybreak-moon-a: #ffffff;
+  --daybreak-moon-b: #dfe4f1;
+  --daybreak-moon-c: #aeb8d2;
+  --daybreak-focus: #8fa3ff;
+}
+
+.daybreak {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  width: var(--daybreak-w);
+  height: var(--daybreak-h);
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--daybreak-day-mid);
+  cursor: pointer;
+  vertical-align: middle;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .08),
+    0 2px 4px rgba(6, 10, 30, .18),
+    0 18px 36px -14px rgba(20, 60, 160, .55);
+  transition: box-shadow .3s ease;
+}
+.daybreak:hover { box-shadow: 0 1px 0 rgba(255,255,255,.1), 0 2px 4px rgba(6,10,30,.2), 0 22px 44px -14px rgba(34,120,238,.7); }
+.daybreak:focus-visible { outline: 3px solid var(--daybreak-focus); outline-offset: 5px; }
+
+.daybreak__sky, .daybreak__night, .daybreak__layer {
+  position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+}
+.daybreak__sky {
+  overflow: hidden;
+  background:
+    radial-gradient(120px 90px at 22% 40%, rgba(255, 244, 200, .55), transparent 70%),
+    linear-gradient(180deg, var(--daybreak-day-top), var(--daybreak-day-mid) 55%, var(--daybreak-day-low));
+}
+.daybreak__night {
+  opacity: 0;
+  background:
+    radial-gradient(130px 90px at 78% 35%, rgba(143, 163, 255, .32), transparent 70%),
+    linear-gradient(180deg, var(--daybreak-night-top), var(--daybreak-night-mid) 60%, var(--daybreak-night-low));
+}
+/* inner bevel sits above everything inside the track */
+.daybreak__bevel {
+  position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 5;
+  box-shadow: inset 0 3px 6px rgba(5, 12, 40, .24), inset 0 -1px 1px rgba(255, 255, 255, .35), inset 0 0 0 1px rgba(255, 255, 255, .14);
+}
+
+/* clouds */
+.daybreak__cloud { position: absolute; display: block; overflow: visible; filter: drop-shadow(0 3px 4px rgba(30, 70, 140, .22)); }
+.daybreak__cloud--back { width: 50px; right: 50px; top: 9px; opacity: .85; }
+.daybreak__cloud--front { width: 78px; right: -10px; bottom: -9px; }
+
+/* stars */
+.daybreak__star { position: absolute; display: block; opacity: 0; color: #fff; }
+.daybreak__star--dot { border-radius: 50%; background: #fff; box-shadow: 0 0 6px 1px rgba(200, 215, 255, .8); }
+.daybreak__star svg { display: block; width: 100%; height: 100%; fill: currentColor; filter: drop-shadow(0 0 3px rgba(200, 215, 255, .9)); }
+
+/* the knob */
+.daybreak__thumb {
+  position: absolute; z-index: 3;
+  left: var(--daybreak-pad); top: var(--daybreak-pad);
+  width: calc(var(--daybreak-h) - 2 * var(--daybreak-pad));
+  height: calc(var(--daybreak-h) - 2 * var(--daybreak-pad));
+  will-change: transform;
+}
+.daybreak__halo, .daybreak__glow { position: absolute; inset: 0; border-radius: 50%; }
+.daybreak__halo--day { box-shadow: 0 0 0 13px rgba(255, 255, 255, .17), 0 0 0 28px rgba(255, 255, 255, .11), 0 0 0 46px rgba(255, 255, 255, .07); }
+.daybreak__halo--night { opacity: 0; box-shadow: 0 0 0 13px rgba(160, 180, 255, .09), 0 0 0 28px rgba(160, 180, 255, .055), 0 0 0 46px rgba(160, 180, 255, .03); }
+.daybreak__glow--day { box-shadow: 0 0 24px 4px rgba(255, 196, 80, .6), 0 6px 14px -4px rgba(150, 70, 0, .45); }
+.daybreak__glow--night { opacity: 0; box-shadow: 0 0 26px 3px rgba(170, 190, 255, .45), 0 6px 14px -4px rgba(0, 0, 20, .6); }
+
+.daybreak__knob {
+  position: absolute; inset: 0; border-radius: 50%; overflow: hidden;
+  transition: transform .18s cubic-bezier(.3, 1.6, .5, 1);
+}
+.daybreak:active .daybreak__knob { transform: scale(.93); }
+.daybreak__sun, .daybreak__moon, .daybreak__shade { position: absolute; inset: 0; border-radius: 50%; }
+.daybreak__sun {
+  background: radial-gradient(circle at 34% 30%, var(--daybreak-sun-a) 0, var(--daybreak-sun-b) 40%, var(--daybreak-sun-c) 100%);
+  box-shadow: inset -4px -5px 9px rgba(214, 104, 10, .35), inset 3px 3px 5px rgba(255, 255, 255, .65);
+}
+.daybreak__shade { inset: auto; top: -14%; left: -144%; width: 128%; height: 128%; box-shadow: 0 0 10px 3px rgba(40, 30, 60, .45); }
+.daybreak__moon {
+  clip-path: circle(64% at -80% 50%);
+  background: radial-gradient(circle at 34% 30%, var(--daybreak-moon-a) 0, var(--daybreak-moon-b) 45%, var(--daybreak-moon-c) 100%);
+  box-shadow: inset -7px -6px 10px rgba(70, 82, 130, .38), inset 3px 3px 5px rgba(255, 255, 255, .8);
+}
+.daybreak__crater {
+  position: absolute; border-radius: 50%;
+  background: radial-gradient(circle at 60% 65%, #c9d0e1, #a2acc6);
+  box-shadow: inset 1.5px 1.5px 2px rgba(60, 70, 110, .35), 0 .5px 0 rgba(255, 255, 255, .6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .daybreak__knob { transition: none; }
+  .daybreak:active .daybreak__knob { transform: none; }
+}
