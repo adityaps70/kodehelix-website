@@ -1,0 +1,136 @@
+/* Snip — a code block whose Copy button pulls every line into the clipboard.
+   Kodehelix UI · kodehelix.in · Licence: see LICENSE.txt */
+:root {
+  --snip-bg: #0f121b;           /* code area */
+  --snip-surface: #151925;      /* header bar */
+  --snip-line: #262b3b;         /* borders */
+  --snip-text: #c9cdd8;         /* code text */
+  --snip-muted: #8f95a6;        /* filename, line numbers */
+  --snip-accent: #3b5bff;       /* flying lines, start */
+  --snip-accent-2: #22c3ee;     /* flying lines, end */
+  --snip-done: #19c37d;         /* copied state */
+  --snip-radius: 18px;
+  --snip-font: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --snip-ui-font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* syntax colours */
+  --snip-k: #8fa3ff;  --snip-f: #22c3ee;  --snip-s: #7fe3b0;  --snip-n: #ffb020;
+  --snip-c: #5c6378;  --snip-t: #ff8a9a;  --snip-a: #c4b0ff;
+}
+
+.snip {
+  position: relative; display: block; width: 100%; max-width: 100%; min-width: 0;
+  border-radius: var(--snip-radius); border: 1px solid var(--snip-line);
+  background: var(--snip-bg); color: var(--snip-text);
+  font: 400 14px/1.7 var(--snip-font); text-align: left;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .05), 0 1px 2px rgba(0, 0, 0, .5), 0 30px 70px -34px rgba(0, 0, 0, .9);
+  isolation: isolate;
+}
+.snip > pre { display: none; }
+.snip__head {
+  display: flex; align-items: center; gap: 10px; min-width: 0;
+  padding: 9px 9px 9px 16px; border-bottom: 1px solid var(--snip-line);
+  border-radius: var(--snip-radius) var(--snip-radius) 0 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, 0)), var(--snip-surface);
+  font: 500 13px/1 var(--snip-ui-font); color: var(--snip-muted);
+}
+.snip__head svg { width: 17px; height: 17px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.snip__file { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #c9cdd8; }
+.snip__lang {
+  flex: none; padding: 4px 7px; border-radius: 6px; border: 1px solid var(--snip-line);
+  font: 600 10.5px/1 var(--snip-ui-font); letter-spacing: .08em; text-transform: uppercase; color: var(--snip-muted);
+}
+.snip__count {
+  margin-left: auto; flex: none; padding: 5px 9px; border-radius: 999px;
+  font: 600 12px/1 var(--snip-ui-font); font-variant-numeric: tabular-nums; color: var(--snip-done);
+  background: color-mix(in srgb, var(--snip-done) 14%, transparent);
+  opacity: 0; transform: translateX(8px) scale(.8); transition: opacity .25s, transform .4s cubic-bezier(.2, 1.4, .4, 1);
+}
+.snip.is-copied .snip__count { opacity: 1; transform: none; }
+.snip__copy {
+  position: relative; flex: none; display: inline-flex; align-items: center; gap: 7px;
+  height: 34px; padding: 0 12px 0 9px; border-radius: 10px; cursor: pointer;
+  border: 1px solid #2f3547; color: #edeff5;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, 0) 70%), #1f2433;
+  font: 600 13px/1 var(--snip-ui-font);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .07), 0 6px 16px -10px rgba(59, 91, 255, .8);
+  transition: border-color .3s, background-color .3s, box-shadow .3s, color .3s;
+  -webkit-tap-highlight-color: transparent;
+}
+.snip__count + .snip__copy, .snip__copy:first-child { margin-left: 0; }
+.snip__copy:hover { border-color: #414a63; }
+.snip__copy:focus-visible { outline: 2px solid var(--snip-k); outline-offset: 2px; }
+.snip__copy svg { width: 20px; height: 20px; overflow: visible; stroke-width: 1.75; }
+.snip__copy .snip__ic { display: inline-block; line-height: 0; transform-origin: 50% 60%; color: #b9c4ff; transition: color .3s; }
+.snip__copy [data-l] { stroke: var(--snip-accent-2); stroke-dasharray: 8; stroke-dashoffset: 8; }
+.snip__copy [data-ok] { stroke: var(--snip-done); stroke-width: 2.2; stroke-dasharray: 14; stroke-dashoffset: 14; }
+.snip__word { position: relative; display: inline-grid; overflow: hidden; height: 16px; min-width: 48px; }
+.snip__word > span { grid-area: 1 / 1; line-height: 16px; transition: transform .45s cubic-bezier(.2, 1.3, .4, 1), opacity .3s; }
+.snip__word > span + span { transform: translateY(110%); opacity: 0; }
+.snip.is-copied .snip__word > span:first-child { transform: translateY(-110%); opacity: 0; }
+.snip.is-copied .snip__word > span + span { transform: none; opacity: 1; }
+.snip.is-copied .snip__copy {
+  color: #c8f5e0; border-color: color-mix(in srgb, var(--snip-done) 55%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .07), 0 0 0 4px color-mix(in srgb, var(--snip-done) 12%, transparent), 0 8px 22px -10px var(--snip-done);
+}
+.snip.is-copied .snip__ic { color: var(--snip-done); }
+.snip__ring {
+  position: absolute; inset: -1px; border-radius: inherit; pointer-events: none;
+  border: 2px solid var(--snip-done); opacity: 0;
+}
+
+.snip__body { position: relative; overflow-x: auto; overflow-y: hidden; padding: 12px 0 14px; border-radius: 0 0 var(--snip-radius) var(--snip-radius); scrollbar-width: thin; scrollbar-color: #2b3142 transparent; }
+.snip__body:focus-visible { outline: 2px solid var(--snip-k); outline-offset: -2px; }
+.snip__code { display: block; min-width: max-content; white-space: pre; tab-size: 2; }
+.snip__row { position: relative; display: block; padding-right: 20px; }
+.snip__row::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--snip-accent) 28%, transparent), color-mix(in srgb, var(--snip-accent-2) 8%, transparent) 70%, transparent);
+  box-shadow: inset 2px 0 0 var(--snip-accent-2);
+  transition: opacity .5s;
+}
+.snip__row.is-lit::before { opacity: 1; transition: opacity .08s; }
+.snip__ln {
+  position: sticky; left: 0; z-index: 1; display: inline-block; width: 3.4em; padding: 0 1em 0 0; margin: 0 .9em 0 0;
+  border: 0; border-right: 1px solid var(--snip-line); background: var(--snip-bg); color: #4b5266;
+  font: inherit; text-align: right; cursor: copy; user-select: none; -webkit-user-select: none;
+}
+.snip__ln:hover { color: var(--snip-k); }
+.snip__lc { display: inline-block; transition: opacity .35s; }
+.snip__row.is-out .snip__lc { opacity: .42; transition-duration: .1s; }
+.snip[data-numbers="off"] .snip__ln { display: none; }
+.snip[data-numbers="off"] .snip__row { padding-left: 16px; }
+
+/* tokens */
+.snip .tk-k { color: var(--snip-k); }
+.snip .tk-f { color: var(--snip-f); }
+.snip .tk-s { color: var(--snip-s); }
+.snip .tk-n { color: var(--snip-n); }
+.snip .tk-c { color: var(--snip-c); font-style: italic; }
+.snip .tk-t { color: var(--snip-t); }
+.snip .tk-a { color: var(--snip-a); }
+.snip .tk-p { color: var(--snip-muted); }
+
+/* flying lines */
+.snip__fx { position: absolute; inset: 0; pointer-events: none; z-index: 3; overflow: visible; }
+.snip__ghost {
+  position: absolute; left: 0; top: 0; height: 8px; border-radius: 99px; opacity: 0;
+  background: linear-gradient(90deg, var(--snip-accent), var(--snip-accent-2));
+  box-shadow: 0 0 12px color-mix(in srgb, var(--snip-accent-2) 70%, transparent);
+  transform-origin: 50% 50%; will-change: transform, opacity;
+}
+
+.snip__sr { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* terminal variant: one-liners */
+.snip--term .snip__body { padding: 14px 0; }
+.snip--term .snip__ln { display: none; }
+.snip--term .snip__row { padding-left: 16px; }
+
+@media (max-width: 480px) {
+  .snip { font-size: 12.5px; }
+  .snip__lang { display: none; }
+  .snip__ln { width: 2.9em; padding-right: .7em; margin-right: .7em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .snip__count, .snip__word > span, .snip__row::before, .snip__lc, .snip__copy { transition-duration: .01s !important; }
+}
