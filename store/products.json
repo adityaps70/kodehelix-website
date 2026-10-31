@@ -1,5 +1,23 @@
 [
   {
+    "slug": "meridian",
+    "name": "Meridian",
+    "tagline": "A complete SaaS revenue dashboard template. Switch the date range and every chart re-writes itself in a left-to-right wave while a light beam scans the revenue line.",
+    "type": "dashboard",
+    "size": "44 KB",
+    "deps": "0 deps",
+    "price": 39,
+    "was": 65,
+    "added": "2026-10-30",
+    "isNew": true,
+    "demo": "/store/meridian/",
+    "cover": "/store/meridian/cover.jpg",
+    "video": "/store/meridian/preview.mp4",
+    "buy": "https://adityapulse2.gumroad.com/l/meridian",
+    "gumroad": true,
+    "demoHeight": 760
+  },
+  {
     "slug": "prism",
     "name": "Prism",
     "tagline": "A creator card that tilts in 3D toward the pointer, with a holographic sheen, a glare that follows you and layers that float at different depths.",
@@ -9,7 +27,7 @@
     "price": 5,
     "was": 8,
     "added": "2026-10-29",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/prism/",
     "cover": "/store/prism/cover.jpg",
     "video": "/store/prism/preview.mp4",
@@ -175,8 +193,8 @@
     "demo": "/store/helix/",
     "cover": "/store/helix/cover.jpg",
     "video": "/store/helix/preview.mp4",
-    "buy": "https://wa.me/917007064653?text=Hi%20Kodehelix%2C%20I'd%20like%20to%20buy%20Helix%20(%243)%20from%20your%20UI%20store",
-    "gumroad": false,
+    "buy": "https://adityapulse2.gumroad.com/l/helix",
+    "gumroad": true,
     "demoHeight": 420
   },
   {
