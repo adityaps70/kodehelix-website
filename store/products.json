@@ -1,5 +1,23 @@
 [
   {
+    "slug": "snip",
+    "name": "Snip",
+    "tagline": "A code block where Copy pulls every line out of the snippet: they light up, arc into the clipboard icon and it turns into a green check.",
+    "type": "component",
+    "size": "21 KB",
+    "deps": "0 deps",
+    "price": 4,
+    "was": 7,
+    "added": "2026-10-31",
+    "isNew": true,
+    "demo": "/store/snip/",
+    "cover": "/store/snip/cover.jpg",
+    "video": "/store/snip/preview.mp4",
+    "buy": "https://adityapulse2.gumroad.com/l/snip",
+    "gumroad": true,
+    "demoHeight": 560
+  },
+  {
     "slug": "meridian",
     "name": "Meridian",
     "tagline": "A complete SaaS revenue dashboard template. Switch the date range and every chart re-writes itself in a left-to-right wave while a light beam scans the revenue line.",
@@ -9,7 +27,7 @@
     "price": 39,
     "was": 65,
     "added": "2026-10-30",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/meridian/",
     "cover": "/store/meridian/cover.jpg",
     "video": "/store/meridian/preview.mp4",
