@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Meridian · SaaS revenue dashboard in HTML, CSS &amp; JS · Kodehelix UI</title><meta name="description" content="A complete SaaS revenue dashboard template. Switch the date range and every chart re-writes itself in a left-to-right wave while a light beam scans the revenue line.">
+<meta name="theme-color" content="#0B0D12"><link rel="canonical" href="https://kodehelix.in/store/meridian/">
+<meta property="og:title" content="Meridian · SaaS revenue dashboard in HTML, CSS &amp; JS · Kodehelix UI"><meta property="og:description" content="A complete SaaS revenue dashboard template. Switch the date range and every chart re-writes itself in a left-to-right wave while a light beam scans the revenue line."><meta property="og:image" content="https://kodehelix.in/store/meridian/cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/assets/brand/kodehelix-icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Meridian · SaaS revenue dashboard","description":"A complete SaaS revenue dashboard template. Switch the date range and every chart re-writes itself in a left-to-right wave while a light beam scans the revenue line.","image":"https://kodehelix.in/store/meridian/cover.jpg","brand":{"@type":"Brand","name":"Kodehelix"},"offers":{"@type":"Offer","priceCurrency":"USD","price":39,"url":"https://kodehelix.in/store/meridian/","availability":"https://schema.org/InStock"}}</script><style>
+:root{--ink:#0B0D12;--ink2:#151925;--ink3:#1F2433;--line:#262B3B;--mute:#8F95A6;--fg:#EDEFF5;--soft:#C9CDD8;--blue:#3B5BFF;--blue2:#8FA3FF;--cyan:#22C3EE;--good:#19c37d;
+ --f:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--fd:"Inter Tight","Inter",system-ui,sans-serif;--fm:"JetBrains Mono",ui-monospace,Menlo,monospace;--g:clamp(16px,4vw,40px)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--f);background:var(--ink);color:var(--fg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(var(--g),env(safe-area-inset-left,0px));padding-right:max(var(--g),env(safe-area-inset-right,0px))}
+.bar{position:sticky;top:0;z-index:20;background:rgba(11,13,18,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.bar img{height:28px;display:block}
+.bar nav{display:flex;gap:22px;font-size:14px;color:var(--mute)}.bar nav a:hover,.bar nav a.on{color:var(--fg)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:12px 22px;font-weight:600;font-size:15px;background:var(--blue);color:#fff;border:0;cursor:pointer;white-space:nowrap}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--fg)}
+.btn.big{padding:16px 26px;font-size:17px;width:100%}
+.crumb{font-size:13px;color:var(--mute);padding-top:28px}.crumb a:hover{color:var(--fg)}
+.top{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:28px;padding-block:18px 56px;align-items:start}
+h1{font-family:var(--fd);font-weight:800;letter-spacing:-.035em;line-height:1.02;font-size:clamp(34px,5vw,56px);text-wrap:balance}
+h1 small{display:block;font-size:.42em;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:10px}
+.tag{color:var(--soft);font-size:18px;margin-top:12px;max-width:60ch}
+.demo{margin-top:24px;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#07080c;position:relative}
+.demo iframe{display:block;width:100%;border:0;background:#0b0d12}
+.demo .dbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13px;color:var(--mute)}
+.demo .dbar b{color:var(--fg);font-weight:600}
+.dots{display:flex;gap:6px}.dots i{width:10px;height:10px;border-radius:50%;background:#2a3042}
+.buy{position:sticky;top:84px;background:var(--ink2);border:1px solid var(--line);border-radius:22px;padding:24px;display:grid;gap:16px}
+.price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price b{font-family:var(--fd);font-size:44px;letter-spacing:-.03em}
+.price s{color:var(--mute);font-size:18px}
+.price .off{font-size:12px;font-weight:700;background:rgba(25,195,125,.15);color:var(--good);border-radius:999px;padding:4px 10px}
+.inr{color:var(--mute);font-size:13px;margin-top:-10px}
+.ticks{display:grid;gap:8px;font-size:14px;color:var(--soft)}
+.ticks span::before{content:"✓";color:var(--good);font-weight:700;margin-right:8px}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;border-top:1px solid var(--line);padding-top:16px;font-size:13px}
+.specs dt{color:var(--mute)}.specs dd{color:var(--fg);font-weight:600}
+.note{font-size:12.5px;color:var(--mute)}
+.sec{border-top:1px solid var(--line);padding-block:48px;display:grid;grid-template-columns:240px minmax(0,1fr);gap:28px}
+.sec>*{min-width:0}
+.sec h2{font-family:var(--fd);font-size:24px;letter-spacing:-.02em}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.feat div{background:var(--ink2);border:1px solid var(--line);border-radius:16px;padding:16px 18px;color:var(--soft);font-size:15px}
+.files{display:grid;gap:8px}
+.files div{display:flex;justify-content:space-between;gap:16px;background:var(--ink2);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:14px;flex-wrap:wrap}
+.files code{font-family:var(--fm);color:var(--blue2)}.files span{color:var(--mute)}
+pre{font-family:var(--fm);font-size:13.5px;line-height:1.65;background:#0d1017;border:1px solid var(--line);border-radius:16px;padding:18px 20px;overflow-x:auto;color:#d6dbe8}
+.k{color:#c792ea}.s{color:#9ece6a}.t{color:#7aa2f7}.a{color:#ff9e64}
+.steps{display:grid;gap:10px;counter-reset:s;margin-bottom:16px}
+.steps li{list-style:none;counter-increment:s;color:var(--soft);font-size:15px}
+.steps li::before{content:counter(s);display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--ink3);color:var(--fg);font-size:12px;font-weight:700;margin-right:10px}
+details{background:var(--ink2);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}details p{color:var(--soft);margin-top:8px;font-size:15px}
+.more{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.mcard{background:var(--ink2);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.mcard img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}.mcard div{padding:12px 14px;font-size:14px;display:flex;justify-content:space-between}
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--mute);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+:focus-visible{outline:2px solid var(--blue2);outline-offset:3px}
+@media (max-width:900px){.top{grid-template-columns:1fr}.buy{position:static}.sec{grid-template-columns:1fr;gap:16px}}
+@media (max-width:640px){.bar nav{display:none}}
+</style>
+
+</head><body><header class="bar"><div class="wrap"><a href="/" aria-label="Kodehelix home"><img src="/assets/brand/kodehelix-logo-horizontal-white.svg" alt="Kodehelix"></a>
+<nav><a href="/">Websites</a><a href="/store/" class="on">UI Store</a><a href="/#contact">Contact</a></nav>
+<a class="btn ghost" href="/store/">All products</a></div></header>
+<main class="wrap">
+  <div class="crumb"><a href="/store/">UI Store</a> / Dashboards / Meridian</div>
+  <div class="top">
+    <div style="min-width:0">
+      <h1><small>dashboard · HTML · CSS · JS</small>Meridian · SaaS revenue dashboard</h1>
+      <p class="tag">A complete SaaS revenue dashboard template. Switch the date range and every chart re-writes itself in a left-to-right wave while a light beam scans the revenue line.</p>
+      <div class="demo"><div class="dbar"><span class="dots"><i></i><i></i><i></i></span><b>Live demo · try it</b><a href="demo.html" target="_blank" rel="noopener">Full screen ↗</a></div>
+        <iframe src="demo.html" title="Meridian live demo" style="height:760px" loading="lazy"></iframe></div>
+    </div>
+    <aside class="buy" aria-label="Buy Meridian">
+      <div class="price"><b>$39</b><s>$65</s><span class="off">−40%</span></div>
+      <div class="inr">≈ ₹3,315 · one-time payment</div>
+      <a class="btn big" href="https://wa.me/917007064653?text=Hi%20Kodehelix%2C%20I'd%20like%20to%20buy%20Meridian%20(%2439)%20from%20your%20UI%20store" target="_blank" rel="noopener">Buy on WhatsApp · $39</a>
+      <a class="btn ghost" href="demo.html" target="_blank" rel="noopener">Open live demo</a>
+      <div class="ticks"><span>Instant download (zip)</span><span>Unlimited client projects</span><span>Free updates for life</span><span>Help on WhatsApp</span></div>
+      <dl class="specs"><div><dt>Size</dt><dd>44 KB</dd></div><div><dt>Dependencies</dt><dd>None</dd></div><div><dt>Tech</dt><dd>HTML · CSS · JS</dd></div><div><dt>Browsers</dt><dd>All current</dd></div><div><dt>Category</dt><dd>Dashboards</dd></div></dl>
+      <p class="note">Pay by UPI or card and we send the zip on WhatsApp right away.</p>
+    </aside>
+  </div>
+  <section class="sec"><h2>What it does</h2><div class="feat"><div>Full admin layout: sidebar, top bar, 4 KPI cards, revenue trend, plan-mix donut, channel bars and a customer table</div><div>Hand-drawn SVG charts, no chart library: area chart with previous-period line, donut, bars and sparklines</div><div>Range switch (7D / 30D / 90D / 12M) morphs every chart in a wave, with a scanning light beam and rolling numbers</div><div>Hover or arrow-key through the revenue chart for a tooltip with the change vs the previous period</div><div>Light and dark themes, searchable and sortable table, springy range indicator</div><div>Responsive down to 390px: icon rail on tablets, slide-out drawer on phones, zero dependencies</div></div></section>
+  <section class="sec"><h2>Use it in 2 minutes</h2><div><ol class="steps"><li>Unzip and copy the CSS and JS into your project.</li><li>Paste the markup where you want it.</li><li>Change the CSS variables to match your brand.</li></ol><pre><code>&lt;<span class="t">link</span> <span class="a">rel</span>=<span class="s">&quot;stylesheet&quot;</span> <span class="a">href</span>=<span class="s">&quot;meridian.css&quot;</span>&gt;
+&lt;<span class="t">div</span> <span class="a">class</span>=<span class="s">&quot;meridian&quot;</span> data-meridian&gt;
+  &lt;!-- sidebar, KPI cards and charts from index.html --&gt;
+&lt;/<span class="t">div</span>&gt;
+&lt;<span class="t">script</span> <span class="a">src</span>=<span class="s">&quot;meridian.js&quot;</span>&gt;&lt;/<span class="t">script</span>&gt;
+&lt;<span class="t">script</span>&gt;
+  <span class="k">const</span> dash = Meridian.mount(document.querySelector(<span class="s">'[data-meridian]'</span>), {
+    range: <span class="s">'30d'</span>,
+    data: myRevenueData   // same shape as Meridian.data
+  });
+  dash.setRange(<span class="s">'90d'</span>);
+&lt;/<span class="t">script</span>&gt;</code></pre></div></section>
+  <section class="sec"><h2>What's in the zip</h2><div class="files"><div><code>meridian.css</code><span>Layout, both themes and CSS variables</span></div><div><code>meridian.js</code><span>Charts, range morphs, table and Meridian.mount() API</span></div><div><code>index.html</code><span>The full dashboard page, ready to edit</span></div><div><code>README.md</code><span>Setup, data format, options and customising</span></div><div><code>LICENSE.txt</code><span>Unlimited personal and client use</span></div></div></section>
+  <section class="sec"><h2>Licence</h2><p style="color:var(--soft)">Use it in unlimited personal and client projects, including sites and apps you sell. Change anything. The only rule: don't resell or give away the files themselves as a component or template pack.</p></section>
+  <section class="sec"><h2>Questions</h2><div><details><summary>Can I plug in my own data?</summary><p>Yes. Pass a data object to Meridian.mount() with labels, current and previous values, KPIs, plan mix and channels for each range. Meridian.data shows the exact shape, and the charts rescale themselves.</p></details><details><summary>Can I use it in client projects?</summary><p>Yes, in unlimited personal and client projects. You just can't resell the files themselves as a component pack.</p></details><details><summary>How do I get the files?</summary><p>Right after payment you get a download link by email with the zip. Updates use the same link.</p></details><details><summary>Can you add it to my website for me?</summary><p>Yes. WhatsApp +91 70070 64653 and we'll set it up on your site.</p></details></div></section>
+  <section class="sec"><h2>More from the store</h2><div class="more"><a class="mcard" href="/store/prism/"><img src="/store/prism/cover.jpg" alt="Prism" loading="lazy"><div><b>Prism</b><span>$5</span></div></a><a class="mcard" href="/store/tally/"><img src="/store/tally/cover.jpg" alt="Tally" loading="lazy"><div><b>Tally</b><span>$6</span></div></a><a class="mcard" href="/store/bloom/"><img src="/store/bloom/cover.jpg" alt="Bloom" loading="lazy"><div><b>Bloom</b><span>$5</span></div></a><a class="mcard" href="/store/stack/"><img src="/store/stack/cover.jpg" alt="Stack" loading="lazy"><div><b>Stack</b><span>$5</span></div></a></div></section>
+</main><footer><div class="wrap"><span>© Kodehelix · Lucknow, India</span><span><a href="/">kodehelix.in</a> · <a href="/store/">UI Store</a> · <a href="https://www.instagram.com/kodehelix.in/" target="_blank" rel="noopener">Instagram</a> · WhatsApp +91 70070 64653</span></div></footer>
+</body></html>
