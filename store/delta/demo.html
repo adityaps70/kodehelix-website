@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Delta · Personal finance dashboard · Kodehelix UI</title>
+<link rel="stylesheet" href="delta.css">
+<style>
+  html,body{margin:0;height:100%;background:#0B0D12}
+  body{min-height:100vh}
+  .delta{min-height:100vh}
+</style>
+</head>
+<body>
+<div class="delta" data-delta data-delta-manual data-theme="dark">
+  <aside class="dl-side" id="dl-side" aria-label="Main navigation">
+    <div class="dl-brand">
+      <span class="dl-mark"><svg class="dl-ic" viewBox="0 0 24 24"><path d="M12 4.5L20 19H4z"/><path d="M8.5 15h3c1.5 0 2-1.6 3.5-1.6"/></svg></span>
+      <span>Delta</span>
+    </div>
+    <div class="dl-navlabel">Money</div>
+    <ul class="dl-nav">
+      <li><a href="#" aria-current="page"><svg class="dl-ic" viewBox="0 0 24 24"><path d="M4 7c5 0 6 5 10 5h6M4 17c5 0 6-5 10-5"/><path d="M17 9l3 3-3 3"/></svg><span>Cash flow</span></a></li>
+      <li><a href="#"><svg class="dl-ic" viewBox="0 0 24 24"><path d="M3.5 9.5L12 4.5l8.5 5"/><path d="M5.5 10v7M10 10v7M14 10v7M18.5 10v7M3.5 19.5h17"/></svg><span>Accounts</span><b class="dl-count">4</b></a></li>
+      <li><a href="#"><svg class="dl-ic" viewBox="0 0 24 24"><path d="M12 4a8 8 0 1 0 8 8h-8z"/><path d="M15 3.6A8 8 0 0 1 20.4 9H15z"/></svg><span>Budgets</span></a></li>
+      <li><a href="#"><svg class="dl-ic" viewBox="0 0 24 24"><path d="M5 8h13M15 5l3 3-3 3M19 16H6M9 13l-3 3 3 3"/></svg><span>Transactions</span></a></li>
+      <li><a href="#"><svg class="dl-ic" viewBox="0 0 24 24"><path d="M6 21V4M6 5h10l-2 3.5L16 12H6"/></svg><span>Goals</span><b class="dl-count">3</b></a></li>
+      <li><a href="#"><svg class="dl-ic" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg><span>Settings</span></a></li>
+    </ul>
+    <div class="dl-goal">
+      <small>Goal · Lisbon trip</small>
+      <b>$3,400 <span>of $5,000</span></b>
+      <div class="dl-meter" role="progressbar" aria-label="Lisbon trip goal" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"><i></i></div>
+    </div>
+  </aside>
+  <div class="dl-scrim" aria-hidden="true"></div>
+
+  <main class="dl-main">
+    <header class="dl-top">
+      <button class="dl-iconbtn dl-menu" data-dl-menu aria-label="Open menu" aria-expanded="false" aria-controls="dl-side"><svg class="dl-ic" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+      <div class="dl-title"><small>Maya Rao · all accounts</small><h1>Cash flow</h1></div>
+      <div class="dl-months" data-dl-months role="group" aria-label="Month">
+        <span class="dl-months-ind" aria-hidden="true"></span>
+        <button type="button" data-month="jul" aria-pressed="false">Jul</button>
+        <button type="button" data-month="aug" aria-pressed="false">Aug</button>
+        <button type="button" data-month="sep" aria-pressed="false">Sep</button>
+        <button type="button" data-month="oct" aria-pressed="true">Oct</button>
+      </div>
+      <button class="dl-iconbtn dl-theme" data-dl-theme aria-label="Switch to light theme" aria-pressed="false">
+        <svg class="dl-ic dl-moon" viewBox="0 0 24 24"><path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z"/></svg>
+        <svg class="dl-ic dl-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/></svg>
+      </button>
+      <span class="dl-avatar" aria-hidden="true">MR</span>
+    </header>
+
+    <section class="dl-kpis" aria-label="Key numbers">
+      <article class="dl-card dl-kpi" data-dl-kpi="worth" style="--k:var(--delta-peri)">
+        <div class="dl-kpi-top"><svg class="dl-ic" viewBox="0 0 24 24"><path d="M5 19V9M10 19V5M15 19v-7M20 19V8"/></svg>Net worth</div>
+        <div class="dl-kpi-val">$0</div>
+        <div class="dl-kpi-foot"><div><span class="dl-delta"><svg class="dl-ic" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg><span>0%</span></span><span class="dl-kpi-note">vs last month</span></div><svg class="dl-spark" viewBox="0 0 84 30" aria-hidden="true"></svg></div>
+      </article>
+      <article class="dl-card dl-kpi" data-dl-kpi="income" style="--k:var(--delta-blue)">
+        <div class="dl-kpi-top"><svg class="dl-ic" viewBox="0 0 24 24"><path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 19.5h14"/></svg>Income</div>
+        <div class="dl-kpi-val">$0</div>
+        <div class="dl-kpi-foot"><div><span class="dl-delta"><svg class="dl-ic" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg><span>0%</span></span><span class="dl-kpi-note">vs last month</span></div><svg class="dl-spark" viewBox="0 0 84 30" aria-hidden="true"></svg></div>
+      </article>
+      <article class="dl-card dl-kpi" data-dl-kpi="spend" style="--k:var(--delta-warn)">
+        <div class="dl-kpi-top"><svg class="dl-ic" viewBox="0 0 24 24"><rect x="3.5" y="6" width="17" height="12" rx="3"/><path d="M3.5 10h17M7.5 14.5h3"/></svg>Spending</div>
+        <div class="dl-kpi-val">$0</div>
+        <div class="dl-kpi-foot"><div><span class="dl-delta"><svg class="dl-ic" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg><span>0%</span></span><span class="dl-kpi-note">vs last month</span></div><svg class="dl-spark" viewBox="0 0 84 30" aria-hidden="true"></svg></div>
+      </article>
+      <article class="dl-card dl-kpi" data-dl-kpi="saved" style="--k:var(--delta-good)">
+        <div class="dl-kpi-top"><svg class="dl-ic" viewBox="0 0 24 24"><path d="M5 11.5c0-3.6 3.1-6 7-6s7 2.4 7 6c0 2.4-1.3 4-3 5v2.5h-3V18h-2v1h-3v-2.6c-1.6-.9-2.6-2.4-3-4.9z"/><path d="M10 8.5h4"/></svg>Saved</div>
+        <div class="dl-kpi-val">$0</div>
+        <div class="dl-kpi-foot"><div><span class="dl-delta"><svg class="dl-ic" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg><span>0 pt</span></span><span class="dl-kpi-note">savings rate</span></div><svg class="dl-spark" viewBox="0 0 84 30" aria-hidden="true"></svg></div>
+      </article>
+    </section>
+
+    <section class="dl-grid">
+      <article class="dl-card dl-a-flow">
+        <div class="dl-head">
+          <div><h2>Where the money went</h2><p>Income split into spending and savings, <span data-dl-month-label>October</span></p></div>
+          <div class="dl-legend"><span><i style="--c:var(--delta-blue)"></i>Income</span><span><i style="--c:var(--delta-warn)"></i>Spending</span><span><i style="--c:var(--delta-good)"></i>Savings</span></div>
+        </div>
+        <div class="dl-flow" data-dl-flow></div>
+        <div class="dl-flow-foot">
+          <div><small>Came in</small><b data-dl-foot="in">$0</b></div>
+          <div><small>Went out</small><b data-dl-foot="out">$0</b></div>
+          <div><small>Kept</small><b data-dl-foot="kept">$0</b></div>
+        </div>
+      </article>
+
+      <article class="dl-card dl-a-budget">
+        <div class="dl-head"><div><h2>Budgets</h2><p data-dl-budget-note>On track</p></div></div>
+        <ul class="dl-budgets" data-dl-budgets></ul>
+        <div class="dl-mini">
+          <div><small>Left in budgets</small><b data-dl-left>$0</b></div>
+          <div><small>Average per day</small><b data-dl-perday>$0</b></div>
+        </div>
+      </article>
+
+      <article class="dl-card dl-a-bars">
+        <div class="dl-head">
+          <div><h2>Last six months</h2><p>Tap a month to open it</p></div>
+          <div class="dl-legend"><span><i style="--c:var(--delta-blue)"></i>In</span><span><i style="--c:color-mix(in srgb,var(--delta-peri) 45%,transparent)"></i>Out</span><span><i class="dl-line" style="--c:var(--delta-good)"></i>Saved</span></div>
+        </div>
+        <div class="dl-bars" data-dl-bars></div>
+        <div class="dl-mini">
+          <div><small>Average saved</small><b data-dl-avg>$0</b></div>
+          <div><small>Best month</small><b data-dl-best>–</b></div>
+        </div>
+      </article>
+
+      <article class="dl-card dl-a-table">
+        <div class="dl-head">
+          <div><h2>Transactions</h2><p><span data-dl-month-label>October</span> · all accounts</p></div>
+          <label class="dl-tsearch"><svg class="dl-ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg><span class="dl-sr">Search transactions</span><input type="search" placeholder="Search" data-dl-search></label>
+        </div>
+        <div class="dl-tablewrap" tabindex="0" aria-label="Transactions table">
+          <table class="dl-table" data-dl-table>
+            <thead><tr>
+              <th scope="col">Merchant</th>
+              <th scope="col" class="dl-col-cat">Account</th>
+              <th scope="col" data-sort="day"><button type="button">Date<svg class="dl-ic" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></th>
+              <th scope="col" class="dl-col-status">Status</th>
+              <th scope="col" data-sort="amount" class="dl-r"><button type="button">Amount<svg class="dl-ic" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </main>
+</div>
+<script src="delta.js"></script>
+<script>
+  // Swap in your own numbers with Delta.mount(el, { data: {...} }) — see README.md
+  var dash = Delta.mount(document.querySelector('[data-delta]'), { month: 'oct' });
+
+  // Auto-play used by the store preview: replays the intro, then cycles the months.
+  window.khDemo = function () {
+    var order = ['aug', 'sep', 'jul', 'oct'], i = 0;
+    dash.replay();
+    setTimeout(function step() {
+      dash.setMonth(order[i++ % order.length]);
+      setTimeout(step, 3600);
+    }, 1900);
+  };
+</script>
+</body>
+</html>
