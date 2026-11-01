@@ -1,5 +1,23 @@
 [
   {
+    "slug": "delta",
+    "name": "Delta",
+    "tagline": "A complete personal finance dashboard template. Income splits into spending and savings as a hand-drawn money river; switch the month and every stream re-routes with a light surge and flowing particles.",
+    "type": "dashboard",
+    "size": "55 KB",
+    "deps": "0 deps",
+    "price": 35,
+    "was": 59,
+    "added": "2026-11-01",
+    "isNew": true,
+    "demo": "/store/delta/",
+    "cover": "/store/delta/cover.jpg",
+    "video": "/store/delta/preview.mp4",
+    "buy": "https://adityapulse2.gumroad.com/l/delta",
+    "gumroad": true,
+    "demoHeight": 760
+  },
+  {
     "slug": "snip",
     "name": "Snip",
     "tagline": "A code block where Copy pulls every line out of the snippet: they light up, arc into the clipboard icon and it turns into a green check.",
@@ -9,7 +27,7 @@
     "price": 4,
     "was": 7,
     "added": "2026-10-31",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/snip/",
     "cover": "/store/snip/cover.jpg",
     "video": "/store/snip/preview.mp4",
