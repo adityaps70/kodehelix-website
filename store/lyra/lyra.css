@@ -1,0 +1,97 @@
+/* Lyra — a star rating that draws itself into a constellation.
+   Kodehelix UI · kodehelix.in · Licence: see LICENSE.txt */
+:root {
+  --lyra-bg: #151925;           /* card top */
+  --lyra-bg-2: #10131c;         /* card bottom */
+  --lyra-line: #262b3b;         /* borders */
+  --lyra-text: #edeff5;
+  --lyra-muted: #8f95a6;
+  --lyra-off: #414861;          /* unlit star outline */
+  --lyra-high-1: #3b5bff;       /* 4–5 stars */
+  --lyra-high-2: #22c3ee;
+  --lyra-mid-1: #5b6cff;        /* 3 stars */
+  --lyra-mid-2: #8fa3ff;
+  --lyra-low-1: #ff5a6e;        /* 1–2 stars */
+  --lyra-low-2: #ffb020;
+  --lyra-radius: 22px;
+  --lyra-star: 48px;            /* tap target */
+  --lyra-icon: 34px;            /* drawn star */
+  --lyra-font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.lyra {
+  --lyra-c1: var(--lyra-high-1); --lyra-c2: var(--lyra-high-2);
+  position: relative; box-sizing: border-box; width: 100%; max-width: 440px; min-width: 0;
+  padding: 22px 22px 18px; border-radius: var(--lyra-radius); border: 1px solid var(--lyra-line);
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(59, 91, 255, .12), transparent 62%),
+    linear-gradient(180deg, var(--lyra-bg), var(--lyra-bg-2));
+  color: var(--lyra-text); font: 400 15px/1.45 var(--lyra-font); text-align: left;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06), 0 1px 2px rgba(0, 0, 0, .5), 0 30px 70px -34px rgba(0, 0, 0, .9);
+  overflow: hidden; isolation: isolate;
+}
+.lyra[data-tone="mid"] { --lyra-c1: var(--lyra-mid-1); --lyra-c2: var(--lyra-mid-2); }
+.lyra[data-tone="low"] { --lyra-c1: var(--lyra-low-1); --lyra-c2: var(--lyra-low-2); }
+.lyra *, .lyra *::before, .lyra *::after { box-sizing: border-box; }
+
+.lyra__title { margin: 0; font-size: 17px; font-weight: 650; letter-spacing: -.012em; color: var(--lyra-text); }
+.lyra__sub { margin: 3px 0 0; font-size: 13.5px; color: var(--lyra-muted); }
+
+.lyra__sky { position: relative; height: 112px; margin: 8px -6px 6px; }
+.lyra__web { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
+.lyra__s1 { stop-color: var(--lyra-c1); }
+.lyra__s2 { stop-color: var(--lyra-c2); }
+.lyra__seg { fill: none; stroke-width: 1.6; stroke-linecap: round; opacity: 0; }
+.lyra__seg--glow { stroke-width: 6; }
+.lyra__ring { fill: none; stroke-width: 1.5; }
+.lyra__spark { stroke: var(--lyra-c2); stroke-width: 1.75; stroke-linecap: round; }
+.lyra__halo { fill: var(--lyra-c2); opacity: .3; }
+.lyra__core { fill: #fff; }
+.lyra__tw { fill: #fff; }
+
+.lyra__stars { display: flex; align-items: center; justify-content: space-between; height: 100%; padding: 0 2px; }
+.lyra__star {
+  position: relative; z-index: 1; display: grid; place-items: center; flex: none;
+  width: var(--lyra-star); height: var(--lyra-star); margin: 0; padding: 0; border: 0; border-radius: 50%;
+  background: transparent; color: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.lyra__star:disabled { cursor: default; }
+.lyra__star svg { position: relative; display: block; width: var(--lyra-icon); height: var(--lyra-icon); overflow: visible; }
+.lyra__base { fill: rgba(255, 255, 255, .025); stroke: var(--lyra-off); stroke-width: 1.75; stroke-linejoin: round; transition: stroke .18s, fill .18s; }
+.lyra__lit { stroke-width: 1.75; stroke-linejoin: round; opacity: 0; }
+.lyra__glow {
+  position: absolute; inset: -8px; border-radius: 50%; opacity: 0; pointer-events: none;
+  background: radial-gradient(circle, color-mix(in srgb, var(--lyra-c2) 42%, transparent) 0, transparent 62%);
+}
+.lyra__star.is-hov .lyra__base { stroke: var(--lyra-c2); fill: color-mix(in srgb, var(--lyra-c2) 16%, transparent); }
+.lyra__star:focus { outline: none; }
+.lyra__star:focus-visible { outline: 2px solid var(--lyra-c2); outline-offset: 1px; }
+
+.lyra__streak {
+  position: absolute; left: 0; top: 0; width: 110px; height: 2px; border-radius: 2px; opacity: 0; pointer-events: none;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--lyra-c2) 70%, transparent) 65%, #fff);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--lyra-c2) 60%, transparent);
+}
+
+.lyra__foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding-top: 14px; border-top: 1px solid var(--lyra-line);
+}
+.lyra__word { position: relative; display: block; flex: 1; min-width: 0; height: 28px; overflow: hidden; }
+.lyra__word span { position: absolute; left: 0; top: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 28px; }
+.lyra__word .is-ph { color: var(--lyra-muted); font-size: 15px; font-weight: 500; }
+.lyra__word .is-on {
+  font-size: 20px; font-weight: 700; letter-spacing: -.02em;
+  background: linear-gradient(90deg, var(--lyra-c2), #fff 150%); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.lyra__score { flex: none; color: var(--lyra-muted); font-size: 14px; font-variant-numeric: tabular-nums; white-space: nowrap; opacity: 0; }
+.lyra__score b { color: var(--lyra-text); font-size: 20px; font-weight: 700; letter-spacing: -.02em; }
+.lyra__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (max-width: 420px) {
+  .lyra { padding: 18px 16px 15px; --lyra-star: 44px; --lyra-icon: 30px; }
+  .lyra__sky { height: 100px; margin-inline: -4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lyra__base { transition: none; }
+}
