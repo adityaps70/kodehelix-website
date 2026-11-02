@@ -1,5 +1,23 @@
 [
   {
+    "slug": "lyra",
+    "name": "Lyra",
+    "tagline": "A star rating that draws itself into a constellation: stars ignite one by one, a spark links them up and a shooting star crosses on top ratings.",
+    "type": "component",
+    "size": "20 KB",
+    "deps": "0 deps",
+    "price": 4,
+    "was": 7,
+    "added": "2026-11-02",
+    "isNew": true,
+    "demo": "/store/lyra/",
+    "cover": "/store/lyra/cover.jpg",
+    "video": "/store/lyra/preview.mp4",
+    "buy": "https://adityapulse2.gumroad.com/l/lyra",
+    "gumroad": true,
+    "demoHeight": 420
+  },
+  {
     "slug": "delta",
     "name": "Delta",
     "tagline": "A complete personal finance dashboard template. Income splits into spending and savings as a hand-drawn money river; switch the month and every stream re-routes with a light surge and flowing particles.",
@@ -9,7 +27,7 @@
     "price": 35,
     "was": 59,
     "added": "2026-11-01",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/delta/",
     "cover": "/store/delta/cover.jpg",
     "video": "/store/delta/preview.mp4",
