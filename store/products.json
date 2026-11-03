@@ -1,5 +1,23 @@
 [
   {
+    "slug": "relay",
+    "name": "Relay",
+    "tagline": "A complete dispatch dashboard for delivery and courier teams. Switch the hub and the depot springs across a hand-drawn city map, every van paints its route out and each drop zone pings and ticks itself off.",
+    "type": "dashboard",
+    "size": "54 KB",
+    "deps": "0 deps",
+    "price": 39,
+    "was": 65,
+    "added": "2026-11-03",
+    "isNew": true,
+    "demo": "/store/relay/",
+    "cover": "/store/relay/cover.jpg",
+    "video": "/store/relay/preview.mp4",
+    "buy": "https://wa.me/917007064653?text=Hi%20Kodehelix%2C%20I'd%20like%20to%20buy%20Relay%20(%2439)%20from%20your%20UI%20store",
+    "gumroad": false,
+    "demoHeight": 760
+  },
+  {
     "slug": "lyra",
     "name": "Lyra",
     "tagline": "A star rating that draws itself into a constellation: stars ignite one by one, a spark links them up and a shooting star crosses on top ratings.",
@@ -9,7 +27,7 @@
     "price": 4,
     "was": 7,
     "added": "2026-11-02",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/lyra/",
     "cover": "/store/lyra/cover.jpg",
     "video": "/store/lyra/preview.mp4",
