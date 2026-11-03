@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Relay · Delivery operations dashboard · Kodehelix UI</title>
+<link rel="stylesheet" href="relay.css">
+<style>
+  html,body{margin:0;height:100%;background:#0B0D12}
+  body{min-height:100vh}
+  .relay{min-height:100vh}
+</style>
+</head>
+<body>
+<div class="relay" data-relay data-relay-manual data-theme="dark">
+  <aside class="rl-side" id="rl-side" aria-label="Main navigation">
+    <div class="rl-brand">
+      <span class="rl-mark"><svg class="rl-ic" viewBox="0 0 24 24"><circle cx="6" cy="17" r="2.2"/><circle cx="18" cy="7" r="2.2"/><path d="M8 16.2c4-1 2.5-7.4 8-8.4"/></svg></span>
+      <span>Relay</span>
+    </div>
+    <div class="rl-navlabel">Operations</div>
+    <ul class="rl-nav">
+      <li><a href="#" aria-current="page"><svg class="rl-ic" viewBox="0 0 24 24"><path d="M4 6.5l5-2 6 2 5-2v13l-5 2-6-2-5 2z"/><path d="M9 4.5v13M15 6.5v13"/></svg><span>Live map</span></a></li>
+      <li><a href="#"><svg class="rl-ic" viewBox="0 0 24 24"><path d="M12 3.5l8 4v9l-8 4-8-4v-9z"/><path d="M4 7.5l8 4 8-4M12 11.5v9"/></svg><span>Shipments</span><b class="rl-count">1.4k</b></a></li>
+      <li><a href="#"><svg class="rl-ic" viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><span>Fleet</span><b class="rl-count">15</b></a></li>
+      <li><a href="#"><svg class="rl-ic" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.8 3.6-5.5 7-5.5s6.2 1.7 7 5.5"/></svg><span>Drivers</span></a></li>
+      <li><a href="#"><svg class="rl-ic" viewBox="0 0 24 24"><path d="M3.5 10L12 4.5l8.5 5.5V20h-17z"/><path d="M8 20v-6h8v6"/></svg><span>Hubs</span></a></li>
+      <li><a href="#"><svg class="rl-ic" viewBox="0 0 24 24"><path d="M5 19V11M10 19V6M15 19v-5M20 19V9"/></svg><span>Reports</span></a></li>
+      <li><a href="#"><svg class="rl-ic" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg><span>Settings</span></a></li>
+    </ul>
+    <div class="rl-fleet">
+      <small>Fleet right now</small>
+      <b>12 <span>of 15 vans on the road</span></b>
+      <div class="rl-fleetbar" aria-hidden="true"><i style="flex:12;--c:var(--relay-cyan)"></i><i style="flex:2;--c:var(--relay-peri)"></i><i style="flex:1;--c:var(--relay-warn)"></i></div>
+      <div class="rl-fleetkey"><span style="--c:var(--relay-cyan)">Driving</span><span style="--c:var(--relay-peri)">Loading</span><span style="--c:var(--relay-warn)">Service</span></div>
+    </div>
+  </aside>
+  <div class="rl-scrim" aria-hidden="true"></div>
+
+  <main class="rl-main">
+    <header class="rl-top">
+      <button class="rl-iconbtn rl-menu" data-rl-menu aria-label="Open menu" aria-expanded="false" aria-controls="rl-side"><svg class="rl-ic" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+      <div class="rl-title"><small><i class="rl-live" aria-hidden="true"></i>Live · Tue 3 Nov · 14:20</small><h1>Dispatch</h1></div>
+      <div class="rl-hubs" role="group" aria-label="Hub">
+        <span class="rl-hubs-ind" aria-hidden="true"></span>
+        <button type="button" data-hub="north" aria-pressed="true"><i aria-hidden="true"></i>North</button>
+        <button type="button" data-hub="river" aria-pressed="false"><i aria-hidden="true"></i>River</button>
+        <button type="button" data-hub="east" aria-pressed="false"><i aria-hidden="true"></i>East</button>
+      </div>
+      <button class="rl-iconbtn rl-theme" data-rl-theme aria-label="Switch to light theme" aria-pressed="false">
+        <svg class="rl-ic rl-moon" viewBox="0 0 24 24"><path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z"/></svg>
+        <svg class="rl-ic rl-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/></svg>
+      </button>
+      <span class="rl-avatar" aria-hidden="true">JD</span>
+    </header>
+
+    <section class="rl-kpis" aria-label="Key numbers">
+      <article class="rl-card rl-kpi" data-rl-kpi="parcels" style="--k:var(--relay-peri)">
+        <div class="rl-kpi-top"><svg class="rl-ic" viewBox="0 0 24 24"><path d="M12 3.5l8 4v9l-8 4-8-4v-9z"/><path d="M4 7.5l8 4 8-4M12 11.5v9"/></svg>Parcels today</div>
+        <div class="rl-kpi-val">0</div>
+        <div class="rl-kpi-foot"><div><span class="rl-delta"><svg class="rl-ic" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg><span>0%</span></span><span class="rl-kpi-note">vs last Tuesday</span></div><svg class="rl-spark" viewBox="0 0 84 30" aria-hidden="true"></svg></div>
+      </article>
+      <article class="rl-card rl-kpi" data-rl-kpi="delivered" style="--k:var(--relay-cyan)">
+        <div class="rl-kpi-top"><svg class="rl-ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8.5 12.2l2.4 2.4 4.6-4.8"/></svg>Delivered</div>
+        <div class="rl-kpi-val">0</div>
+        <div class="rl-kpi-foot"><div><span class="rl-delta"><svg class="rl-ic" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg><span>0%</span></span><span class="rl-kpi-note">vs last Tuesday</span></div><svg class="rl-spark" viewBox="0 0 84 30" aria-hidden="true"></svg></div>
+      </article>
+      <article class="rl-card rl-kpi" data-rl-kpi="ontime" style="--k:var(--relay-good)">
+        <div class="rl-kpi-top"><svg class="rl-ic" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7.5"/><path d="M12 9v4l2.5 2M10 3h4"/></svg>On time</div>
+        <div class="rl-kpi-val">0</div>
+        <div class="rl-kpi-foot"><div><span class="rl-delta"><svg class="rl-ic" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg><span>0 pt</span></span><span class="rl-kpi-note">7-day trend</span></div><svg class="rl-spark" viewBox="0 0 84 30" aria-hidden="true"></svg></div>
+      </article>
+      <article class="rl-card rl-kpi" data-rl-kpi="stop" style="--k:var(--relay-warn)">
+        <div class="rl-kpi-top"><svg class="rl-ic" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>Avg time per stop</div>
+        <div class="rl-kpi-val">0</div>
+        <div class="rl-kpi-foot"><div><span class="rl-delta"><svg class="rl-ic" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg><span>0%</span></span><span class="rl-kpi-note">lower is better</span></div><svg class="rl-spark" viewBox="0 0 84 30" aria-hidden="true"></svg></div>
+      </article>
+    </section>
+
+    <section class="rl-grid">
+      <article class="rl-card rl-a-map">
+        <div class="rl-head">
+          <div><h2>Live routes</h2><p><span data-rl-area>Northside</span> · vans leave the <span data-rl-hubname>North hub</span> and tick off drops</p></div>
+          <div class="rl-legend"><span><i style="--c:var(--relay-r1)"></i>Driven</span><span><i class="rl-dash" style="--c:var(--relay-muted)"></i>Still to go</span></div>
+        </div>
+        <div class="rl-mapwrap" data-rl-map>
+          <div class="rl-maptip"><span><i style="--c:var(--relay-cyan)"></i><b data-rl-vans>0 vans out</b></span><span><i style="--c:var(--relay-good)"></i><b data-rl-drops>0 drop zones</b></span><span><i style="--c:var(--relay-warn)"></i><b data-rl-late>0 delayed</b></span></div>
+        </div>
+        <div class="rl-map-foot">
+          <div><small>Stops done</small><b data-rl-foot="stops">0</b></div>
+          <div><small>Driven today</small><b data-rl-foot="km">0 km</b></div>
+          <div><small>Average delay</small><b data-rl-foot="delay">0 min</b></div>
+        </div>
+      </article>
+
+      <article class="rl-card rl-a-clock">
+        <div class="rl-head"><div><h2>Delivery clock</h2><p>Parcels per hour, today</p></div>
+          <div class="rl-legend"><span><i style="--c:linear-gradient(135deg,var(--relay-blue),var(--relay-cyan))"></i>Done</span><span><i style="--c:var(--relay-stop)"></i>Planned</span></div></div>
+        <div class="rl-clock" data-rl-clock>
+          <div class="rl-clock-mid"><small>Busiest hour</small><b data-rl-peak>--:--</b><span data-rl-peakn>0 parcels</span></div>
+        </div>
+        <div class="rl-mini">
+          <div><small>Handled so far</small><b data-rl-past>0</b></div>
+          <div><small>Still to come</small><b data-rl-next>0</b></div>
+        </div>
+      </article>
+
+      <article class="rl-card rl-a-trend">
+        <div class="rl-head"><div><h2>On-time rate</h2><p>Last 14 days · target 95%</p></div>
+          <div class="rl-legend"><span><i class="rl-dash" style="--c:var(--relay-warn)"></i>Target</span></div></div>
+        <div class="rl-trend" data-rl-trend></div>
+        <div class="rl-mini">
+          <div><small>14-day average</small><b data-rl-avg>0%</b></div>
+          <div><small>Below target</small><b data-rl-miss>0 days</b></div>
+        </div>
+      </article>
+
+      <article class="rl-card rl-a-table">
+        <div class="rl-head">
+          <div><h2>Vans on shift</h2><p><span data-rl-hubname>North hub</span> · hover a driver to see their route</p></div>
+          <label class="rl-tsearch"><svg class="rl-ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg><span class="rl-sr">Search vans</span><input type="search" placeholder="Search vans" data-rl-search></label>
+        </div>
+        <div class="rl-tablewrap" tabindex="0" aria-label="Vans table">
+          <table class="rl-table" data-rl-table>
+            <thead><tr>
+              <th scope="col">Driver</th>
+              <th scope="col" class="rl-col-zone">Area</th>
+              <th scope="col" data-sort="prog"><button type="button">Stops<svg class="rl-ic" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></th>
+              <th scope="col" data-sort="eta" class="rl-col-eta"><button type="button">Back by<svg class="rl-ic" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></th>
+              <th scope="col">Status</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </main>
+</div>
+<script src="relay.js"></script>
+<script>
+  // Swap in your own hubs, routes and numbers with Relay.mount(el, { data: {...} }) — see README.md
+  var dash = Relay.mount(document.querySelector('[data-relay]'), { hub: 'north' });
+
+  // Auto-play used by the store preview: replays the intro, then hops between hubs.
+  window.khDemo = function () {
+    var order = ['east', 'river', 'north'], i = 0;
+    dash.replay();
+    setTimeout(function step() {
+      dash.setHub(order[i++ % order.length]);
+      setTimeout(step, 4000);
+    }, 1600);
+  };
+</script>
+</body>
+</html>
