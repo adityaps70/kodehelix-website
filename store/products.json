@@ -1,5 +1,23 @@
 [
   {
+    "slug": "stitch",
+    "name": "Stitch",
+    "tagline": "A multi-step form stepper that sews itself together: a needle runs a stitched thread to the next step, the thread pulls taut and every finished step is cross-stitched like a button.",
+    "type": "component",
+    "size": "27 KB",
+    "deps": "0 deps",
+    "price": 5,
+    "was": 8,
+    "added": "2026-11-04",
+    "isNew": true,
+    "demo": "/store/stitch/",
+    "cover": "/store/stitch/cover.jpg",
+    "video": "/store/stitch/preview.mp4",
+    "buy": "https://wa.me/917007064653?text=Hi%20Kodehelix%2C%20I'd%20like%20to%20buy%20Stitch%20(%245)%20from%20your%20UI%20store",
+    "gumroad": false,
+    "demoHeight": 560
+  },
+  {
     "slug": "relay",
     "name": "Relay",
     "tagline": "A complete dispatch dashboard for delivery and courier teams. Switch the hub and the depot springs across a hand-drawn city map, every van paints its route out and each drop zone pings and ticks itself off.",
@@ -9,7 +27,7 @@
     "price": 39,
     "was": 65,
     "added": "2026-11-03",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/relay/",
     "cover": "/store/relay/cover.jpg",
     "video": "/store/relay/preview.mp4",
