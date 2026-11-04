@@ -13,8 +13,8 @@
     "demo": "/store/stitch/",
     "cover": "/store/stitch/cover.jpg",
     "video": "/store/stitch/preview.mp4",
-    "buy": "https://wa.me/917007064653?text=Hi%20Kodehelix%2C%20I'd%20like%20to%20buy%20Stitch%20(%245)%20from%20your%20UI%20store",
-    "gumroad": false,
+    "buy": "https://adityapulse2.gumroad.com/l/stitch",
+    "gumroad": true,
     "demoHeight": 560
   },
   {
