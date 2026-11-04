@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stitch · sewn multi-step form stepper · Kodehelix UI</title>
+<link rel="stylesheet" href="stitch.css">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{min-height:100vh;display:grid;place-items:center;background:#0b0d12;color:#c9cdd8;
+    font:16px/1.5 "Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden;
+    background-image:radial-gradient(60vmax 40vmax at 70% 18%,rgba(59,91,255,.22),transparent 62%),
+      radial-gradient(40vmax 30vmax at 25% 82%,rgba(34,195,238,.10),transparent 60%)}
+  .wrap{display:grid;justify-items:center;gap:clamp(14px,2.6vh,22px);padding:clamp(18px,4vh,40px) 16px;width:100%;max-width:560px;min-width:0}
+  .wrap > .stitch{box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 1px 2px rgba(0,0,0,.5),0 40px 100px -40px rgba(59,91,255,.5),0 30px 70px -34px rgba(0,0,0,.9)}
+  .hint{margin:0;font-size:13.5px;color:#8f95a6;text-align:center;max-width:46ch}
+  .capture .hint{display:none}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div id="setup" data-stitch data-stitch-manual data-title="Set up your shop" data-finish="Launch shop">
+      <section data-step="Profile">
+        <div class="stitch-row">
+          <label class="stitch-field">Your name<input value="Riya Mehta" autocomplete="off"></label>
+          <label class="stitch-field">Work email<input value="riya@pickleandco.in" autocomplete="off"></label>
+        </div>
+        <label class="stitch-field">Phone<input value="+91 98000 12345" autocomplete="off"></label>
+      </section>
+      <section data-step="Store">
+        <label class="stitch-field">Shop name<input value="Pickle &amp; Co." autocomplete="off"></label>
+        <div class="stitch-chips" role="radiogroup" aria-label="Category">
+          <label class="stitch-chip"><input type="radio" name="cat" checked><span>Food</span></label>
+          <label class="stitch-chip"><input type="radio" name="cat"><span>Home</span></label>
+          <label class="stitch-chip"><input type="radio" name="cat"><span>Fashion</span></label>
+          <label class="stitch-chip"><input type="radio" name="cat"><span>Other</span></label>
+        </div>
+      </section>
+      <section data-step="Plan">
+        <div class="stitch-row" role="radiogroup" aria-label="Plan">
+          <label class="stitch-chip"><input type="radio" name="plan"><span><b>Starter</b><small>Free · 20 products</small></span></label>
+          <label class="stitch-chip"><input type="radio" name="plan" checked><span><b>Growth</b><small>$12/mo · unlimited</small></span></label>
+        </div>
+        <p style="margin:12px 0 0">Switch plans any time. No card needed today.</p>
+      </section>
+      <section data-step="Launch">
+        <dl class="stitch-sum">
+          <div><dt>Owner</dt><dd>Riya Mehta</dd></div>
+          <div><dt>Shop</dt><dd>Pickle &amp; Co. · Food</dd></div>
+          <div><dt>Plan</dt><dd>Growth</dd></div>
+        </dl>
+      </section>
+      <section data-stitch-done>
+        <div class="stitch-done">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.7 2.7L16 9.6"/></svg>
+          <h3>Your shop is live</h3>
+          <p>pickleandco.store is ready for its first order.</p>
+        </div>
+      </section>
+    </div>
+    <p class="hint">Press Continue and watch the needle sew each step to the next. Back unpicks the seam.</p>
+  </main>
+  <script src="stitch.js"></script>
+  <script>
+    if (/[?&]capture=1/.test(location.search)) document.documentElement.classList.add('capture');
+    var setup = Stitch.mount(document.getElementById('setup'));
+
+    // Auto-play for store previews: sew through every step, launch, then unpick and repeat.
+    var demoT = [], demoI = 0;
+    function stopDemo(e) {
+      if (!e.isTrusted || !demoI) return;
+      clearInterval(demoI); demoI = 0; demoT.forEach(clearTimeout); demoT = [];
+    }
+    addEventListener('pointerdown', stopDemo, true); addEventListener('keydown', stopDemo, true);
+    window.khDemo = function () {
+      if (demoI) return;
+      function cycle() {
+        demoT.forEach(clearTimeout); demoT = [];
+        [300, 1350, 2400, 3450].forEach(function (t) { demoT.push(setTimeout(setup.next, t)); });
+        demoT.push(setTimeout(setup.reset, 5200));
+      }
+      cycle(); demoI = setInterval(cycle, 6000);
+    };
+  </script>
+</body>
+</html>

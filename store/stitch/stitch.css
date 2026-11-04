@@ -1,0 +1,134 @@
+/* Stitch — a multi-step form stepper that sews each step to the next.
+   Kodehelix UI · kodehelix.in · Licence: see LICENSE.txt */
+:root {
+  --stitch-bg: #151925;          /* card top */
+  --stitch-bg-2: #10131c;        /* card bottom */
+  --stitch-field: #0f121a;       /* input background */
+  --stitch-line: #262b3b;        /* borders */
+  --stitch-text: #edeff5;
+  --stitch-soft: #c9cdd8;
+  --stitch-muted: #8f95a6;
+  --stitch-guide: #3a4157;       /* dotted pattern line between steps */
+  --stitch-thread-1: #3b5bff;    /* thread gradient start */
+  --stitch-thread-2: #22c3ee;    /* thread gradient end */
+  --stitch-needle: #dfe4f0;
+  --stitch-success: #19c37d;
+  --stitch-radius: 22px;
+  --stitch-node: 38px;
+  --stitch-font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.stitch {
+  position: relative; box-sizing: border-box; width: 100%; max-width: 520px; min-width: 0;
+  padding: 22px 22px 18px; border-radius: var(--stitch-radius); border: 1px solid var(--stitch-line);
+  background:
+    radial-gradient(120% 70% at 50% 0%, rgba(59, 91, 255, .11), transparent 60%),
+    linear-gradient(180deg, var(--stitch-bg), var(--stitch-bg-2));
+  color: var(--stitch-text); font: 400 15px/1.45 var(--stitch-font); text-align: left;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06), 0 1px 2px rgba(0, 0, 0, .5), 0 30px 70px -34px rgba(0, 0, 0, .9);
+  isolation: isolate;
+}
+.stitch *, .stitch *::before, .stitch *::after { box-sizing: border-box; }
+.stitch__title { margin: 0 0 16px; font-size: 17px; font-weight: 650; letter-spacing: -.012em; }
+
+/* ---- step rail ---- */
+.stitch__steps {
+  position: relative; display: grid; grid-template-columns: repeat(var(--stitch-n, 4), minmax(0, 1fr));
+  margin: 0 -6px; padding: 0; list-style: none;
+}
+.stitch__track { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; z-index: 0; }
+.stitch__guide { fill: none; stroke: var(--stitch-guide); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: .1 5.5; }
+.stitch__thread { fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-dasharray: 6 4.2; }
+.stitch__shine { fill: none; stroke-width: 2.6; stroke-linecap: round; }
+.stitch__needle path { fill: var(--stitch-needle); }
+.stitch__needle ellipse { fill: #0b0d12; }
+.stitch__s1 { stop-color: var(--stitch-thread-1); }
+.stitch__s2 { stop-color: var(--stitch-thread-2); }
+
+.stitch__step { position: relative; z-index: 1; display: grid; justify-items: center; gap: 7px; min-width: 0; }
+.stitch__node {
+  position: relative; width: var(--stitch-node); height: var(--stitch-node); padding: 0; margin: 0;
+  border: 0; border-radius: 50%; background: var(--stitch-bg); color: var(--stitch-muted); cursor: pointer;
+  display: grid; place-items: center; font: 650 14px/1 var(--stitch-font); font-variant-numeric: tabular-nums;
+  -webkit-tap-highlight-color: transparent;
+}
+.stitch__node:disabled { cursor: default; }
+.stitch__node svg { position: absolute; inset: -6px; width: calc(100% + 12px); height: calc(100% + 12px); overflow: visible; }
+.stitch__node:focus-visible { outline: 2px solid var(--stitch-thread-2); outline-offset: 4px; }
+.stitch__ring { fill: none; stroke: var(--stitch-line); stroke-width: 1.6; }
+.stitch__ripple { fill: none; stroke: var(--stitch-thread-2); stroke-width: 1.5; }
+.stitch__hole { fill: #0b0d12; }
+.stitch__x { fill: none; stroke: #fff; stroke-width: 1.75; stroke-linecap: round; }
+.stitch__num { position: relative; }
+.stitch__step.is-current .stitch__node { color: var(--stitch-text); }
+.stitch__step.is-current .stitch__ring { stroke-width: 2; }
+.stitch__step.is-done .stitch__ring { stroke: transparent; }
+.stitch__label {
+  max-width: 100%; padding: 0 2px; font-size: 12.5px; font-weight: 550; color: var(--stitch-muted);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.stitch__step.is-current .stitch__label { color: var(--stitch-text); }
+.stitch__step.is-done .stitch__label { color: var(--stitch-soft); }
+
+/* ---- panels ---- */
+.stitch__body { display: grid; margin: 20px 0 0; padding: 18px 0 0; border-top: 1px solid var(--stitch-line); }
+.stitch__panel { grid-area: 1 / 1; min-width: 0; }
+.stitch__panel[hidden] { display: block; visibility: hidden; }
+.stitch__panel > :first-child { margin-top: 0; }
+.stitch__panel h3 { margin: 0 0 4px; font-size: 16px; font-weight: 650; letter-spacing: -.01em; color: var(--stitch-text); }
+.stitch__panel p { margin: 0 0 12px; font-size: 13.5px; color: var(--stitch-muted); }
+
+/* ---- footer ---- */
+.stitch__foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 18px; }
+.stitch__count { font-size: 13px; color: var(--stitch-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.stitch__btns { display: flex; gap: 8px; }
+.stitch__btn {
+  height: 40px; padding: 0 18px; border-radius: 12px; border: 1px solid transparent; cursor: pointer;
+  font: 600 14px/1 var(--stitch-font); color: #fff; white-space: nowrap;
+  background: linear-gradient(135deg, var(--stitch-thread-1), var(--stitch-thread-2));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 8px 22px -10px rgba(59, 91, 255, .9);
+  transition: transform .15s ease, filter .15s ease;
+}
+.stitch__btn:hover { filter: brightness(1.08); }
+.stitch__btn:active { transform: translateY(1px); }
+.stitch__btn--ghost { background: transparent; color: var(--stitch-soft); border-color: var(--stitch-line); box-shadow: none; }
+.stitch__btn--ghost:hover { background: rgba(255, 255, 255, .04); }
+.stitch__btn:disabled { opacity: .4; cursor: default; filter: none; transform: none; }
+.stitch__btn:focus-visible { outline: 2px solid var(--stitch-thread-2); outline-offset: 2px; }
+.stitch__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---- optional panel helpers (use them or bring your own fields) ---- */
+.stitch-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.stitch-field { display: grid; gap: 5px; margin: 0 0 10px; font-size: 12.5px; font-weight: 550; color: var(--stitch-soft); min-width: 0; }
+.stitch-field input, .stitch-field select {
+  width: 100%; min-width: 0; height: 40px; padding: 0 12px; border-radius: 11px; border: 1px solid var(--stitch-line);
+  background: var(--stitch-field); color: var(--stitch-text); font: 400 14px/1 var(--stitch-font); outline: none;
+}
+.stitch-field input:focus, .stitch-field select:focus { border-color: var(--stitch-thread-1); box-shadow: 0 0 0 3px rgba(59, 91, 255, .25); }
+.stitch-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 4px; }
+.stitch-chip { position: relative; }
+.stitch-chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.stitch-chip span {
+  display: block; padding: 9px 13px; border-radius: 11px; border: 1px solid var(--stitch-line); background: var(--stitch-field);
+  font-size: 13.5px; color: var(--stitch-soft);
+}
+.stitch-chip input:checked + span { border-color: var(--stitch-thread-1); color: var(--stitch-text); background: rgba(59, 91, 255, .14); }
+.stitch-chip input:focus-visible + span { outline: 2px solid var(--stitch-thread-2); outline-offset: 2px; }
+.stitch-chip b { display: block; font-size: 14px; color: var(--stitch-text); }
+.stitch-chip small { display: block; font-size: 12.5px; color: var(--stitch-muted); }
+.stitch-sum { display: grid; gap: 7px; margin: 0; font-size: 13.5px; }
+.stitch-sum div { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 7px; border-bottom: 1px dashed var(--stitch-line); }
+.stitch-sum dt { color: var(--stitch-muted); }
+.stitch-sum dd { margin: 0; color: var(--stitch-text); font-weight: 550; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.stitch-done { display: grid; justify-items: center; text-align: center; gap: 2px; padding: 8px 0 4px; }
+.stitch-done svg { width: 46px; height: 46px; color: var(--stitch-success); margin-bottom: 6px; }
+
+@media (max-width: 420px) {
+  .stitch { padding: 18px 16px 16px; }
+  .stitch__steps { margin: 0 -8px; }
+  .stitch__label { font-size: 11.5px; }
+  .stitch__btn { padding: 0 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stitch__btn { transition: none; }
+}
