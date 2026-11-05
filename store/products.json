@@ -1,5 +1,23 @@
 [
   {
+    "slug": "cadence",
+    "name": "Cadence",
+    "tagline": "A complete multi-page social media planner: overview, drag-and-drop week planner, a composer with live previews for six networks, a shared inbox, analytics and channels. Press Schedule and the post flies into its day.",
+    "type": "dashboard",
+    "size": "121 KB (32 KB gzipped)",
+    "deps": "0 deps",
+    "price": 69,
+    "was": 115,
+    "added": "2026-11-05",
+    "isNew": true,
+    "demo": "/store/cadence/",
+    "cover": "/store/cadence/cover.jpg",
+    "video": "/store/cadence/preview.mp4",
+    "buy": "https://adityapulse2.gumroad.com/l/cadence",
+    "gumroad": true,
+    "demoHeight": 760
+  },
+  {
     "slug": "stitch",
     "name": "Stitch",
     "tagline": "A multi-step form stepper that sews itself together: a needle runs a stitched thread to the next step, the thread pulls taut and every finished step is cross-stitched like a button.",
@@ -9,7 +27,7 @@
     "price": 5,
     "was": 8,
     "added": "2026-11-04",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/stitch/",
     "cover": "/store/stitch/cover.jpg",
     "video": "/store/stitch/preview.mp4",
