@@ -7,21 +7,13 @@
   var DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   var LONGDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  /* Demo post images: original flat illustrations (inline SVG, no image files). Swap for your own URLs:
-     data.images = ['img/post-1.jpg', ...]. 0 chai cup · 1 tea estate · 2 kettle · 3 gift box · 4 iced tea · 5 leaves · 6 spices · 7 tin */
-  var SVGH = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">';
-  var ART = [
-    '<defs><linearGradient id="a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6B26B"/><stop offset="1" stop-color="#E0793C"/></linearGradient></defs><rect width="400" height="300" fill="url(#a)"/><rect y="210" width="400" height="90" fill="#9C5530"/><ellipse cx="200" cy="222" rx="110" ry="22" fill="#F3E6D6"/><ellipse cx="200" cy="218" rx="80" ry="14" fill="#E6D3BE"/><path d="M135 130h130l-12 78a20 20 0 0 1-20 17h-66a20 20 0 0 1-20-17z" fill="#FBF4EA"/><path d="M265 145c28 0 32 40 2 44" fill="none" stroke="#FBF4EA" stroke-width="10" stroke-linecap="round"/><ellipse cx="200" cy="131" rx="65" ry="12" fill="#B9692E"/><ellipse cx="188" cy="129" rx="22" ry="4" fill="#D08A4E"/><path d="M175 110c-10-14 10-22 0-38M200 106c-10-16 12-24 0-44M225 110c-10-14 10-22 0-38" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="5" stroke-linecap="round"/><g transform="rotate(-18 320 240)"><rect x="285" y="232" width="80" height="12" rx="6" fill="#7A3B1B"/><rect x="285" y="236" width="80" height="4" fill="#5E2C12"/></g><circle cx="80" cy="245" r="22" fill="#E2B072"/><circle cx="80" cy="245" r="15" fill="none" stroke="#C88E4E" stroke-width="3" stroke-dasharray="3 5"/></svg>',
-    '<defs><linearGradient id="a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A9DCCB"/><stop offset="1" stop-color="#F3E7B8"/></linearGradient></defs><rect width="400" height="300" fill="url(#a)"/><circle cx="300" cy="80" r="34" fill="#FFD27A"/><path d="M0 160C80 110 160 130 240 150S360 120 400 130V300H0z" fill="#7FBF8E"/><path d="M0 200C90 160 200 170 280 190S380 180 400 175V300H0z" fill="#4E9A68"/><path d="M0 250C100 220 220 225 400 235V300H0z" fill="#2F7A4E"/><g fill="none" stroke="#3E8A5A" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 12"><path d="M10 185C90 150 190 160 280 178S380 168 400 165"/><path d="M0 222C100 192 210 199 300 212S380 205 400 202"/></g><g fill="none" stroke="#24603D" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 14"><path d="M0 268C120 245 240 248 400 256"/><path d="M0 288C140 268 260 270 400 278"/></g><path d="M70 150h26v-14l-13-9-13 9z" fill="#F4EDE1"/><rect x="80" y="141" width="6" height="9" fill="#8B5A3C"/></svg>',
-    '<defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3554E0"/><stop offset="1" stop-color="#5FC4EA"/></linearGradient></defs><rect width="400" height="300" fill="url(#a)"/><rect y="228" width="400" height="72" fill="#22306E"/><path d="M110 228c-6-60 10-100 70-104h20c60 4 76 44 70 104z" fill="#E08A4A"/><path d="M120 214c-2-46 12-78 62-80" fill="none" stroke="#F3B07A" stroke-width="8" stroke-linecap="round"/><rect x="170" y="108" width="40" height="14" rx="7" fill="#C46E33"/><circle cx="190" cy="103" r="7" fill="#2A2A2A"/><path d="M126 152c-30-34-44-12-84-30" fill="none" stroke="#E08A4A" stroke-width="14" stroke-linecap="round"/><path d="M150 132c20-60 70-60 90 0" fill="none" stroke="#2A2A2A" stroke-width="9" stroke-linecap="round"/><path d="M40 104c-8-12 8-18 0-32M56 100c-8-12 8-18 0-30" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="4" stroke-linecap="round"/><path d="M290 228l8-40h50l8 40z" fill="#FBF4EA"/><ellipse cx="323" cy="189" rx="25" ry="5" fill="#B9692E"/><path d="M310 172c-6-10 6-14 0-26M330 170c-6-10 6-14 0-26" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round"/></svg>',
-    '<defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B33A6"/><stop offset="1" stop-color="#E9579A"/></linearGradient></defs><rect width="400" height="300" fill="url(#a)"/><rect y="236" width="400" height="64" fill="#3A1F6E"/><rect x="130" y="130" width="140" height="106" rx="6" fill="#F7C873"/><rect x="122" y="112" width="156" height="30" rx="6" fill="#FFD98E"/><rect x="190" y="112" width="20" height="124" fill="#C2185B"/><path d="M200 112c-40-40-62-8-36 0zM200 112c40-40 62-8 36 0z" fill="#E0336F"/><path d="M52 236c0-14 44-14 44 0z" fill="#B8642B"/><path d="M74 222c-7-8 0-18 0-24 0 6 7 16 0 24z" fill="#FFC53D"/><path d="M304 236c0-14 44-14 44 0z" fill="#B8642B"/><path d="M326 222c-7-8 0-18 0-24 0 6 7 16 0 24z" fill="#FFC53D"/><g fill="#FFE7A3"><circle cx="60" cy="60" r="3"/><circle cx="340" cy="50" r="4"/><circle cx="300" cy="100" r="2.5"/><circle cx="100" cy="100" r="2.5"/><circle cx="200" cy="44" r="3"/><circle cx="250" cy="70" r="2"/></g></svg>',
-    '<defs><linearGradient id="a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B8F0F4"/><stop offset="1" stop-color="#3CC8E6"/></linearGradient></defs><rect width="400" height="300" fill="url(#a)"/><rect y="240" width="400" height="60" fill="#1B8FB0"/><path d="M170 40l-14 120" stroke="#FF5A6E" stroke-width="7" stroke-linecap="round"/><path d="M120 90h70l-8 150h-54z" fill="#fff" fill-opacity=".55"/><path d="M124 130h62l-6 106h-50z" fill="#E08A2E"/><path d="M220 110h70l-8 130h-54z" fill="#fff" fill-opacity=".55"/><path d="M224 146h62l-5 90h-52z" fill="#C9572B"/><g fill="#fff" fill-opacity=".7"><rect x="135" y="140" width="18" height="18" rx="4" transform="rotate(12 144 149)"/><rect x="158" y="162" width="16" height="16" rx="4"/><rect x="236" y="156" width="17" height="17" rx="4" transform="rotate(-10 244 164)"/><rect x="258" y="176" width="15" height="15" rx="4"/></g><circle cx="190" cy="92" r="20" fill="#FFE066"/><circle cx="190" cy="92" r="14" fill="#FFF3B0"/><path d="M190 79v26M177 92h26M181 83l18 18M199 83l-18 18" stroke="#FFE066" stroke-width="2"/><path d="M300 200c20-30 50-10 60-40" fill="none" stroke="#2FA36B" stroke-width="5"/><ellipse cx="335" cy="175" rx="14" ry="7" fill="#3DBB7B" transform="rotate(-30 335 175)"/></svg>',
-    '<rect width="400" height="300" fill="#16352A"/><path d="M60 240C40 150 140 80 230 70 210 160 150 230 60 240z" fill="#3E9B5F"/><path d="M60 240C120 170 170 120 230 70" fill="none" stroke="#9FE0A8" stroke-width="3"/><path d="M220 260C230 180 300 120 380 120 360 200 300 250 220 260z" fill="#5DBB72"/><path d="M220 260C270 210 320 160 380 120" fill="none" stroke="#C6F2C4" stroke-width="3"/><path d="M150 300C150 240 200 200 250 190 250 250 210 290 150 300z" fill="#2E7D4A"/><path d="M150 300C180 260 220 220 250 190" fill="none" stroke="#86D39A" stroke-width="2.5"/><path d="M260 40C300 30 350 50 370 80 330 90 290 80 260 40z" fill="#4CAF6A"/><path d="M20 60C40 30 90 30 110 50 80 70 40 76 20 60z" fill="#2F8A52"/><g fill="#fff" fill-opacity=".55"><circle cx="150" cy="140" r="4"/><circle cx="300" cy="170" r="3"/><circle cx="190" cy="110" r="2"/></g></svg>',
-    '<rect width="400" height="300" fill="#F8D3B0"/><circle cx="110" cy="110" r="60" fill="#FFF6EC"/><circle cx="110" cy="110" r="46" fill="#E9A23B"/><circle cx="270" cy="190" r="62" fill="#FFF6EC"/><circle cx="270" cy="190" r="48" fill="#B4472A"/><path d="M300 70l8 18 20 2-15 13 5 20-18-10-18 10 5-20-15-13 20-2z" fill="#6B3A1E"/><circle cx="308" cy="96" r="4" fill="#C98A5A"/><g transform="rotate(25 130 240)"><rect x="80" y="232" width="110" height="14" rx="7" fill="#8A4A24"/><rect x="80" y="250" width="110" height="14" rx="7" fill="#A05A2E"/></g><g fill="#7DAA4A"><ellipse cx="200" cy="60" rx="9" ry="6"/><ellipse cx="215" cy="75" rx="9" ry="6" transform="rotate(30 215 75)"/><ellipse cx="190" cy="80" rx="9" ry="6" transform="rotate(-20 190 80)"/><ellipse cx="360" cy="262" rx="9" ry="6"/><ellipse cx="40" cy="230" rx="9" ry="6" transform="rotate(40 40 230)"/></g></svg>',
-    '<defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#151B36"/><stop offset="1" stop-color="#34449A"/></linearGradient></defs><rect width="400" height="300" fill="url(#a)"/><ellipse cx="200" cy="252" rx="90" ry="12" fill="#000" fill-opacity=".35"/><rect x="140" y="90" width="120" height="160" rx="10" fill="#F1E3C8"/><rect x="134" y="76" width="132" height="30" rx="8" fill="#C9A66B"/><rect x="140" y="135" width="120" height="70" fill="#0E7A6B"/><text x="200" y="166" font-family="Georgia,serif" font-size="16" font-weight="700" fill="#F1E3C8" text-anchor="middle">KETTLE &amp; CO.</text><text x="200" y="188" font-family="Arial,sans-serif" font-size="10" letter-spacing="2" fill="#BDE7DA" text-anchor="middle">MASALA CHAI</text><path d="M300 240c10-40 50-50 70-40-10 30-40 46-70 40z" fill="#3E9B5F"/><path d="M60 230c0-30 30-50 50-46-4 28-24 46-50 46z" fill="#5DBB72"/></svg>'
-  ];
+  /* Post images. The demo photos come from cadence-photos.js (window.CADENCE_PHOTOS); pass your own with
+     Cadence.mount(el, { data: { images: ['img/post-1.jpg', ...] } }). Without photos, soft gradients are used. */
   function svgUrl(svg) { return "url('data:image/svg+xml," + encodeURIComponent(svg) + "') center/cover"; }
-  var GRADS = ART.map(function (a) { return svgUrl(SVGH + a); });
+  var GRADS = ['linear-gradient(135deg,#FFB020,#FF5A6E)', 'linear-gradient(135deg,#19C37D,#0BA5CB)', 'linear-gradient(140deg,#8FA3FF,#3B5BFF)', 'linear-gradient(135deg,#A98BFF,#E9579A)',
+    'linear-gradient(150deg,#22C3EE,#3B5BFF)', 'linear-gradient(135deg,#C9F27B,#19C37D)', 'linear-gradient(135deg,#FF9A6E,#A98BFF)', 'linear-gradient(140deg,#3B5BFF,#0B0D12)'];
+  function useImages(list) { if (list && list.length) GRADS = list.map(function (u) { return "url('" + u + "') center/cover"; }); }
+  useImages(window.CADENCE_PHOTOS);
   // simple illustrated avatars (seeded), and the demo brand's logo
   function avatar(i) {
     var bg = ['#C9D6FF', '#FFE0B8', '#C8F2DE', '#F9D0E3', '#D9D2FF', '#BDEBF5', '#FFD7C7', '#E3F0B8'][i % 8];
@@ -35,42 +27,42 @@
     return svgUrl('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="' + bg + '"/><path d="M10 64c2-14 12-20 22-20s20 6 22 20z" fill="' + shirt + '"/><rect x="27" y="36" width="10" height="10" rx="4" fill="' + skin + '"/><circle cx="32" cy="28" r="12" fill="' + skin + '"/>' + hairS +
       '<circle cx="27.5" cy="29" r="1.4" fill="#2B1B12"/><circle cx="36.5" cy="29" r="1.4" fill="#2B1B12"/><path d="M28.5 34c2 2 5 2 7 0" fill="none" stroke="#7A3B2A" stroke-width="1.4" stroke-linecap="round"/></svg>');
   }
-  var LOGO = svgUrl('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#0E7A6B"/><path d="M18 46c-1-12 3-20 14-21h2c11 1 15 9 14 21z" fill="#F1E3C8"/><path d="M26 32c3-8 11-8 14 0" fill="none" stroke="#F1E3C8" stroke-width="3" stroke-linecap="round"/><path d="M19 33c-5-5-8-2-12-5" fill="none" stroke="#F1E3C8" stroke-width="4" stroke-linecap="round"/><path d="M38 20c6-6 12-4 14 0-6 4-11 4-14 0z" fill="#7FD8A6"/></svg>');
+  var LOGO = svgUrl('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF9A4D"/><stop offset="1" stop-color="#2F5FD0"/></linearGradient></defs><rect width="64" height="64" fill="url(#g)"/><circle cx="32" cy="36" r="11" fill="#FFE2A8"/><path d="M8 40c5-4 9-4 14 0s9 4 14 0 9-4 14 0 6 3 8 1" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/><path d="M8 49c5-4 9-4 14 0s9 4 14 0 9-4 14 0 6 3 8 1" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="3.5" stroke-linecap="round"/></svg>');
 
   /* ---------- demo data (replace with your own: same shape, see README) ---------- */
   function seeded(s) { return function () { s = (s + 0x6D2B79F5) | 0; var t = Math.imul(s ^ (s >>> 15), 1 | s); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
   function demoData() {
     var r = seeded(7);
     var nets = [
-      { id: 'ig', name: 'Instagram', short: 'IG', handle: '@kettleandco', followers: 48210, posts: 31, eng: 5.8, limit: 2200, last: '2 h ago' },
-      { id: 'tt', name: 'TikTok', short: 'TT', handle: '@kettleandco', followers: 63450, posts: 18, eng: 7.4, limit: 2200, last: 'Yesterday' },
-      { id: 'li', name: 'LinkedIn', short: 'in', handle: 'Kettle & Co.', followers: 12840, posts: 12, eng: 3.1, limit: 3000, last: 'Today, 10:00' },
-      { id: 'x', name: 'X', short: 'X', handle: '@kettleco', followers: 21390, posts: 26, eng: 1.9, limit: 280, last: 'Today, 10:00' },
-      { id: 'fb', name: 'Facebook', short: 'f', handle: 'Kettle & Co. Tea', followers: 30120, posts: 15, eng: 1.4, limit: 63206, last: '3 days ago' },
-      { id: 'yt', name: 'YouTube', short: 'YT', handle: 'Kettle & Co.', followers: 9870, posts: 4, eng: 4.2, limit: 5000, last: 'Wed', warn: 'Sign-in expires in 3 days' }
+      { id: 'ig', name: 'Instagram', short: 'IG', handle: '@saltwind.co', followers: 48210, posts: 31, eng: 5.8, limit: 2200, last: '2 h ago' },
+      { id: 'tt', name: 'TikTok', short: 'TT', handle: '@saltwind.co', followers: 63450, posts: 18, eng: 7.4, limit: 2200, last: 'Yesterday' },
+      { id: 'li', name: 'LinkedIn', short: 'in', handle: 'Saltwind Journeys', followers: 12840, posts: 12, eng: 3.1, limit: 3000, last: 'Today, 10:00' },
+      { id: 'x', name: 'X', short: 'X', handle: '@saltwindco', followers: 21390, posts: 26, eng: 1.9, limit: 280, last: 'Today, 10:00' },
+      { id: 'fb', name: 'Facebook', short: 'f', handle: 'Saltwind Journeys', followers: 30120, posts: 15, eng: 1.4, limit: 63206, last: '3 days ago' },
+      { id: 'yt', name: 'YouTube', short: 'YT', handle: 'Saltwind Journeys', followers: 9870, posts: 4, eng: 4.2, limit: 5000, last: 'Wed', warn: 'Sign-in expires in 3 days' }
     ];
     var P = [
-      [0, 9, 'ig fb', 'Monday reset: a fresh pot of Assam and a clear desk.', 2],
-      [0, 18.5, 'li', 'How we source our leaves from three family estates in Assam.', 1],
-      [1, 8.5, 'ig tt', 'Steep time matters. 3 minutes vs 5 minutes, side by side.', 0],
-      [1, 13, 'x', 'Hot take: chai is better the second day. Agree?', 6],
-      [2, 12, 'ig li fb', 'Meet Ritu, our head blender, and her 20-year-old tasting notebook.', 5],
-      [2, 19, 'yt', 'Full video: our kettle-to-cup morning routine.', 2],
-      [3, 10, 'x li', 'We are hiring a part-time packing lead in Lucknow.', 7],
-      [3, 12.5, 'ig', 'Behind the scenes: packing 400 Diwali gift boxes.', 3],
-      [3, 18, 'ig tt', 'Three iced teas you can make in five minutes.', 4],
+      [0, 9, 'ig fb', 'Monday sunrise from the bridge deck. 5:52 am, Arabian Sea.', 0],
+      [0, 18.5, 'li', 'How we plan a sunrise route: tides, cloud cover and a backup harbour.', 1],
+      [1, 8.5, 'ig tt', 'Golden hour in 15 seconds: the full timelapse from the bow.', 6],
+      [1, 13, 'x', 'Hot take: the best sunrises come after a stormy night. Agree?', 3],
+      [2, 12, 'ig li fb', 'Meet Ritu, our trip lead, and the notebook with 400 sunrises in it.', 5],
+      [2, 19, 'yt', 'Full video: a morning on deck, from first light to breakfast.', 0],
+      [3, 10, 'x li', 'We are hiring a part-time trip photographer in Kochi.', 4],
+      [3, 12.5, 'ig', 'Behind the scenes: packing 40 tripods for the winter season.', 7],
+      [3, 18, 'ig tt', 'Three phone settings for sharper sunrise photos.', 4],
       [4, 9.5, 'li x', 'Our numbers this quarter, and what we learned.', 1, 'review'],
-      [4, 13, 'ig fb', 'Diwali gift box restock: 200 boxes at 1 pm.', 3],
-      [5, 11, 'tt', 'Trying every chai spice on its own. Ranked.', 6],
-      [5, 17.5, 'ig fb x', 'Weekend giveaway: win a year of tea.', 7],
-      [6, 10, 'ig', 'Slow Sunday playlist and a pot of Darjeeling.', 0],
-      [6, 18, 'yt fb', 'Live: Q&A with our tea taster.', 5, 'review']
+      [4, 13, 'ig fb', 'Winter departures: 20 cabins left on the December sailing.', 3],
+      [5, 11, 'tt', 'Trying every lens on one sunrise. Ranked.', 6],
+      [5, 17.5, 'ig fb x', 'Weekend contest: share your best sunrise and win a trip.', 2],
+      [6, 10, 'ig', 'Slow Sunday: mist on the lake before anyone was awake.', 5],
+      [6, 18, 'yt fb', 'Live: Q&A with our trip lead.', 7, 'review']
     ];
     var posts = P.map(function (p, i) { return { id: 'p' + i, w: 0, day: p[0], t: p[1], nets: p[2].split(' '), text: p[3], g: p[4], status: p[5] || '' }; });
-    ['Rainy day pairing: ginger tea and pakoras.', 'Our new compostable tea bags are here.', 'Poll: milk first or tea first?', 'Customer of the week: the Sharma family.',
-      'How to store loose leaf tea.', 'Office tea break kit giveaway.', 'Five-second chai hack.', 'From estate to doorstep in 4 days.', 'Sunday tasting notes.', 'Throwback: our first stall in 2019.'
+    ['Rainy dawn at the harbour.', 'Our new eco cabins are here.', 'Poll: sunrise or sunset?', 'Traveller of the week: the Sharma family.',
+      'How to pack a camera bag for sea trips.', 'Office sunrise walk challenge.', 'Five-second horizon fix.', 'From harbour to open sea in 40 minutes.', 'Sunday lake notes.', 'Throwback: our first sailing in 2019.'
     ].forEach(function (t, i) { posts.push({ id: 'q' + i, w: -1, day: i % 7, t: 8 + Math.round(r() * 24) / 2, nets: [['ig'], ['li', 'x'], ['tt'], ['ig', 'fb'], ['x'], ['yt']][i % 6], text: t, g: i % 8, status: '' }); });
-    [[0, 9, 'ig fb', 'Diwali hours: we are open late all week.', 3], [1, 18, 'tt', 'Packing your orders, sped up.', 7], [3, 12, 'li', 'What a year of slow growth taught us.', 1], [5, 10, 'ig', 'Winter blend sneak peek.', 6]]
+    [[0, 9, 'ig fb', 'December hours: early boarding all week.', 3], [1, 18, 'tt', 'Getting the boat ready, sped up.', 6], [3, 12, 'li', 'What a year of slow travel taught us.', 1], [5, 10, 'ig', 'Winter route sneak peek.', 2]]
       .forEach(function (p, i) { posts.push({ id: 'n' + i, w: 1, day: p[0], t: p[1], nets: p[2].split(' '), text: p[3], g: p[4], status: '' }); });
 
     var reach = [], prev = [], imp = [], eng = [], fol = [];
@@ -92,14 +84,14 @@
       heat.push(row);
     }
     var top = [
-      ['Three iced teas you can make in five minutes', 'ig tt', 184200, 9.8, 4120, 4, '28 Oct'],
-      ['Meet Ritu, our head blender', 'ig li', 96400, 7.1, 1870, 5, '4 Nov'],
-      ['Steep time: 3 vs 5 minutes', 'tt', 152900, 6.4, 2950, 0, '3 Nov'],
-      ['Our first stall, five years later', 'ig fb', 71300, 6.2, 990, 7, '19 Oct'],
-      ['Diwali gift box: first look', 'ig fb x', 88800, 5.9, 2210, 3, '22 Oct'],
-      ['How we source from family estates', 'li', 38400, 4.8, 640, 1, '2 Nov'],
-      ['Chai is better the second day', 'x', 54100, 3.6, 120, 6, '3 Nov'],
-      ['Kettle-to-cup morning routine', 'yt', 22800, 4.4, 530, 2, '4 Nov']
+      ['Three phone settings for sharper sunrise photos', 'ig tt', 184200, 9.8, 4120, 4, '28 Oct'],
+      ['Meet Ritu, our trip lead', 'ig li', 96400, 7.1, 1870, 5, '4 Nov'],
+      ['Golden hour from the bow, timelapse', 'tt', 152900, 6.4, 2950, 6, '3 Nov'],
+      ['Our first sailing, five years later', 'ig fb', 71300, 6.2, 990, 0, '19 Oct'],
+      ['Winter departures: first look', 'ig fb x', 88800, 5.9, 2210, 3, '22 Oct'],
+      ['How we plan a sunrise route', 'li', 38400, 4.8, 640, 1, '2 Nov'],
+      ['Best sunrises come after storms', 'x', 54100, 3.6, 120, 7, '3 Nov'],
+      ['A morning on deck, full video', 'yt', 22800, 4.4, 530, 2, '4 Nov']
     ].map(function (p, i) { return { id: 't' + i, text: p[0], nets: p[1].split(' '), reach: p[2], eng: p[3], saves: p[4], g: p[5], date: p[6] }; });
     var published = [];
     for (var k = 0; k < 28; k++) {
@@ -108,35 +100,35 @@
         g: top[k % 8].g, reach: Math.round(9000 + r() * 120000), eng: Math.round((1.2 + r() * 8) * 10) / 10, status: k % 7 === 2 ? 'Boosted' : 'Published' });
     }
     var threads = [
-      ['Ananya Rao', 'ig', 'dm', '2 min', 1, 'Question', 'var(--cadence-peri)', 3, [['Hi! Is the Diwali gift box available for delivery to Pune before the 10th?', '14:28']]],
-      ['Rohan Verma', 'fb', 'dm', '18 min', 1, 'Order issue', 'var(--cadence-bad)', 0, [['Hello, my order #4821 arrived today but the tin lid was dented.', '14:06'], ['Tea is fine, just the tin. Can you send a new one?', '14:07']]],
-      ['Kabir Sethi', 'ig', 'comment', '42 min', 1, 'Praise', 'var(--cadence-good)', 5, [['This iced tea recipe is gold. Made it twice today already.', '13:48']]],
-      ['Meera J.', 'x', 'mention', '1 h', 0, 'Praise', 'var(--cadence-good)', 6, [['@kettleco the first flush this year is unreal. Floral, light, perfect.', '13:20']]],
-      ['Studio Paperplane', 'li', 'dm', '2 h', 0, 'Collab', 'var(--cadence-cyan)', 2, [['We design packaging for small food brands and love your tins. Open to a chat about the winter range?', '12:31']]],
-      ['Arjun Mehta', 'yt', 'comment', '3 h', 0, 'Question', 'var(--cadence-peri)', 7, [['Could you do a full video on brewing oolong? The temperatures confuse me.', '11:15']], 1],
+      ['Ananya Rao', 'ig', 'dm', '2 min', 1, 'Question', 'var(--cadence-peri)', 3, [['Hi! Is the December sailing OK for first-time travellers? Asking for my parents.', '14:28']]],
+      ['Rohan Verma', 'fb', 'dm', '18 min', 1, 'Booking issue', 'var(--cadence-bad)', 0, [['Hello, my booking #4821 shows the wrong cabin.', '14:06'], ['We booked two berths and it shows one. Can you check?', '14:07']]],
+      ['Kabir Sethi', 'ig', 'comment', '42 min', 1, 'Praise', 'var(--cadence-good)', 5, [['This timelapse is gold. Watched it five times already.', '13:48']]],
+      ['Meera J.', 'x', 'mention', '1 h', 0, 'Praise', 'var(--cadence-good)', 6, [['@saltwindco the sunrise from your bow this week was unreal.', '13:20']]],
+      ['Studio Paperplane', 'li', 'dm', '2 h', 0, 'Collab', 'var(--cadence-cyan)', 2, [['We design travel guides and love your photos. Open to a chat about a winter photo book?', '12:31']]],
+      ['Arjun Mehta', 'yt', 'comment', '3 h', 0, 'Question', 'var(--cadence-peri)', 7, [['Could you do a full video on shooting sunrise on a phone? The exposure confuses me.', '11:15']], 1],
       ['Tanvi S.', 'tt', 'comment', '5 h', 0, 'Question', 'var(--cadence-peri)', 4, [['what is the song in this one??', '09:52']]],
-      ['Neha Kapoor', 'ig', 'mention', 'Yesterday', 0, 'Praise', 'var(--cadence-good)', 1, [['Tagged you in my story: Sunday chai with the family, with your masala blend.', 'Wed']]],
-      ['Farah Ali', 'x', 'dm', 'Yesterday', 0, 'Question', 'var(--cadence-peri)', 6, [['Do you ship to Dubai?', 'Wed']], 1]
+      ['Neha Kapoor', 'ig', 'mention', 'Yesterday', 0, 'Praise', 'var(--cadence-good)', 1, [['Tagged you in my story: our family sunrise on the lake, thanks to your guide.', 'Wed']]],
+      ['Farah Ali', 'x', 'dm', 'Yesterday', 0, 'Question', 'var(--cadence-peri)', 6, [['Do you sail from Dubai?', 'Wed']], 1]
     ].map(function (t, i) {
       var msgs = t[8].map(function (m) { return { me: false, text: m[0], time: m[1] }; });
       if (t[9]) msgs.push({ me: true, text: i === 5 ? 'Great idea, it is on our list for this month!' : 'Not yet, but we are working on it. We will let you know first.', time: 'Wed' });
       return { id: 'm' + i, name: t[0], net: t[1], type: t[2], time: t[3], unread: !!t[4], tag: t[5], tagc: t[6], g: t[7], msgs: msgs };
     });
     return {
-      company: 'Kettle & Co.', today: 3, now: 14.5, weekStart: [2026, 10, 2],
+      company: 'Saltwind Journeys', today: 3, now: 14.5, weekStart: [2026, 10, 2],
       nets: nets, posts: posts, reach: reach, reachPrev: prev, imp: imp, eng: eng, fol: fol, heat: heat, top: top, published: published, threads: threads,
       beats: [3, 2, 4, 1, 3, 2, 2, 5, 2, 3, 2, 1, 3, 2],
       kpis: { followers: [185880, 2.4], reach: [1240000, 18.2], eng: [4.6, 0.6], posts: [38, 5] },
       types: [['Short video', 7.6], ['Carousel', 5.9], ['Single image', 4.1], ['Text only', 2.3], ['Live', 3.4]],
-      tags: ['#teatime', '#chai', '#slowmornings', '#kettleandco'],
-      quick: ['Thank you, that means a lot!', 'Sending you a DM now', 'Could you share your order number?'],
+      tags: ['#sunrise', '#goldenhour', '#travel', '#saltwind'],
+      quick: ['Thank you, that means a lot!', 'Sending you a DM now', 'Could you share your booking number?'],
       drafts: [
-        { text: 'Fresh harvest just landed: first flush Darjeeling, light and floral. Brew it at 85°C for 3 minutes and skip the milk. #firstflush #teatime', nets: ['ig', 'li', 'x'], media: [1, 5], day: 4, t: 19 },
-        { text: 'You asked, we listened: our masala chai now comes in a 250 g tin that fits any shelf. Back in stock tomorrow morning. #chai #kettleandco', nets: ['ig', 'fb', 'tt'], media: [7], day: 5, t: 11.5 },
-        { text: 'Tea tip: rinse your pot with hot water first. The tea stays hot longer and tastes rounder. Small habit, big difference. #teatips', nets: ['x', 'li'], media: [], day: 6, t: 9 },
-        { text: 'Our Lucknow tasting room opens this Saturday. Come in, try six teas, and take one home on us. #lucknow #tearoom', nets: ['ig', 'fb', 'li'], media: [0, 6, 4], day: 5, t: 16 }
+        { text: 'Fresh from this morning: first light over the harbour, 6:04 am. Shot on a phone, no filters. Swipe for the full set. #sunrise #goldenhour', nets: ['ig', 'li', 'x'], media: [1, 4], day: 4, t: 19 },
+        { text: 'You asked, we listened: every winter sailing now has a sunrise photo class on deck. Booking opens tomorrow morning. #travel #saltwind', nets: ['ig', 'fb', 'tt'], media: [0], day: 5, t: 11.5 },
+        { text: 'Photo tip: lock focus on the horizon, then slide exposure down. The sun stays round and the sky keeps its colour. #phototips', nets: ['x', 'li'], media: [], day: 6, t: 9 },
+        { text: 'Our lake retreat opens this Saturday. Come for the mist, stay for the sunrise and a hot breakfast on us. #retreat #sunrise', nets: ['ig', 'fb', 'li'], media: [2, 5, 7], day: 5, t: 16 }
       ],
-      team: [['Aisha Malik', 'aisha@kettleandco.in', 'Owner', 3], ['Dev Narang', 'dev@kettleandco.in', 'Editor', 2], ['Ritu Sharma', 'ritu@kettleandco.in', 'Approver', 0], ['Sam Thomas', 'sam@kettleandco.in', 'Contributor', 4]]
+      team: [['Aisha Malik', 'aisha@saltwind.co', 'Owner', 3], ['Dev Narang', 'dev@saltwind.co', 'Editor', 2], ['Ritu Sharma', 'ritu@saltwind.co', 'Approver', 0], ['Sam Thomas', 'sam@saltwind.co', 'Contributor', 4]]
     };
   }
 
@@ -199,6 +191,7 @@
     if (root._cadence) return root._cadence;
     opts = opts || {};
     var D = opts.data || demoData();
+    if (D.images) useImages(D.images);
     var E = new Engine(), off = [], page = '', query = '', range = 30, week = 0, draftI = 0, added = 0;
     var NET = {}; D.nets.forEach(function (n) { NET[n.id] = n; });
     var visibleNets = {}; D.nets.forEach(function (n) { visibleNets[n.id] = true; });
