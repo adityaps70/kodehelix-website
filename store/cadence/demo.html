@@ -64,6 +64,10 @@
           <div class="cd-head"><div><h2>Engagement by channel</h2><p>Likes, comments, shares and saves per view</p></div></div>
           <div class="cd-netbars" data-cd-netbars></div>
         </article>
+        <article class="cd-card cd-a-feed">
+          <div class="cd-head"><div><h2>Recent posts</h2><p>What went out this week and how it is doing</p></div><a class="cd-btn cd-btn--ghost" href="#analytics" data-cd-go="analytics" style="height:34px;padding:0 12px;font-size:12.5px">Analytics</a></div>
+          <div class="cd-feed" data-cd-feed></div>
+        </article>
         <article class="cd-card cd-a-heat">
           <div class="cd-head">
             <div><h2>Best time to post</h2><p>When your audience reacts most, by day and hour</p></div>
@@ -223,18 +227,35 @@
 </div>
 <script src="cadence.js"></script>
 <script>
+  // Store preview only: inside an iframe or a capture, show the full desktop layout scaled to fit.
+  (function () {
+    if (window.self === window.top && !/[?&]capture=1/.test(location.search)) return;
+    var el = document.querySelector('.cadence'), W = 1140;
+    function fit() {
+      var w = document.documentElement.clientWidth, s = w / W;
+      if (w >= 1180 || w < 520) { el.classList.remove('cd-wide', 'cd-scaled'); el.removeAttribute('style'); document.body.style.height = ''; return; }
+      el.classList.add('cd-wide', 'cd-scaled');
+      el.style.cssText = 'position:absolute;left:0;top:0;width:' + W + 'px;transform-origin:0 0;transform:scale(' + s + ');--cd-vh:' + (innerHeight / s) + 'px';
+      document.body.style.height = Math.ceil(el.offsetHeight * s) + 'px';
+    }
+    fit(); addEventListener('resize', fit);
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(el);
+  })();
+
   // Swap in your own channels, posts and numbers with Cadence.mount(el, { data: {...} }) — see README.md
   var app = Cadence.mount(document.querySelector('[data-cadence]'));
 
-  // Auto-play used by the store preview: write a post, schedule it into the week, repeat.
+  // Auto-play used by the store preview: a tour of the app (overview, analytics, schedule a post, planner).
   window.khDemo = function () {
-    app.go('compose');
-    var n = 0;
-    setTimeout(function step() {
-      app.schedule();
-      if (++n % 3 === 0) setTimeout(function () { app.go('planner'); }, 1500), setTimeout(function () { app.go('compose'); }, 3600);
-      setTimeout(step, n % 3 === 0 ? 4600 : 3400);
-    }, 1200);
+    function tour() {
+      app.go('overview'); app.replay(); scrollTo(0, 0);
+      setTimeout(function () { app.go('analytics'); }, 3200);
+      setTimeout(function () { app.setRange(90); }, 4700);
+      setTimeout(function () { app.go('compose'); }, 6300);
+      setTimeout(function () { app.schedule(); }, 6900);
+      setTimeout(function () { app.go('planner'); }, 9600);
+    }
+    tour(); setInterval(tour, 12500);
   };
 </script>
 </body>

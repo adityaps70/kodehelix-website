@@ -7,11 +7,35 @@
   var DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   var LONGDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  var GRADS = [
-    'linear-gradient(135deg,#FFB020,#FF5A6E)', 'linear-gradient(135deg,#19C37D,#0BA5CB)', 'linear-gradient(140deg,#8FA3FF,#3B5BFF)',
-    'linear-gradient(135deg,#A98BFF,#E9579A)', 'linear-gradient(150deg,#22C3EE,#3B5BFF)', 'linear-gradient(135deg,#C9F27B,#19C37D)',
-    'linear-gradient(135deg,#FF9A6E,#A98BFF)', 'linear-gradient(140deg,#3B5BFF,#0B0D12)'
+  /* Demo post images: original flat illustrations (inline SVG, no image files). Swap for your own URLs:
+     data.images = ['img/post-1.jpg', ...]. 0 chai cup · 1 tea estate · 2 kettle · 3 gift box · 4 iced tea · 5 leaves · 6 spices · 7 tin */
+  var SVGH = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">';
+  var ART = [
+    '<defs><linearGradient id="a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6B26B"/><stop offset="1" stop-color="#E0793C"/></linearGradient></defs><rect width="400" height="300" fill="url(#a)"/><rect y="210" width="400" height="90" fill="#9C5530"/><ellipse cx="200" cy="222" rx="110" ry="22" fill="#F3E6D6"/><ellipse cx="200" cy="218" rx="80" ry="14" fill="#E6D3BE"/><path d="M135 130h130l-12 78a20 20 0 0 1-20 17h-66a20 20 0 0 1-20-17z" fill="#FBF4EA"/><path d="M265 145c28 0 32 40 2 44" fill="none" stroke="#FBF4EA" stroke-width="10" stroke-linecap="round"/><ellipse cx="200" cy="131" rx="65" ry="12" fill="#B9692E"/><ellipse cx="188" cy="129" rx="22" ry="4" fill="#D08A4E"/><path d="M175 110c-10-14 10-22 0-38M200 106c-10-16 12-24 0-44M225 110c-10-14 10-22 0-38" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="5" stroke-linecap="round"/><g transform="rotate(-18 320 240)"><rect x="285" y="232" width="80" height="12" rx="6" fill="#7A3B1B"/><rect x="285" y="236" width="80" height="4" fill="#5E2C12"/></g><circle cx="80" cy="245" r="22" fill="#E2B072"/><circle cx="80" cy="245" r="15" fill="none" stroke="#C88E4E" stroke-width="3" stroke-dasharray="3 5"/></svg>',
+    '<defs><linearGradient id="a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A9DCCB"/><stop offset="1" stop-color="#F3E7B8"/></linearGradient></defs><rect width="400" height="300" fill="url(#a)"/><circle cx="300" cy="80" r="34" fill="#FFD27A"/><path d="M0 160C80 110 160 130 240 150S360 120 400 130V300H0z" fill="#7FBF8E"/><path d="M0 200C90 160 200 170 280 190S380 180 400 175V300H0z" fill="#4E9A68"/><path d="M0 250C100 220 220 225 400 235V300H0z" fill="#2F7A4E"/><g fill="none" stroke="#3E8A5A" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 12"><path d="M10 185C90 150 190 160 280 178S380 168 400 165"/><path d="M0 222C100 192 210 199 300 212S380 205 400 202"/></g><g fill="none" stroke="#24603D" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 14"><path d="M0 268C120 245 240 248 400 256"/><path d="M0 288C140 268 260 270 400 278"/></g><path d="M70 150h26v-14l-13-9-13 9z" fill="#F4EDE1"/><rect x="80" y="141" width="6" height="9" fill="#8B5A3C"/></svg>',
+    '<defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3554E0"/><stop offset="1" stop-color="#5FC4EA"/></linearGradient></defs><rect width="400" height="300" fill="url(#a)"/><rect y="228" width="400" height="72" fill="#22306E"/><path d="M110 228c-6-60 10-100 70-104h20c60 4 76 44 70 104z" fill="#E08A4A"/><path d="M120 214c-2-46 12-78 62-80" fill="none" stroke="#F3B07A" stroke-width="8" stroke-linecap="round"/><rect x="170" y="108" width="40" height="14" rx="7" fill="#C46E33"/><circle cx="190" cy="103" r="7" fill="#2A2A2A"/><path d="M126 152c-30-34-44-12-84-30" fill="none" stroke="#E08A4A" stroke-width="14" stroke-linecap="round"/><path d="M150 132c20-60 70-60 90 0" fill="none" stroke="#2A2A2A" stroke-width="9" stroke-linecap="round"/><path d="M40 104c-8-12 8-18 0-32M56 100c-8-12 8-18 0-30" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="4" stroke-linecap="round"/><path d="M290 228l8-40h50l8 40z" fill="#FBF4EA"/><ellipse cx="323" cy="189" rx="25" ry="5" fill="#B9692E"/><path d="M310 172c-6-10 6-14 0-26M330 170c-6-10 6-14 0-26" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round"/></svg>',
+    '<defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B33A6"/><stop offset="1" stop-color="#E9579A"/></linearGradient></defs><rect width="400" height="300" fill="url(#a)"/><rect y="236" width="400" height="64" fill="#3A1F6E"/><rect x="130" y="130" width="140" height="106" rx="6" fill="#F7C873"/><rect x="122" y="112" width="156" height="30" rx="6" fill="#FFD98E"/><rect x="190" y="112" width="20" height="124" fill="#C2185B"/><path d="M200 112c-40-40-62-8-36 0zM200 112c40-40 62-8 36 0z" fill="#E0336F"/><path d="M52 236c0-14 44-14 44 0z" fill="#B8642B"/><path d="M74 222c-7-8 0-18 0-24 0 6 7 16 0 24z" fill="#FFC53D"/><path d="M304 236c0-14 44-14 44 0z" fill="#B8642B"/><path d="M326 222c-7-8 0-18 0-24 0 6 7 16 0 24z" fill="#FFC53D"/><g fill="#FFE7A3"><circle cx="60" cy="60" r="3"/><circle cx="340" cy="50" r="4"/><circle cx="300" cy="100" r="2.5"/><circle cx="100" cy="100" r="2.5"/><circle cx="200" cy="44" r="3"/><circle cx="250" cy="70" r="2"/></g></svg>',
+    '<defs><linearGradient id="a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B8F0F4"/><stop offset="1" stop-color="#3CC8E6"/></linearGradient></defs><rect width="400" height="300" fill="url(#a)"/><rect y="240" width="400" height="60" fill="#1B8FB0"/><path d="M170 40l-14 120" stroke="#FF5A6E" stroke-width="7" stroke-linecap="round"/><path d="M120 90h70l-8 150h-54z" fill="#fff" fill-opacity=".55"/><path d="M124 130h62l-6 106h-50z" fill="#E08A2E"/><path d="M220 110h70l-8 130h-54z" fill="#fff" fill-opacity=".55"/><path d="M224 146h62l-5 90h-52z" fill="#C9572B"/><g fill="#fff" fill-opacity=".7"><rect x="135" y="140" width="18" height="18" rx="4" transform="rotate(12 144 149)"/><rect x="158" y="162" width="16" height="16" rx="4"/><rect x="236" y="156" width="17" height="17" rx="4" transform="rotate(-10 244 164)"/><rect x="258" y="176" width="15" height="15" rx="4"/></g><circle cx="190" cy="92" r="20" fill="#FFE066"/><circle cx="190" cy="92" r="14" fill="#FFF3B0"/><path d="M190 79v26M177 92h26M181 83l18 18M199 83l-18 18" stroke="#FFE066" stroke-width="2"/><path d="M300 200c20-30 50-10 60-40" fill="none" stroke="#2FA36B" stroke-width="5"/><ellipse cx="335" cy="175" rx="14" ry="7" fill="#3DBB7B" transform="rotate(-30 335 175)"/></svg>',
+    '<rect width="400" height="300" fill="#16352A"/><path d="M60 240C40 150 140 80 230 70 210 160 150 230 60 240z" fill="#3E9B5F"/><path d="M60 240C120 170 170 120 230 70" fill="none" stroke="#9FE0A8" stroke-width="3"/><path d="M220 260C230 180 300 120 380 120 360 200 300 250 220 260z" fill="#5DBB72"/><path d="M220 260C270 210 320 160 380 120" fill="none" stroke="#C6F2C4" stroke-width="3"/><path d="M150 300C150 240 200 200 250 190 250 250 210 290 150 300z" fill="#2E7D4A"/><path d="M150 300C180 260 220 220 250 190" fill="none" stroke="#86D39A" stroke-width="2.5"/><path d="M260 40C300 30 350 50 370 80 330 90 290 80 260 40z" fill="#4CAF6A"/><path d="M20 60C40 30 90 30 110 50 80 70 40 76 20 60z" fill="#2F8A52"/><g fill="#fff" fill-opacity=".55"><circle cx="150" cy="140" r="4"/><circle cx="300" cy="170" r="3"/><circle cx="190" cy="110" r="2"/></g></svg>',
+    '<rect width="400" height="300" fill="#F8D3B0"/><circle cx="110" cy="110" r="60" fill="#FFF6EC"/><circle cx="110" cy="110" r="46" fill="#E9A23B"/><circle cx="270" cy="190" r="62" fill="#FFF6EC"/><circle cx="270" cy="190" r="48" fill="#B4472A"/><path d="M300 70l8 18 20 2-15 13 5 20-18-10-18 10 5-20-15-13 20-2z" fill="#6B3A1E"/><circle cx="308" cy="96" r="4" fill="#C98A5A"/><g transform="rotate(25 130 240)"><rect x="80" y="232" width="110" height="14" rx="7" fill="#8A4A24"/><rect x="80" y="250" width="110" height="14" rx="7" fill="#A05A2E"/></g><g fill="#7DAA4A"><ellipse cx="200" cy="60" rx="9" ry="6"/><ellipse cx="215" cy="75" rx="9" ry="6" transform="rotate(30 215 75)"/><ellipse cx="190" cy="80" rx="9" ry="6" transform="rotate(-20 190 80)"/><ellipse cx="360" cy="262" rx="9" ry="6"/><ellipse cx="40" cy="230" rx="9" ry="6" transform="rotate(40 40 230)"/></g></svg>',
+    '<defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#151B36"/><stop offset="1" stop-color="#34449A"/></linearGradient></defs><rect width="400" height="300" fill="url(#a)"/><ellipse cx="200" cy="252" rx="90" ry="12" fill="#000" fill-opacity=".35"/><rect x="140" y="90" width="120" height="160" rx="10" fill="#F1E3C8"/><rect x="134" y="76" width="132" height="30" rx="8" fill="#C9A66B"/><rect x="140" y="135" width="120" height="70" fill="#0E7A6B"/><text x="200" y="166" font-family="Georgia,serif" font-size="16" font-weight="700" fill="#F1E3C8" text-anchor="middle">KETTLE &amp; CO.</text><text x="200" y="188" font-family="Arial,sans-serif" font-size="10" letter-spacing="2" fill="#BDE7DA" text-anchor="middle">MASALA CHAI</text><path d="M300 240c10-40 50-50 70-40-10 30-40 46-70 40z" fill="#3E9B5F"/><path d="M60 230c0-30 30-50 50-46-4 28-24 46-50 46z" fill="#5DBB72"/></svg>'
   ];
+  function svgUrl(svg) { return "url('data:image/svg+xml," + encodeURIComponent(svg) + "') center/cover"; }
+  var GRADS = ART.map(function (a) { return svgUrl(SVGH + a); });
+  // simple illustrated avatars (seeded), and the demo brand's logo
+  function avatar(i) {
+    var bg = ['#C9D6FF', '#FFE0B8', '#C8F2DE', '#F9D0E3', '#D9D2FF', '#BDEBF5', '#FFD7C7', '#E3F0B8'][i % 8];
+    var skin = ['#F2C9A0', '#D9A17A', '#B97A55', '#8D5A3B', '#F5D5B8', '#C68A62'][i % 6];
+    var hair = ['#2B1B12', '#5A3420', '#141414', '#7A4A2A', '#C9A15A', '#3B2416', '#1E1E1E'][(i * 3) % 7];
+    var shirt = ['#3B5BFF', '#19C37D', '#E9579A', '#FFB020', '#22C3EE', '#A98BFF', '#FF5A6E'][(i * 5) % 7];
+    var st = i % 4, top = '<path d="M20 28c0-10 6-15 12-15s12 5 12 15c-3-5-8-7-12-7s-9 2-12 7z" fill="' + hair + '"/>';
+    var hairS = st === 1 ? '<path d="M19 30c0-12 6-18 13-18s13 6 13 18v12c-2-4-3-8-3-14-3-3-7-5-10-5s-7 2-10 5c0 6-1 10-3 14z" fill="' + hair + '"/>'
+      : st === 2 ? top + '<circle cx="32" cy="13" r="6" fill="' + hair + '"/>'
+        : st === 3 ? top + '<path d="M23 31c1 7 5 10 9 10s8-3 9-10c-3 3-6 4-9 4s-6-1-9-4z" fill="' + hair + '"/>' : top;
+    return svgUrl('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="' + bg + '"/><path d="M10 64c2-14 12-20 22-20s20 6 22 20z" fill="' + shirt + '"/><rect x="27" y="36" width="10" height="10" rx="4" fill="' + skin + '"/><circle cx="32" cy="28" r="12" fill="' + skin + '"/>' + hairS +
+      '<circle cx="27.5" cy="29" r="1.4" fill="#2B1B12"/><circle cx="36.5" cy="29" r="1.4" fill="#2B1B12"/><path d="M28.5 34c2 2 5 2 7 0" fill="none" stroke="#7A3B2A" stroke-width="1.4" stroke-linecap="round"/></svg>');
+  }
+  var LOGO = svgUrl('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#0E7A6B"/><path d="M18 46c-1-12 3-20 14-21h2c11 1 15 9 14 21z" fill="#F1E3C8"/><path d="M26 32c3-8 11-8 14 0" fill="none" stroke="#F1E3C8" stroke-width="3" stroke-linecap="round"/><path d="M19 33c-5-5-8-2-12-5" fill="none" stroke="#F1E3C8" stroke-width="4" stroke-linecap="round"/><path d="M38 20c6-6 12-4 14 0-6 4-11 4-14 0z" fill="#7FD8A6"/></svg>');
 
   /* ---------- demo data (replace with your own: same shape, see README) ---------- */
   function seeded(s) { return function () { s = (s + 0x6D2B79F5) | 0; var t = Math.imul(s ^ (s >>> 15), 1 | s); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
@@ -26,27 +50,27 @@
       { id: 'yt', name: 'YouTube', short: 'YT', handle: 'Kettle & Co.', followers: 9870, posts: 4, eng: 4.2, limit: 5000, last: 'Wed', warn: 'Sign-in expires in 3 days' }
     ];
     var P = [
-      [0, 9, 'ig fb', 'Monday reset: a fresh pot of Assam and a clear desk.', 0],
+      [0, 9, 'ig fb', 'Monday reset: a fresh pot of Assam and a clear desk.', 2],
       [0, 18.5, 'li', 'How we source our leaves from three family estates in Assam.', 1],
-      [1, 8.5, 'ig tt', 'Steep time matters. 3 minutes vs 5 minutes, side by side.', 4],
+      [1, 8.5, 'ig tt', 'Steep time matters. 3 minutes vs 5 minutes, side by side.', 0],
       [1, 13, 'x', 'Hot take: chai is better the second day. Agree?', 6],
-      [2, 12, 'ig li fb', 'Meet Ritu, our head blender, and her 20-year-old tasting notebook.', 3],
-      [2, 19, 'yt', 'Full video: our kettle-to-cup morning routine.', 7],
-      [3, 10, 'x li', 'We are hiring a part-time packing lead in Lucknow.', 2],
-      [3, 12.5, 'ig', 'Behind the scenes: packing 400 Diwali gift boxes.', 0],
-      [3, 18, 'ig tt', 'Three iced teas you can make in five minutes.', 5],
-      [4, 9.5, 'li x', 'Our numbers this quarter, and what we learned.', 2, 'review'],
-      [4, 13, 'ig fb', 'Diwali gift box restock: 200 boxes at 1 pm.', 0],
+      [2, 12, 'ig li fb', 'Meet Ritu, our head blender, and her 20-year-old tasting notebook.', 5],
+      [2, 19, 'yt', 'Full video: our kettle-to-cup morning routine.', 2],
+      [3, 10, 'x li', 'We are hiring a part-time packing lead in Lucknow.', 7],
+      [3, 12.5, 'ig', 'Behind the scenes: packing 400 Diwali gift boxes.', 3],
+      [3, 18, 'ig tt', 'Three iced teas you can make in five minutes.', 4],
+      [4, 9.5, 'li x', 'Our numbers this quarter, and what we learned.', 1, 'review'],
+      [4, 13, 'ig fb', 'Diwali gift box restock: 200 boxes at 1 pm.', 3],
       [5, 11, 'tt', 'Trying every chai spice on its own. Ranked.', 6],
-      [5, 17.5, 'ig fb x', 'Weekend giveaway: win a year of tea.', 3],
-      [6, 10, 'ig', 'Slow Sunday playlist and a pot of Darjeeling.', 1],
-      [6, 18, 'yt fb', 'Live: Q&A with our tea taster.', 4, 'review']
+      [5, 17.5, 'ig fb x', 'Weekend giveaway: win a year of tea.', 7],
+      [6, 10, 'ig', 'Slow Sunday playlist and a pot of Darjeeling.', 0],
+      [6, 18, 'yt fb', 'Live: Q&A with our tea taster.', 5, 'review']
     ];
     var posts = P.map(function (p, i) { return { id: 'p' + i, w: 0, day: p[0], t: p[1], nets: p[2].split(' '), text: p[3], g: p[4], status: p[5] || '' }; });
     ['Rainy day pairing: ginger tea and pakoras.', 'Our new compostable tea bags are here.', 'Poll: milk first or tea first?', 'Customer of the week: the Sharma family.',
       'How to store loose leaf tea.', 'Office tea break kit giveaway.', 'Five-second chai hack.', 'From estate to doorstep in 4 days.', 'Sunday tasting notes.', 'Throwback: our first stall in 2019.'
     ].forEach(function (t, i) { posts.push({ id: 'q' + i, w: -1, day: i % 7, t: 8 + Math.round(r() * 24) / 2, nets: [['ig'], ['li', 'x'], ['tt'], ['ig', 'fb'], ['x'], ['yt']][i % 6], text: t, g: i % 8, status: '' }); });
-    [[0, 9, 'ig fb', 'Diwali hours: we are open late all week.', 0], [1, 18, 'tt', 'Packing your orders, sped up.', 4], [3, 12, 'li', 'What a year of slow growth taught us.', 2], [5, 10, 'ig', 'Winter blend sneak peek.', 6]]
+    [[0, 9, 'ig fb', 'Diwali hours: we are open late all week.', 3], [1, 18, 'tt', 'Packing your orders, sped up.', 7], [3, 12, 'li', 'What a year of slow growth taught us.', 1], [5, 10, 'ig', 'Winter blend sneak peek.', 6]]
       .forEach(function (p, i) { posts.push({ id: 'n' + i, w: 1, day: p[0], t: p[1], nets: p[2].split(' '), text: p[3], g: p[4], status: '' }); });
 
     var reach = [], prev = [], imp = [], eng = [], fol = [];
@@ -68,20 +92,20 @@
       heat.push(row);
     }
     var top = [
-      ['Three iced teas you can make in five minutes', 'ig tt', 184200, 9.8, 4120, 5, '28 Oct'],
-      ['Meet Ritu, our head blender', 'ig li', 96400, 7.1, 1870, 3, '4 Nov'],
-      ['Steep time: 3 vs 5 minutes', 'tt', 152900, 6.4, 2950, 4, '3 Nov'],
-      ['Our first stall, five years later', 'ig fb', 71300, 6.2, 990, 6, '19 Oct'],
-      ['Diwali gift box: first look', 'ig fb x', 88800, 5.9, 2210, 0, '22 Oct'],
+      ['Three iced teas you can make in five minutes', 'ig tt', 184200, 9.8, 4120, 4, '28 Oct'],
+      ['Meet Ritu, our head blender', 'ig li', 96400, 7.1, 1870, 5, '4 Nov'],
+      ['Steep time: 3 vs 5 minutes', 'tt', 152900, 6.4, 2950, 0, '3 Nov'],
+      ['Our first stall, five years later', 'ig fb', 71300, 6.2, 990, 7, '19 Oct'],
+      ['Diwali gift box: first look', 'ig fb x', 88800, 5.9, 2210, 3, '22 Oct'],
       ['How we source from family estates', 'li', 38400, 4.8, 640, 1, '2 Nov'],
-      ['Chai is better the second day', 'x', 54100, 3.6, 120, 7, '3 Nov'],
+      ['Chai is better the second day', 'x', 54100, 3.6, 120, 6, '3 Nov'],
       ['Kettle-to-cup morning routine', 'yt', 22800, 4.4, 530, 2, '4 Nov']
     ].map(function (p, i) { return { id: 't' + i, text: p[0], nets: p[1].split(' '), reach: p[2], eng: p[3], saves: p[4], g: p[5], date: p[6] }; });
     var published = [];
     for (var k = 0; k < 28; k++) {
       var ago = Math.floor(k * 3.2 + r() * 2);
       published.push({ id: 'u' + k, ago: ago, net: nets[k % 6].id, text: top[k % 8].text.replace(/^./, function (c) { return c; }) + (k > 7 ? ' (' + ['repost', 'part 2', 'remix', 'cut'][k % 4] + ')' : ''),
-        g: k % 8, reach: Math.round(9000 + r() * 120000), eng: Math.round((1.2 + r() * 8) * 10) / 10, status: k % 7 === 2 ? 'Boosted' : 'Published' });
+        g: top[k % 8].g, reach: Math.round(9000 + r() * 120000), eng: Math.round((1.2 + r() * 8) * 10) / 10, status: k % 7 === 2 ? 'Boosted' : 'Published' });
     }
     var threads = [
       ['Ananya Rao', 'ig', 'dm', '2 min', 1, 'Question', 'var(--cadence-peri)', 3, [['Hi! Is the Diwali gift box available for delivery to Pune before the 10th?', '14:28']]],
@@ -107,10 +131,10 @@
       tags: ['#teatime', '#chai', '#slowmornings', '#kettleandco'],
       quick: ['Thank you, that means a lot!', 'Sending you a DM now', 'Could you share your order number?'],
       drafts: [
-        { text: 'Fresh harvest just landed: first flush Darjeeling, light and floral. Brew it at 85°C for 3 minutes and skip the milk. #firstflush #teatime', nets: ['ig', 'li', 'x'], media: [2, 5], day: 4, t: 19 },
-        { text: 'You asked, we listened: our masala chai now comes in a 250 g tin that fits any shelf. Back in stock tomorrow morning. #chai #kettleandco', nets: ['ig', 'fb', 'tt'], media: [0], day: 5, t: 11.5 },
+        { text: 'Fresh harvest just landed: first flush Darjeeling, light and floral. Brew it at 85°C for 3 minutes and skip the milk. #firstflush #teatime', nets: ['ig', 'li', 'x'], media: [1, 5], day: 4, t: 19 },
+        { text: 'You asked, we listened: our masala chai now comes in a 250 g tin that fits any shelf. Back in stock tomorrow morning. #chai #kettleandco', nets: ['ig', 'fb', 'tt'], media: [7], day: 5, t: 11.5 },
         { text: 'Tea tip: rinse your pot with hot water first. The tea stays hot longer and tastes rounder. Small habit, big difference. #teatips', nets: ['x', 'li'], media: [], day: 6, t: 9 },
-        { text: 'Our Lucknow tasting room opens this Saturday. Come in, try six teas, and take one home on us. #lucknow #tearoom', nets: ['ig', 'fb', 'li'], media: [3, 6, 1], day: 5, t: 16 }
+        { text: 'Our Lucknow tasting room opens this Saturday. Come in, try six teas, and take one home on us. #lucknow #tearoom', nets: ['ig', 'fb', 'li'], media: [0, 6, 4], day: 5, t: 16 }
       ],
       team: [['Aisha Malik', 'aisha@kettleandco.in', 'Owner', 3], ['Dev Narang', 'dev@kettleandco.in', 'Editor', 2], ['Ritu Sharma', 'ritu@kettleandco.in', 'Approver', 0], ['Sam Thomas', 'sam@kettleandco.in', 'Contributor', 4]]
     };
@@ -189,6 +213,10 @@
     }
     function toast(html) {
       var box = $(root, '[data-cd-toasts]'); if (!box) return;
+      if (root.classList.contains('cd-scaled')) {   // scaled preview: keep toasts at the bottom of the visible area
+        var rr = root.getBoundingClientRect(), k = scaleK();
+        box.style.position = 'absolute'; box.style.bottom = 'auto'; box.style.top = ((innerHeight - rr.top) / k - 18) + 'px'; box.style.transform = 'translateY(-100%)';
+      }
       var t = H('div', 'cd-toast', '<svg class="cd-ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.3l2.4 2.4 4.6-4.8"/></svg><span>' + html + '</span>', box);
       E.add(420, function (e) { t.style.opacity = e; t.style.transform = 'translateY(' + (14 * (1 - e)) + 'px) scale(' + (.96 + .04 * e) + ')'; }, { ease: eBack });
       E.add(320, function (e) { t.style.opacity = 1 - e; t.style.transform = 'translateY(' + (8 * e) + 'px)'; }, { delay: 3200, ease: lin, done: function () { t.remove(); } });
@@ -387,6 +415,20 @@
       $$(box, 'i').forEach(function (c, k) {
         var x = k % 8, y = Math.floor(k / 8);
         kill(c._tw); c._tw = E.add(intro ? 500 : 0, function (e) { c.style.opacity = e; c.style.transform = 'scale(' + (.6 + .4 * e) + ')'; }, { delay: 150 + (x + y) * 45, ease: eBack });
+      });
+    }
+    function drawFeed(intro) {
+      var box = $(root, '[data-cd-feed]'); if (!box) return;
+      var icon = function (p) { return '<svg class="cd-ic" viewBox="0 0 24 24">' + p + '</svg>'; };
+      var list = D.published.slice().sort(function (a, b) { return a.ago - b.ago; }).slice(0, 4);
+      box.innerHTML = list.map(function (p) {
+        var likes = Math.round(p.reach * p.eng / 100 * .8);
+        return '<figure class="cd-tile" style="--g:' + GRADS[p.g] + '">' + netBadge(NET[p.net]) + '<figcaption><p>' + esc(p.text) + '</p><div><span>' + icon('<path d="M12 19s-7-4.3-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 2.8C19 14.7 12 19 12 19z"/>') + fmtK(likes) + '</span><span>' +
+          icon('<path d="M2.5 12s3.5-6.5 9.5-6.5S21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/>') + fmtK(p.reach) + '</span></div></figcaption></figure>';
+      }).join('');
+      $$(box, '.cd-tile').forEach(function (t, i) {
+        if (!intro) return; t.style.opacity = 0;
+        E.add(560, function (e) { t.style.opacity = Math.min(1, e * 1.6); t.style.transform = 'translateY(' + (16 * (1 - e)) + 'px) scale(' + (.92 + .08 * e) + ')'; }, { delay: 260 + i * 90, ease: eBack, done: function () { t.style.transform = ''; } });
       });
     }
     function upcoming() {
@@ -628,7 +670,7 @@
       var n = NET[C.tab], m = C.media, txt = C.text || 'Your post text shows up here.';
       var shown = n.id === 'ig' || n.id === 'tt' ? 1 : Math.min(m.length, 2);
       var media = m.length ? '<div class="cd-pv-media" style="--n:' + shown + ';--ar:' + ({ ig: 1, tt: .8, yt: 1.78, x: 1.6, li: 1.5, fb: 1.5 }[n.id]) + '">' + m.slice(0, n.id === 'ig' || n.id === 'tt' ? 1 : 2).map(function (g) { return '<i style="--g:' + GRADS[g] + '"></i>'; }).join('') + '</div>' : '';
-      var head = '<div class="cd-pv-head"><i>KC</i><div><b>' + esc(n.id === 'li' || n.id === 'fb' || n.id === 'yt' ? D.company : n.handle) + '</b><small>' + (n.id === 'li' ? '12,840 followers · Scheduled' : n.id === 'x' ? n.handle + ' · ' + fmtT(C.t) : 'Scheduled · ' + DAYS[C.day] + ' ' + fmtT(C.t)) + '</small></div>' + netBadge(n) + '</div>';
+      var head = '<div class="cd-pv-head"><i style="background:' + LOGO + '"></i><div><b>' + esc(n.id === 'li' || n.id === 'fb' || n.id === 'yt' ? D.company : n.handle) + '</b><small>' + (n.id === 'li' ? '12,840 followers · Scheduled' : n.id === 'x' ? n.handle + ' · ' + fmtT(C.t) : 'Scheduled · ' + DAYS[C.day] + ' ' + fmtT(C.t)) + '</small></div>' + netBadge(n) + '</div>';
       var icon = function (p) { return '<svg class="cd-ic" viewBox="0 0 24 24">' + p + '</svg>'; };
       var heart = icon('<path d="M12 19s-7-4.3-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 2.8C19 14.7 12 19 12 19z"/>'), comm = icon('<path d="M5 5.5h14v10H9.5L5 19.5z"/>'),
         rep = icon('<path d="M7 7.5h10.5l-2.5-2.5M17 16.5H6.5L9 19M7 7.5v3M17 16.5v-3"/>'), send = icon('<path d="M4 12l16-7-6 16-3-6z"/>');
@@ -719,7 +761,7 @@
       var list = D.threads.filter(function (t) { return I.f === 'all' || t.type === I.f; });
       ul.innerHTML = list.map(function (t) {
         var last = t.msgs[t.msgs.length - 1];
-        return '<li><button type="button" data-id="' + t.id + '" aria-current="' + (t.id === I.cur) + '"' + (t.unread ? ' class="cd-unread"' : '') + '><span class="cd-who" style="--g:' + GRADS[t.g] + '">' + esc(t.name.split(' ').map(function (w) { return w[0]; }).join('').slice(0, 2)) + netBadge(NET[t.net]) + '</span>' +
+        return '<li><button type="button" data-id="' + t.id + '" aria-current="' + (t.id === I.cur) + '"' + (t.unread ? ' class="cd-unread"' : '') + '><span class="cd-who" style="--g:' + avatar(t.g + t.name.length) + '">' + netBadge(NET[t.net]) + '</span>' +
           '<span style="min-width:0"><span class="cd-msg-top"><b>' + esc(t.name) + '</b><small>' + t.time + '</small></span><span class="cd-msg-body">' + (last.me ? 'You: ' : '') + esc(last.text) + '</span>' +
           '<span class="cd-msg-tags"><span class="cd-tag" style="--c:var(--cadence-muted)">' + { dm: 'Message', comment: 'Comment', mention: 'Mention' }[t.type] + '</span><span class="cd-tag" style="--c:' + t.tagc + '">' + t.tag + '</span></span></span></button></li>';
       }).join('') || '<li style="padding:20px;color:var(--cadence-muted);font-size:13px;text-align:center">Nothing here</li>';
@@ -728,7 +770,7 @@
       var t = null; D.threads.forEach(function (x) { if (x.id === id) t = x; }); if (!t) return;
       I.cur = id; t.unread = false;
       var head = $(root, '[data-cd-thead]'), bub = $(root, '[data-cd-bubbles]'), q = $(root, '[data-cd-quick]');
-      if (head) head.innerHTML = '<button type="button" class="cd-iconbtn cd-back" data-cd-back aria-label="Back to list"><svg class="cd-ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><span class="cd-who" style="--g:' + GRADS[t.g] + '">' + esc(t.name.split(' ').map(function (w) { return w[0]; }).join('').slice(0, 2)) + netBadge(NET[t.net]) + '</span>' +
+      if (head) head.innerHTML = '<button type="button" class="cd-iconbtn cd-back" data-cd-back aria-label="Back to list"><svg class="cd-ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><span class="cd-who" style="--g:' + avatar(t.g + t.name.length) + '">' + netBadge(NET[t.net]) + '</span>' +
         '<div style="min-width:0"><b>' + esc(t.name) + '</b><small>' + { dm: 'Direct message', comment: 'Comment', mention: 'Mention' }[t.type] + ' on ' + NET[t.net].name + '</small></div>' +
         '<div class="cd-thread-acts"><button type="button" class="cd-iconbtn" aria-label="Mark as done" data-cd-done><svg class="cd-ic" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button><button type="button" class="cd-iconbtn" aria-label="Assign to teammate"><svg class="cd-ic" viewBox="0 0 24 24"><circle cx="10" cy="8.5" r="3.5"/><path d="M4 19.5c.6-3.3 2.9-5 6-5 1.6 0 3 .5 4 1.4M18 14v6M15 17h6"/></svg></button></div>';
       if (bub) {
@@ -897,7 +939,7 @@
       }).join('');
       var team = $(root, '[data-cd-team]');
       if (team) team.innerHTML = D.team.map(function (m, i) {
-        return '<div class="cd-member"><span class="cd-who" style="--g:' + GRADS[m[3]] + '">' + esc(m[0].split(' ').map(function (w) { return w[0]; }).join('')) + '</span><div style="min-width:0"><b>' + esc(m[0]) + (i === 0 ? ' <small style="display:inline;color:var(--cadence-muted)">(you)</small>' : '') + '</b><small>' + esc(m[1]) + '</small></div>' +
+        return '<div class="cd-member"><span class="cd-who" style="--g:' + avatar(m[3] * 3 + 1) + '"></span><div style="min-width:0"><b>' + esc(m[0]) + (i === 0 ? ' <small style="display:inline;color:var(--cadence-muted)">(you)</small>' : '') + '</b><small>' + esc(m[1]) + '</small></div>' +
           '<span class="cd-select"><label class="cd-sr" for="cd-role' + i + '">Role for ' + esc(m[0]) + '</label><select id="cd-role' + i + '"' + (i === 0 ? ' disabled' : '') + '>' + ['Owner', 'Editor', 'Approver', 'Contributor'].map(function (r) { return '<option' + (r === m[2] ? ' selected' : '') + '>' + r + '</option>'; }).join('') + '</select><svg class="cd-ic" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></div>';
       }).join('');
     }
@@ -910,7 +952,7 @@
 
     /* ----- page enter animations ----- */
     var enter = {
-      overview: function () { drawOverviewKpis(); drawReach(true); drawNetbars(true); drawHeat(true); drawNext(true); drawTop(); },
+      overview: function () { drawOverviewKpis(); drawReach(true); drawNetbars(true); drawFeed(true); drawHeat(true); drawNext(true); drawTop(); },
       planner: function () {
         drawFilters(); drawCal(true);
         E.add(1, function () { }, { delay: 2600, done: function () { D.posts.forEach(function (p) { p._new = false; }); $$(root, '.cd-chip.is-new').forEach(function (c) { c.classList.remove('is-new'); }); } });
@@ -931,6 +973,11 @@
       off.push(function () { ro.disconnect(); });
     }
 
+    if (!opts.data) {   // demo brand logo and the signed-in user's avatar
+      var ws = $(root, '.cd-ws i'), av = $(root, '.cd-avatar');
+      if (ws) { ws.textContent = ''; ws.style.background = LOGO; }
+      if (av) { av.textContent = ''; av.style.background = avatar(10); }
+    }
     loadDraft(D.drafts[0], false);
     counts();
     if (opts.theme) setTheme(opts.theme);
@@ -938,7 +985,7 @@
     go(start, true);
 
     var api = {
-      go: function (p) { go(p); }, get page() { return page; },
+      go: function (p) { go(p); }, get page() { return page; }, replay: function () { if (enter[page]) enter[page](); },
       schedule: schedule, setRange: function (r) { if (page !== 'analytics') go('analytics'); setRange(r); }, setTheme: setTheme,
       data: D, destroy: function () { off.forEach(function (f) { f(); }); E.list = []; delete root._cadence; }
     };
