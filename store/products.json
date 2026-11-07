@@ -1,5 +1,23 @@
 [
   {
+    "slug": "fuse",
+    "name": "Fuse",
+    "tagline": "A to-do checklist where ticking a task lights a fuse: a spark burns along the text, embers fall, the strike-through is left behind and the task sinks to the bottom.",
+    "type": "component",
+    "size": "24 KB",
+    "deps": "0 deps",
+    "price": 4,
+    "was": 7,
+    "added": "2026-11-07",
+    "isNew": true,
+    "demo": "/store/fuse/",
+    "cover": "/store/fuse/cover.jpg",
+    "video": "/store/fuse/preview.mp4",
+    "buy": "https://adityapulse2.gumroad.com/l/fuse",
+    "gumroad": true,
+    "demoHeight": 600
+  },
+  {
     "slug": "cadence",
     "name": "Cadence",
     "tagline": "A complete multi-page social media planner: overview, drag-and-drop week planner, a composer with live previews for six networks, a shared inbox, analytics and channels. Press Schedule and the post flies into its day.",
@@ -9,7 +27,7 @@
     "price": 69,
     "was": 115,
     "added": "2026-11-05",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/cadence/",
     "cover": "/store/cadence/cover.jpg",
     "video": "/store/cadence/preview.mp4",
