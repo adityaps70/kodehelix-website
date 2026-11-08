@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roster · Hiring &amp; people dashboard · Kodehelix UI</title>
+<link rel="stylesheet" href="roster.css">
+<style>
+  html,body{margin:0;height:100%;background:#0B0D12}
+  body{min-height:100vh}
+  .roster{min-height:100vh}
+</style>
+</head>
+<body>
+<div class="roster" data-roster data-roster-manual data-theme="dark">
+  <aside class="rs-side" id="rs-side" aria-label="Main navigation">
+    <div class="rs-brand">
+      <span class="rs-mark"><svg class="rs-ic" viewBox="0 0 24 24"><circle cx="8" cy="8" r="2.6"/><circle cx="16" cy="8" r="2.6"/><path d="M3.5 18c.6-3 2.3-4.5 4.5-4.5s3.9 1.5 4.5 4.5M11.5 18c.6-3 2.3-4.5 4.5-4.5s3.9 1.5 4.5 4.5"/></svg></span>
+      <span>Roster</span>
+    </div>
+    <div class="rs-navlabel">People</div>
+    <ul class="rs-nav">
+      <li><a href="#" aria-current="page"><svg class="rs-ic" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="4" rx="2"/><rect x="13" y="10" width="7" height="10" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/></svg><span>Overview</span></a></li>
+      <li><a href="#"><svg class="rs-ic" viewBox="0 0 24 24"><path d="M4 5h16l-6 7.5V19l-4-2v-4.5z"/></svg><span>Pipeline</span><b class="rs-count">412</b></a></li>
+      <li><a href="#"><svg class="rs-ic" viewBox="0 0 24 24"><rect x="3.5" y="7" width="17" height="12" rx="2.5"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3.5 12.5h17"/></svg><span>Open roles</span><b class="rs-count">14</b></a></li>
+      <li><a href="#"><svg class="rs-ic" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M4 10h16M9 14.5l2 2 4-4"/></svg><span>Interviews</span><b class="rs-count">9</b></a></li>
+      <li><a href="#"><svg class="rs-ic" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.8 3.6-5.5 7-5.5s6.2 1.7 7 5.5"/></svg><span>Team</span></a></li>
+      <li><a href="#"><svg class="rs-ic" viewBox="0 0 24 24"><path d="M5 19V11M10 19V6M15 19v-5M20 19V9"/></svg><span>Reports</span></a></li>
+      <li><a href="#"><svg class="rs-ic" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg><span>Settings</span></a></li>
+    </ul>
+    <div class="rs-today">
+      <small>Interviews today</small>
+      <b>9 <span>· next at 11:30</span></b>
+      <ul>
+        <li><time>11:30</time><span>Product Designer<em>Portfolio review</em></span></li>
+        <li><time>13:00</time><span>Backend Engineer<em>System design</em></span></li>
+        <li><time>15:15</time><span>Account Executive<em>Final round</em></span></li>
+      </ul>
+    </div>
+  </aside>
+  <div class="rs-scrim" aria-hidden="true"></div>
+
+  <main class="rs-main">
+    <header class="rs-top">
+      <button class="rs-iconbtn rs-menu" data-rs-menu aria-label="Open menu" aria-expanded="false" aria-controls="rs-side"><svg class="rs-ic" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+      <div class="rs-title"><small>Fernway · Q4 hiring · week 45</small><h1>Hiring overview</h1></div>
+      <div class="rs-teams" role="group" aria-label="Team">
+        <span class="rs-teams-ind" aria-hidden="true"></span>
+        <button type="button" data-team="all" aria-pressed="true">All</button>
+        <button type="button" data-team="eng" aria-pressed="false">Engineering</button>
+        <button type="button" data-team="design" aria-pressed="false">Design</button>
+        <button type="button" data-team="sales" aria-pressed="false">Sales</button>
+      </div>
+      <button class="rs-iconbtn rs-theme" data-rs-theme aria-label="Switch to light theme" aria-pressed="false">
+        <svg class="rs-ic rs-moon" viewBox="0 0 24 24"><path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z"/></svg>
+        <svg class="rs-ic rs-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/></svg>
+      </button>
+      <span class="rs-avatar" aria-hidden="true">PN</span>
+    </header>
+
+    <section class="rs-kpis" aria-label="Key numbers">
+      <article class="rs-card rs-kpi" data-rs-kpi="roles" style="--k:var(--roster-peri)">
+        <div class="rs-kpi-top"><svg class="rs-ic" viewBox="0 0 24 24"><rect x="3.5" y="7" width="17" height="12" rx="2.5"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/></svg>Open roles</div>
+        <div class="rs-kpi-val">0</div>
+        <div class="rs-kpi-foot"><div><span class="rs-delta"><svg class="rs-ic" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg><span>0</span></span><span class="rs-kpi-note">vs last quarter</span></div><svg class="rs-spark" viewBox="0 0 84 30" aria-hidden="true"></svg></div>
+      </article>
+      <article class="rs-card rs-kpi" data-rs-kpi="applicants" style="--k:var(--roster-cyan)">
+        <div class="rs-kpi-top"><svg class="rs-ic" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c.6-3.3 2.7-5 5.5-5s4.9 1.7 5.5 5M16 6.5v5M13.5 9h5"/></svg>Applicants</div>
+        <div class="rs-kpi-val">0</div>
+        <div class="rs-kpi-foot"><div><span class="rs-delta"><svg class="rs-ic" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg><span>0%</span></span><span class="rs-kpi-note">vs last quarter</span></div><svg class="rs-spark" viewBox="0 0 84 30" aria-hidden="true"></svg></div>
+      </article>
+      <article class="rs-card rs-kpi" data-rs-kpi="days" style="--k:var(--roster-warn)">
+        <div class="rs-kpi-top"><svg class="rs-ic" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7.5"/><path d="M12 9v4l2.5 2M10 3h4"/></svg>Time to hire</div>
+        <div class="rs-kpi-val">0</div>
+        <div class="rs-kpi-foot"><div><span class="rs-delta"><svg class="rs-ic" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg><span>0 d</span></span><span class="rs-kpi-note">lower is better</span></div><svg class="rs-spark" viewBox="0 0 84 30" aria-hidden="true"></svg></div>
+      </article>
+      <article class="rs-card rs-kpi" data-rs-kpi="accept" style="--k:var(--roster-good)">
+        <div class="rs-kpi-top"><svg class="rs-ic" viewBox="0 0 24 24"><path d="M5 12.5l4 4 10-10"/></svg>Offers accepted</div>
+        <div class="rs-kpi-val">0</div>
+        <div class="rs-kpi-foot"><div><span class="rs-delta"><svg class="rs-ic" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg><span>0 pt</span></span><span class="rs-kpi-note">vs last quarter</span></div><svg class="rs-spark" viewBox="0 0 84 30" aria-hidden="true"></svg></div>
+      </article>
+    </section>
+
+    <section class="rs-grid">
+      <article class="rs-card rs-a-pipe">
+        <div class="rs-head">
+          <div><h2>Hiring pipeline</h2><p><span data-rs-teamname>All teams</span> · every dot is a group of candidates moving through the stages</p></div>
+          <div class="rs-legend"><span><i style="--c:var(--roster-cyan)"></i>Moving on</span><span><i style="--c:var(--roster-muted)"></i>Not moving on</span><span><i style="--c:var(--roster-good)"></i>Hired</span></div>
+        </div>
+        <div class="rs-stages" data-rs-stages></div>
+        <div class="rs-pipewrap" data-rs-pipe></div>
+        <div class="rs-joiners">
+          <div class="rs-joiners-head"><small>Joining soon</small><b data-rs-hires>0 hires</b></div>
+          <ul class="rs-joinlist" data-rs-joiners></ul>
+        </div>
+      </article>
+
+      <article class="rs-card rs-a-source">
+        <div class="rs-head"><div><h2>Where hires come from</h2><p>Source of hire, this quarter</p></div></div>
+        <div class="rs-donut" data-rs-donut>
+          <div class="rs-donut-mid"><small>Top source</small><b data-rs-topsrc>–</b><span data-rs-toppct>0%</span></div>
+        </div>
+        <ul class="rs-srclist" data-rs-srclist></ul>
+      </article>
+
+      <article class="rs-card rs-a-head">
+        <div class="rs-head"><div><h2>Headcount</h2><p>Last 12 months vs plan</p></div>
+          <div class="rs-legend"><span><i style="--c:linear-gradient(135deg,var(--roster-blue),var(--roster-cyan))"></i>Actual</span><span><i class="rs-dash" style="--c:var(--roster-warn)"></i>Plan</span></div></div>
+        <div class="rs-trend" data-rs-trend></div>
+        <div class="rs-mini">
+          <div><small>People today</small><b data-rs-hc>0</b></div>
+          <div><small>Growth this year</small><b data-rs-growth>0%</b></div>
+        </div>
+      </article>
+
+      <article class="rs-card rs-a-table">
+        <div class="rs-head">
+          <div><h2>Open roles</h2><p><span data-rs-teamname>All teams</span> · bars show where each role's candidates are</p></div>
+          <label class="rs-tsearch"><svg class="rs-ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg><span class="rs-sr">Search roles</span><input type="search" placeholder="Search roles" data-rs-search></label>
+        </div>
+        <div class="rs-tablewrap" tabindex="0" aria-label="Open roles table">
+          <table class="rs-table" data-rs-table>
+            <thead><tr>
+              <th scope="col">Role</th>
+              <th scope="col" data-sort="cand"><button type="button">Candidates<svg class="rs-ic" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></th>
+              <th scope="col" data-sort="days" class="rs-col-days"><button type="button">Open for<svg class="rs-ic" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></th>
+              <th scope="col">Status</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </main>
+</div>
+<script src="roster.js"></script>
+<script>
+  // Swap in your own teams, roles and numbers with Roster.mount(el, { data: {...} }) — see README.md
+  var dash = Roster.mount(document.querySelector('[data-roster]'), { team: 'all' });
+
+  // Auto-play used by the store preview: replays the intro, then hops between teams.
+  window.khDemo = function () {
+    var order = ['eng', 'design', 'sales', 'all'], i = 0;
+    dash.replay();
+    setTimeout(function step() {
+      dash.setTeam(order[i++ % order.length]);
+      setTimeout(step, 4200);
+    }, 2600);
+  };
+</script>
+</body>
+</html>
