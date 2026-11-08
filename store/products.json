@@ -1,5 +1,23 @@
 [
   {
+    "slug": "roster",
+    "name": "Roster",
+    "tagline": "A complete hiring dashboard for HR and recruiting teams. Switch the team and a stream of candidates pours through the pipeline: the ones who move on flow to the next stage, the rest drop away, and every hire lands with a pulse and pops into the joining-soon list.",
+    "type": "dashboard",
+    "size": "56 KB",
+    "deps": "0 deps",
+    "price": 39,
+    "was": 65,
+    "added": "2026-11-08",
+    "isNew": true,
+    "demo": "/store/roster/",
+    "cover": "/store/roster/cover.jpg",
+    "video": "/store/roster/preview.mp4",
+    "buy": "https://adityapulse2.gumroad.com/l/roster",
+    "gumroad": true,
+    "demoHeight": 760
+  },
+  {
     "slug": "fuse",
     "name": "Fuse",
     "tagline": "A to-do checklist where ticking a task lights a fuse: a spark burns along the text, embers fall, the strike-through is left behind and the task sinks to the bottom.",
@@ -9,7 +27,7 @@
     "price": 4,
     "was": 7,
     "added": "2026-11-07",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/fuse/",
     "cover": "/store/fuse/cover.jpg",
     "video": "/store/fuse/preview.mp4",
