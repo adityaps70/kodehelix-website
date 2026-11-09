@@ -1,0 +1,148 @@
+/* Chime — notification bell + inbox panel. Kodehelix UI · kodehelix.in */
+.chime{
+  --chime-ink:#0b0d12;
+  --chime-surface:#151925;
+  --chime-surface-2:#1f2433;
+  --chime-line:#262b3b;
+  --chime-text:#edeff5;
+  --chime-soft:#c9cdd8;
+  --chime-muted:#8f95a6;
+  --chime-accent:#3b5bff;
+  --chime-accent-2:#22c3ee;
+  --chime-glow:#8fa3ff;
+  --chime-badge:#ff5a6e;
+  --chime-success:#19c37d;
+  --chime-width:360px;
+  --chime-radius:18px;
+  position:relative;display:inline-flex;vertical-align:middle;
+  font-family:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--chime-text);-webkit-tap-highlight-color:transparent;
+}
+.chime *,.chime *::before,.chime *::after{box-sizing:border-box}
+
+/* bell button */
+.chime__btn{
+  position:relative;width:46px;height:46px;border-radius:14px;border:1px solid var(--chime-line);
+  background:linear-gradient(180deg,var(--chime-surface-2),var(--chime-surface));color:var(--chime-soft);
+  display:grid;place-items:center;cursor:pointer;padding:0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 6px 16px -8px rgba(0,0,0,.8);
+  transition:border-color .2s,color .2s,background .2s,box-shadow .25s;
+}
+.chime__btn:hover{color:var(--chime-text);border-color:#33394d}
+.chime__btn:focus-visible{outline:2px solid var(--chime-glow);outline-offset:3px}
+.chime.is-open .chime__btn{color:var(--chime-text);border-color:rgba(143,163,255,.55);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 4px rgba(59,91,255,.16),0 8px 24px -10px rgba(59,91,255,.7)}
+.chime__btn.is-ring{color:#fff;border-color:rgba(34,195,238,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 4px rgba(34,195,238,.14),0 0 26px -4px rgba(34,195,238,.6)}
+.chime__bell{width:24px;height:24px;overflow:visible}
+.chime__waves{position:absolute;left:50%;top:50%;width:88px;height:88px;margin:-44px 0 0 -44px;pointer-events:none;overflow:visible}
+.chime__waves path{opacity:0}
+
+/* badge with rolling digits */
+.chime__badge{
+  position:absolute;top:-7px;right:-7px;min-width:21px;height:21px;padding:0 6px;border-radius:999px;
+  background:var(--chime-badge);color:#fff;font:700 11.5px/21px "Inter",ui-sans-serif,system-ui,sans-serif;
+  font-variant-numeric:tabular-nums;text-align:center;border:2px solid var(--chime-ink);
+  box-shadow:0 4px 12px -2px rgba(255,90,110,.55);overflow:hidden;
+  transform:scale(0);transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+}
+.chime__badge.is-on{transform:scale(1)}
+.chime__badge span{display:block;height:17px;line-height:17px}
+.chime__badge .is-in{animation:chime-in .38s cubic-bezier(.2,.9,.3,1.2) both}
+.chime__badge .is-out{position:absolute;left:0;right:0;top:0;animation:chime-out .32s ease-in both}
+.chime__badge.is-pop{animation:chime-pop .5s cubic-bezier(.3,1.6,.5,1)}
+.chime__badge.is-down .is-in{animation-name:chime-in-d}
+.chime__badge.is-down .is-out{animation-name:chime-out-d}
+@keyframes chime-in-d{from{transform:translateY(-100%);opacity:0}to{transform:none;opacity:1}}
+@keyframes chime-out-d{to{transform:translateY(100%);opacity:0}}
+@keyframes chime-in{from{transform:translateY(100%);opacity:0}to{transform:none;opacity:1}}
+@keyframes chime-out{to{transform:translateY(-100%);opacity:0}}
+@keyframes chime-pop{0%{transform:scale(1)}35%{transform:scale(1.45)}100%{transform:scale(1)}}
+
+/* the arriving orb + flying read-dots */
+.chime__fx{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none;z-index:3}
+.chime__orb{position:absolute;left:0;top:0;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#fff,var(--chime-accent-2) 45%,var(--chime-accent) 100%);
+  box-shadow:0 0 14px 3px rgba(34,195,238,.75),0 0 30px 8px rgba(59,91,255,.4)}
+.chime__trail{position:absolute;left:0;top:0;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;
+  background:var(--chime-accent-2);filter:blur(1px)}
+.chime__flash{position:absolute;left:0;top:0;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;
+  border:2px solid var(--chime-accent-2);opacity:0}
+.chime__fly{position:absolute;left:0;top:0;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;
+  background:var(--chime-accent-2);box-shadow:0 0 10px 2px rgba(34,195,238,.7)}
+
+/* panel */
+.chime__panel{
+  position:absolute;top:calc(100% + 12px);right:-6px;width:min(var(--chime-width),calc(100vw - 24px));z-index:4;
+  background:linear-gradient(180deg,#1c2130,var(--chime-surface) 70%);border:1px solid var(--chime-line);
+  border-radius:var(--chime-radius);overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 2px 4px rgba(0,0,0,.4),0 30px 70px -24px rgba(0,0,0,.9),0 30px 80px -40px rgba(59,91,255,.6);
+  transform-origin:calc(100% - 29px) -12px;transform:translateY(-8px) scale(.92);opacity:0;visibility:hidden;
+  transition:transform .42s cubic-bezier(.3,1.35,.5,1),opacity .22s ease,visibility 0s .42s;
+}
+.chime--start .chime__panel{right:auto;left:-6px;transform-origin:29px -12px}
+.chime.is-open .chime__panel{transform:none;opacity:1;visibility:visible;transition:transform .48s cubic-bezier(.3,1.35,.5,1),opacity .2s ease,visibility 0s}
+.chime__panel::before{content:"";position:absolute;inset:0 0 auto;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(143,163,255,.6),rgba(34,195,238,.5),transparent)}
+.chime__head{display:flex;align-items:center;gap:10px;padding:14px 14px 12px 16px;border-bottom:1px solid var(--chime-line)}
+.chime__title{margin:0;font-size:15px;font-weight:650;letter-spacing:-.01em;color:var(--chime-text)}
+.chime__new{font-size:11.5px;font-weight:650;color:var(--chime-glow);background:rgba(59,91,255,.16);
+  border:1px solid rgba(143,163,255,.25);border-radius:999px;padding:2px 8px;font-variant-numeric:tabular-nums;transition:opacity .3s}
+.chime__new.is-zero{opacity:0}
+.chime__all{margin-left:auto;display:inline-flex;align-items:center;gap:6px;border:0;background:none;color:var(--chime-muted);
+  font:600 12.5px/1 inherit;font-family:inherit;padding:7px 8px;border-radius:9px;cursor:pointer;transition:color .2s,background .2s}
+.chime__all svg{width:16px;height:16px}
+.chime__all:hover{color:var(--chime-text);background:rgba(255,255,255,.05)}
+.chime__all:focus-visible{outline:2px solid var(--chime-glow);outline-offset:1px}
+.chime__all:disabled{opacity:.45;cursor:default;background:none;color:var(--chime-muted)}
+
+.chime__list{list-style:none;margin:0;padding:6px;max-height:var(--chime-max-h,330px);overflow:auto;scrollbar-width:thin}
+.chime__li{overflow:hidden}
+.chime__item{
+  position:relative;display:grid;grid-template-columns:38px 1fr auto;gap:12px;align-items:start;width:100%;
+  padding:10px 10px 10px 10px;border:0;border-radius:12px;background:transparent;color:inherit;text-align:left;
+  font:inherit;cursor:pointer;overflow:hidden;
+  transition:background .2s,transform .45s cubic-bezier(.3,1.3,.5,1),opacity .3s;
+}
+.chime__item:hover{background:rgba(255,255,255,.04)}
+.chime__item:focus-visible{outline:2px solid var(--chime-glow);outline-offset:-2px}
+.chime__item.is-unread{background:rgba(59,91,255,.07)}
+.chime__item.is-unread:hover{background:rgba(59,91,255,.11)}
+.chime:not(.is-open) .chime__item{transform:translateY(-6px);opacity:0;transition-delay:0s}
+.chime.is-open .chime__item{transition-delay:calc(var(--i,0) * 55ms + 90ms)}
+.chime__item::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
+  background:linear-gradient(100deg,transparent 30%,rgba(143,163,255,.22) 48%,rgba(34,195,238,.18) 54%,transparent 70%);
+  transform:translateX(-100%)}
+.chime__item.is-sweep::after{animation:chime-sweep .7s ease-out}
+@keyframes chime-sweep{0%{opacity:1;transform:translateX(-100%)}100%{opacity:1;transform:translateX(100%)}}
+.chime__item.is-fresh{animation:chime-fresh 1.6s ease-out}
+@keyframes chime-fresh{0%{box-shadow:inset 0 0 0 1px rgba(34,195,238,.7),0 0 24px -6px rgba(34,195,238,.7)}100%{box-shadow:inset 0 0 0 1px rgba(34,195,238,0),0 0 24px -6px rgba(34,195,238,0)}}
+
+.chime__av{position:relative;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;
+  font-size:13px;font-weight:700;color:#fff;letter-spacing:.02em;background:var(--av,#3b5bff);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+.chime__kind{position:absolute;right:-5px;bottom:-5px;width:20px;height:20px;border-radius:7px;display:grid;place-items:center;
+  background:var(--chime-surface-2);border:2px solid var(--chime-surface);color:var(--kc,var(--chime-glow))}
+.chime__kind svg{width:12px;height:12px}
+.chime__txt{min-width:0}
+.chime__msg{margin:0;font-size:13.5px;line-height:1.4;color:var(--chime-soft)}
+.chime__msg b{color:var(--chime-text);font-weight:620}
+.chime__time{display:block;margin-top:3px;font-size:12px;color:var(--chime-muted);font-variant-numeric:tabular-nums}
+.chime__dot{width:9px;height:9px;margin-top:6px;border-radius:50%;background:var(--chime-accent-2);
+  box-shadow:0 0 0 3px rgba(34,195,238,.14),0 0 10px rgba(34,195,238,.6);transform:scale(0);transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.chime__item.is-unread .chime__dot{transform:scale(1)}
+.chime__item.is-launch .chime__dot{transform:scale(0);transition:transform .15s}
+
+.chime__empty{display:none;padding:28px 16px 30px;text-align:center;color:var(--chime-muted);font-size:13.5px}
+.chime__empty svg{display:block;width:30px;height:30px;margin:0 auto 8px;color:var(--chime-success)}
+.chime.is-empty .chime__empty{display:block}
+.chime__foot{border-top:1px solid var(--chime-line);padding:6px}
+.chime__more{display:block;width:100%;border:0;background:none;color:var(--chime-glow);font:600 13px/1 inherit;font-family:inherit;
+  padding:11px;border-radius:10px;cursor:pointer;transition:background .2s,color .2s}
+.chime__more:hover{background:rgba(59,91,255,.1);color:#fff}
+.chime__more:focus-visible{outline:2px solid var(--chime-glow);outline-offset:-2px}
+.chime__sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+@media (prefers-reduced-motion:reduce){
+  .chime__panel,.chime.is-open .chime__panel,.chime__item,.chime__badge{transition-duration:.01s!important;transition-delay:0s!important}
+  .chime__badge .is-in,.chime__badge .is-out,.chime__badge.is-pop,.chime__item.is-sweep::after,.chime__item.is-fresh{animation:none!important}
+}
