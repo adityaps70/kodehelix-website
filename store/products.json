@@ -1,5 +1,23 @@
 [
   {
+    "slug": "chime",
+    "name": "Chime",
+    "tagline": "A notification bell where every new alert drops in as a glowing orb, rings the bell and lands in the inbox, and Mark all read flies each unread dot back into the badge.",
+    "type": "component",
+    "size": "31 KB",
+    "deps": "0 deps",
+    "price": 5,
+    "was": 8,
+    "added": "2026-11-09",
+    "isNew": true,
+    "demo": "/store/chime/",
+    "cover": "/store/chime/cover.jpg",
+    "video": "/store/chime/preview.mp4",
+    "buy": "https://adityapulse2.gumroad.com/l/chime",
+    "gumroad": true,
+    "demoHeight": 640
+  },
+  {
     "slug": "roster",
     "name": "Roster",
     "tagline": "A complete hiring dashboard for HR and recruiting teams. Switch the team and a stream of candidates pours through the pipeline: the ones who move on flow to the next stage, the rest drop away, and every hire lands with a pulse and pops into the joining-soon list.",
@@ -9,7 +27,7 @@
     "price": 39,
     "was": 65,
     "added": "2026-11-08",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/roster/",
     "cover": "/store/roster/cover.jpg",
     "video": "/store/roster/preview.mp4",
