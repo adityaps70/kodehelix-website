@@ -1,5 +1,23 @@
 [
   {
+    "slug": "zenith",
+    "name": "Zenith",
+    "tagline": "A complete solar and energy monitoring dashboard. Switch the day and the sun rises again: it travels its arc across the sky, slips under the day's clouds and paints the power it made beneath it, while the kWh counters, battery and energy flow run along with it.",
+    "type": "dashboard",
+    "size": "56 KB",
+    "deps": "0 deps",
+    "price": 39,
+    "was": 65,
+    "added": "2026-11-10",
+    "isNew": true,
+    "demo": "/store/zenith/",
+    "cover": "/store/zenith/cover.jpg",
+    "video": "/store/zenith/preview.mp4",
+    "buy": "https://adityapulse2.gumroad.com/l/zenith",
+    "gumroad": true,
+    "demoHeight": 760
+  },
+  {
     "slug": "chime",
     "name": "Chime",
     "tagline": "A notification bell where every new alert drops in as a glowing orb, rings the bell and lands in the inbox, and Mark all read flies each unread dot back into the badge.",
@@ -9,7 +27,7 @@
     "price": 5,
     "was": 8,
     "added": "2026-11-09",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/chime/",
     "cover": "/store/chime/cover.jpg",
     "video": "/store/chime/preview.mp4",
