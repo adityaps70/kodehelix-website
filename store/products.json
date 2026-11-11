@@ -1,5 +1,23 @@
 [
   {
+    "slug": "orbit",
+    "name": "Orbit",
+    "tagline": "A drag-and-drop uploader where every file becomes a glowing satellite that spirals into the core as it uploads, then lands with a shockwave while its row ticks off.",
+    "type": "component",
+    "size": "32 KB",
+    "deps": "0 deps",
+    "price": 5,
+    "was": 8,
+    "added": "2026-11-11",
+    "isNew": true,
+    "demo": "/store/orbit/",
+    "cover": "/store/orbit/cover.jpg",
+    "video": "/store/orbit/preview.mp4",
+    "buy": "https://adityapulse2.gumroad.com/l/orbit",
+    "gumroad": true,
+    "demoHeight": 620
+  },
+  {
     "slug": "zenith",
     "name": "Zenith",
     "tagline": "A complete solar and energy monitoring dashboard. Switch the day and the sun rises again: it travels its arc across the sky, slips under the day's clouds and paints the power it made beneath it, while the kWh counters, battery and energy flow run along with it.",
@@ -9,7 +27,7 @@
     "price": 39,
     "was": 65,
     "added": "2026-11-10",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/zenith/",
     "cover": "/store/zenith/cover.jpg",
     "video": "/store/zenith/preview.mp4",
