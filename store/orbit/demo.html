@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Orbit · file upload dropzone · Kodehelix UI</title>
+<link rel="stylesheet" href="orbit.css">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{min-height:100vh;display:grid;justify-items:center;align-items:start;background:#0b0d12;color:#c9cdd8;overflow-x:hidden;
+    font:16px/1.5 "Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    background-image:radial-gradient(56vmax 40vmax at 50% 18%,rgba(59,91,255,.22),transparent 62%),
+      radial-gradient(40vmax 30vmax at 18% 88%,rgba(34,195,238,.10),transparent 60%)}
+  .wrap{width:100%;max-width:480px;min-width:0;padding:clamp(20px,9vh,90px) 16px 32px;display:grid;justify-items:center;gap:16px}
+  .foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 14px}
+  .hint{margin:0;font-size:13.5px;color:#8f95a6;text-align:center;max-width:44ch}
+  .try{border:1px solid #33394d;background:#1f2433;color:#edeff5;font:600 13px/1 inherit;font-family:inherit;padding:10px 14px;border-radius:11px;cursor:pointer}
+  .try:hover{border-color:#8fa3ff}
+  .try:focus-visible{outline:2px solid #8fa3ff;outline-offset:2px}
+  .capture .foot{display:none}
+  .capture .wrap{padding-top:clamp(16px,6vh,60px)}
+  /* demo-only: a little stack of files that gets "dragged" in during the auto-play */
+  .ghost{position:fixed;left:0;top:0;width:150px;height:70px;pointer-events:none;opacity:0;z-index:5;will-change:transform}
+  .ghost span{position:absolute;left:0;top:0;display:flex;align-items:center;gap:8px;width:150px;padding:9px 11px;border-radius:12px;
+    border:1px solid #343a4f;background:#1f2433;color:#edeff5;font-size:12px;font-weight:600;white-space:nowrap;
+    box-shadow:0 18px 40px -18px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.06)}
+  .ghost span:nth-child(1){transform:rotate(-9deg) translate(-10px,6px)}
+  .ghost span:nth-child(2){transform:rotate(5deg) translate(8px,2px)}
+  .ghost svg{width:16px;height:16px;flex:none}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div id="up" data-orbit data-orbit-manual data-title="Upload project files" data-accept="image/*,.pdf,.zip,.csv,.mp4" data-max-size="50MB"></div>
+    <div class="foot">
+      <p class="hint">Drop a few files on the zone (or browse) and watch them spiral into the core as they upload.</p>
+      <button type="button" class="try" id="try">Launch sample files</button>
+    </div>
+  </main>
+  <div class="ghost" aria-hidden="true">
+    <span style="color:#ffb020"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4.5 4.5v11a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 19V5A1.5 1.5 0 0 1 7 3.5z"/><path d="M13.5 3.5V8h5"/></svg><b style="color:#edeff5;font-weight:600">source-files.zip</b></span>
+    <span style="color:#22c3ee"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><circle cx="9" cy="9.5" r="1.6"/><path d="M4 17l5-4.5 3.5 3 2.5-2 5 4"/></svg><b style="color:#edeff5;font-weight:600">hero-shot.jpg</b></span>
+    <span style="color:#8fa3ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4.5 4.5v11a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 19V5A1.5 1.5 0 0 1 7 3.5z"/><path d="M13.5 3.5V8h5"/><path d="M8.5 12.5h7M8.5 16h5"/></svg><b style="color:#edeff5;font-weight:600">brand-guide.pdf</b></span>
+  </div>
+  <script src="orbit.js"></script>
+  <script>
+    if (/[?&]capture=1/.test(location.search)) document.documentElement.classList.add('capture');
+    // Demo uploads are simulated. Swap this for your real upload (see README).
+    var up = Orbit.mount(document.getElementById('up'), {
+      upload: function (file, progress, signal) { return Orbit.simulate(file.ms)(file, progress, signal); }
+    });
+    function samples() {
+      return [
+        { name: 'brand-guide.pdf', size: 2516582, type: 'application/pdf', ms: 1700 },
+        { name: 'hero-shot.jpg', size: 3984588, type: 'image/jpeg', ms: 2300 },
+        { name: 'source-files.zip', size: 13212057, type: 'application/zip', ms: 2900 }
+      ];
+    }
+    document.getElementById('try').addEventListener('click', function () { up.clear(true); up.add(samples()); });
+
+    // Auto-play for store previews: a stack of files is dragged onto the zone and dropped,
+    // each file orbits in and lands, then the list clears and it repeats. Stops on real input.
+    var ghost = document.querySelector('.ghost'), demoT = [], demoI = 0, gRaf = 0;
+    function stopDemo(e) {
+      if (!e.isTrusted || !demoI) return;
+      clearInterval(demoI); demoI = 0; demoT.forEach(clearTimeout); demoT = []; cancelAnimationFrame(gRaf);
+      ghost.style.opacity = 0; up.highlight(false);
+    }
+    addEventListener('pointerdown', stopDemo, true); addEventListener('keydown', stopDemo, true);
+    function drag(ms) {
+      var z = up.zone.getBoundingClientRect(), ex = z.left + z.width / 2 + 34, ey = z.top + z.height * .4 - 6,
+        sx = Math.min(innerWidth - 40, z.right + 60), sy = Math.max(-30, z.top - 150), t0 = performance.now();
+      cancelAnimationFrame(gRaf);
+      (function f() {
+        var k = Math.min(1, (performance.now() - t0) / ms), e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2,
+          x = sx + (ex - sx) * e, y = sy + (ey - sy) * e - Math.sin(k * Math.PI) * 30;
+        ghost.style.opacity = Math.min(1, k * 4);
+        ghost.style.transform = 'translate(' + (x - 75) + 'px,' + (y - 35) + 'px) rotate(' + (8 * (1 - e)) + 'deg) scale(' + (1.04 - .1 * e) + ')';
+        if (k < 1) gRaf = requestAnimationFrame(f);
+      })();
+      return { x: ex - z.left, y: ey - z.top };
+    }
+    function drop() {
+      var t0 = performance.now(), base = ghost.style.transform;
+      cancelAnimationFrame(gRaf);
+      (function f() {
+        var k = Math.min(1, (performance.now() - t0) / 220);
+        ghost.style.opacity = 1 - k; ghost.style.transform = base + ' scale(' + (1 - .4 * k) + ')';
+        if (k < 1) gRaf = requestAnimationFrame(f);
+      })();
+    }
+    window.khDemo = function () {
+      if (demoI) return;
+      function at(ms, fn) { demoT.push(setTimeout(fn, ms)); }
+      function cycle() {
+        demoT.forEach(clearTimeout); demoT = [];
+        var pt;
+        at(60, function () { pt = drag(900); });
+        at(620, function () { up.highlight(true); });
+        at(1000, function () { up.highlight(false); drop(); up.add(samples(), { from: pt }); });
+        at(6500, function () { up.clear(true); });
+      }
+      cycle(); demoI = setInterval(cycle, 7800);
+    };
+  </script>
+</body>
+</html>
