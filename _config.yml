@@ -1,0 +1,4 @@
+exclude:
+  - seo
+  - scripts
+  - README.md
