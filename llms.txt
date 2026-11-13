@@ -2,7 +2,7 @@
 
 > Kodehelix is a website design and development studio based in Lucknow, India. It builds fast, mobile-first business websites, web apps and AI tools for businesses in India and abroad, and runs a UI store of animated components and dashboard templates in plain HTML, CSS and JavaScript.
 
-Contact: WhatsApp or call +91 70070 64653. Website: https://kodehelix.in/
+Contact: WhatsApp or call +91 70070 64653, email adityaps700@gmail.com. Website: https://kodehelix.in/
 
 ## Services and prices (fixed quotes, exclude 18% GST in India)
 - Launch website: from ₹10,000 ($499 abroad). 1–5 pages, custom design, WhatsApp/call/map buttons, enquiry form, basic SEO. 7–10 days.

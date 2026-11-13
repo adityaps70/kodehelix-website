@@ -9,3 +9,4 @@
 - 2026-11-13 Added sitemap.xml (29 URLs), robots.txt, branded 404.html, llms.txt. Build: `python3 scripts/build_pages.py && python3 scripts/build_seo.py`
 - 2026-11-13 Sitemap submitted in Search Console: success, 29 pages discovered. URL Inspection: homepage 'URL is unknown to Google' → indexing requested (priority queue). Second request hit the account's daily quota.
 - 2026-11-13 IndexNow: 29 URLs submitted, HTTP 202 accepted. Script: scripts/indexnow.py
+- 2026-11-13 Contact email on homepage, schema and llms.txt changed from hello@kodehelix.com (dead domain) to adityaps700@gmail.com, at the owner's request.
