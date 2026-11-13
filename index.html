@@ -585,5 +585,6 @@ fetch('/store/products.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{
   g.innerHTML=list.map(p=>`<a class="ui-card" href="${e(p.demo)}">${p.video?`<video src="${e(p.video)}" poster="${e(p.cover)}" muted loop playsinline autoplay preload="metadata"></video>`:`<img src="${e(p.cover)}" alt="" loading="lazy">`}<div class="m"><b>${e(p.name)}</b><span>${e(p.tagline)}</span><i>${e(p.type)}<em>$${e(p.price)}</em></i></div></a>`).join('');
 }).catch(()=>{});
 </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3ebbc2250fab4fdc85d1eaaeb2246c07"}'></script>
 </body>
 </html>

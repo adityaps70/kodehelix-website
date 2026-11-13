@@ -131,5 +131,6 @@ document.querySelectorAll("[data-f]").forEach(b=>b.addEventListener("click",()=>
 fetch("products.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{items=d.sort((a,b)=>String(b.added).localeCompare(String(a.added)));featured();render();if(items.some(p=>p.gumroad)){const sc=document.createElement("script");sc.src="https://gumroad.com/js/gumroad.js";document.head.appendChild(sc);}})
   .catch(()=>{document.getElementById("grid").innerHTML='<div class="empty">Couldn\'t load the products. Refresh the page.</div>'});
 </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3ebbc2250fab4fdc85d1eaaeb2246c07"}'></script>
 </body>
 </html>

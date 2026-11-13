@@ -108,6 +108,19 @@ else:
     store = store.replace("<style>", ld + "\n<style>", 1)
 write("store/index.html", store)
 
+# 3b. Cloudflare Web Analytics (cookie-free) on every page ---------------------------------
+BEACON = """<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3ebbc2250fab4fdc85d1eaaeb2246c07"}'></script>"""
+for dirpath, dirnames, filenames in os.walk("."):
+    dirnames[:] = [d for d in dirnames if not d.startswith(".") and d not in ("scripts", "seo", "assets", "node_modules")]
+    for fn in filenames:
+        if not fn.endswith(".html") or fn.startswith("google") or fn == "demo.html":
+            continue
+        fp = os.path.join(dirpath, fn)
+        h = read(fp)
+        if "cloudflareinsights.com/beacon" in h or "</body>" not in h or 'http-equiv="refresh"' in h:
+            continue
+        write(fp, h.replace("</body>", BEACON + "\n</body>", 1))
+
 # 4. Sitemap -------------------------------------------------------------------------
 def lastmod(path):
     out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", path], capture_output=True, text=True).stdout.strip()
