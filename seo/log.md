@@ -10,3 +10,6 @@
 - 2026-11-13 Sitemap submitted in Search Console: success, 29 pages discovered. URL Inspection: homepage 'URL is unknown to Google' → indexing requested (priority queue). Second request hit the account's daily quota.
 - 2026-11-13 IndexNow: 29 URLs submitted, HTTP 202 accepted. Script: scripts/indexnow.py
 - 2026-11-13 Contact email on homepage, schema and llms.txt changed from hello@kodehelix.com (dead domain) to adityaps700@gmail.com, at the owner's request.
+- 2026-11-13 Google Business Profile created (unverified): Kodehelix, Web Designer, service area Lucknow, +91 70070 64653, WhatsApp wa.me link, website /website-design-lucknow/. Awaiting owner's address + verification.
+- 2026-11-13 Footer credits committed locally in 5 client repos; push blocked pending owner OK. Review request drafts: seo/outreach/2026-11-13-reviews-and-credits.md
+- 2026-11-13 Directories paused: Clutch needs a company-domain email; kodehelix.in has none.

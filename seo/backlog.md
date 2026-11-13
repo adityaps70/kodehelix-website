@@ -4,7 +4,7 @@ Ordered by expected enquiries per hour of work. State on 2026-11-13: the site wa
 
 ## Now: owner only (I can't do these: they need your accounts, money or phone)
 1. ~~Fix the email~~ Done 2026-11-13: site now shows adityaps700@gmail.com. Still to do by the owner: update the portfolio PDF and client acquisition kit, which still say hello@kodehelix.com. Later, register kodehelix.com (so nobody else takes the name) and switch to a domain address.
-2. **Create the Google Business Profile.** The map pack (3 listings above all organic results for "website design company in lucknow") is the only way to show up for local searches in the next few months. Copy is ready in `seo/gbp.md`. Google will verify by video or postcard.
+2. **Finish the Google Business Profile.** Created 2026-11-13 (Kodehelix · Web Designer · service area Lucknow · phone + WhatsApp · website /website-design-lucknow/). Still to do by the owner: enter the postal address (hidden from the public) and complete Google's verification at business.google.com, then add the description, services and photos below. The map pack (3 listings above all organic results for "website design company in lucknow") is the only way to show up for local searches in the next few months. Copy is ready in `seo/gbp.md`. Google will verify by video or postcard.
 3. **Ask 3–5 past clients for a Google review** once the profile exists (Cloud Trails, inFAMOUS, Willmar, Sea N Shore). Competitors in the pack have 100–1,000+ reviews; even 5 real ones lets you start appearing for "near me" in Lucknow. Message template in `seo/gbp.md`.
 4. **Bing Webmaster Tools:** sign in at bing.com/webmasters and choose "Import from Google Search Console" (1 click once GSC is verified). Then IndexNow (key already live at /3c5ad0eb6d7204f041cf6a6317df1541.txt) works for Bing, Yandex, and the AI search engines that use Bing.
 
@@ -13,7 +13,8 @@ Ordered by expected enquiries per hour of work. State on 2026-11-13: the site wa
 - Check `site:kodehelix.in` in 3–7 days; if still 0, inspect the homepage in Search Console for the reason.
 
 ## Next: links and listings (copy ready in `seo/directories.md`)
-5. Owned profiles: LinkedIn company page, Clutch, GoodFirms, DesignRush, Behance, Dribbble, GitHub org, JustDial, Sulekha, IndiaMART. Each links to kodehelix.in and uses the same name/phone/city (NAP consistency).
+5. **Blocker for Clutch, GoodFirms, DesignRush:** they list agencies under a work email on the company's domain. kodehelix.in has no email (no MX records). Set up free forwarding hello@kodehelix.in → Gmail (e.g. ImprovMX: 2 MX records at GoDaddy) or Zoho Mail free; then these sign-ups work. JustDial, Sulekha and IndiaMART need a phone OTP.
+   Owned profiles: LinkedIn company page, Clutch, GoodFirms, DesignRush, Behance, Dribbble, GitHub org, JustDial, Sulekha, IndiaMART. Each links to kodehelix.in and uses the same name/phone/city (NAP consistency).
 6. Footer credit links on client sites ("Website by Kodehelix" → kodehelix.in) on cloudtrails.in, seanshore.in, marinetanks.in, verifyu.in. These are your strongest available links: real, relevant, and you control them. Ask each client; use a small, honest credit.
 7. UI store distribution: post each component to CodePen (free demo version with "full version" link), Uiverse, r/webdev "Showoff Saturday", Product Hunt (launch the store once with 25+ items), Gumroad Discover tags.
 
