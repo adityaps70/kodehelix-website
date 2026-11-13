@@ -1,0 +1,24 @@
+# Kodehelix
+
+> Kodehelix is a website design and development studio based in Lucknow, India. It builds fast, mobile-first business websites, web apps and AI tools for businesses in India and abroad, and runs a UI store of animated components and dashboard templates in plain HTML, CSS and JavaScript.
+
+Contact: WhatsApp or call +91 70070 64653. Website: https://kodehelix.in/
+
+## Services and prices (fixed quotes, exclude 18% GST in India)
+- Launch website: from ₹10,000 ($499 abroad). 1–5 pages, custom design, WhatsApp/call/map buttons, enquiry form, basic SEO. 7–10 days.
+- Business website: from ₹39,999 ($1,499). 8–15 pages, admin panel, booking or enquiry flows, SEO and Google Business Profile. 3–4 weeks.
+- Commerce: from ₹89,999 ($3,499). Online store or booking system, Razorpay/Cashfree/Stripe, up to 100 products. 4–6 weeks.
+- Platform & AI: from ₹2,49,999 ($7,999). Logins, dashboards, subscriptions, AI agents and automation. Billed by milestone.
+- Care plan ₹5,000/month; Growth plan (adds monthly SEO) ₹10,000/month.
+- Process: free 30-minute call, fixed quote within 24 hours, homepage design approved before the full build, 50% to start and 50% before launch.
+
+## Pages
+- [Home: services, work, prices, FAQ](https://kodehelix.in/)
+- [Website design in Lucknow](https://kodehelix.in/website-design-lucknow/)
+- [Website design cost in India (with estimator)](https://kodehelix.in/website-design-cost-india/)
+- [Hotel and homestay websites](https://kodehelix.in/hotel-website-design/)
+- [Maritime and shipping company websites](https://kodehelix.in/maritime-website-design/)
+- [UI store: animated components and dashboards](https://kodehelix.in/store/)
+
+## Work
+- inFAMOUS Gaming Cafe (Lucknow), Cloud Trails and La Shimti (Shillong), Willmar Solutions (Singapore marine consultancy), Sea N Shore (seafarer network), Marine Tanks (maritime news with AI Q&A), VerifyU, Sea N Shore IT Solutions.
