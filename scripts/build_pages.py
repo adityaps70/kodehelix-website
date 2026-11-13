@@ -23,7 +23,7 @@ def wa(msg):
     return WA + quote(msg)
 
 WORK = {
-    "infamous": dict(n="inFAMOUS Gaming Cafe", tag="Entertainment · Lucknow", c="#0F140A", url="https://adityaps70.github.io/INFAMOUSGAMINGCAFE/",
+    "infamous": dict(n="inFAMOUS Gaming Cafe", tag="Entertainment · Gaming cafe", c="#0F140A", url="https://adityaps70.github.io/INFAMOUSGAMINGCAFE/",
                      d="PC, PlayStation, VR, simulators and more under one roof. A bold, mobile-first site with a session picker, rates and one-tap WhatsApp, call and directions."),
     "lashimti": dict(n="La Shimti", tag="Boutique hotel · Shillong", c="#2A1C0E", url="",
                      d="A calm, editorial website for a boutique hotel: room cards with rates, a seasonal guide and a booking form that sends the guest's dates straight to WhatsApp."),
@@ -49,7 +49,7 @@ PACKAGES = [
 ]
 
 GUIDES = [
-    ("/website-design-lucknow/", "Website design in Lucknow"),
+    ("/outsource-web-design-india/", "Outsource web design to India"),
     ("/website-design-cost-india/", "Website cost in India"),
     ("/hotel-website-design/", "Hotel & homestay websites"),
     ("/maritime-website-design/", "Maritime & shipping websites"),
@@ -105,7 +105,7 @@ def page(slug, title, desc, h1, lede, crumb, body, faqs, service, wa_msg, extra_
     if service:
         graph.append({"@type": "Service", "name": service["name"], "serviceType": service["type"], "url": url,
                       "provider": {"@type": "ProfessionalService", "@id": f"{SITE}/#org", "name": "Kodehelix", "url": f"{SITE}/",
-                                   "telephone": "+91-7007064653", "address": {"@type": "PostalAddress", "addressLocality": "Lucknow", "addressRegion": "Uttar Pradesh", "addressCountry": "IN"}},
+                                   "telephone": "+91-7007064653", "address": {"@type": "PostalAddress", "addressCountry": "IN"}},
                       "areaServed": service["area"],
                       "offers": {"@type": "AggregateOffer", "priceCurrency": "INR", "lowPrice": "10000", "highPrice": "249999", "offerCount": "4"}})
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False)
@@ -149,7 +149,7 @@ def page(slug, title, desc, h1, lede, crumb, body, faqs, service, wa_msg, extra_
 <h1>{h1}</h1>
 <p class="lede">{lede}</p>
 <div class="cta"><a class="btn btn-wa" href="{e(wa(wa_msg))}" target="_blank" rel="noopener">WhatsApp {PHONE}</a><a class="btn btn-line" href="tel:+917007064653">Call us</a></div>
-<div class="facts"><span><b>From ₹10,000</b> · fixed quotes</span><span><b>Homepage design first</b>, before you commit</span><span>Updated <b>{UPDATED}</b></span></div>
+<div class="facts"><span><b>From $499</b> (₹10,000 in India) · fixed quotes</span><span><b>Homepage design first</b>, before you commit</span><span>Updated <b>{UPDATED}</b></span></div>
 </div></div>
 
 <main>
@@ -163,7 +163,7 @@ def page(slug, title, desc, h1, lede, crumb, body, faqs, service, wa_msg, extra_
 </main>
 
 <footer><div class="wrap">
-<span>© 2026 Kodehelix · Lucknow, India · <a href="tel:+917007064653">{PHONE}</a></span>
+<span>© 2026 Kodehelix · India · working with clients worldwide · <a href="tel:+917007064653">{PHONE}</a></span>
 <nav aria-label="Guides"><a href="/">Home</a>{guides_nav}<a href="/store/">UI store</a><a href="https://www.instagram.com/kodehelix.in/" rel="noopener">Instagram</a></nav>
 </div></footer>
 <a class="fab" href="{e(wa(wa_msg))}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">{WA_SVG}</a>
@@ -178,66 +178,56 @@ def page(slug, title, desc, h1, lede, crumb, body, faqs, service, wa_msg, extra_
 
 
 # ---------------------------------------------------------------------------------
-# 1. Website design in Lucknow
+# 1. Outsource website design to India (for clients worldwide)
 # ---------------------------------------------------------------------------------
 page(
-    "website-design-lucknow",
-    "Website Design Company in Lucknow · From ₹10,000 | Kodehelix",
-    "Kodehelix is a website design and development studio based in Lucknow. Mobile-first business websites from ₹10,000 with WhatsApp, call and booking built in. See the homepage design before you pay for the build.",
-    "Website design in Lucknow, <em>from ₹10,000.</em>",
-    "Kodehelix is a website design and development studio based in Lucknow. We build fast, mobile-first websites for Lucknow businesses, where every button leads to a call, a WhatsApp message or a booking. A one-to-five-page site starts at ₹10,000 and is ready in 7–10 days, and you see your homepage design before you commit to the full build.",
-    "Website design in Lucknow",
+    "outsource-web-design-india",
+    "Outsource Website Design to India · Fixed USD Prices from $499 | Kodehelix",
+    "Kodehelix is an Indian web design and development studio working with businesses worldwide. Custom websites from $499, web apps and AI tools, fixed quotes in US dollars, and your homepage design before you commit.",
+    "Outsource your website to India, <em>from $499.</em>",
+    "Kodehelix is a website design and development studio in India that works with businesses worldwide. You get a custom, mobile-first website from $499, a fixed quote in US dollars within 24 hours of the first call, and your homepage design to approve before the full build starts. Everything happens online: calls, a live preview link and WhatsApp or email.",
+    "Outsource web design to India",
     f'''
 <section><div class="wrap">
-<h2>What a Lucknow business website needs to do</h2>
-<p class="sub">Most customers in Lucknow find a business on Google Maps or Instagram, open the website on a phone, and decide in a few seconds whether to call. So we build for that moment first.</p>
+<h2>Why businesses abroad work with us</h2>
 <div class="grid3">
-<div class="box"><span class="k">Phone first</span><h3>Built for the phone</h3><p>Designed on a phone screen first, then scaled up. Fast on a 4G connection, with large tap targets.</p></div>
-<div class="box"><span class="k">WhatsApp</span><h3>One tap to talk</h3><p>WhatsApp, call and directions buttons on every page. Enquiry forms that open WhatsApp with the customer's message ready.</p></div>
-<div class="box"><span class="k">Google</span><h3>Found on Google</h3><p>On-page SEO, Google Analytics, and on Business plans a Google Business Profile set up, which is what shows in the map results for "near me" searches.</p></div>
+<div class="box"><span class="k">Price</span><h3>Fixed prices in USD</h3><p>Published starting prices and a written quote that doesn't change unless you change the scope. 50% to start, 50% before launch.</p></div>
+<div class="box"><span class="k">Low risk</span><h3>See the design first</h3><p>We design your homepage first. You approve the look before a single page is built.</p></div>
+<div class="box"><span class="k">Visibility</span><h3>Progress you can open</h3><p>A live preview link from the first week, so you can check the build any day from anywhere.</p></div>
+<div class="box"><span class="k">One team</span><h3>No hand-offs</h3><p>The same small team from the first call to launch and after. No project passed to a stranger.</p></div>
+<div class="box"><span class="k">Range</span><h3>Websites to platforms</h3><p>Company sites, online stores, booking systems, portals with logins and payments, and AI chat and voice agents.</p></div>
+<div class="box"><span class="k">Ownership</span><h3>You own everything</h3><p>Domain, hosting and code are set up in your name and billed at cost by the provider.</p></div>
 </div>
 </div></section>
 
 <section><div class="wrap">
-<h2>Work from Lucknow and beyond</h2>
-<p class="sub">Every screenshot is the real site. Our Lucknow client inFAMOUS Gaming Cafe is first; the rest show the same approach for businesses in Shillong and Singapore.</p>
-{case_cards(["infamous", "cloudtrails", "lashimti", "willmar"])}
+<h2>Work for clients in and outside India</h2>
+<p class="sub">Every screenshot is the real site, including a 12-page website for a marine consultancy in Singapore.</p>
+{case_cards(["willmar", "seanshore", "cloudtrails", "marinetanks"])}
 </div></section>
 
 <section><div class="wrap">
-<h2>Website prices for Lucknow businesses</h2>
-<p class="sub">The same fixed prices we publish on our homepage. You get a written quote within 24 hours of the first call, and it doesn't change unless you change the scope.</p>
-{package_table()}
-<p style="margin-top:16px">Not sure which one fits? Use the <a href="/website-design-cost-india/#estimate">website cost estimator</a>.</p>
+<h2>Prices in US dollars</h2>
+<p class="sub">Starting prices for clients outside India. Your written quote comes within 24 hours of the first call.</p>
+{package_table(usd=True)}
+<p style="margin-top:16px">In India? See prices in rupees on the <a href="/website-design-cost-india/">website cost guide</a>.</p>
 </div></section>
 
 <section><div class="wrap">
-<h2>Who we build for in Lucknow</h2>
-<ul class="list">
-<li><b>Clinics, dentists and diagnostic labs</b>: services, doctors, timings and an appointment form.</li>
-<li><b>Coaching centres and schools</b>: courses, results and a demo-class booking.</li>
-<li><b>Restaurants, cafés and cloud kitchens</b>: menu, table booking and WhatsApp ordering.</li>
-<li><b>Gyms, salons, studios and gaming cafés</b>: memberships, rates and booking, like <a href="https://adityaps70.github.io/INFAMOUSGAMINGCAFE/" target="_blank" rel="noopener">inFAMOUS</a>.</li>
-<li><b>CAs, lawyers and consultants</b>: a clean professional site referrals can check.</li>
-<li><b>Real estate agents and builders</b>: project pages and lead forms.</li>
-</ul>
-</div></section>
-
-<section><div class="wrap">
-<h2>How it works</h2>
+<h2>How it works remotely</h2>
 {PROCESS}
 </div></section>
 ''',
     [
-        ("How much does a website cost in Lucknow?", "With Kodehelix, a 1–5 page business website starts at ₹10,000, an 8–15 page site with an admin panel starts at ₹39,999, and an online store or booking site starts at ₹89,999. Prices exclude 18% GST and third-party costs such as the domain. See <a href=\"/website-design-cost-india/\">website costs in India</a> for how this compares."),
-        ("How long does a website take?", "A Launch site is ready in 7–10 days, a Business site in 3–4 weeks and a store or booking site in 4–6 weeks."),
-        ("Do I see the design before paying for everything?", "Yes. We design your homepage first. You approve the look before we build the rest. Payment is 50% to start and 50% before launch."),
-        ("Will my website show up on Google Maps?", "The map results come from your Google Business Profile, not your website. Business plans include setting up the profile and linking it to your site, which is what helps most for local searches like \"near me\"."),
-        ("Who owns the domain and hosting?", "You do. We set them up in your name and they are billed at cost by the provider; we don't mark them up."),
-        ("Can I edit the website myself later?", "Yes. Business and Commerce sites come with an admin panel and every project includes a short training session. If you'd rather not, the Care plan (₹5,000 a month) covers edits for you."),
+        ("Do you work with clients outside India?", "Yes. We've built for a client in Singapore and work with businesses worldwide, entirely online. International pricing is in US dollars."),
+        ("How much does a website cost?", "A 1–5 page custom website starts at $499, an 8–15 page site with an admin panel at $1,499, an online store or booking site at $3,499, and web apps and AI platforms at $7,999. You get a fixed quote in writing."),
+        ("How do we communicate across time zones?", "By scheduled video calls, WhatsApp and email, plus a live preview link you can open any time. You don't need to be online at the same time as us to follow progress."),
+        ("Do I see the design before paying for everything?", "Yes. We design your homepage first and you approve it before we build the rest. Payment is 50% to start and 50% before launch."),
+        ("Who owns the website, domain and code?", "You do. We set up the domain and hosting in your name and bill them at cost; we don't mark them up."),
+        ("How long does it take?", "A small website takes 7–10 days, a larger company site 3–4 weeks and a store or booking site 4–6 weeks. Platforms are planned in milestones."),
     ],
-    {"name": "Website design and development in Lucknow", "type": "Website design", "area": [{"@type": "City", "name": "Lucknow"}, {"@type": "State", "name": "Uttar Pradesh"}]},
-    "Hi Kodehelix, I'm in Lucknow and I'd like a website for my business.",
+    {"name": "Website design and development for businesses worldwide", "type": "Website design", "area": ["Worldwide"]},
+    "Hi Kodehelix, I'd like a quote for a website.",
 )
 
 # ---------------------------------------------------------------------------------
@@ -404,7 +394,7 @@ page(
         ("How much does a hotel website cost?", "A homestay or small hotel with a few room types usually fits our Launch package (from ₹10,000). A hotel with room pages, a seasonal guide, booking flow and Google Business Profile fits Business (from ₹39,999). Online payments and a booking system are in Commerce (from ₹89,999). Prices exclude 18% GST."),
         ("Can guests book and pay online?", "Yes. Most of our hotel clients start with a booking form that sends dates to WhatsApp, which needs no extra fees. When you want deposits or full payment online, we add Razorpay, Cashfree or Stripe."),
         ("Do you connect to a channel manager or booking engine?", "If you already use one, we link or embed it on your site. If you don't, we recommend starting with WhatsApp booking and adding one when your volume needs it."),
-        ("Do you work with hotels outside Lucknow?", "Yes. Our hotel and travel clients so far are in Shillong, and we work with businesses across India and abroad, entirely online."),
+        ("Do you work with hotels outside India?", "Yes. Our hotel and travel clients so far are in Shillong, India, and we work with hotels and tour operators anywhere, entirely online. International prices are in US dollars."),
         ("Will my hotel show up on Google Maps?", "Map results come from your Google Business Profile. Business plans include setting it up and linking it to your new site."),
     ],
     {"name": "Hotel and homestay website design", "type": "Website design", "area": [{"@type": "Country", "name": "India"}, "Worldwide"]},

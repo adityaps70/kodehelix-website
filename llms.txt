@@ -1,6 +1,6 @@
 # Kodehelix
 
-> Kodehelix is a website design and development studio based in Lucknow, India. It builds fast, mobile-first business websites, web apps and AI tools for businesses in India and abroad, and runs a UI store of animated components and dashboard templates in plain HTML, CSS and JavaScript.
+> Kodehelix is a website design and development studio from India that works with businesses worldwide. It builds fast, mobile-first business websites, web apps and AI tools, and runs a UI store of animated components and dashboard templates in plain HTML, CSS and JavaScript.
 
 Contact: WhatsApp or call +91 70070 64653, email adityaps700@gmail.com. Website: https://kodehelix.in/
 
@@ -14,11 +14,11 @@ Contact: WhatsApp or call +91 70070 64653, email adityaps700@gmail.com. Website:
 
 ## Pages
 - [Home: services, work, prices, FAQ](https://kodehelix.in/)
-- [Website design in Lucknow](https://kodehelix.in/website-design-lucknow/)
+- [Outsource website design to India (USD prices)](https://kodehelix.in/outsource-web-design-india/)
 - [Website design cost in India (with estimator)](https://kodehelix.in/website-design-cost-india/)
 - [Hotel and homestay websites](https://kodehelix.in/hotel-website-design/)
 - [Maritime and shipping company websites](https://kodehelix.in/maritime-website-design/)
 - [UI store: animated components and dashboards](https://kodehelix.in/store/)
 
 ## Work
-- inFAMOUS Gaming Cafe (Lucknow), Cloud Trails and La Shimti (Shillong), Willmar Solutions (Singapore marine consultancy), Sea N Shore (seafarer network), Marine Tanks (maritime news with AI Q&A), VerifyU, Sea N Shore IT Solutions.
+- inFAMOUS Gaming Cafe, Cloud Trails and La Shimti (Shillong), Willmar Solutions (Singapore marine consultancy), Sea N Shore (seafarer network), Marine Tanks (maritime news with AI Q&A), VerifyU, Sea N Shore IT Solutions.
