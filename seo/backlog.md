@@ -7,7 +7,8 @@ Ordered by expected enquiries per hour of work. State on 2026-11-13: the site wa
 2. **Google Business Profile (optional now).** The site no longer targets Lucknow; a Business Profile mainly helps local map searches, so it matters less for worldwide clients. If you keep it, change the service area from Lucknow to your wider region after verification, and set the website to the homepage.
    Previously: Created 2026-11-13 (Kodehelix · Web Designer · service area Lucknow · phone + WhatsApp · website /outsource-web-design-india/). Still to do by the owner: enter the postal address (hidden from the public) and complete Google's verification at business.google.com, then add the description, services and photos below. The map pack (3 listings above all organic results for "website design company in lucknow") is the only way to show up for local searches in the next few months. Copy is ready in `seo/gbp.md`. Google will verify by video or postcard.
 3. **Ask 3–5 past clients for a Google review** once the profile exists (Cloud Trails, inFAMOUS, Willmar, Sea N Shore). Competitors in the pack have 100–1,000+ reviews; even 5 real ones lets you start appearing for "near me" in Lucknow. Message template in `seo/gbp.md`.
-4. **Bing Webmaster Tools:** sign in at bing.com/webmasters and choose "Import from Google Search Console" (1 click once GSC is verified). Then IndexNow (key already live at /3c5ad0eb6d7204f041cf6a6317df1541.txt) works for Bing, Yandex, and the AI search engines that use Bing.
+4. ~~Bing Webmaster Tools~~ Done 2026-11-13 (imported from Search Console; sitemap processing).
+   Old note: sign in at bing.com/webmasters and choose "Import from Google Search Console" (1 click once GSC is verified). Then IndexNow (key already live at /3c5ad0eb6d7204f041cf6a6317df1541.txt) works for Bing, Yandex, and the AI search engines that use Bing.
 
 ## Tomorrow (me or owner)
 - Request indexing in Search Console → URL inspection for /outsource-web-design-india/, /website-design-cost-india/, /store/, /hotel-website-design/, /maritime-website-design/ (today's quota ran out after the homepage).
@@ -28,5 +29,6 @@ Ordered by expected enquiries per hour of work. State on 2026-11-13: the site wa
 
 ## Later
 13. Rebuild keyword map with real volumes once Search Console shows impressions (about 2–4 weeks after indexing).
-14. Add analytics (Cloudflare Web Analytics or GA4) so enquiries can be traced to landing pages. Currently no analytics on kodehelix.in.
+14. ~~Add analytics~~ Done 2026-11-13: Cloudflare Web Analytics (cookie-free, token in scripts/build_seo.py), dashboard: dash.cloudflare.com → Web analytics → kodehelix.in.
+   Old note: Add analytics (Cloudflare Web Analytics or GA4) so enquiries can be traced to landing pages. Currently no analytics on kodehelix.in.
 15. Move hosting to Cloudflare Pages if GitHub Pages 503s keep happening (seen several times on 2026-11-13 during deploys).

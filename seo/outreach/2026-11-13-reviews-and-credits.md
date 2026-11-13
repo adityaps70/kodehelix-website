@@ -18,7 +18,13 @@ Hi [Name], if you've been happy with the [project] build, would you leave Kodehe
 Never write reviews yourself, offer anything in exchange, or post them from your own accounts. Google removes them and can suspend the profile.
 
 ## "Website by Kodehelix" footer credits
-Committed locally on 2026-11-13, NOT pushed yet (the push needs your OK):
+Pushed 2026-11-13 with the owner's OK. Live status:
+- Willmar preview: LIVE. inFAMOUS: pushed, GitHub Pages build.
+- Cloud Trails: pushed, NOT live: it's hosted in a different Cloudflare account (the client's), so `wrangler deploy` from adityaps700's account failed (KV namespace not found). Deploy from that account.
+- Marine Tanks: pushed; needs the usual OpenNext build + deploy.
+- VerifyU: pushed (docs/ rebuilt); upload dist/ to Hostinger.
+
+Original table:
 
 | Site | Repo | Change | How it goes live |
 |---|---|---|---|

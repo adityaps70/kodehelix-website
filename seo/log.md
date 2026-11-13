@@ -15,3 +15,6 @@
 - 2026-11-13 Directories paused: Clutch needs a company-domain email; kodehelix.in has none.
 - 2026-11-13 Owner: target the whole world, not Lucknow. Removed every Lucknow mention from the site (homepage title/description/schema, work card, footers on all pages incl. 23 product pages, 404, llms.txt). Replaced /website-design-lucknow/ with /outsource-web-design-india/ (USD prices); old URL now noindex + redirect to /. IndexNow pinged.
 - 2026-11-13 Homepage prices: INR for visitors whose browser time zone is India, USD elsewhere (HTML default USD); toggle choice remembered per device.
+- 2026-11-13 Footer credits pushed to cloudtrails, willmar-solutions-website, INFAMOUSGAMINGCAFE, marine-tanks, verifyu-website. Live: Willmar. Cloud Trails deploy failed (different Cloudflare account).
+- 2026-11-13 Cloudflare Web Analytics added to all pages (not demo iframes); beacon verified (rum POST 204).
+- 2026-11-13 Bing Webmaster Tools: kodehelix.in imported from Search Console; sitemap imported, processing.
