@@ -19,7 +19,8 @@ Never write reviews yourself, offer anything in exchange, or post them from your
 
 ## "Website by Kodehelix" footer credits
 Pushed 2026-11-13 with the owner's OK. Live status:
-- Willmar preview: LIVE. inFAMOUS: pushed, GitHub Pages build.
+- Willmar preview: LIVE.
+- inFAMOUS: pushed. The first deploy failed on an old test with a past booking date (not the credit); the test now uses a date a week ahead, and the deploy was re-run.
 - Cloud Trails: pushed, NOT live: it's hosted in a different Cloudflare account (the client's), so `wrangler deploy` from adityaps700's account failed (KV namespace not found). Deploy from that account.
 - Marine Tanks: pushed; needs the usual OpenNext build + deploy.
 - VerifyU: pushed (docs/ rebuilt); upload dist/ to Hostinger.

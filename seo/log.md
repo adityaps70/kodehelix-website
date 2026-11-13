@@ -18,3 +18,5 @@
 - 2026-11-13 Footer credits pushed to cloudtrails, willmar-solutions-website, INFAMOUSGAMINGCAFE, marine-tanks, verifyu-website. Live: Willmar. Cloud Trails deploy failed (different Cloudflare account).
 - 2026-11-13 Cloudflare Web Analytics added to all pages (not demo iframes); beacon verified (rum POST 204).
 - 2026-11-13 Bing Webmaster Tools: kodehelix.in imported from Search Console; sitemap imported, processing.
+- 2026-11-13 inFAMOUS Pages deploy was blocked by an old test with a past booking date; fixed the test (date now a week ahead) and pushed.
+- 2026-11-14 TODO: Search Console indexing requests for /outsource-web-design-india/, /website-design-cost-india/, /store/, /hotel-website-design/, /maritime-website-design/ (daily quota hit on 11-13).
