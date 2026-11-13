@@ -1,5 +1,7 @@
 # Google Business Profile: ready to paste
 
+> 2026-11-13: the owner wants clients worldwide, not just Lucknow. The profile was created with service area Lucknow before that decision; after verification, change the service area and point the website to https://kodehelix.in/. Copy below still mentions Lucknow; edit before pasting.
+
 Create at https://business.google.com/create with the Google account you'll keep for the business.
 
 - **Business name:** Kodehelix   (exactly this: no keywords in the name, Google suspends for that)

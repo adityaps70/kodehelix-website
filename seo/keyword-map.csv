@@ -1,8 +1,10 @@
 query,intent,monthly volume,difficulty,target URL,status,current position,last checked
+outsource web design to india,commercial,unknown,medium,/outsource-web-design-india/,live,not indexed,2026-11-13
+offshore web development company india,commercial,unknown,medium,/outsource-web-design-india/,live,not indexed,2026-11-13
+affordable web design agency for small business,commercial,unknown,high,/outsource-web-design-india/,live,not indexed,2026-11-13
+website design company india,commercial,unknown,high,/,live,not indexed,2026-11-13
+web design agency singapore affordable,commercial,unknown,medium,/maritime-website-design/ + /outsource-web-design-india/,gap (needs Singapore case study page),,2026-11-13
 kodehelix,brand,unknown,low,/,live,not ranking (Google autocorrects to "code helix"),2026-11-13
-website design company in lucknow,commercial local,unknown (no tool),high,/website-design-lucknow/,live,not indexed,2026-11-13
-website designer in lucknow,commercial local,unknown,high (map pack),Google Business Profile + /website-design-lucknow/,gap (no GBP),not ranking,2026-11-13
-website development company lucknow,commercial local,unknown,high,/website-design-lucknow/,live,not indexed,2026-11-13
 website design cost in india,informational/commercial,unknown,medium,/website-design-cost-india/,live,not indexed,2026-11-13
 website cost calculator india,tool,unknown,low-medium,/website-design-cost-india/#estimate,live,not indexed,2026-11-13
 how much does a website cost in india,informational,unknown,medium,/website-design-cost-india/,live,not indexed,2026-11-13
@@ -13,7 +15,6 @@ maritime website design,commercial,unknown,low,/maritime-website-design/,live,no
 shipping company website design,commercial,unknown,low,/maritime-website-design/,live,not indexed,2026-11-13
 crewing agency website,commercial,unknown,low,/maritime-website-design/,live,not indexed,2026-11-13
 website for clinic india,commercial,unknown,medium,(none),gap: needs a clinic project first,,2026-11-13
-restaurant website design lucknow,commercial local,unknown,low,(none),gap,,2026-11-13
 animated file upload html css js,transactional/dev,unknown,medium (free code),/store/orbit/,live,not indexed,2026-11-13
 animated star rating html css js,dev,unknown,high (free code + AI overview),/store/lyra/,live,not indexed,2026-11-13
 solar energy dashboard template html,dev,unknown,low,/store/zenith/,live,not indexed,2026-11-13

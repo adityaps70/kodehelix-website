@@ -13,3 +13,4 @@
 - 2026-11-13 Google Business Profile created (unverified): Kodehelix, Web Designer, service area Lucknow, +91 70070 64653, WhatsApp wa.me link, website /website-design-lucknow/. Awaiting owner's address + verification.
 - 2026-11-13 Footer credits committed locally in 5 client repos; push blocked pending owner OK. Review request drafts: seo/outreach/2026-11-13-reviews-and-credits.md
 - 2026-11-13 Directories paused: Clutch needs a company-domain email; kodehelix.in has none.
+- 2026-11-13 Owner: target the whole world, not Lucknow. Removed every Lucknow mention from the site (homepage title/description/schema, work card, footers on all pages incl. 23 product pages, 404, llms.txt). Replaced /website-design-lucknow/ with /outsource-web-design-india/ (USD prices); old URL now noindex + redirect to /. IndexNow pinged.
