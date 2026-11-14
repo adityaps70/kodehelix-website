@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,follow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sonar · live search · Kodehelix UI</title>
+<link rel="stylesheet" href="sonar.css">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{min-height:100vh;display:grid;justify-items:center;align-items:start;background:#0b0d12;color:#c9cdd8;overflow-x:hidden;
+    font:16px/1.5 "Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    background-image:radial-gradient(56vmax 40vmax at 50% 16%,rgba(59,91,255,.22),transparent 62%),
+      radial-gradient(40vmax 30vmax at 82% 90%,rgba(34,195,238,.10),transparent 60%)}
+  .wrap{width:100%;max-width:672px;min-width:0;padding:clamp(20px,9vh,90px) 16px 32px;display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:16px}
+  .foot{display:grid;justify-items:center;gap:10px}
+  .hint{margin:0;font-size:13.5px;color:#8f95a6;text-align:center;max-width:52ch}
+  .tries{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+  .try{border:1px solid #33394d;background:#1f2433;color:#edeff5;font:600 13px/1 inherit;font-family:inherit;padding:9px 13px;border-radius:999px;cursor:pointer}
+  .try:hover{border-color:#8fa3ff}
+  .try:focus-visible{outline:2px solid #8fa3ff;outline-offset:2px}
+  .capture .foot{display:none}
+  .capture .wrap{padding-top:clamp(16px,7vh,64px)}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div id="find" data-sonar data-sonar-manual></div>
+    <div class="foot">
+      <p class="hint">Type to search. Every search sends a ping: matches light up as the wave reaches them, then rise to the top. Press <b>/</b> to focus, arrows to move, Esc to clear.</p>
+      <div class="tries" aria-label="Try a search">
+        <button type="button" class="try" data-q="bill">bill</button>
+        <button type="button" class="try" data-q="events">events</button>
+        <button type="button" class="try" data-q="send">send</button>
+        <button type="button" class="try" data-q="xyz">no match</button>
+      </div>
+    </div>
+  </main>
+  <script src="sonar.js"></script>
+  <script>
+    if (/[?&]capture=1/.test(location.search)) document.documentElement.classList.add('capture');
+    var s = Sonar.mount(document.getElementById('find'), {
+      label: 'Search integrations',
+      placeholder: 'Search integrations…',
+      noun: 'integrations',
+      items: [
+        { title: 'Payments', meta: 'Billing & cards', icon: 'card', tint: '#8FA3FF', keywords: 'checkout upi subscriptions money pay' },
+        { title: 'Email', meta: 'Mail & receipts', icon: 'mail', tint: '#22C3EE', keywords: 'newsletter smtp send billing inbox' },
+        { title: 'Calendar', meta: 'Bookings & slots', icon: 'calendar', tint: '#FFB020', keywords: 'schedule appointments events meetings' },
+        { title: 'Analytics', meta: 'Traffic & funnels', icon: 'chart', tint: '#19C37D', keywords: 'stats reports metrics events' },
+        { title: 'Storage', meta: 'Files & backups', icon: 'folder', tint: '#8FA3FF', keywords: 'upload cdn images drive' },
+        { title: 'Live chat', meta: 'Support inbox', icon: 'chat', tint: '#22C3EE', keywords: 'messages helpdesk whatsapp send' },
+        { title: 'Maps', meta: 'Places & routes', icon: 'pin', tint: '#FF5A6E', keywords: 'location delivery address geo' },
+        { title: 'Sign-in', meta: 'Auth & SSO', icon: 'key', tint: '#FFB020', keywords: 'login password oauth users' },
+        { title: 'Forms', meta: 'Leads & surveys', icon: 'form', tint: '#19C37D', keywords: 'contact signup feedback' },
+        { title: 'Video', meta: 'Calls & meetings', icon: 'video', tint: '#FF5A6E', keywords: 'webinar stream meet' },
+        { title: 'Invoices', meta: 'Tax-ready PDFs', icon: 'receipt', tint: '#19C37D', keywords: 'gst billing accounting pay' },
+        { title: 'Webhooks', meta: 'Events & triggers', icon: 'bolt', tint: '#FFB020', keywords: 'api automation notify send' }
+      ],
+      onSelect: function (item) { console.log('Selected', item.title); }
+    });
+    [].forEach.call(document.querySelectorAll('.try'), function (b) {
+      b.addEventListener('click', function () { s.type(b.dataset.q, 70); });
+    });
+
+    // Auto-play for store previews: types a few searches in a loop. Stops on real input.
+    var demoI = 0, demoT = 0;
+    function stopDemo(e) {
+      if (!e.isTrusted || (!demoI && !demoT)) return;
+      clearInterval(demoI); clearTimeout(demoT); demoI = demoT = 0;
+    }
+    addEventListener('pointerdown', stopDemo, true); addEventListener('keydown', stopDemo, true);
+    window.khDemo = function () {
+      if (demoI || demoT) return;
+      var qs = ['bill', 'events', 'send'], n = 0;
+      function cycle() { s.type(qs[n++ % qs.length], 85); }
+      demoT = setTimeout(function () { demoT = 0; cycle(); demoI = setInterval(cycle, 3800); }, 250);
+    };
+  </script>
+</body>
+</html>
