@@ -1,5 +1,23 @@
 [
   {
+    "slug": "crate",
+    "name": "Crate",
+    "tagline": "A complete online-store dashboard where every order lands. Switch the day and the orders drop in hour by hour as little parcels that squash on landing and stack into their hour, coloured by category, while revenue and orders tick up with every parcel.",
+    "type": "dashboard",
+    "size": "56 KB",
+    "deps": "0 deps",
+    "price": 39,
+    "was": 65,
+    "added": "2026-11-15",
+    "isNew": true,
+    "demo": "/store/crate/",
+    "cover": "/store/crate/cover.jpg",
+    "video": "/store/crate/preview.mp4",
+    "buy": "https://adityapulse2.gumroad.com/l/crate",
+    "gumroad": true,
+    "demoHeight": 760
+  },
+  {
     "slug": "sonar",
     "name": "Sonar",
     "tagline": "A live search and filter grid where every search sends out a sonar ping: matches light up and blip as the wave reaches them, misses fade into the dark, then the results spring to the top.",
@@ -9,7 +27,7 @@
     "price": 5,
     "was": 8,
     "added": "2026-11-14",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/sonar/",
     "cover": "/store/sonar/cover.jpg",
     "video": "/store/sonar/preview.mp4",
