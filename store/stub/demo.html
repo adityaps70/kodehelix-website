@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stub · promo code ticket · Kodehelix UI</title>
+<link rel="stylesheet" href="stub.css">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{min-height:100vh;display:grid;justify-items:center;align-items:start;background:#0b0d12;color:#c9cdd8;overflow-x:hidden;
+    font:16px/1.5 "Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    background-image:radial-gradient(56vmax 40vmax at 50% 14%,rgba(59,91,255,.22),transparent 62%),
+      radial-gradient(40vmax 30vmax at 82% 92%,rgba(34,195,238,.10),transparent 60%)}
+  .wrap{width:100%;max-width:452px;min-width:0;padding:clamp(20px,7vh,72px) 16px 32px;display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:18px}
+  .foot{display:grid;justify-items:center;gap:10px}
+  .hint{margin:0;font-size:13.5px;color:#8f95a6;text-align:center;max-width:46ch}
+  .hint code{font:600 12.5px ui-monospace,Menlo,monospace;color:#edeff5;background:#1f2433;border-radius:6px;padding:2px 6px}
+  .capture .foot{display:none}
+  .capture .wrap{padding-top:clamp(16px,5vh,48px)}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div id="cart" data-stub data-stub-manual></div>
+    <div class="foot">
+      <p class="hint">Try <code>SAVE20</code> or <code>WELCOME10</code> and press Apply: the stub tears off, the discount is stamped on and the total rolls down. Any other code shakes it off.</p>
+    </div>
+  </main>
+  <script src="stub.js"></script>
+  <script>
+    if (/[?&]capture=1/.test(location.search)) document.documentElement.classList.add('capture');
+    var cart = Stub.mount(document.getElementById('cart'), {
+      title: 'Your order',
+      currency: 'USD',
+      items: [
+        { name: 'Halden desk lamp', meta: 'Brushed brass · warm white', price: 64, icon: 'lamp', tint: '#FFB020' },
+        { name: 'Linen notebook', meta: 'A5 · dot grid', price: 18, qty: 2, icon: 'book', tint: '#8FA3FF' },
+        { name: 'Stoneware mug', meta: 'Slate · 350 ml', price: 20, icon: 'mug', tint: '#22C3EE' }
+      ],
+      codes: { SAVE20: { percent: 20 }, WELCOME10: { amount: 10, label: '$10 off your first order' } },
+      onApply: function (c) { console.log('Applied', c.code, c.discount); },
+      onCheckout: function (o) { console.log('Checkout', o.total); }
+    });
+
+    // Auto-play for store previews: applies a code, removes it, applies the next. Stops on real input.
+    var demoI = 0, demoT = 0;
+    function stopDemo(e) {
+      if (!e.isTrusted || (!demoI && !demoT)) return;
+      clearInterval(demoI); clearTimeout(demoT); demoI = demoT = 0;
+    }
+    addEventListener('pointerdown', stopDemo, true); addEventListener('keydown', stopDemo, true);
+    window.khDemo = function () {
+      if (demoI || demoT) return;
+      var codes = ['SAVE20', 'WELCOME10'], n = 0;
+      function cycle() {
+        if (cart.applied()) { cart.remove(); demoT = setTimeout(function () { demoT = 0; cart.type(codes[n++ % codes.length], 70); }, 1000); }
+        else cart.type(codes[n++ % codes.length], 70);
+      }
+      demoT = setTimeout(function () { demoT = 0; cycle(); demoI = setInterval(cycle, 4400); }, 200);
+    };
+  </script>
+</body>
+</html>

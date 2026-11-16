@@ -1,0 +1,168 @@
+/* Stub — promo code ticket + order summary · Kodehelix UI · kodehelix.in */
+.stub {
+  --stub-ink: #0B0D12;
+  --stub-surface: #151925;
+  --stub-surface-2: #1F2433;
+  --stub-line: #262B3B;
+  --stub-text: #EDEFF5;
+  --stub-soft: #C9CDD8;
+  --stub-muted: #8F95A6;
+  --stub-a: #3B5BFF;
+  --stub-b: #22C3EE;
+  --stub-peri: #8FA3FF;
+  --stub-success: #19C37D;
+  --stub-danger: #FF5A6E;
+  --stub-radius: 20px;
+  --stub-tab-w: 104px;
+  --stub-notch: 8px;
+  --stub-h: 58px;
+  --stub-font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --stub-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+  border-radius: var(--stub-radius);
+  background: linear-gradient(180deg, #181c2a, #131722 70%);
+  border: 1px solid var(--stub-line);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 1px 2px rgba(0,0,0,.4), 0 24px 60px -20px rgba(0,0,0,.7), 0 40px 120px -40px rgba(59,91,255,.35);
+  color: var(--stub-text);
+  font: 15px/1.45 var(--stub-font);
+  font-variant-numeric: tabular-nums;
+  text-align: left;
+}
+.stub *, .stub *::before, .stub *::after { box-sizing: border-box; }
+.stub svg { width: 20px; height: 20px; flex: none; display: block; }
+.stub__sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+
+/* header + items */
+.stub__head { display: flex; align-items: baseline; justify-content: space-between; margin: 0 0 12px; }
+.stub__title { margin: 0; font-size: 16px; font-weight: 650; letter-spacing: -.01em; }
+.stub__count { font-size: 13px; color: var(--stub-muted); }
+.stub__items { list-style: none; margin: 0 0 16px; padding: 0; display: grid; gap: 2px; }
+.stub__item { display: grid; grid-template-columns: 44px minmax(0,1fr) auto; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(38,43,59,.7); }
+.stub__item:last-child { border-bottom: 0; }
+.stub__thumb { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; color: var(--t, var(--stub-peri));
+  background: radial-gradient(120% 120% at 20% 0%, rgba(var(--tr,143,163,255),.30), rgba(var(--tr,143,163,255),.08) 60%), var(--stub-surface-2);
+  box-shadow: inset 0 0 0 1px rgba(var(--tr,143,163,255),.22); }
+.stub__thumb svg { width: 22px; height: 22px; }
+.stub__name { display: block; font-size: 14.5px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.stub__meta { display: block; font-size: 12.5px; color: var(--stub-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.stub__price { font-size: 14.5px; font-weight: 600; color: var(--stub-soft); }
+
+/* the ticket */
+.stub__ticket { position: relative; display: flex; height: var(--stub-h); margin: 0; isolation: isolate; }
+.stub__main {
+  position: relative; flex: 1 1 auto; min-width: 0; height: 100%;
+  border-radius: 14px 3px 3px 14px;
+  background: linear-gradient(180deg, #252b41, #1c2132);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
+  -webkit-mask: radial-gradient(circle at 100% 0, #0000 var(--stub-notch), #000 calc(var(--stub-notch) + .6px)) top / 100% 51% no-repeat,
+                radial-gradient(circle at 100% 100%, #0000 var(--stub-notch), #000 calc(var(--stub-notch) + .6px)) bottom / 100% 51% no-repeat;
+          mask: radial-gradient(circle at 100% 0, #0000 var(--stub-notch), #000 calc(var(--stub-notch) + .6px)) top / 100% 51% no-repeat,
+                radial-gradient(circle at 100% 100%, #0000 var(--stub-notch), #000 calc(var(--stub-notch) + .6px)) bottom / 100% 51% no-repeat;
+}
+.stub__main::before { content: ""; position: absolute; inset: 5px 6px 5px 5px; border-radius: 10px; border: 1px dashed rgba(143,163,255,.22); pointer-events: none; transition: border-color .2s; }
+.stub__ticket:focus-within .stub__main::before { border-color: rgba(143,163,255,.6); }
+.stub.is-error .stub__main::before { border-color: rgba(255,90,110,.8); }
+.stub.is-applied .stub__main::before { border-color: rgba(25,195,125,.4); }
+.stub__field { position: absolute; inset: 0; display: flex; align-items: center; gap: 10px; padding: 0 12px 0 16px; color: var(--stub-peri); }
+.stub__input {
+  flex: 1; min-width: 0; height: 100%; margin: 0; padding: 0; border: 0; outline: 0; background: transparent;
+  color: var(--stub-text); font: 600 15px/1 var(--stub-mono); letter-spacing: .1em; text-transform: uppercase;
+}
+.stub__input::placeholder { color: var(--stub-muted); font-family: var(--stub-font); font-weight: 500; letter-spacing: 0; text-transform: none; }
+.stub__applied { position: absolute; inset: 0; display: flex; align-items: center; gap: 11px; padding: 0 10px 0 14px; visibility: hidden; opacity: 0; }
+.stub.is-applied .stub__applied { visibility: visible; }
+.stub__ok { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; flex: none; color: #fff;
+  background: radial-gradient(circle at 30% 25%, #3ee39e, var(--stub-success)); box-shadow: 0 0 0 4px rgba(25,195,125,.16), 0 6px 16px -4px rgba(25,195,125,.6); }
+.stub__ok svg { width: 16px; height: 16px; stroke-width: 2.4; }
+.stub__code { min-width: 0; display: grid; line-height: 1.2; }
+.stub__code b { font: 700 14.5px/1.2 var(--stub-mono); letter-spacing: .1em; color: var(--stub-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.stub__code small { font-size: 12.5px; color: var(--stub-success); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.stub__remove { margin-left: auto; width: 34px; height: 34px; flex: none; display: grid; place-items: center; border: 0; border-radius: 10px; cursor: pointer;
+  background: transparent; color: var(--stub-muted); position: relative; z-index: 2; }
+.stub__remove:hover { color: var(--stub-text); background: rgba(255,255,255,.06); }
+.stub__remove svg { width: 18px; height: 18px; }
+
+/* rubber stamp */
+.stub__stamp { position: absolute; right: 50px; top: 50%; width: 56px; height: 56px; margin-top: -28px; border-radius: 50%; pointer-events: none; z-index: 1;
+  color: var(--stub-success); border: 2px solid currentColor; display: grid; place-items: center; text-align: center; opacity: 0; visibility: hidden;
+  box-shadow: inset 0 0 0 3px rgba(25,195,125,.12); background: radial-gradient(circle, rgba(25,195,125,.10), transparent 70%); }
+.stub__stamp::before { content: ""; position: absolute; inset: 4px; border-radius: 50%; border: 1px dashed rgba(25,195,125,.55); }
+.stub__stamp b { font: 800 15px/1 var(--stub-font); letter-spacing: -.02em; display: block; }
+.stub__stamp i { font: 700 7px/1 var(--stub-font); letter-spacing: .16em; font-style: normal; display: block; margin-top: 2px; }
+.stub__ring { position: absolute; inset: -2px; border-radius: 50%; border: 2px solid var(--stub-success); opacity: 0; }
+
+/* perforation */
+.stub__perf { position: absolute; top: 0; bottom: 0; right: var(--stub-tab-w); width: 0; z-index: 3; pointer-events: none; }
+.stub__dot { position: absolute; left: -1.5px; width: 3px; height: 3px; border-radius: 50%; background: #4a5270; }
+.stub__dot::after { content: ""; position: absolute; inset: -1.5px; border-radius: 50%; background: #b8f1ff; box-shadow: 0 0 6px 2px rgba(34,195,238,.85); opacity: var(--g, 0); }
+.stub.is-error .stub__dot { background: var(--stub-danger); box-shadow: 0 0 6px rgba(255,90,110,.8); }
+.stub__spark { position: absolute; left: -4px; top: 0; width: 8px; height: 8px; border-radius: 50%; background: #fff; opacity: 0;
+  box-shadow: 0 0 0 2px rgba(34,195,238,.5), 0 0 14px 4px rgba(34,195,238,.9); }
+
+/* the tear-off tab (it is the Apply button) */
+.stub__slot { flex: none; width: var(--stub-tab-w); height: 100%; }
+.stub__tab {
+  position: absolute; right: 0; top: 0; width: var(--stub-tab-w); height: 100%; z-index: 2;
+  margin: 0; border: 0; padding: 0 4px 0 6px; cursor: pointer; color: #fff; font: 650 15px/1 var(--stub-font); letter-spacing: .01em;
+  border-radius: 3px 14px 14px 3px; transform-origin: 0 100%;
+  background: linear-gradient(135deg, var(--stub-a), #2f8cf5 55%, var(--stub-b));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -10px 20px -10px rgba(0,0,0,.25);
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  -webkit-mask: radial-gradient(circle at 0 0, #0000 var(--stub-notch), #000 calc(var(--stub-notch) + .6px)) top / 100% 51% no-repeat,
+                radial-gradient(circle at 0 100%, #0000 var(--stub-notch), #000 calc(var(--stub-notch) + .6px)) bottom / 100% 51% no-repeat;
+          mask: radial-gradient(circle at 0 0, #0000 var(--stub-notch), #000 calc(var(--stub-notch) + .6px)) top / 100% 51% no-repeat,
+                radial-gradient(circle at 0 100%, #0000 var(--stub-notch), #000 calc(var(--stub-notch) + .6px)) bottom / 100% 51% no-repeat;
+}
+.stub__tab::after { content: ""; position: absolute; inset: 5px 5px 5px 6px; border-radius: 3px 10px 10px 3px; border: 1px dashed rgba(255,255,255,.28); pointer-events: none; }
+.stub__tab:hover { filter: brightness(1.08); }
+.stub__tab:focus-visible { outline: none; filter: brightness(1.12); }
+.stub__tab:focus-visible::after { border: 2px solid #fff; }
+.stub__tab[aria-busy="true"] { cursor: progress; }
+.stub__tab svg { width: 17px; height: 17px; }
+.stub__tab .stub__spin { display: none; }
+.stub__tab[aria-busy="true"] .stub__spin { display: block; }
+.stub__tab[aria-busy="true"] .stub__arrow { display: none; }
+.stub__fleck { position: absolute; width: 4px; height: 2px; border-radius: 1px; background: #dfe7ff; pointer-events: none; z-index: 4; }
+
+/* message */
+.stub__msg { min-height: 20px; margin: 8px 2px 6px; font-size: 13px; color: var(--stub-muted); }
+.stub__msg.is-bad { color: var(--stub-danger); }
+.stub__msg.is-good { color: var(--stub-success); }
+
+/* totals */
+.stub__totals { margin: 0; display: grid; }
+.stub__row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 5px 0; font-size: 14px; color: var(--stub-soft); overflow: hidden; }
+.stub__row dt { color: var(--stub-muted); }
+.stub__row dd { margin: 0; }
+.stub__row--disc { height: 0; padding: 0; opacity: 0; }
+.stub__row--disc dt { color: var(--stub-soft); }
+.stub__row--disc dt span { font-family: var(--stub-mono); font-size: 12px; letter-spacing: .08em; color: var(--stub-success); background: rgba(25,195,125,.12); border-radius: 6px; padding: 2px 6px; margin-left: 6px; }
+.stub__row--disc dd { color: var(--stub-success); font-weight: 600; }
+.stub__row--total { margin-top: 6px; padding-top: 12px; border-top: 1px solid var(--stub-line); color: var(--stub-text); font-size: 15px; font-weight: 600; overflow: visible; }
+.stub__row--total dt { color: var(--stub-text); }
+.stub__totalv { display: flex; align-items: baseline; gap: 10px; }
+.stub__was { position: relative; font-size: 13.5px; font-weight: 500; color: var(--stub-muted); opacity: 0; }
+.stub__was::after { content: ""; position: absolute; left: -2px; right: -2px; top: 52%; height: 1.5px; background: var(--stub-danger); transform: scaleX(var(--s, 0)); transform-origin: 0 50%; }
+.stub__odo { display: inline-flex; font-size: 22px; font-weight: 750; letter-spacing: -.02em; line-height: 1.2; height: 1.2em; }
+.stub__col { display: inline-block; height: 1.2em; overflow: hidden; }
+.stub__strip { display: block; will-change: transform; }
+.stub__strip span, .stub__sym { display: block; height: 1.2em; line-height: 1.2em; }
+.stub__sym { display: inline-block; }
+
+.stub__pay { margin-top: 14px; width: 100%; height: 48px; border: 0; border-radius: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: linear-gradient(180deg, #f4f6fb, #dfe3ee); color: var(--stub-ink); font: 650 15px/1 var(--stub-font);
+  box-shadow: inset 0 1px 0 #fff, 0 10px 24px -12px rgba(237,239,245,.5); }
+.stub__pay:hover { filter: brightness(1.04); }
+.stub__pay svg { width: 18px; height: 18px; }
+.stub button:focus-visible, .stub__input:focus-visible { outline: 2px solid var(--stub-peri); outline-offset: 2px; }
+.stub__input:focus-visible { outline: none; }
+
+@media (max-width: 400px) {
+  .stub { padding: 16px; --stub-tab-w: 92px; }
+  .stub__stamp { right: 46px; }
+}
