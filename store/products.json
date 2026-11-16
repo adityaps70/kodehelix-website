@@ -1,5 +1,23 @@
 [
   {
+    "slug": "stub",
+    "name": "Stub",
+    "tagline": "A checkout summary where the promo code field is a ticket. Apply a code and a spark runs down the perforation, the Apply stub tears off and tumbles away, the discount is rubber-stamped on and the total rolls down to the new price.",
+    "type": "component",
+    "size": "38 KB",
+    "deps": "0 deps",
+    "price": 5,
+    "was": 8,
+    "added": "2026-11-16",
+    "isNew": true,
+    "demo": "/store/stub/",
+    "cover": "/store/stub/cover.jpg",
+    "video": "/store/stub/preview.mp4",
+    "buy": "https://adityapulse2.gumroad.com/l/stub",
+    "gumroad": true,
+    "demoHeight": 640
+  },
+  {
     "slug": "crate",
     "name": "Crate",
     "tagline": "A complete online-store dashboard where every order lands. Switch the day and the orders drop in hour by hour as little parcels that squash on landing and stack into their hour, coloured by category, while revenue and orders tick up with every parcel.",
@@ -9,7 +27,7 @@
     "price": 39,
     "was": 65,
     "added": "2026-11-15",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/crate/",
     "cover": "/store/crate/cover.jpg",
     "video": "/store/crate/preview.mp4",
