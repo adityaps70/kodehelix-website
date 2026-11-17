@@ -1,5 +1,23 @@
 [
   {
+    "slug": "beacon",
+    "name": "Beacon",
+    "tagline": "A complete system-health dashboard for SaaS and DevOps teams. Switch the probe region and a glowing pulse races through a hand-drawn service map, lighting every service as it arrives: healthy rings sweep green, slow ones flicker amber, and a dead link sparks out and goes dashed red while the healthy count ticks up.",
+    "type": "dashboard",
+    "size": "74 KB",
+    "deps": "0 deps",
+    "price": 39,
+    "was": 65,
+    "added": "2026-11-17",
+    "isNew": true,
+    "demo": "/store/beacon/",
+    "cover": "/store/beacon/cover.jpg",
+    "video": "/store/beacon/preview.mp4",
+    "buy": "https://adityapulse2.gumroad.com/l/beacon",
+    "gumroad": true,
+    "demoHeight": 760
+  },
+  {
     "slug": "stub",
     "name": "Stub",
     "tagline": "A checkout summary where the promo code field is a ticket. Apply a code and a spark runs down the perforation, the Apply stub tears off and tumbles away, the discount is rubber-stamped on and the total rolls down to the new price.",
@@ -9,7 +27,7 @@
     "price": 5,
     "was": 8,
     "added": "2026-11-16",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/stub/",
     "cover": "/store/stub/cover.jpg",
     "video": "/store/stub/preview.mp4",
