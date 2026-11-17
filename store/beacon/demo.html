@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Beacon · Uptime &amp; infrastructure monitoring dashboard · Kodehelix UI</title>
+<link rel="stylesheet" href="beacon.css">
+<style>
+  html,body{margin:0;height:100%;background:#0B0D12}
+  body{min-height:100vh}
+  .beacon{min-height:100vh}
+  /* store-preview capture only: on a square thumbnail lead with the service map */
+  @media (max-height:640px) and (max-width:700px){ .bc-capture .bc-kpis{display:none} }
+</style>
+</head>
+<body>
+<div class="beacon" data-beacon data-beacon-manual data-theme="dark">
+  <aside class="bc-side" id="bc-side" aria-label="Main navigation">
+    <div class="bc-brand">
+      <span class="bc-mark"><svg class="bc-ic" viewBox="0 0 24 24"><path d="M12 13v7M9 20h6"/><circle cx="12" cy="10" r="2.2"/><path d="M7.8 5.8a6 6 0 0 0 0 8.4M16.2 5.8a6 6 0 0 1 0 8.4M5 3a10 10 0 0 0 0 14M19 3a10 10 0 0 1 0 14"/></svg></span>
+      <span>Beacon</span>
+    </div>
+    <div class="bc-navlabel">Monitor</div>
+    <ul class="bc-nav">
+      <li><a href="#" aria-current="page"><svg class="bc-ic" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="4" rx="2"/><rect x="13" y="10" width="7" height="10" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/></svg><span>Overview</span></a></li>
+      <li><a href="#"><svg class="bc-ic" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.3 11 15.7 7M8.3 13l7.4 4"/></svg><span>Services</span></a></li>
+      <li><a href="#"><svg class="bc-ic" viewBox="0 0 24 24"><path d="M12 4 3.5 19h17z"/><path d="M12 10v4M12 16.8v.2"/></svg><span>Incidents</span><b class="bc-count" data-beacon-inccount>2</b></a></li>
+      <li><a href="#"><svg class="bc-ic" viewBox="0 0 24 24"><path d="M6.5 16V11a5.5 5.5 0 0 1 11 0v5l1.5 2h-14z"/><path d="M10 20.5h4"/></svg><span>Alerts</span></a></li>
+      <li><a href="#"><svg class="bc-ic" viewBox="0 0 24 24"><path d="M5 6h14M5 10h10M5 14h14M5 18h7"/></svg><span>Logs</span></a></li>
+      <li><a href="#"><svg class="bc-ic" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h3a5 5 0 0 1 5 5"/></svg><span>Deploys</span></a></li>
+      <li><a href="#"><svg class="bc-ic" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2.5"/><path d="M4 9h16M8 13h3M8 16h6"/></svg><span>Status page</span></a></li>
+      <li><a href="#"><svg class="bc-ic" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg><span>Settings</span></a></li>
+    </ul>
+    <div class="bc-oncall">
+      <small>On call now</small>
+      <div class="bc-person"><span class="bc-ava" aria-hidden="true">RS</span><div><b>Riya Sen</b><span>Platform · primary</span></div></div>
+      <dl>
+        <div><dt>Hand-off</dt><dd>5h 20m</dd></div>
+        <div><dt>Last deploy</dt><dd>42m ago</dd></div>
+      </dl>
+    </div>
+  </aside>
+  <div class="bc-scrim" aria-hidden="true"></div>
+
+  <main class="bc-main">
+    <header class="bc-top">
+      <button class="bc-iconbtn bc-menu" data-beacon-menu aria-label="Open menu" aria-expanded="false" aria-controls="bc-side"><svg class="bc-ic" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+      <div class="bc-title"><small>Larkspur Pay · production</small><h1>System health</h1></div>
+      <div class="bc-regions" role="group" aria-label="Probe region">
+        <span class="bc-regions-ind" aria-hidden="true"></span>
+        <button type="button" data-region="mumbai" aria-pressed="true">Mumbai</button>
+        <button type="button" data-region="frankfurt" aria-pressed="false">Frankfurt</button>
+        <button type="button" data-region="virginia" aria-pressed="false">Virginia</button>
+      </div>
+      <button class="bc-iconbtn bc-theme" data-beacon-theme aria-label="Switch to light theme" aria-pressed="false">
+        <svg class="bc-ic bc-moon" viewBox="0 0 24 24"><path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z"/></svg>
+        <svg class="bc-ic bc-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/></svg>
+      </button>
+      <span class="bc-avatar" aria-hidden="true">AK</span>
+    </header>
+
+    <section class="bc-kpis" aria-label="Key numbers">
+      <article class="bc-card bc-kpi" data-beacon-kpi="rpm" style="--k:var(--beacon-cyan)">
+        <div class="bc-kpi-top"><svg class="bc-ic" viewBox="0 0 24 24"><path d="M3 12h4l2.5-6 5 12 2.5-6h4"/></svg>Requests / min</div>
+        <div class="bc-kpi-val">0</div>
+        <div class="bc-kpi-foot"><div><span class="bc-delta"><svg class="bc-ic" viewBox="0 0 24 24"><path d="M12 18V6M7 11l5-5 5 5"/></svg><span>0%</span></span><small class="bc-kpi-note">vs last week</small></div><svg class="bc-spark" viewBox="0 0 84 30" preserveAspectRatio="none" aria-hidden="true"></svg></div>
+      </article>
+      <article class="bc-card bc-kpi" data-beacon-kpi="p95" style="--k:var(--beacon-peri)">
+        <div class="bc-kpi-top"><svg class="bc-ic" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7.5"/><path d="M12 13V9.5M10 3h4M18.5 6.5l1.2-1.2"/></svg>p95 latency</div>
+        <div class="bc-kpi-val">0 ms</div>
+        <div class="bc-kpi-foot"><div><span class="bc-delta"><svg class="bc-ic" viewBox="0 0 24 24"><path d="M12 18V6M7 11l5-5 5 5"/></svg><span>0%</span></span><small class="bc-kpi-note">SLO 300 ms</small></div><svg class="bc-spark" viewBox="0 0 84 30" preserveAspectRatio="none" aria-hidden="true"></svg></div>
+      </article>
+      <article class="bc-card bc-kpi" data-beacon-kpi="err" style="--k:var(--beacon-warn)">
+        <div class="bc-kpi-top"><svg class="bc-ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4.5M12 15.8v.2"/></svg>Error rate</div>
+        <div class="bc-kpi-val">0%</div>
+        <div class="bc-kpi-foot"><div><span class="bc-delta"><svg class="bc-ic" viewBox="0 0 24 24"><path d="M12 18V6M7 11l5-5 5 5"/></svg><span>0%</span></span><small class="bc-kpi-note">5xx of all requests</small></div><svg class="bc-spark" viewBox="0 0 84 30" preserveAspectRatio="none" aria-hidden="true"></svg></div>
+      </article>
+      <article class="bc-card bc-kpi" data-beacon-kpi="up" style="--k:var(--beacon-good)">
+        <div class="bc-kpi-top"><svg class="bc-ic" viewBox="0 0 24 24"><path d="M12 3.5 5 6.5v5c0 4.2 3 7.6 7 9 4-1.4 7-4.8 7-9v-5z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg>Uptime · 30 days</div>
+        <div class="bc-kpi-val">0%</div>
+        <div class="bc-kpi-foot"><div><span class="bc-delta"><svg class="bc-ic" viewBox="0 0 24 24"><path d="M12 18V6M7 11l5-5 5 5"/></svg><span>0%</span></span><small class="bc-kpi-note">target 99.95%</small></div><svg class="bc-spark" viewBox="0 0 84 30" preserveAspectRatio="none" aria-hidden="true"></svg></div>
+      </article>
+    </section>
+
+    <section class="bc-grid">
+      <article class="bc-card bc-a-map">
+        <div class="bc-head">
+          <div><h2>Service map</h2><p>Live probe from <span data-beacon-regionname>Mumbai</span> · <span data-beacon-probe>waiting</span></p></div>
+          <div class="bc-healthy" aria-live="polite"><b data-beacon-healthy>0<span> / 9</span></b><small>services healthy</small></div>
+        </div>
+        <div class="bc-map" data-beacon-map aria-label="Service map. Tab to a service to read its status."></div>
+        <div class="bc-map-foot">
+          <div class="bc-legend"><span><i style="--c:var(--beacon-good)"></i>Healthy</span><span><i style="--c:var(--beacon-warn)"></i>Degraded</span><span><i style="--c:var(--beacon-bad)"></i>Down</span><span><i class="bc-dot" style="--c:var(--beacon-cyan)"></i>Traffic</span></div>
+          <button type="button" class="bc-reprobe" data-beacon-reprobe><svg class="bc-ic" viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2.1-5"/><path d="M19 4.5V8h-3.5"/></svg>Probe again</button>
+        </div>
+      </article>
+
+      <article class="bc-card bc-a-side">
+        <div class="bc-head"><div><h2>Error budget</h2><p>30-day SLO · 99.95%</p></div></div>
+        <div class="bc-budget">
+          <div class="bc-ring" data-beacon-budget><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="bc-ring-track" cx="60" cy="60" r="50"/><circle class="bc-ring-arc" cx="60" cy="60" r="50"/></svg>
+            <div class="bc-ring-c"><b>0%</b><small>left</small></div></div>
+          <div class="bc-burn">
+            <div class="bc-burn-row"><span>Burn rate</span><b data-beacon-burn>0×</b></div>
+            <div class="bc-burnbar" aria-hidden="true"><u></u><i></i></div>
+            <p data-beacon-burnnote>At this pace the budget lasts all month.</p>
+          </div>
+        </div>
+        <div class="bc-inc">
+          <div class="bc-inc-h"><h3>Incidents</h3><small><span data-beacon-regionname>Mumbai</span> · last 7 days</small></div>
+          <ul data-beacon-incidents></ul>
+        </div>
+      </article>
+
+      <article class="bc-card bc-a-lat">
+        <div class="bc-head">
+          <div><h2>Latency · last 24 hours</h2><p>All services · <span data-beacon-regionname>Mumbai</span> probe</p></div>
+          <div class="bc-legend"><span><i style="--c:linear-gradient(90deg,var(--beacon-blue),var(--beacon-cyan))"></i>p95</span><span><i style="--c:var(--beacon-peri)"></i>p50</span><span><i class="bc-dash" style="--c:var(--beacon-bad)"></i>SLO</span></div>
+        </div>
+        <div class="bc-lat" data-beacon-latency tabindex="0" aria-label="Latency chart. Use the arrow keys to read each half hour."></div>
+      </article>
+
+      <article class="bc-card bc-a-up">
+        <div class="bc-head"><div><h2>Uptime · 90 days</h2><p>Each square is one day</p></div><div class="bc-upsum"><b data-beacon-up90>0%</b></div></div>
+        <div class="bc-days" data-beacon-days role="img" aria-label="90 day uptime"></div>
+        <div class="bc-days-foot"><span>90 days ago</span><span class="bc-scale"><i style="--c:var(--beacon-good)"></i><i style="--c:color-mix(in srgb,var(--beacon-good) 55%,var(--beacon-warn))"></i><i style="--c:var(--beacon-warn)"></i><i style="--c:var(--beacon-bad)"></i></span><span>Today</span></div>
+        <dl class="bc-upstats">
+          <div><dt>Below 99.9%</dt><dd data-beacon-upbad>0</dd></div>
+          <div><dt>Downtime</dt><dd data-beacon-updown>0 min</dd></div>
+          <div><dt>Clean streak</dt><dd data-beacon-upstreak>0 days</dd></div>
+        </dl>
+      </article>
+
+      <article class="bc-card bc-a-table">
+        <div class="bc-head">
+          <div><h2>Services</h2><p><span data-beacon-regionname>Mumbai</span> · hover a row to find it on the map</p></div>
+          <label class="bc-tsearch"><svg class="bc-ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg><span class="bc-sr">Search services</span><input type="search" placeholder="Search service" data-beacon-search></label>
+        </div>
+        <div class="bc-tablewrap" tabindex="0" aria-label="Services table">
+          <table class="bc-table" data-beacon-table>
+            <thead><tr>
+              <th scope="col">Service</th>
+              <th scope="col" data-sort="status" aria-sort="descending"><button type="button">Status<svg class="bc-ic" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></th>
+              <th scope="col" class="bc-num" data-sort="p95"><button type="button">p95<svg class="bc-ic" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></th>
+              <th scope="col" class="bc-num bc-col-err" data-sort="err"><button type="button">Errors<svg class="bc-ic" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></th>
+              <th scope="col" class="bc-num bc-col-up" data-sort="up"><button type="button">Uptime<svg class="bc-ic" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></th>
+              <th scope="col" class="bc-col-spark">24h</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </main>
+</div>
+<script src="beacon.js"></script>
+<script>
+  // Swap in your own services and numbers with Beacon.mount(el, { data: {...} }) — see README.md
+  if (/[?&]capture=1/.test(location.search)) document.querySelector('[data-beacon]').classList.add('bc-capture');
+  var dash = Beacon.mount(document.querySelector('[data-beacon]'), { region: 'mumbai' });
+
+  // Auto-play used by the store preview: probe Virginia (an incident), then hop between regions.
+  window.khDemo = function () {
+    var order = ['mumbai', 'frankfurt', 'virginia'], i = 0;
+    if (dash.region === 'virginia') dash.replay(); else dash.setRegion('virginia');
+    setTimeout(function step() {
+      dash.setRegion(order[i++ % order.length]);
+      setTimeout(step, 4600);
+    }, 4400);
+  };
+</script>
+</body>
+</html>
