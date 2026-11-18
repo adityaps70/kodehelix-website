@@ -1,0 +1,136 @@
+/* Abacus — fisheye bead pagination · Kodehelix UI · kodehelix.in */
+.abacus {
+  --abacus-ink: #0B0D12;
+  --abacus-surface: #151925;
+  --abacus-surface-2: #1F2433;
+  --abacus-line: #262B3B;
+  --abacus-text: #EDEFF5;
+  --abacus-soft: #C9CDD8;
+  --abacus-muted: #8F95A6;
+  --abacus-a: #3B5BFF;
+  --abacus-b: #22C3EE;
+  --abacus-peri: #8FA3FF;
+  --abacus-bead: 42px;          /* widest bead (the swell) */
+  --abacus-rail-h: 68px;
+  --abacus-radius: 20px;
+  --abacus-font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 520px;
+  padding: 14px 14px 12px;
+  border-radius: var(--abacus-radius);
+  background: linear-gradient(180deg, #181c2a, #131722 72%);
+  border: 1px solid var(--abacus-line);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 1px 2px rgba(0,0,0,.4), 0 24px 60px -24px rgba(0,0,0,.7), 0 40px 110px -40px rgba(59,91,255,.32);
+  color: var(--abacus-text);
+  font: 14px/1.4 var(--abacus-font);
+  font-variant-numeric: tabular-nums;
+  -webkit-tap-highlight-color: transparent;
+}
+.abacus *, .abacus *::before, .abacus *::after { box-sizing: border-box; }
+.abacus__sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+
+/* caption */
+.abacus__cap { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 0 4px 8px; font-size: 13px; color: var(--abacus-muted); }
+.abacus__now { color: var(--abacus-soft); font-weight: 550; white-space: nowrap; }
+.abacus__roll { position: relative; display: inline-grid; vertical-align: bottom; overflow: hidden; height: 1.4em; color: var(--abacus-text); font-weight: 700; padding: 0 1px; }
+.abacus__roll i { grid-area: 1 / 1; font-style: normal; text-align: center; }
+.abacus__roll i.in.up { animation: abacus-in-up .38s cubic-bezier(.2,.9,.25,1.25) both; }
+.abacus__roll i.in.down { animation: abacus-in-down .38s cubic-bezier(.2,.9,.25,1.25) both; }
+.abacus__roll i.out.up { animation: abacus-out-up .3s ease-in both; }
+.abacus__roll i.out.down { animation: abacus-out-down .3s ease-in both; }
+@keyframes abacus-in-up { from { transform: translateY(100%); opacity: 0; } }
+@keyframes abacus-in-down { from { transform: translateY(-100%); opacity: 0; } }
+@keyframes abacus-out-up { to { transform: translateY(-100%); opacity: 0; } }
+@keyframes abacus-out-down { to { transform: translateY(100%); opacity: 0; } }
+.abacus__range { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+
+/* frame: post · rail · post */
+.abacus__frame { display: grid; grid-template-columns: 40px minmax(0,1fr) 40px; align-items: center; gap: 6px; }
+.abacus__post {
+  appearance: none; margin: 0; padding: 0; border: 0; cursor: pointer;
+  height: calc(var(--abacus-rail-h) - 6px); border-radius: 14px; display: grid; place-items: center;
+  color: var(--abacus-soft);
+  background: linear-gradient(180deg, #232839, #1a1e2b);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.07), inset 0 0 0 1px var(--abacus-line), 0 6px 14px -8px rgba(0,0,0,.6);
+  transition: color .2s, background .2s, box-shadow .2s, transform .15s;
+}
+.abacus__post svg { width: 20px; height: 20px; }
+.abacus__post:hover { color: var(--abacus-text); background: linear-gradient(180deg, #2a3044, #1e2231); }
+.abacus__post:active { transform: scale(.94); }
+.abacus__post[aria-disabled="true"] { color: #4d5367; cursor: default; }
+.abacus__post[aria-disabled="true"]:hover { background: linear-gradient(180deg, #232839, #1a1e2b); }
+.abacus__post.is-bump { animation: abacus-bump .45s ease-out; }
+@keyframes abacus-bump { 30% { box-shadow: inset 0 1px 0 rgba(255,255,255,.07), inset 0 0 0 1px rgba(255,90,110,.65), 0 0 18px -4px rgba(255,90,110,.45); color: #FF5A6E; } }
+.abacus :focus { outline: none; }
+.abacus__post:focus-visible { box-shadow: 0 0 0 2px var(--abacus-ink), 0 0 0 4px var(--abacus-peri); }
+
+.abacus__rail { position: relative; height: var(--abacus-rail-h); cursor: pointer; touch-action: pan-y; user-select: none; -webkit-user-select: none; overflow: hidden; border-radius: 14px;
+  background: radial-gradient(70% 120% at 50% 50%, rgba(59,91,255,.07), transparent 70%); }
+.abacus.is-scrub .abacus__rail { cursor: grabbing; }
+.abacus__rod { position: absolute; left: 2px; right: 2px; top: 50%; height: 2px; margin-top: -1px; border-radius: 2px;
+  background: linear-gradient(90deg, rgba(143,163,255,.12), rgba(143,163,255,.42) 50%, rgba(143,163,255,.12)); box-shadow: 0 1px 0 rgba(0,0,0,.5); }
+.abacus__trail { position: absolute; left: 0; top: 0; width: 1px; height: 4px; margin-top: -2px; transform-origin: 0 50%; opacity: 0; pointer-events: none;
+  background: linear-gradient(90deg, rgba(34,195,238,0), rgba(34,195,238,.55) 70%, #bff3ff);
+  filter: blur(.6px); box-shadow: 0 0 10px rgba(34,195,238,.6); }
+
+.abacus__beads { position: absolute; inset: 0; }
+.abacus__bead {
+  --lit: 0;
+  appearance: none; margin: 0; padding: 0; border: 0; cursor: pointer;
+  position: absolute; left: 0; top: 0; width: 34px; height: 42px; transform-origin: 50% 50%;
+  border-radius: 44% / 50%;
+  display: grid; place-items: center;
+  color: var(--abacus-soft); font: 650 14px/1 var(--abacus-font); font-variant-numeric: tabular-nums; letter-spacing: -.02em;
+  background:
+    radial-gradient(60% 40% at 50% 18%, rgba(255,255,255,.16), transparent 70%),
+    linear-gradient(90deg, #1b2030 0%, #2c3348 30%, #384057 50%, #2a3044 70%, #181c29 100%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), inset 0 -3px 5px rgba(0,0,0,.35), 0 3px 6px -2px rgba(0,0,0,.6);
+  will-change: transform;
+}
+.abacus__bead::before { /* equator ridge where the rod passes through */
+  content: ""; position: absolute; left: 50%; top: 8%; bottom: 8%; width: 1px; margin-left: -.5px; background: linear-gradient(180deg, transparent, rgba(255,255,255,.14), transparent); }
+.abacus__bead::after { /* light the flying bead leaves behind */
+  content: ""; position: absolute; inset: 0; border-radius: inherit; opacity: var(--lit); pointer-events: none;
+  background: radial-gradient(70% 60% at 50% 45%, rgba(143,163,255,.75), rgba(34,195,238,.25) 60%, transparent 72%);
+  box-shadow: 0 0 16px rgba(34,195,238,.55), inset 0 0 0 1px rgba(191,243,255,.6); }
+.abacus__bead span { position: relative; z-index: 1; transition: opacity .18s; }
+.abacus__bead.is-dim span { opacity: .45; }
+.abacus__bead.is-dust span { opacity: 0; }
+.abacus__bead:hover { color: var(--abacus-text); }
+.abacus__bead[aria-current="page"] span { opacity: 0; }
+
+.abacus__puck {
+  position: absolute; left: 0; top: 0; width: 34px; height: 42px; pointer-events: none; z-index: 2;
+  border-radius: 44% / 50%; display: grid; place-items: center;
+  color: #fff; font: 750 14px/1 var(--abacus-font); font-variant-numeric: tabular-nums; letter-spacing: -.02em;
+  background:
+    radial-gradient(60% 40% at 50% 16%, rgba(255,255,255,.55), transparent 70%),
+    linear-gradient(90deg, #2340e0 0%, #3B5BFF 32%, #4f86ff 50%, #22C3EE 78%, #1595b8 100%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.28), inset 0 -4px 6px rgba(0,0,40,.35), 0 0 0 1px rgba(59,91,255,.4), 0 6px 18px -4px rgba(59,91,255,.7), 0 0 30px rgba(34,195,238,.35);
+  will-change: transform;
+}
+.abacus__puck b { font: inherit; text-shadow: 0 1px 2px rgba(0,0,60,.45); }
+.abacus.is-focus .abacus__puck { box-shadow: 0 0 0 2px var(--abacus-ink), 0 0 0 4px var(--abacus-peri), 0 6px 18px -4px rgba(59,91,255,.7); }
+
+.abacus__ring { position: absolute; left: 0; top: 0; width: 46px; height: 46px; border-radius: 50%; pointer-events: none; opacity: 0; z-index: 1;
+  border: 2px solid rgba(143,163,255,.9); box-shadow: 0 0 14px rgba(34,195,238,.6), inset 0 0 10px rgba(34,195,238,.4); }
+.abacus__ring.is-on { animation: abacus-ring .62s cubic-bezier(.15,.7,.3,1) forwards; }
+@keyframes abacus-ring { 0% { opacity: .95; scale: .55; } 100% { opacity: 0; scale: 2.3; } }
+
+.abacus__end { position: absolute; bottom: 2px; font-size: 10.5px; font-weight: 600; color: #5b6276; pointer-events: none; transition: opacity .2s; }
+.abacus__end--a { left: 6px; }
+.abacus__end--b { right: 6px; }
+
+@media (max-width: 400px) {
+  .abacus { --abacus-bead: 34px; padding: 12px 10px 10px; }
+  .abacus__frame { grid-template-columns: 34px minmax(0,1fr) 34px; gap: 4px; }
+  .abacus__cap { font-size: 12.5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .abacus__roll i { animation: none !important; }
+  .abacus__ring { display: none; }
+  .abacus__post.is-bump { animation: none; }
+}

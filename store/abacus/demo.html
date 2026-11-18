@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Abacus · fisheye bead pagination · Kodehelix UI</title>
+<link rel="stylesheet" href="abacus.css">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{min-height:100vh;display:grid;justify-items:center;align-items:start;background:#0b0d12;color:#c9cdd8;overflow-x:hidden;
+    font:16px/1.5 "Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    background-image:radial-gradient(56vmax 40vmax at 50% 18%,rgba(59,91,255,.22),transparent 62%),
+      radial-gradient(40vmax 30vmax at 82% 92%,rgba(34,195,238,.10),transparent 60%)}
+  .wrap{width:100%;max-width:552px;min-width:0;padding:clamp(20px,6vh,64px) 16px 32px;display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:14px}
+  .list{width:100%;max-width:520px;border-radius:20px;background:linear-gradient(180deg,#161a27,#121520);border:1px solid #262b3b;padding:6px 14px;overflow:hidden;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 20px 50px -26px rgba(0,0,0,.7)}
+  .list h2{margin:8px 2px 4px;font-size:15px;font-weight:650;color:#edeff5;letter-spacing:-.01em;display:flex;justify-content:space-between;align-items:baseline}
+  .list h2 small{font-size:12.5px;font-weight:500;color:#8f95a6}
+  .rows{list-style:none;margin:0;padding:0;display:grid;align-content:start;min-height:244px}
+  .row{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 2px;border-top:1px solid rgba(38,43,59,.7)}
+  .row:first-child{border-top:0}
+  .th{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:var(--c);background:radial-gradient(120% 120% at 20% 0%,color-mix(in srgb,var(--c) 32%,transparent),color-mix(in srgb,var(--c) 8%,transparent) 62%),#1f2433;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 24%,transparent)}
+  .th svg{width:20px;height:20px}
+  .tt{min-width:0}
+  .tt b{display:block;font-size:14px;font-weight:600;color:#edeff5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tt span{display:block;font-size:12.5px;color:#8f95a6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tag{font-size:11.5px;font-weight:600;color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent);border-radius:999px;padding:3px 9px;white-space:nowrap}
+  .rows.go-f .row{animation:rin-f .5s cubic-bezier(.2,.9,.25,1.1) both}
+  .rows.go-b .row{animation:rin-b .5s cubic-bezier(.2,.9,.25,1.1) both}
+  .rows .row:nth-child(2){animation-delay:.05s}.rows .row:nth-child(3){animation-delay:.1s}.rows .row:nth-child(4){animation-delay:.15s}
+  @keyframes rin-f{from{opacity:0;transform:translateX(34px)}}
+  @keyframes rin-b{from{opacity:0;transform:translateX(-34px)}}
+  @media (prefers-reduced-motion:reduce){.rows .row{animation:none!important}}
+  #pager{width:100%;max-width:520px}
+  .hint{margin:4px 0 0;font-size:13.5px;color:#8f95a6;text-align:center;max-width:48ch}
+  .capture .hint{display:none}
+  .capture body{align-items:center}
+  .capture .wrap{padding:16px}
+  @media (max-height:440px){.capture .list{display:none}}
+  @media (max-width:400px){.tag{display:none}.row{grid-template-columns:40px minmax(0,1fr)}}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="list" aria-labelledby="lt">
+      <h2 id="lt">Field Journal <small>94 entries</small></h2>
+      <ul class="rows" id="rows" aria-live="polite"></ul>
+    </section>
+    <div id="pager" data-abacus data-abacus-manual></div>
+    <p class="hint">Tap any bead, drag along the rod to scrub, or use the arrows. The glowing bead flies to its page and the swell travels with it.</p>
+  </main>
+  <script src="abacus.js"></script>
+  <script>
+    if (/[?&]capture=1/.test(location.search)) document.documentElement.classList.add('capture');
+    var PER = 4, ITEMS = 94;
+    var A = ['Night ferry to', 'Low tide at', 'Fog over', 'First light on', 'Salt roads of', 'A week in', 'Lanterns along', 'Storm season in', 'Quiet hours at', 'Tea stalls of', 'Cliff paths near', 'Market day in'];
+    var B = ['Varkala', 'the outer islands', 'Kasol', 'Hampi', 'Gokarna', 'Ziro Valley', 'Majuli', 'Chopta', 'Tawang', 'Kutch', 'Munnar', 'Spiti'];
+    var TAGS = [['Coastlines', '#22C3EE', '<path d="M3 15c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2"/><path d="M3 19c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2M12 4v6M9 7l3-3 3 3"/>'],
+                ['Mountains', '#8FA3FF', '<path d="M3 19l6.5-11 4 6.5 2.5-3.5L21 19z"/><path d="M8 11l1.5 1.5L11 11"/>'],
+                ['Food', '#FFB020', '<path d="M5 11h14a7 7 0 0 1-14 0z"/><path d="M9 4c0 1.5 1 1.5 1 3M13 4c0 1.5 1 1.5 1 3M4 20h16"/>'],
+                ['Rail', '#19C37D', '<rect x="6" y="3.5" width="12" height="13" rx="3"/><path d="M6 10.5h12M9.5 14h.01M14.5 14h.01M8 20l2-3.5M16 20l-2-3.5"/>']];
+    var rows = document.getElementById('rows');
+    function ico(b) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + b + '</svg>'; }
+    function hs(n) { return Math.imul(n + 11, 2654435761) >>> 0; }
+    function show(page, dir) {
+      var h = '';
+      for (var i = 0; i < PER; i++) {
+        var n = (page - 1) * PER + i + 1; if (n > ITEMS) break;
+        var t = TAGS[(n * 7 + 3) % 4], mins = 3 + (n * 5) % 9;
+        h += '<li class="row" style="--c:' + t[1] + '"><span class="th">' + ico(t[2]) + '</span><span class="tt"><b>' + A[hs(n) % 12] + ' ' + B[(hs(n) >>> 9) % 12] + '</b><span>Entry ' + n + ' · ' + mins + ' min read</span></span><span class="tag">' + t[0] + '</span></li>';
+      }
+      rows.className = 'rows';
+      rows.innerHTML = h;
+      if (dir) { void rows.offsetWidth; rows.className = 'rows ' + (dir > 0 ? 'go-f' : 'go-b'); }
+    }
+    var pager = Abacus.mount(document.getElementById('pager'), {
+      total: Math.ceil(ITEMS / PER), page: 3, perPage: PER, totalItems: ITEMS, itemLabel: 'entries',
+      onChange: function (p, info) { show(p, p > info.from ? 1 : -1); }
+    });
+    show(3, 0);
+
+    // Auto-play for store previews: long flights and single steps. Stops on real input.
+    var demoT = 0, plan = [17, 18, 6, 21, 9, 3], k = 0;
+    function stopDemo(e) { if (!e.isTrusted || !demoT) return; clearTimeout(demoT); demoT = 0; }
+    addEventListener('pointerdown', stopDemo, true); addEventListener('keydown', stopDemo, true);
+    window.khDemo = function () {
+      if (demoT) return;
+      function next() { pager.go(plan[k++ % plan.length]); demoT = setTimeout(next, 2600); }
+      demoT = setTimeout(next, 450);
+    };
+  </script>
+</body>
+</html>
