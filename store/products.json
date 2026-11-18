@@ -1,5 +1,23 @@
 [
   {
+    "slug": "abacus",
+    "name": "Abacus",
+    "tagline": "Pagination where every page is a bead on a rod. The beads around your page swell into numbers, the rest shrink to dust, and changing page sends a glowing bead flying down the rod with the swell travelling along and a clack when it lands.",
+    "type": "component",
+    "size": "26 KB",
+    "deps": "0 deps",
+    "price": 4,
+    "was": 7,
+    "added": "2026-11-18",
+    "isNew": true,
+    "demo": "/store/abacus/",
+    "cover": "/store/abacus/cover.jpg",
+    "video": "/store/abacus/preview.mp4",
+    "buy": "https://adityapulse2.gumroad.com/l/abacus",
+    "gumroad": true,
+    "demoHeight": 600
+  },
+  {
     "slug": "beacon",
     "name": "Beacon",
     "tagline": "A complete system-health dashboard for SaaS and DevOps teams. Switch the probe region and a glowing pulse races through a hand-drawn service map, lighting every service as it arrives: healthy rings sweep green, slow ones flicker amber, and a dead link sparks out and goes dashed red while the healthy count ticks up.",
@@ -9,7 +27,7 @@
     "price": 39,
     "was": 65,
     "added": "2026-11-17",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/beacon/",
     "cover": "/store/beacon/cover.jpg",
     "video": "/store/beacon/preview.mp4",
