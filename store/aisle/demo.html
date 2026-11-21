@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aisle · Warehouse inventory dashboard · Kodehelix UI</title>
+<link rel="stylesheet" href="aisle.css">
+<style>
+  html,body{margin:0;min-height:100%;background:#0B0D12}
+  .aisle{min-height:100vh}
+  /* store-preview capture only: on a square thumbnail lead with the floor map */
+  @media (max-height:640px) and (max-width:700px){ .as-capture .as-kpis{display:none} }
+</style>
+</head>
+<body>
+<div class="aisle" data-aisle data-aisle-manual data-theme="dark">
+<aside class="as-side" aria-label="Main"><div class="as-brand"><span class="as-brand-mark"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V8l8-4 8 4v12"/><path d="M8 20v-6h8v6M8 17h8"/></svg></span><div>Aisle<small>Kestrel Supply Co.</small></div></div>
+<nav class="as-nav"><div class="as-nav-label">Warehouse</div>
+<a href="#" aria-current="page"><svg class="as-ico " viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg><span>Overview</span></a>
+<a href="#"><svg class="as-ico " viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg><span>Inventory</span></a>
+<a href="#"><svg class="as-ico " viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><span>Inbound</span><em class="as-pill">4</em></a>
+<a href="#"><svg class="as-ico " viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg><span>Orders</span></a>
+<a href="#"><svg class="as-ico " viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c.6-3.4 3-5.2 6-5.2s5.4 1.8 6 5.2"/><path d="M16 4.6a3.2 3.2 0 0 1 0 6.3M18 14.9c1.6.6 2.7 2.2 3 5.1"/></svg><span>Suppliers</span></a>
+<a href="#"><svg class="as-ico " viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>Reports</span></a><div class="as-nav-label">Account</div>
+<a href="#"><svg class="as-ico " viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2.8v2.4M12 18.8v2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2.8 12h2.4M18.8 12h2.4M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></svg><span>Settings</span></a>
+</nav>
+<div class="as-side-card"><b data-as="wh">—</b><span data-as="whsub"></span><div class="as-cap"><i data-as="cap"></i></div></div>
+</aside>
+<div class="as-scrim"></div>
+<main class="as-main">
+<header class="as-top">
+<button class="as-icon-btn as-menu" type="button" data-as="menu" aria-label="Open menu"><svg class="as-ico " viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+<div class="as-title"><h1>Inventory</h1><p data-as="sub"></p></div><div class="as-seg" role="group" aria-label="Warehouse"><span class="as-seg-thumb"></span></div>
+<button class="as-icon-btn" type="button" data-as="theme" aria-label="Toggle theme"></button>
+<button class="as-btn" type="button" data-as="recount"><svg class="as-ico " viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M7 12h10"/></svg>Run cycle count</button>
+<span class="as-avatar" aria-hidden="true">RS</span>
+</header>
+<section class="as-kpis">
+<article class="as-card as-kpi"><div class="as-kpi-top"><svg class="as-ico " viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg>Units on hand</div><div class="as-kpi-val as-num" data-kpi="0">0</div><div class="as-kpi-foot"><span><span class="as-delta up" data-delta="0">+0%</span> <span data-kpi-sub="0">vs last wk</span></span><svg class="as-spark" viewBox="0 0 92 28" aria-hidden="true"><path data-spark="0" stroke="var(--aisle-accent)"/></svg></div>
+</article>
+<article class="as-card as-kpi"><div class="as-kpi-top"><svg class="as-ico " viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M17 6.5c-.8-1.5-2.6-2.5-5-2.5-3 0-5 1.5-5 3.8 0 5.2 10 2.7 10 8 0 2.3-2.1 4.2-5 4.2-2.6 0-4.6-1.1-5.4-2.8"/></svg>Stock value</div><div class="as-kpi-val as-num" data-kpi="1">0</div><div class="as-kpi-foot"><span><span class="as-delta up" data-delta="1">+0%</span> <span data-kpi-sub="1">at cost</span></span><svg class="as-spark" viewBox="0 0 92 28" aria-hidden="true"><path data-spark="1" stroke="var(--aisle-in)"/></svg></div>
+</article>
+<article class="as-card as-kpi"><div class="as-kpi-top"><svg class="as-ico " viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.7 2.7L16.5 9"/></svg>Order fill rate</div><div class="as-kpi-val as-num" data-kpi="2">0</div><div class="as-kpi-foot"><span><span class="as-delta up" data-delta="2">+0%</span> <span data-kpi-sub="2">30 days</span></span><svg class="as-spark" viewBox="0 0 92 28" aria-hidden="true"><path data-spark="2" stroke="var(--aisle-over)"/></svg></div>
+</article>
+<article class="as-card as-kpi"><div class="as-kpi-top"><svg class="as-ico " viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v4.5M12 17.5v.01"/></svg>Low &amp; out of stock</div><div class="as-kpi-val as-num" data-kpi="3">0</div><div class="as-kpi-foot"><span><span class="as-delta up" data-delta="3">+0%</span> <span data-kpi-sub="3"></span></span><svg class="as-spark" viewBox="0 0 92 28" aria-hidden="true"><path data-spark="3" stroke="var(--aisle-low)"/></svg></div>
+</article>
+</section>
+<section class="as-row">
+<article class="as-card"><div class="as-card-h"><div><h2 data-as="maptitle">Floor map</h2><p>The pick cart scans every bin as it walks the aisles</p></div><div class="as-legend"><span><i style="background:var(--aisle-ok)"></i>In stock</span><span><i style="background:var(--aisle-low)"></i>Low</span><span><i style="background:var(--aisle-out)"></i>Out</span><span><i style="background:var(--aisle-over)"></i>Overstock</span></div></div><div class="as-map-wrap"><svg class="as-map" viewBox="0 0 690 320" role="img" aria-label="Warehouse floor map with stock level per bin"></svg><div class="as-tip"></div></div>
+<div class="as-map-stats">
+<div class="as-stat" data-stat="counted"><span>Bins counted</span><b class="as-num">0</b><div class="as-stat-bar"><i></i></div></div>
+<div class="as-stat" data-stat="acc"><span>Count accuracy</span><b class="as-num">—</b><div class="as-stat-bar"><i style="background:var(--aisle-accent)"></i></div></div>
+<div class="as-stat" data-stat="disc"><span>Discrepancies</span><b class="as-num">0</b></div>
+<div class="as-stat" data-stat="tickets"><span>Restock requests</span><b class="as-num">0</b></div></div>
+</article>
+<article class="as-card"><div class="as-card-h"><div><h2>Stock value by category</h2><p>Share of value on hand</p></div></div>
+<div class="as-donut-wrap"><div class="as-donut"><svg viewBox="0 0 170 170" aria-hidden="true"><circle cx="85" cy="85" r="70" fill="none" stroke="var(--aisle-raise)" stroke-width="18"/></svg><div class="as-donut-c"><b class="as-num" data-as="dtotal">$0</b><span>on hand</span></div></div><ul class="as-cats" data-as="cats"></ul></div>
+<div class="as-cover"><div class="as-cover-h"><span>Days of cover</span><span>at current demand</span></div><div class="as-cover-bars" data-as="cover"></div></div>
+</article>
+</section>
+<section class="as-row">
+<article class="as-card as-grow"><div class="as-card-h"><div><h2>Inbound vs outbound</h2><p>Units per day · last 30 days</p></div><div class="as-flow-totals"><div><span><i style="background:var(--aisle-in)"></i>Received</span><b class="as-num" data-as="tin">0</b></div><div><span><i style="background:var(--aisle-outb)"></i>Shipped</span><b class="as-num" data-as="tout">0</b></div></div></div>
+<div class="as-flow"><svg aria-label="Inbound and outbound units per day"></svg><div class="as-tip"></div></div>
+</article>
+<article class="as-card"><div class="as-card-h"><div><h2>Restock queue</h2><p>Raised by the cycle count</p></div><span class="as-status is-low" data-as="qcount">0 open</span></div><ul class="as-queue" data-as="queue"></ul>
+</article>
+</section>
+<section class="as-card"><div class="as-card-h"><div><h2>SKUs that need attention</h2><p>Click a row to find its bin on the floor map</p></div></div>
+<div class="as-table-wrap"><table class="as-table"><thead><tr><th>
+<button type="button" data-sort="name">Item <svg class="as-ico " viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9 4-4 4 4M8 15l4 4 4-4"/></svg></button></th><th>Bin</th><th>
+<button type="button" data-sort="onhand">On hand <svg class="as-ico " viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9 4-4 4 4M8 15l4 4 4-4"/></svg></button></th><th>
+<button type="button" data-sort="cover">Cover <svg class="as-ico " viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9 4-4 4 4M8 15l4 4 4-4"/></svg></button></th><th>Demand</th><th>
+<button type="button" data-sort="status">Status <svg class="as-ico " viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9 4-4 4 4M8 15l4 4 4-4"/></svg></button></th></tr></thead><tbody></tbody></table></div>
+</section>
+</main>
+</div>
+<script src="aisle.js"></script>
+<script>
+  // Swap in your own warehouses and stock with Aisle.mount(el, { data: [...] }) — see README.md
+  if (/[?&]capture=1/.test(location.search)) document.querySelector('[data-aisle]').classList.add('as-capture');
+  var dash = Aisle.mount(document.querySelector('[data-aisle]'), {
+    start: 0,            // which warehouse to show first
+    duration: 5200,      // ms the pick cart takes to walk the floor
+    onCount: function (s) { /* s = { warehouse, counted, discrepancies, accuracy, restock } */ }
+  });
+
+  // Auto-play used by the store preview: the cart counts the next warehouse, then keeps hopping.
+  window.khDemo = function () {
+    dash.next();
+    setTimeout(function step() { dash.next(); setTimeout(step, 7600); }, 7600);
+  };
+</script>
+</body>
+</html>
