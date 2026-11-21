@@ -1,0 +1,143 @@
+/*! Volt — settings switches that power up their feature · Kodehelix UI · kodehelix.in */
+.volt {
+  --volt-surface: #151925;
+  --volt-surface-2: #1F2433;
+  --volt-line: #262B3B;
+  --volt-text: #EDEFF5;
+  --volt-soft: #C9CDD8;
+  --volt-muted: #8F95A6;
+  --volt-a: #3B5BFF;
+  --volt-b: #22C3EE;
+  --volt-radius: 20px;
+  --volt-width: 440px;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--volt-width);
+  padding: 16px 30px 4px 16px;
+  border-radius: var(--volt-radius);
+  border: 1px solid var(--volt-line);
+  color: var(--volt-text);
+  font: 14px/1.4 "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(rgba(143, 163, 255, .07) 1px, transparent 1.3px) 0 0 / 14px 14px,
+    linear-gradient(180deg, rgba(255, 255, 255, .04), transparent 38%),
+    var(--volt-surface);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06), 0 34px 70px -34px rgba(0, 0, 0, .8), 0 14px 28px -16px rgba(0, 0, 0, .55);
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  isolation: isolate;
+}
+.volt *, .volt *::before, .volt *::after { box-sizing: border-box; }
+
+/* header */
+.volt__head { position: relative; z-index: 1; display: flex; align-items: center; gap: 12px; padding: 2px 2px 14px 4px; }
+.volt__badge {
+  flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
+  color: var(--volt-muted); background: var(--volt-surface-2); border: 1px solid var(--volt-line);
+  transition: color .4s, box-shadow .5s, background .5s;
+}
+.volt__badge svg { width: 21px; height: 21px; }
+.volt.is-all .volt__badge {
+  color: #fff; background: linear-gradient(140deg, var(--volt-a), var(--volt-b));
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .12) inset, 0 0 26px -4px var(--volt-b);
+}
+.volt__heading { flex: 1; min-width: 0; display: grid; }
+.volt__heading b { font-size: 15.5px; font-weight: 650; letter-spacing: -.01em; }
+.volt__heading small { font-size: 12.5px; line-height: 1.25; color: var(--volt-muted); font-variant-numeric: tabular-nums; }
+.volt__count { display: inline-flex; height: 1.25em; line-height: 1.25em; overflow: hidden; vertical-align: top; color: var(--volt-soft); font-weight: 600; }
+.volt__digit { display: flex; flex-direction: column; transition: translate .55s cubic-bezier(.3, 1.45, .5, 1); }
+.volt__digit i { font-style: normal; height: 1.25em; }
+.volt__all { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--volt-muted); transition: color .3s; }
+.volt.is-all .volt__all { color: var(--volt-soft); }
+
+/* rows */
+.volt__list { list-style: none; margin: 0; padding: 0; position: relative; z-index: 1; }
+.volt__row {
+  display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; align-items: center; gap: 14px;
+  padding: 10px 2px 22px 4px; cursor: pointer; user-select: none;
+}
+.volt__icon {
+  position: relative; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
+  color: var(--volt-muted); background: var(--volt-surface-2); border: 1px solid var(--volt-line);
+  transition: color .35s, background .45s, box-shadow .45s, border-color .45s;
+}
+.volt__icon svg { width: 21px; height: 21px; overflow: visible; }
+.volt__icon path { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.volt__icon::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; border: 1.5px solid var(--volt-tint); opacity: 0; pointer-events: none; }
+.volt__text { min-width: 0; display: grid; gap: 1px; }
+.volt__text b { font-size: 14.5px; font-weight: 600; color: var(--volt-soft); transition: color .35s; overflow-wrap: anywhere; }
+.volt__text small { font-size: 12.5px; color: var(--volt-muted); overflow-wrap: anywhere; }
+
+.volt__row.is-lit .volt__icon {
+  color: var(--volt-tint);
+  border-color: color-mix(in srgb, var(--volt-tint) 45%, var(--volt-line));
+  background: color-mix(in srgb, var(--volt-tint) 15%, var(--volt-surface-2));
+  box-shadow: 0 0 22px -6px var(--volt-tint), inset 0 1px 0 rgba(255, 255, 255, .07);
+}
+.volt__row.is-lit .volt__text b { color: var(--volt-text); }
+.volt__row.is-arrive .volt__icon { animation: volt-flash .6s ease-out; }
+.volt__row.is-arrive .volt__icon path { animation: volt-draw .6s cubic-bezier(.4, 0, .2, 1) both; }
+.volt__row.is-arrive .volt__icon::after { animation: volt-ring .75s ease-out; }
+.volt__row.is-dim .volt__icon { animation: volt-flicker .4s linear; }
+@keyframes volt-draw { from { stroke-dashoffset: 1; } }
+@keyframes volt-flash { 0% { filter: brightness(2.1) saturate(1.3); } 100% { filter: none; } }
+@keyframes volt-ring { 0% { opacity: .95; transform: scale(1); } 100% { opacity: 0; transform: scale(1.6); } }
+@keyframes volt-flicker { 0%, 100% { opacity: 1; } 25% { opacity: .35; } 45% { opacity: .9; } 65% { opacity: .5; } }
+
+/* switch */
+.volt__sw {
+  position: relative; flex: none; width: 46px; height: 26px; margin: 0; padding: 0; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--volt-line); background: #10131c; box-shadow: inset 0 2px 5px rgba(0, 0, 0, .5);
+  transition: box-shadow .35s, border-color .35s; font: inherit; color: inherit;
+}
+.volt__sw::before {
+  content: ""; position: absolute; inset: -1px; border-radius: inherit; opacity: 0; transition: opacity .25s;
+  background: linear-gradient(90deg, var(--volt-a), var(--volt-b)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .28);
+}
+.volt__sw[aria-checked="true"] { border-color: transparent; box-shadow: 0 0 18px -3px color-mix(in srgb, var(--volt-b) 70%, transparent); }
+.volt__sw[aria-checked="true"]::before { opacity: 1; }
+.volt__knob {
+  position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center;
+  color: #8F95A6; background: linear-gradient(#fff, #d6dbe8); box-shadow: 0 2px 6px rgba(0, 0, 0, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  translate: 0 0; transition: translate .44s cubic-bezier(.3, 1.7, .45, 1), color .3s;
+}
+.volt__knob svg { width: 12px; height: 12px; stroke-width: 2.2; }
+.volt__sw[aria-checked="true"] .volt__knob { translate: 20px 0; color: var(--volt-a); }
+.volt__sw.is-flip .volt__knob { animation: volt-stretch .44s ease-out; }
+@keyframes volt-stretch { 0% { scale: 1 1; } 35% { scale: 1.34 .84; } 70% { scale: .94 1.06; } 100% { scale: 1 1; } }
+.volt__sw:focus-visible { outline: 2px solid var(--volt-b); outline-offset: 3px; }
+.volt__sw:hover { border-color: #343a4e; }
+
+/* wires */
+.volt__wires { position: absolute; left: 0; top: 0; z-index: 2; pointer-events: none; overflow: visible; }
+.volt__base { fill: none; stroke: var(--volt-line); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.volt__lit { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.volt__glow { fill: none; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; opacity: .2; }
+.volt__bus-lit { stroke: var(--volt-b); }
+.volt__flow { fill: none; stroke: #fff; stroke-width: 1.3; stroke-linecap: round; stroke-dasharray: .6 8.6; opacity: 0; transition: opacity .5s; animation: volt-flow .75s linear infinite; }
+.volt__flow.is-on { opacity: .55; }
+.volt__stub-lit { fill: none; stroke: var(--volt-b); stroke-width: 2; stroke-linecap: round; opacity: 0; transition: opacity .35s; }
+.volt__stub-lit.is-on { opacity: .8; }
+.volt__trail { fill: none; stroke-width: 3.4; stroke-linecap: round; opacity: 0; }
+.volt__halo { opacity: 0; fill-opacity: .32; }
+.volt__head-dot { fill: #fff; opacity: 0; }
+.volt__via { fill: var(--volt-surface); stroke: var(--volt-line); stroke-width: 1.4; transition: fill .4s, stroke .4s; }
+.volt__via.is-on { fill: var(--volt-tint); stroke: var(--volt-tint); }
+@keyframes volt-flow { to { stroke-dashoffset: -9.2; } }
+
+/* light sweep when everything is on */
+.volt::after {
+  content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; border-radius: inherit; opacity: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(143, 163, 255, .16) 47%, rgba(34, 195, 238, .22) 50%, transparent 62%) no-repeat;
+  background-size: 260% 100%;
+}
+.volt.is-surge::after { animation: volt-surge 1s ease-out; }
+@keyframes volt-surge { 0% { opacity: 1; background-position: 120% 0; } 85% { opacity: 1; } 100% { opacity: 0; background-position: -30% 0; } }
+
+.volt__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  .volt *, .volt::after { animation: none !important; transition-duration: .01ms !important; }
+  .volt__flow { display: none; }
+}
