@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sprout · Smart greenhouse dashboard · Kodehelix UI</title>
+<link rel="stylesheet" href="sprout.css">
+<style>
+  html,body{margin:0;min-height:100%;background:#0B0D12}
+  .sprout{min-height:100vh}
+  /* store-preview capture only: on a square thumbnail lead with the irrigation map */
+  @media (max-height:640px) and (max-width:700px){ .sp-capture .sp-kpis{display:none} }
+  @media (min-height:800px) and (max-width:760px){ .sp-capture .sp-kpi:nth-child(n+3){display:none} }
+</style>
+</head>
+<body>
+<div class="sprout" data-sprout data-sprout-manual data-theme="dark">
+<aside class="sp-side" aria-label="Main"><div class="sp-brand"><span class="sp-brand-mark"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-8.5"/><path d="M12 12.5C12 8.4 9.6 6 5 6c0 4.2 2.6 6.5 7 6.5Z"/><path d="M12 15c0-3.8 2.5-6.2 7-6.2 0 3.9-2.5 6.2-7 6.2Z"/></svg></span><div>Sprout<small>Fernhill Growers</small></div></div><nav class="sp-nav">
+<div class="sp-nav-label">Farm</div><a href="#" aria-current="page"><svg class="sp-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg><span>Overview</span></a>
+<a href="#"><svg class="sp-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 4l9 6.5"/><path d="M5 9.2V20h14V9.2"/><path d="M5 14.5h14M12 9v11"/></svg><span>Greenhouses</span></a>
+<a href="#"><svg class="sp-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5c3.2 4 6 7.2 6 10.5a6 6 0 0 1-12 0c0-3.3 2.8-6.5 6-10.5Z"/><path d="M9.2 14.5a2.9 2.9 0 0 0 2.6 2.7"/></svg><span>Irrigation</span></a>
+<a href="#"><svg class="sp-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7M5.6 5.6a9 9 0 0 0 0 12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg><span>Sensors</span><em class="sp-pill">3</em></a>
+<a href="#"><svg class="sp-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h16l-1.6 8.4a2 2 0 0 1-2 1.6H7.6a2 2 0 0 1-2-1.6L4 10Z"/><path d="m8 10 3-6M16 10l-3-6M9.5 14v2.5M14.5 14v2.5"/></svg><span>Harvest</span></a>
+<a href="#"><svg class="sp-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>Reports</span></a>
+<div class="sp-nav-label">Account</div><a href="#"><svg class="sp-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2.8v2.4M12 18.8v2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2.8 12h2.4M18.8 12h2.4M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></svg><span>Settings</span></a>
+</nav>
+<div class="sp-side-card"><div class="sp-tank-h"><svg class="sp-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5c3.2 4 6 7.2 6 10.5a6 6 0 0 1-12 0c0-3.3 2.8-6.5 6-10.5Z"/><path d="M9.2 14.5a2.9 2.9 0 0 0 2.6 2.7"/></svg><b>Water tank</b><span class="sp-num" data-sp="tankpct">—</span></div><div class="sp-tank-bar"><i data-sp="tankbar"></i></div><span class="sp-tank-sub" data-sp="tanksub"></span></div></aside>
+<div class="sp-scrim"></div>
+<main class="sp-main">
+<header class="sp-top"><button class="sp-icon-btn sp-menu" type="button" data-sp="menu" aria-label="Open menu"><svg class="sp-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button><div class="sp-title"><h1>Greenhouses</h1><p data-sp="sub"></p></div><div class="sp-seg" role="group" aria-label="Greenhouse"><span class="sp-seg-thumb"></span></div><button class="sp-icon-btn" type="button" data-sp="theme" aria-label="Switch theme"></button><button class="sp-btn" type="button" data-sp="water"><svg class="sp-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5c2.5 3.1 4.6 5.5 4.6 8.1a4.6 4.6 0 0 1-9.2 0c0-2.6 2.1-5 4.6-8.1Z"/><path d="M5 20h2.5M10.8 20.5h2.4M16.5 20H19"/></svg><span>Run irrigation</span></button><span class="sp-avatar" aria-hidden="true">MK</span></header>
+<section class="sp-kpis">
+<article class="sp-card sp-kpi"><div class="sp-kpi-top"><svg class="sp-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5c3.2 4 6 7.2 6 10.5a6 6 0 0 1-12 0c0-3.3 2.8-6.5 6-10.5Z"/><path d="M9.2 14.5a2.9 2.9 0 0 0 2.6 2.7"/></svg>Avg soil moisture</div><div class="sp-kpi-val sp-num" data-kpi="0">0</div><div class="sp-kpi-foot"><span><span class="sp-delta up" data-delta="0">+0%</span> <span data-kpi-sub="0"></span></span><svg class="sp-spark" viewBox="0 0 92 30" aria-hidden="true" style="color:var(--sprout-water)"><path class="sp-spark-a" data-sparka="0"/><path class="sp-spark-l" data-spark="0"/></svg></div></article>
+<article class="sp-card sp-kpi"><div class="sp-kpi-top"><svg class="sp-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5c2.5 3.1 4.6 5.5 4.6 8.1a4.6 4.6 0 0 1-9.2 0c0-2.6 2.1-5 4.6-8.1Z"/><path d="M5 20h2.5M10.8 20.5h2.4M16.5 20H19"/></svg>Water used today</div><div class="sp-kpi-val sp-num" data-kpi="1">0</div><div class="sp-kpi-foot"><span><span class="sp-delta up" data-delta="1">+0%</span> <span data-kpi-sub="1"></span></span><svg class="sp-spark" viewBox="0 0 92 30" aria-hidden="true" style="color:var(--sprout-accent)"><path class="sp-spark-a" data-sparka="1"/><path class="sp-spark-l" data-spark="1"/></svg></div></article>
+<article class="sp-card sp-kpi"><div class="sp-kpi-top"><svg class="sp-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14.3V5a2 2 0 0 1 4 0v9.3a4 4 0 1 1-4 0Z"/><path d="M12 9v7.5"/></svg>Air temperature</div><div class="sp-kpi-val sp-num" data-kpi="2">0</div><div class="sp-kpi-foot"><span><span class="sp-delta up" data-delta="2">+0%</span> <span data-kpi-sub="2"></span></span><svg class="sp-spark" viewBox="0 0 92 30" aria-hidden="true" style="color:var(--sprout-peri)"><path class="sp-spark-a" data-sparka="2"/><path class="sp-spark-l" data-spark="2"/></svg></div></article>
+<article class="sp-card sp-kpi"><div class="sp-kpi-top"><svg class="sp-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h16l-1.6 8.4a2 2 0 0 1-2 1.6H7.6a2 2 0 0 1-2-1.6L4 10Z"/><path d="m8 10 3-6M16 10l-3-6M9.5 14v2.5M14.5 14v2.5"/></svg>Yield forecast</div><div class="sp-kpi-val sp-num" data-kpi="3">0</div><div class="sp-kpi-foot"><span><span class="sp-delta up" data-delta="3">+0%</span> <span data-kpi-sub="3"></span></span><svg class="sp-spark" viewBox="0 0 92 30" aria-hidden="true" style="color:var(--sprout-leaf)"><path class="sp-spark-a" data-sparka="3"/><path class="sp-spark-l" data-spark="3"/></svg></div></article>
+</section>
+<section class="sp-row">
+<article class="sp-card sp-mapcard"><div class="sp-card-h"><div><h2 data-sp="maptitle">Irrigation map</h2><p>Drip lines, emitters and live soil moisture per plant</p></div><div class="sp-legend"><span><i class="is-ok"></i>Healthy</span><span><i class="is-dry"></i>Dry</span><span><i class="is-wet"></i>Waterlogged</span><span><i class="is-off"></i>Offline</span></div></div><div class="sp-map-wrap"><svg class="sp-map" viewBox="0 0 720 360" role="group" aria-label="Irrigation map"></svg><div class="sp-tip sp-ptip" aria-hidden="true"></div></div>
+<div class="sp-map-stats">
+<div class="sp-stat" data-stat="litres"><span>Water delivered</span><b class="sp-num">0 L</b><div class="sp-stat-bar"><i></i></div></div>
+<div class="sp-stat" data-stat="plants"><span>Plants watered</span><b class="sp-num">0</b><div class="sp-stat-bar"><i class="is-leaf"></i></div></div>
+<div class="sp-stat" data-stat="tank"><span>Tank level</span><b class="sp-num">—</b><div class="sp-stat-bar"><i class="is-tank"></i></div></div>
+<div class="sp-stat" data-stat="issues"><span>Need attention</span><b class="sp-num">0</b><div class="sp-stat-dots"><i class="is-dry"></i><i class="is-wet"></i><i class="is-off"></i></div></div></div></article>
+<article class="sp-card sp-yield"><div class="sp-card-h"><div><h2>Yield forecast</h2><p>By bed · next 30 days</p></div></div><div class="sp-donut-wrap"><div class="sp-donut"><svg viewBox="0 0 170 170" aria-hidden="true"><circle cx="85" cy="85" r="68" fill="none" class="sp-donut-track" stroke-width="16"/></svg><div class="sp-donut-c"><b class="sp-num" data-sp="dtotal">0</b><span>forecast</span></div></div><ul class="sp-dlegend" data-sp="dlegend"></ul></div><div class="sp-stages"><div class="sp-stages-h"><span>Growth stage</span><span data-sp="stagesub"></span></div><div class="sp-stagebar" data-sp="stagebar"></div><ul class="sp-stage-l" data-sp="stagelegend"></ul></div></article>
+</section>
+<section class="sp-row">
+<article class="sp-card"><div class="sp-card-h"><div><h2>Soil moisture</h2><p>Daily average · last 14 days</p></div><div class="sp-legend"><span><i class="sp-k-m"></i>Moisture</span><span><i class="sp-k-t"></i>Air temp</span><span><i class="sp-k-b"></i>Target 40–60%</span></div></div><div class="sp-chart sp-mchart"><svg role="img" aria-label="Soil moisture and air temperature, last 14 days"></svg><div class="sp-tip"></div></div></article>
+<article class="sp-card sp-logcard"><div class="sp-card-h"><div><h2>Irrigation log</h2><p>Events from the current run</p></div><span class="sp-live" data-sp="live">Idle</span></div><ol class="sp-log" data-sp="log" aria-live="polite"></ol></article>
+</section>
+<section class="sp-row">
+<article class="sp-card"><div class="sp-card-h"><div><h2>Beds &amp; sensors</h2><p>Click a bed to find it on the irrigation map</p></div></div><div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>Bed</th><th>Moisture</th><th>Soil</th><th>Watered</th><th>Status</th></tr></thead><tbody></tbody></table></div></article>
+<article class="sp-card"><div class="sp-card-h"><div><h2>Water use</h2><p>Litres per day vs target</p></div><b class="sp-big sp-num" data-sp="wtotal">0</b></div><div class="sp-chart sp-wchart"><svg role="img" aria-label="Water used per day, last 14 days"></svg><div class="sp-tip"></div></div></article>
+</section>
+</main>
+</div>
+<script src="sprout.js"></script>
+<script>
+  // Swap in your own greenhouses and sensor readings with Sprout.mount(el, { data: [...] }) — see README.md
+  if (/[?&]capture=1/.test(location.search)) document.querySelector('[data-sprout]').classList.add('sp-capture');
+  var farm = Sprout.mount(document.querySelector('[data-sprout]'), {
+    start: 0,           // which greenhouse to show first
+    duration: 3000,     // ms the water takes from the tank to the last emitter
+    onIrrigate: function (run) { /* run = { zone, name, litres, watered, dry, waterlogged, offline } */ }
+  });
+
+  // Auto-play used by the store preview: water the next greenhouse, then keep hopping.
+  window.khDemo = function () {
+    farm.next();
+    setTimeout(function step() { farm.next(); setTimeout(step, 4800); }, 4800);
+  };
+</script>
+</body>
+</html>
