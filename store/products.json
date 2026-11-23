@@ -1,5 +1,23 @@
 [
   {
+    "slug": "bellows",
+    "name": "Bellows",
+    "tagline": "An FAQ accordion that opens like real bellows. Each answer is folded into pleats that pull open with shaded creases and a zigzag edge, spring past flat and settle with a light sweep; Expand all ripples the whole list open, one question after another.",
+    "type": "component",
+    "size": "18 KB",
+    "deps": "0 deps",
+    "price": 4,
+    "was": 7,
+    "added": "2026-11-23",
+    "isNew": true,
+    "demo": "/store/bellows/",
+    "cover": "/store/bellows/cover.jpg",
+    "video": "/store/bellows/preview.mp4",
+    "buy": "https://adityapulse2.gumroad.com/l/bellows",
+    "gumroad": true,
+    "demoHeight": 640
+  },
+  {
     "slug": "sprout",
     "name": "Sprout",
     "tagline": "A complete greenhouse and vertical-farm monitoring dashboard for growers, agritech startups and farm-management SaaS. Switch greenhouse or press Run irrigation and a glowing water pulse leaves the tank, races down the main pipe and branches into every drip line: emitters drip, splash rings spread on the soil, each plant springs up to its growth stage and its moisture gauge fills in its status colour while the litres and plants-watered counters tick up and the tank drains.",
@@ -9,7 +27,7 @@
     "price": 39,
     "was": 65,
     "added": "2026-11-22",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/sprout/",
     "cover": "/store/sprout/cover.jpg",
     "video": "/store/sprout/preview.mp4",
