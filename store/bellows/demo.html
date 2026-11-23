@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bellows · pleated FAQ accordion · Kodehelix UI</title>
+<link rel="stylesheet" href="bellows.css">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{min-height:100vh;display:grid;place-items:center;background:#0b0d12;color:#c9cdd8;overflow-x:hidden;
+    font:16px/1.5 "Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    background-image:radial-gradient(56vmax 40vmax at 50% 18%,rgba(59,91,255,.22),transparent 62%),
+      radial-gradient(40vmax 30vmax at 85% 95%,rgba(34,195,238,.10),transparent 60%)}
+  .wrap{width:100%;max-width:572px;min-width:0;padding:clamp(20px,5vh,56px) 16px 28px;display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:18px}
+  .hint{margin:0;font-size:13.5px;color:#8f95a6;text-align:center;max-width:46ch}
+  .capture .hint{display:none}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div id="faq" data-bellows data-bellows-manual></div>
+    <p class="hint">Open a question: the answer unfolds out of its pleats like a bellows being pulled open. Try <b>Expand all</b> for the whole ripple, or use the arrow keys.</p>
+  </main>
+  <script src="bellows.js"></script>
+  <script>
+    if (/[?&]capture=1/.test(location.search)) document.documentElement.classList.add('capture');
+    var faq = Bellows.mount(document.getElementById('faq'), {
+      title: 'Questions, answered',
+      subtitle: 'Everything about Quillnote plans and billing',
+      items: [
+        { q: 'Can I switch plans later?', a: '<p>Yes, any time. Move up or down from <b>Settings → Billing</b> and we work out the difference to the day, so you never pay twice for the same week.</p>' },
+        { q: 'Is there a free trial?', a: '<p>Every paid plan starts with <b>14 days free</b>, no card needed. When the trial ends your notes stay put and you simply drop to the Free plan until you choose.</p>' },
+        { q: 'Who can see my notes?', a: '<p>Only you and the people you invite. Notes are encrypted in transit and at rest, and you can export everything as Markdown or PDF whenever you like.</p>' },
+        { q: 'Does it work offline?', a: '<p>Yes. The desktop and mobile apps keep a full copy of your workspace and sync the moment you are back online, merging edits line by line.</p>' },
+        { q: 'Do you offer team discounts?', a: '<p>Teams of 10 or more get <b>20% off</b> per seat, and schools and non-profits get Pro for free. Write to us and we will set it up the same day.</p>' }
+      ],
+      onToggle: function (i, open) { console.log('question', i + 1, open ? 'opened' : 'closed'); }
+    });
+
+    // Auto-play for store previews: open one, switch to another, ripple all open, squeeze shut. Stops on real input.
+    var demoT = [], demoI = 0;
+    function stopDemo(e) {
+      if (!e.isTrusted || (!demoI && !demoT.length)) return;
+      clearInterval(demoI); demoT.forEach(clearTimeout); demoT = []; demoI = 0;
+    }
+    addEventListener('pointerdown', stopDemo, true); addEventListener('keydown', stopDemo, true);
+    window.khDemo = function () {
+      if (demoI || demoT.length) return;
+      function at(ms, fn) { demoT.push(setTimeout(fn, ms)); }
+      function cycle() {
+        demoT = [];
+        at(250, function () { faq.open(0); });
+        at(2000, function () { faq.open(2); });
+        at(3700, function () { faq.openAll(); });
+        at(6300, function () { faq.closeAll(); });
+      }
+      cycle(); demoI = setInterval(cycle, 7600);
+    };
+  </script>
+</body>
+</html>
