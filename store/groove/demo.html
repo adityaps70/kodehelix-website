@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Groove · Music streaming analytics dashboard · Kodehelix UI</title>
+<link rel="stylesheet" href="groove.css">
+<style>
+  html,body{margin:0;min-height:100%;background:#0B0D12}
+  .groove{min-height:100vh}
+  /* store-preview capture only: lead with the turntable on small frames */
+  @media (max-height:640px) and (max-width:700px){ .gr-capture .gr-kpis{display:none} }
+  @media (min-height:800px) and (max-width:760px){ .gr-capture .gr-kpi:nth-child(n+3){display:none} }
+</style>
+</head>
+<body>
+<div class="groove" data-groove data-groove-manual data-theme="dark">
+<aside class="gr-side" aria-label="Main"><div class="gr-brand"><span class="gr-brand-mark"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2.5"/><path d="M12 6.2a5.8 5.8 0 0 1 5.8 5.8"/></svg></span><div>Groove<small>Quietfield Records</small></div></div><nav class="gr-nav">
+<div class="gr-nav-label">Artist</div><a href="#" aria-current="page"><svg class="gr-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg><span>Overview</span></a>
+<a href="#"><svg class="gr-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2.5"/></svg><span>Releases</span></a>
+<a href="#"><svg class="gr-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><path d="M15.5 5.2a3 3 0 0 1 0 5.6M17.5 14.8c1.7.6 2.7 2.2 3 4.7"/></svg><span>Audience</span></a>
+<a href="#"><svg class="gr-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h11M4 11h11M4 16h6"/><path d="M18 8v8.5"/><circle cx="16" cy="17" r="2.2"/><path d="M18 8l3-1"/></svg><span>Playlists</span><em class="gr-pill">5</em></a>
+<a href="#"><svg class="gr-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2.5"/><circle cx="12" cy="12" r="2.6"/><path d="M6.5 9.5v5M17.5 9.5v5"/></svg><span>Royalties</span></a>
+<a href="#"><svg class="gr-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>Reports</span></a>
+<div class="gr-nav-label">Account</div><a href="#"><svg class="gr-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2.8v2.4M12 18.8v2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2.8 12h2.4M18.8 12h2.4M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></svg><span>Settings</span></a>
+</nav>
+<div class="gr-side-card"><div class="gr-pay-h"><svg class="gr-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2.5"/><circle cx="12" cy="12" r="2.6"/></svg><b>Next payout</b><span class="gr-num" data-gr="pay">—</span></div><div class="gr-pay-bar"><i data-gr="paybar"></i></div><span class="gr-pay-sub" data-gr="paysub"></span></div></aside>
+<div class="gr-scrim"></div>
+<main class="gr-main">
+<header class="gr-top"><button class="gr-icon-btn gr-menu" type="button" data-gr="menu" aria-label="Open menu"><svg class="gr-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button><div class="gr-title"><h1>Releases</h1><p data-gr="sub"></p></div><div class="gr-seg" role="group" aria-label="Release"><span class="gr-seg-thumb"></span></div><button class="gr-icon-btn" type="button" data-gr="theme" aria-label="Switch theme"></button><button class="gr-btn" type="button" data-gr="play"><svg class="gr-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2.2"/><path d="M12 5.8a6.2 6.2 0 0 1 6.2 6.2"/></svg><span>Play release</span></button><span class="gr-avatar" aria-hidden="true">NH</span></header>
+<section class="gr-kpis">
+<article class="gr-card gr-kpi"><div class="gr-kpi-top"><svg class="gr-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h2l2-6 3 12 3-9 2 3h4"/></svg>Streams · 30 days</div><div class="gr-kpi-val gr-num" data-kpi="0">0</div><div class="gr-kpi-foot"><span><span class="gr-delta up" data-delta="0">+0%</span> <span data-kpi-sub="0"></span></span><svg class="gr-spark" viewBox="0 0 92 30" aria-hidden="true" style="color:var(--groove-cyan)"><path class="gr-spark-a" data-sparka="0"/><path class="gr-spark-l" data-spark="0"/></svg></div></article>
+<article class="gr-card gr-kpi"><div class="gr-kpi-top"><svg class="gr-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3.5" y="13.5" width="4" height="6" rx="1.6"/><rect x="16.5" y="13.5" width="4" height="6" rx="1.6"/></svg>Monthly listeners</div><div class="gr-kpi-val gr-num" data-kpi="1">0</div><div class="gr-kpi-foot"><span><span class="gr-delta up" data-delta="1">+0%</span> <span data-kpi-sub="1"></span></span><svg class="gr-spark" viewBox="0 0 92 30" aria-hidden="true" style="color:var(--groove-accent)"><path class="gr-spark-a" data-sparka="1"/><path class="gr-spark-l" data-spark="1"/></svg></div></article>
+<article class="gr-card gr-kpi"><div class="gr-kpi-top"><svg class="gr-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.5-4.4-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.6-7.5 10-7.5 10Z"/></svg>Saves</div><div class="gr-kpi-val gr-num" data-kpi="2">0</div><div class="gr-kpi-foot"><span><span class="gr-delta up" data-delta="2">+0%</span> <span data-kpi-sub="2"></span></span><svg class="gr-spark" viewBox="0 0 92 30" aria-hidden="true" style="color:var(--groove-peri)"><path class="gr-spark-a" data-sparka="2"/><path class="gr-spark-l" data-spark="2"/></svg></div></article>
+<article class="gr-card gr-kpi"><div class="gr-kpi-top"><svg class="gr-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2.5"/><circle cx="12" cy="12" r="2.6"/><path d="M6.5 9.5v5M17.5 9.5v5"/></svg>Est. royalties</div><div class="gr-kpi-val gr-num" data-kpi="3">0</div><div class="gr-kpi-foot"><span><span class="gr-delta up" data-delta="3">+0%</span> <span data-kpi-sub="3"></span></span><svg class="gr-spark" viewBox="0 0 92 30" aria-hidden="true" style="color:var(--groove-ok)"><path class="gr-spark-a" data-sparka="3"/><path class="gr-spark-l" data-spark="3"/></svg></div></article>
+</section>
+<section class="gr-row">
+<article class="gr-card gr-deckcard"><div class="gr-card-h"><div><h2 data-gr="decktitle">Now spinning</h2><p>Every groove is a track · its ring shows the track's share of streams</p></div><span class="gr-live" data-gr="live" role="status" aria-live="polite">Idle</span></div>
+<div class="gr-deck-body"><div class="gr-tt-wrap"><svg class="gr-tt" viewBox="0 0 380 320" role="group" aria-label="Turntable: one groove per track"></svg><div class="gr-tip" aria-hidden="true"></div></div><ol class="gr-tracks" data-gr="tracks" aria-label="Tracklist"></ol></div>
+<div class="gr-deck-stats">
+<div class="gr-stat" data-stat="streams"><span>Streams counted</span><b class="gr-num">0</b></div>
+<div class="gr-stat" data-stat="played"><span>Tracks played</span><b class="gr-num">0</b><div class="gr-dots"></div></div>
+<div class="gr-stat" data-stat="time"><span>Running time</span><b class="gr-num">0:00</b></div>
+<div class="gr-stat" data-stat="top"><span>Most streamed</span><b>—</b></div></div></article>
+<article class="gr-card gr-aud"><div class="gr-card-h"><div><h2>Listeners by platform</h2><p>Last 30 days</p></div></div><div class="gr-donut-wrap"><div class="gr-donut"><svg viewBox="0 0 170 170" aria-hidden="true"><circle cx="85" cy="85" r="68" fill="none" class="gr-donut-track" stroke-width="16"/></svg><div class="gr-donut-c"><b class="gr-num" data-gr="dtotal">0</b><span>listeners</span></div></div><ul class="gr-dlegend" data-gr="dlegend"></ul></div><div class="gr-ages-h"><span>Age</span><span data-gr="agesub"></span></div><div class="gr-ages" data-gr="ages"></div></article>
+</section>
+<section class="gr-row">
+<article class="gr-card"><div class="gr-card-h"><div><h2>Daily streams</h2><p>Last 30 days, all platforms</p></div><div class="gr-legend"><span><i class="gr-k-a"></i>This release</span><span><i class="gr-k-b"></i>Previous release</span><span><i class="gr-k-c"></i>Release day</span></div></div><div class="gr-chart gr-schart"><svg role="img" aria-label="Daily streams, last 30 days"></svg><div class="gr-tip"></div></div></article>
+<article class="gr-card"><div class="gr-card-h"><div><h2>When people listen</h2><p>Streams by weekday and hour</p></div></div><svg class="gr-heat" viewBox="0 0 330 168" role="img" aria-label="Listening heatmap by weekday and hour"></svg><div class="gr-hours-h"><span>All week, by hour</span><span data-gr="night"></span></div><svg class="gr-hours" viewBox="0 0 330 64" aria-hidden="true"></svg><div class="gr-heat-foot"><span>Peak: <b data-gr="peak">—</b></span><span class="gr-scale">Low<i></i>High</span></div></article>
+</section>
+<section class="gr-row is-even">
+<article class="gr-card"><div class="gr-card-h"><div><h2>Top cities</h2><p>Listeners in the last 28 days</p></div></div><div class="gr-table-wrap"><table class="gr-table"><thead><tr><th>City</th><th>Listeners</th><th>Change</th><th>Share</th><th>Top track</th></tr></thead><tbody></tbody></table></div></article>
+<article class="gr-card"><div class="gr-card-h"><div><h2>Playlist adds</h2><p>Editorial and listener playlists</p></div><b class="gr-big gr-num" data-gr="reach">0</b></div><ul class="gr-plist" data-gr="plist"></ul></article>
+</section>
+</main>
+</div>
+<script src="groove.js"></script>
+<script>
+  // Swap in your own releases with Groove.mount(el, { data: [...] }) — see README.md
+  if (/[?&]capture=1/.test(location.search)) document.querySelector('[data-groove]').classList.add('gr-capture');
+  var deck = Groove.mount(document.querySelector('[data-groove]'), {
+    start: 0,           // which release to show first
+    duration: 3400,     // ms the needle takes from the first groove to the last
+    onPlay: function (run) { /* run = { release, name, tracks, streams, top } */ }
+  });
+
+  // Auto-play used by the store preview: play this release, then hop to the next one.
+  window.khDemo = function () {
+    deck.play();
+    setTimeout(function step() { deck.next(); setTimeout(step, 5600); }, 5600);
+  };
+</script>
+</body>
+</html>
