@@ -1,5 +1,23 @@
 [
   {
+    "slug": "groove",
+    "name": "Groove",
+    "tagline": "A complete streaming analytics dashboard for artists, labels, managers and music-tech SaaS. Switch release and the tonearm swings onto a hand-drawn vinyl: the record spins up, the needle reads every groove from the outside in, and each track's groove lights up and lays down a glowing ring sized by its share of streams while its stream count rolls up in the tracklist.",
+    "type": "dashboard",
+    "size": "78 KB",
+    "deps": "0 deps",
+    "price": 39,
+    "was": 65,
+    "added": "2026-11-24",
+    "isNew": true,
+    "demo": "/store/groove/",
+    "cover": "/store/groove/cover.jpg",
+    "video": "/store/groove/preview.mp4",
+    "buy": "https://adityapulse2.gumroad.com/l/groove",
+    "gumroad": true,
+    "demoHeight": 760
+  },
+  {
     "slug": "bellows",
     "name": "Bellows",
     "tagline": "An FAQ accordion that opens like real bellows. Each answer is folded into pleats that pull open with shaded creases and a zigzag edge, spring past flat and settle with a light sweep; Expand all ripples the whole list open, one question after another.",
@@ -9,7 +27,7 @@
     "price": 4,
     "was": 7,
     "added": "2026-11-23",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/bellows/",
     "cover": "/store/bellows/cover.jpg",
     "video": "/store/bellows/preview.mp4",
