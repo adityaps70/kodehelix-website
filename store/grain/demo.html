@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grain · hourglass countdown timer · Kodehelix UI</title>
+<link rel="stylesheet" href="grain.css">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{min-height:100vh;display:grid;place-items:center;background:#0b0d12;color:#c9cdd8;overflow-x:hidden;
+    font:16px/1.5 "Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    background-image:radial-gradient(56vmax 40vmax at 50% 18%,rgba(59,91,255,.22),transparent 62%),
+      radial-gradient(40vmax 30vmax at 85% 95%,rgba(34,195,238,.10),transparent 60%)}
+  .wrap{width:100%;max-width:632px;min-width:0;padding:clamp(20px,5vh,56px) 16px 28px;display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:18px}
+  .hint{margin:0;font-size:13.5px;color:#8f95a6;text-align:center;max-width:48ch}
+  .capture .hint{display:none}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div id="timer" data-grain data-grain-manual></div>
+    <p class="hint">Press <b>Start</b> and the glass flips over like a real hourglass. Hit <b>Flip</b> mid-run and the time left turns over with the sand.</p>
+  </main>
+  <script src="grain.js"></script>
+  <script>
+    if (/[?&]capture=1/.test(location.search)) document.documentElement.classList.add('capture');
+    var timer = Grain.mount(document.getElementById('timer'), {
+      title: 'Focus timer',
+      subtitle: 'Deep work · round 2 of 4',
+      presets: [10, 300, 900, 1500],
+      duration: 1500,
+      onDone: function () { console.log('time is up'); }
+    });
+
+    // Auto-play for store previews: flip to start, flip mid-run, run out. Stops on real input.
+    var demoT = [], demoI = 0;
+    function stopDemo(e) {
+      if (!e.isTrusted || (!demoI && !demoT.length)) return;
+      clearInterval(demoI); demoT.forEach(clearTimeout); demoT = []; demoI = 0;
+    }
+    addEventListener('pointerdown', stopDemo, true); addEventListener('keydown', stopDemo, true);
+    window.khDemo = function () {
+      if (demoI || demoT.length) return;
+      function at(ms, fn) { demoT.push(setTimeout(fn, ms)); }
+      timer.set(10);
+      function cycle() {
+        demoT = [];
+        at(250, function () { timer.start(); });
+        at(3600, function () { timer.flip(); });
+      }
+      cycle(); demoI = setInterval(cycle, 8000);
+    };
+  </script>
+</body>
+</html>
