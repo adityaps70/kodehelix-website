@@ -1,5 +1,23 @@
 [
   {
+    "slug": "grain",
+    "name": "Grain",
+    "tagline": "A countdown timer with a real hourglass in it. Start flips the glass over on a spring and glowing sand pours through the neck into a growing heap while the digits roll down; flip it mid-run and the time left turns over with the sand.",
+    "type": "component",
+    "size": "31 KB",
+    "deps": "0 deps",
+    "price": 5,
+    "was": 8,
+    "added": "2026-11-28",
+    "isNew": true,
+    "demo": "/store/grain/",
+    "cover": "/store/grain/cover.jpg",
+    "video": "/store/grain/preview.mp4",
+    "buy": "https://adityapulse2.gumroad.com/l/grain",
+    "gumroad": true,
+    "demoHeight": 520
+  },
+  {
     "slug": "groove",
     "name": "Groove",
     "tagline": "A complete streaming analytics dashboard for artists, labels, managers and music-tech SaaS. Switch release and the tonearm swings onto a hand-drawn vinyl: the record spins up, the needle reads every groove from the outside in, and each track's groove lights up and lays down a glowing ring sized by its share of streams while its stream count rolls up in the tracklist.",
@@ -9,7 +27,7 @@
     "price": 39,
     "was": 65,
     "added": "2026-11-24",
-    "isNew": true,
+    "isNew": false,
     "demo": "/store/groove/",
     "cover": "/store/groove/cover.jpg",
     "video": "/store/groove/preview.mp4",
